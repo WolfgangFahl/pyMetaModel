@@ -40,13 +40,16 @@ class MediaWikiContext():
             self.wikiClient=WikiClient.ofWikiId(wikiUser.wikiId)
             if withLogin:
                 self.wikiClient.login()
-            pageTitle=f"{self.context}Context"
-            markup=self.wikiClient.getPage(pageTitle).text()
-            mw_code=mwparserfromhell.parse(markup)
-            sidif_sections=mw_code.get_sections(matches="sidif")
-            if len(sidif_sections)!=1:
-                raise Exception(f"found {len(sidif_sections)} but expected exactly 1")
-            for node in sidif_sections[0].filter_tags(matches="source"):
-                return str(node.contents)
+            pageTitle=f"{self.context}"
+            page=self.wikiClient.getPage(pageTitle)
+            if page.exists:
+                markup=page.text()
+                mw_code=mwparserfromhell.parse(markup)
+                sidif_sections=mw_code.get_sections(matches="sidif")
+                if len(sidif_sections)!=1:
+                    raise Exception(f"found {len(sidif_sections)} sidif sections but expected exactly 1")
+                for node in sidif_sections[0].filter_tags(matches="source"):
+                    sidif=str(node.contents)
+        return sidif
             
         

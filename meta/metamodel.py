@@ -3,25 +3,35 @@ Created on 2022-11-23
 
 @author: wf
 '''
+from datetime import datetime
 from dataclasses import dataclass
 from meta.mw import MediaWikiContext
 from sidif.sidif import SiDIFParser
+from lodstorage.jsonable import JSONAble
 
-@dataclass
-class Context:
-    name:str
-
-@dataclass
-class Topic:
-    name:str
-    pluralName: str
-    documentation: str
-    context:Context
-        
-class MetaModel:
+class MetaModelElement(JSONAble):
+    '''
+    a generic MetaModelElement
+    
+    to handle the technicalities of being a MetaModelElement so that derived
+    MetaModelElements can focus on the MetaModel domain specific aspects
+    '''
+    
+class Context(MetaModelElement):
     """
-    a MetaModel
+    A Context groups some topics like a Namespace/Package.
+    This class provides helper functions and constants to render a Context to corresponding wiki pages
     """
+    
+    @classmethod
+    def getSamples(cls):
+        samples = [{
+            "name": "MetaModel",
+            "since": datetime.strptime("2015-01-23","%Y-%m-%d"),
+            "copyright": "2015-2022 BITPlan GmbH",
+            "master": "http://master.bitplan.com"
+        }]
+        return samples
     
     def __init__(self,debug:bool=False):
         """
@@ -32,16 +42,25 @@ class MetaModel:
         """
         self.debug=debug
         
-    def fromDictOfDicts(self,did:dict):
+    @classmethod
+    def fromDictOfDicts(cls,did:dict)->'Context':
         """
         fill me from the given dict of dicts
         
         Args:
             did(dict): the dict of dicts
+            
+        Returns:
+            Context: the context read
         """
+        context=None
         for key,record in did.items():
             isA=record["isA"]
-            pass
+            if isA=="Context":
+                context=Context()
+                context.fromDict(record)
+                pass
+        return context
         
     @classmethod
     def fromWikiContext(cls,mw_context:MediaWikiContext,debug:bool=False)->'MetaModel':
@@ -56,14 +75,23 @@ class MetaModel:
             MetaModel: the metamodel and potential parsing errors
         """
         mm=None
+        error=None
         sidif=mw_context.read_sidif()
-        sp = SiDIFParser(debug=debug)
-        parsed, error = sp.parseText(sidif, mw_context.wikiId)
-        if debug:
-            sp.printResult(parsed)
-        if error is None:
-            dif=parsed[0]
-            did=dif.toDictOfDicts()
-            mm=MetaModel(debug=debug)
-            mm.fromDictOfDicts(did)
-        return mm,error
+        if sidif is not None:
+            sp = SiDIFParser(debug=debug)
+            parsed, error = sp.parseText(sidif, mw_context.wikiId)
+            if debug:
+                sp.printResult(parsed)
+            if error is None:
+                dif=parsed[0]
+                did=dif.toDictOfDicts()
+                context=Context.fromDictOfDicts(did)
+        return context,error
+    
+    
+@dataclass
+class Topic:
+    name:str
+    pluralName: str
+    documentation: str
+    context:Context
