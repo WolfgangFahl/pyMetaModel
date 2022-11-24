@@ -34,7 +34,7 @@ class MediaWikiContext():
             str: the SiDIF
         """
         sidif=None
-        wikiusers=WikiUser.getWikiUsers()
+        wikiusers=WikiUser.getWikiUsers(lenient=True)
         if self.wikiId in wikiusers:
             wikiUser=wikiusers[self.wikiId]
             self.wikiClient=WikiClient.ofWikiId(wikiUser.wikiId)
