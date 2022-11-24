@@ -21,6 +21,8 @@ dependencies = [
         'py-sidif~=0.0.8',
         # https://pypi.org/project/py-3rdparty-mediawiki/
 		'py-3rdparty-mediawiki~=0.7.0',
+		# https://pypi.org/project/pylodstorage/
+        'pyLodStorage~=0.4.7',
 		# https://pypi.org/project/mwparserfromhell/
 		'mwparserfromhell~=0.6.4'
      ]
