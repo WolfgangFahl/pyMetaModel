@@ -6,7 +6,9 @@ Created on 23.11.2022
 from dataclasses import dataclass
 from wikibot.wikiuser import WikiUser
 from wikibot.wikiclient import WikiClient
+from wikibot.smw import SMWClient
 import mwparserfromhell
+import datetime
    
 @dataclass
 class MediaWikiContext():
@@ -14,12 +16,15 @@ class MediaWikiContext():
     wikiId:str
     wiki_url: str
     context:str 
+    since:datetime.datetime
+    master:str
+    
 
     def sidif_url(self):
         """
         return the sidif url
         """
-        url=f"{self.wiki_url}/index.php/{self.context}Context#sidif"
+        url=f"{self.wiki_url}/index.php/{self.context}#sidif"
         return url
     
     def read_sidif(self,withLogin:bool=False)->str:
@@ -51,5 +56,50 @@ class MediaWikiContext():
                 for node in sidif_sections[0].filter_tags(matches="source"):
                     sidif=str(node.contents)
         return sidif
-            
+    
+class SMWAccess:
+    """
+    access to semantic MediaWiki
+    """
+    
+    def __init__(self,wikiId:str="wiki",debug:bool=False):
+        """
+        constructor
+        """
+        self.wikiId=wikiId
+        self.smw=self.getSMW(wikiId)
+        self.debug=debug
+        self.url=f"{self.wikiClient.wikiUser.getWikiUrl()}"
+        
+    def getSMW(self,wikiId:str):
+        """
+        get the semantic mediawiki access
+        """
+        self.wikiClient=WikiClient.ofWikiId(wikiId)
+        smw=SMWClient(self.wikiClient.getSite())
+        return smw 
+        
+    def getMwContexts(self):
+        """
+        get the contexts
+        """
+        ask="""{{#ask: [[Concept:Context]]
+|mainlabel=Context
+| ?Context name = name
+| ?Context since = since
+| ?Context master = master
+
+|sort=Context name
+|order=ascending
+}}"""
+        mw_contexts={}
+        context_records=self.smw.query(ask, "list of contexts")
+        for context_name,context_record in context_records.items():
+            if self.debug:
+                print(context_record)
+            mw_contexts[context_name]=MediaWikiContext(self.wikiId,
+                self.url,context_name,
+                context_record["since"],
+                context_record["master"])
+        return mw_contexts
         
