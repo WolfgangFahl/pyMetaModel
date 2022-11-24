@@ -74,8 +74,10 @@ class Context(MetaModelElement):
         Return:
             MetaModel: the metamodel and potential parsing errors
         """
-        mm=None
+        context=None
         error=None
+        if debug:
+            print(f"reading sidif for {mw_context.context} from {mw_context.wikiId}")
         sidif=mw_context.read_sidif()
         if sidif is not None:
             sp = SiDIFParser(debug=debug)
