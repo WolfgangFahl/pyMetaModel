@@ -12,7 +12,10 @@ class TestMediawiki(BaseMediawikiTest):
     test reading SiDIF from Mediawiki pages
     """
     
-    def setUp(self, debug=False, profile=True):
+    def setUp(self, debug=True, profile=True):
+        """
+        setUp
+        """
         BaseMediawikiTest.setUp(self, debug=debug, profile=profile)
         for wikiId in ["wiki","royals"]:
             self.getWikiUser(wikiId, save=True)

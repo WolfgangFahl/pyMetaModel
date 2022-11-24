@@ -41,8 +41,12 @@ class BaseMediawikiTest(Basetest):
                 raise Exception(f"wikiId {wikiId} is not known")
             else:
                 wikiUser = WikiUser.ofDict(wikiDict, lenient=True)
+                if self.debug:
+                    print(f"created wikiUser for {wikiId}")
                 if save:
                     wikiUser.save()
+                    if self.debug:
+                        print(f"saved wikiUser for {wikiId}")
         else:
             wikiUser = WikiUser.ofWikiId(wikiId, lenient=True)
         return wikiUser
