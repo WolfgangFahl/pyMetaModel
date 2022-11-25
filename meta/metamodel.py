@@ -84,7 +84,10 @@ class Context(MetaModelElement):
             elif isA=="Topic":
                 topic=Topic()
                 topic.fromDict(record)
-                context.topics[topic.name]=topic
+                if hasattr(topic, "name"):
+                    context.topics[topic.name]=topic
+                else:
+                    print(f"missing name for topic {topic}")
             elif isA=="Property":
                 prop=Property()
                 prop.fromDict(record)
