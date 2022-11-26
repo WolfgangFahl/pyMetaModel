@@ -18,7 +18,6 @@ class MediaWikiContext():
     context:str 
     since:datetime.datetime
     master:str
-    
 
     def sidif_url(self):
         """
@@ -77,8 +76,18 @@ class SMWAccess:
         """
         self.wikiClient=WikiClient.ofWikiId(wikiId)
         smw=SMWClient(self.wikiClient.getSite())
+        self.optionalLogin()
         return smw 
         
+    def optionalLogin(self):
+        """
+        optionally login
+        """
+        try:
+            self.wikiClient.login()
+        except Exception as ex:
+            print(f"cannot login to wiki {self.wikiId}:{str(ex)}")
+    
     def getMwContexts(self):
         """
         get the contexts
