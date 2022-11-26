@@ -78,7 +78,6 @@ class SMWAccess:
         if self.wikiClient.needsLogin():
             self.wikiClient.login()
         smw=SMWClient(self.wikiClient.getSite())
-        self.optionalLogin()
         return smw 
     
     def getMwContexts(self):
