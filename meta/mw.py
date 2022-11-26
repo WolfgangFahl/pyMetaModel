@@ -26,7 +26,7 @@ class MediaWikiContext():
         url=f"{self.wiki_url}/index.php/{self.context}#sidif"
         return url
     
-    def read_sidif(self,withLogin:bool=False)->str:
+    def read_sidif(self)->str:
         """
         
         Read the SiDIF for this Mediawiki context
@@ -42,7 +42,7 @@ class MediaWikiContext():
         if self.wikiId in wikiusers:
             wikiUser=wikiusers[self.wikiId]
             self.wikiClient=WikiClient.ofWikiId(wikiUser.wikiId)
-            if withLogin:
+            if self.wikiClient.needsLogin():
                 self.wikiClient.login()
             pageTitle=f"{self.context}"
             page=self.wikiClient.getPage(pageTitle)
@@ -75,18 +75,11 @@ class SMWAccess:
         get the semantic mediawiki access
         """
         self.wikiClient=WikiClient.ofWikiId(wikiId)
+        if self.wikiClient.needsLogin():
+            self.wikiClient.login()
         smw=SMWClient(self.wikiClient.getSite())
         self.optionalLogin()
         return smw 
-        
-    def optionalLogin(self):
-        """
-        optionally login
-        """
-        try:
-            self.wikiClient.login()
-        except Exception as ex:
-            print(f"cannot login to wiki {self.wikiId}:{str(ex)}")
     
     def getMwContexts(self):
         """
