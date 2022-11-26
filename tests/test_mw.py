@@ -4,11 +4,11 @@ Created on 2022-11-23
 @author: wf
 '''
 from tests.basemwtest import BaseMediawikiTest
-from meta.mw import MediaWikiContext,SMWAccess
+from meta.mw import SMWAccess
 from meta.metamodel import Context
 from wikibot.wikiuser import WikiUser
 from sidif.sidif import SiDIFParser
-import datetime
+import sys
 
 class TestMediawiki(BaseMediawikiTest):
     """
@@ -23,12 +23,20 @@ class TestMediawiki(BaseMediawikiTest):
         for wikiId in ["wiki","royals"]:
             self.getWikiUser(wikiId, save=True)
             
-    def check_contexts(self,wikiId:str):
-        smwAccess=SMWAccess(wikiId,debug=self.debug)
-        mw_contexts=smwAccess.getMwContexts()
-        for name,mw_context in mw_contexts.items():
-            print(f"{name}: {mw_context.sidif_url()}")
-        print (f"found {len(mw_contexts)} Contexts")
+    def check_contexts(self,wikiId:str,ignoreExceptions:bool=True):
+        """
+        """
+        mw_contexts={}
+        try:
+            smwAccess=SMWAccess(wikiId,debug=self.debug)
+            mw_contexts=smwAccess.getMwContexts()
+            for name,mw_context in mw_contexts.items():
+                print(f"{name}: {mw_context.sidif_url()}")
+            print (f"found {len(mw_contexts)} Contexts")
+        except Exception as ex:
+            print(str(ex),file=sys.stderr)
+            if not ignoreExceptions:
+                raise ex
         return mw_contexts
             
             
@@ -60,32 +68,33 @@ class TestMediawiki(BaseMediawikiTest):
         """
         test reading meta models from wikis
         """
-        mw_contexts=[
-            MediaWikiContext("wiki",
-                "https://wiki.bitplan.com",
-                "MetaModel",
-                datetime.datetime(2015, 1, 23, 0, 0),
-                "http://master.bitplan.com"
-            ),  
-            MediaWikiContext("royals",
-                "http://royal-family.bitplan.com",
-                "FamilyContext",
-                None,
-                "http://royal-family.bitplan.com"
-            )
-        ]
-        
-        debug=True
-        for mw_context in mw_contexts:
-            context,error=Context.fromWikiContext(mw_context,debug=debug)
-            self.assertIsNotNone(context)
-            if debug:
-                print(f"{mw_context.context} has context {context.name}")
-                print(context)
-                for _name,topic in context.topics.items():
-                    print(topic)
-                    for _name,property in topic.properties.items():
-                        print(property)
-            self.assertIsNone(error)
-            self.assertEqual(mw_context.context,context.name)
-            
+        debug=False
+        lenient=True
+        for wikiId in WikiUser.getWikiUsers(lenient=True):
+            mw_contexts=self.check_contexts(wikiId)
+            for name,mw_context in mw_contexts.items():
+                if debug:
+                    print(f"reading context {name} from wiki {wikiId}")
+                context,error=Context.fromWikiContext(mw_context,debug=debug)
+                if not lenient:
+                    self.assertIsNotNone(context)
+                else:
+                    if context is None:
+                        continue
+                if debug:
+                    print(f"{mw_context.context} has context {context.name}")
+                    print(context)
+                    for _name,topic in context.topics.items():
+                        print(topic)
+                        for _name,property in topic.properties.items():
+                            print(property)
+                if error is not None:
+                    print(error)
+                if len(context.errors)>0:
+                    for error in context.errors:
+                        print(error)
+                if not lenient:
+                    self.assertIsNone(error)
+                    self.assertEqual(0,len(context.errors))
+                    self.assertEqual(mw_context.context,context.name,wikiId)
+                

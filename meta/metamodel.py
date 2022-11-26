@@ -7,6 +7,7 @@ from datetime import datetime
 from meta.mw import MediaWikiContext
 from sidif.sidif import SiDIFParser
 from lodstorage.jsonable import JSONAble
+import sys
 
 class MetaModelElement(JSONAble):
     '''
@@ -53,6 +54,7 @@ class Context(MetaModelElement):
         """
         MetaModelElement.__init__(self)
         self.topics={}
+        self.errors=[]
     
     @classmethod
     def getSamples(cls):
@@ -63,6 +65,10 @@ class Context(MetaModelElement):
             "master": "http://master.bitplan.com"
         }]
         return samples
+    
+    def error(self,msg):
+        print(msg,file=sys.stderr)
+        self.errors.append(msg)
         
     @classmethod
     def fromDictOfDicts(cls,did:dict)->'Context':
@@ -84,17 +90,31 @@ class Context(MetaModelElement):
             elif isA=="Topic":
                 topic=Topic()
                 topic.fromDict(record)
+                if context is None:
+                    context=Context()
+                    context.name="GeneralContext"
+                    context.since="2022-11-26"
+                    context.master="http://master.bitplan.com"
+                    context.error(f"topic {topic.name} has no defined context")
                 if hasattr(topic, "name"):
                     context.topics[topic.name]=topic
                 else:
-                    print(f"missing name for topic {topic}")
+                    context.error(f"missing name for topic {topic}")
             elif isA=="Property":
                 prop=Property()
                 prop.fromDict(record)
+                if not hasattr(prop, "topic"):
+                    context.error(f"prop  {prop} ha not topic")
+                    continue
                 topic_name=prop.topic
-                topic=context.topics[topic_name]
-                topic.properties[prop]=prop
-                pass
+                if not hasattr(topic, "name"):
+                    context.error(f"missing name for topic {topic}")
+                    continue
+                if topic_name in context.topics:
+                    topic=context.topics[topic_name]
+                    topic.properties[prop]=prop
+                else:
+                    context.error(f"topic {topic.name} not found in context {context.name} for property {prop.name}")
         return context
         
     @classmethod
@@ -111,9 +131,13 @@ class Context(MetaModelElement):
         """
         context=None
         error=None
+        sidif=None
         if debug:
             print(f"reading sidif for {mw_context.context} from {mw_context.wikiId}")
-        sidif=mw_context.read_sidif()
+        try:
+            sidif=mw_context.read_sidif()
+        except BaseException as ex:
+            error=ex
         if sidif is not None:
             sp = SiDIFParser(debug=debug)
             parsed, error = sp.parseText(sidif, mw_context.wikiId)
