@@ -21,7 +21,7 @@ class TestMediawiki(BaseMediawikiTest):
         setUp
         """
         BaseMediawikiTest.setUp(self, debug=debug, profile=profile)
-        for wikiId in ["wiki","royals"]:
+        for wikiId in ["wiki","royals","cr"]:
             self.getWikiUser(wikiId, save=True)
             
     def check_contexts(self,wikiId:str,ignoreExceptions:bool=True):
