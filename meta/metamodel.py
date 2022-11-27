@@ -132,10 +132,10 @@ class Context(MetaModelElement):
             tl(TopicLink): the topicLink
             context(Context): the context in which the link "lives"
         """
-        source=self.lookupTopic(tl.source,f"topicLink {tl.name}")
-        target=self.lookupTopic(tl.target,f"topicLink {tl.name}")
-        if target is not None and source is not None:
-            self.link_source_with_target(tl, source, target)      
+        tl.sourceTopic=self.lookupTopic(tl.source,f"topicLink {tl.name}")
+        tl.targetTopic=self.lookupTopic(tl.target,f"topicLink {tl.name}")
+        if tl.targetTopic is not None and tl.sourceTopic is not None:
+            self.link_source_with_target(tl, tl.sourceTopic, tl.targetTopic)      
         
     @classmethod
     def fromDictOfDicts(cls, did:dict) -> 'Context':
