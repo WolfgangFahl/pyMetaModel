@@ -178,6 +178,24 @@ class Topic(MetaModelElement):
                 }]
         return samples
     
+    def getPluralName(self)->str:
+        """
+        get the plural name for this topic
+                
+        Returns:
+            str: the pluralname e.g. "Topics" for "Topic" or "Status" for "Status" or
+            "Entities" for "Entity"
+        """
+        plural_name=self.pluralName if hasattr(self, "pluralName") else f"{self.name}s"
+        return plural_name
+    
+    def getListLimit(self)->int:
+        """
+        get the list limit for this topic
+        """
+        listLimit=getattr(self,"listLimit",200)
+        return listLimit
+    
     
 class Property(MetaModelElement):
     """
