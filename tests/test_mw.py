@@ -87,6 +87,8 @@ class TestMediawiki(BaseMediawikiTest):
         if debug:
             print (json.dumps(stl,indent=2,default=str))
             print (json.dumps(ttl,indent=2,default=str))
+        self.assertEqual(1,len(stl))
+        self.assertEqual(1,len(ttl))
         
     def test_Issue3(self):
         """

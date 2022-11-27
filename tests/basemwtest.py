@@ -25,10 +25,10 @@ class BaseMediawikiTest(Basetest):
             wikiDict = None
             if wikiId == "royals":
                 wikiDict = {"wikiId": wikiId, "email": "noreply@nouser.com", "url": "http://royal-family.bitplan.com",
-                            "scriptPath": "/", "version": "MediaWiki 1.35.5"}
+                            "scriptPath": "", "version": "MediaWiki 1.35.5"}
             if wikiId == "cr":
                 wikiDict = {"wikiId": wikiId, "email": "noreply@nouser.com", "url": "https://cr.bitplan.com",
-                            "scriptPath": "/", "version": "MediaWiki 1.35.5"}
+                            "scriptPath": "", "version": "MediaWiki 1.35.5"}
             if wikiId == "ceur-ws":
                 wikiDict = {"wikiId": wikiId, "email": "noreply@nouser.com",
                             "url": "https://ceur-ws.bitplan.com", "scriptPath": "/",

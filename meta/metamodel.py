@@ -186,11 +186,11 @@ true is targetMultiple of it
                 prop = Property()
                 prop.fromDict(record)
                 if not hasattr(prop, "topic"):
-                    context.error(f"prop  {prop} ha not topic")
+                    context.error(f"prop  {prop} has no topic")
                     continue
                 topic_name = prop.topic
-                if not hasattr(topic, "name"):
-                    context.error(f"missing name for topic {topic}")
+                if not hasattr(prop, "name"):
+                    context.error(f"prop {prop} has no name")
                     continue
                 topic=context.lookupTopic(topic_name,f"property {prop.name}")
                 if topic:
