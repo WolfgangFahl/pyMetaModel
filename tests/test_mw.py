@@ -8,6 +8,7 @@ from meta.mw import SMWAccess
 from meta.metamodel import Context
 from wikibot.wikiuser import WikiUser
 from sidif.sidif import SiDIFParser
+import json
 import sys
 
 class TestMediawiki(BaseMediawikiTest):
@@ -43,7 +44,16 @@ class TestMediawiki(BaseMediawikiTest):
             if not ignoreExceptions:
                 raise ex
         return mw_contexts
-            
+    
+    def getContext(self,wikiId:str="wiki",context_name:str="MetaModel",debug:bool=False):
+        """
+        get the default meta model context
+        """
+        mw_contexts=self.check_contexts(wikiId)
+        mw_context=mw_contexts[context_name]
+        context,error=Context.fromWikiContext(mw_context, debug=debug)
+        self.assertIsNone(error)
+        return context    
             
     def test_contexts(self):
         """
@@ -57,15 +67,26 @@ class TestMediawiki(BaseMediawikiTest):
         test the access to the list of sort properties
         """
         debug=True
-        mw_contexts=self.check_contexts("wiki")
-        mw_context=mw_contexts["MetaModel"]
-        context,error=Context.fromWikiContext(mw_context, debug=debug)
-        self.assertIsNone(error)
+        context=self.getContext(debug=debug)
         topic=context.topics["Property"]
         sorted_props=topic.sortProperties()
         self.assertEqual(1,len(sorted_props))
         sort_prop=sorted_props[0]
         self.assertEqual("name",sort_prop.name)
+        
+    def test_topicLinks(self):
+        """
+        test topic links
+        """
+        debug=False
+        context=self.getContext(wikiId="cr",context_name="CrSchema",debug=debug)
+        city_topic=context.topics["City"]
+        stl=city_topic.sourceTopicLinks
+        ttl=city_topic.targetTopicLinks
+        debug=True
+        if debug:
+            print (json.dumps(stl,indent=2,default=str))
+            print (json.dumps(ttl,indent=2,default=str))
         
     def test_Issue3(self):
         """
