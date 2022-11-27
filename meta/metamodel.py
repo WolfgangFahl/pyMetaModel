@@ -86,7 +86,7 @@ class Context(MetaModelElement):
         if topic_name in self.topics:
             return self.topics[topic_name]
         else:
-            self.error(f"topic {topic_name} not found in context {self.name} for {purpose}")
+            self.error(f"""topic {topic_name} not found in context {getattr(self,"name","?")} for {purpose}""")
             return None
         
     def propertyAlreadyDeclared(self,prop_name:str,topic:'Topic',purpose:str)->bool:
