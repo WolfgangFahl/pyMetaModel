@@ -196,6 +196,21 @@ class Topic(MetaModelElement):
         listLimit=getattr(self,"listLimit",200)
         return listLimit
     
+    def sortProperties(self)->list:
+        """
+        get the properties that we should sort by
+        
+        Returns:
+            list: a list of properties in sort order
+        """
+        prop_list=[]
+        for prop in self.properties.values():
+            if hasattr(prop,"sortPos"):
+                sortPos=prop.sortPos
+                if sortPos:
+                    prop_list.append(prop)
+        prop_list=sorted(prop_list,key=lambda prop: prop.sortPos)
+        return prop_list
     
 class Property(MetaModelElement):
     """

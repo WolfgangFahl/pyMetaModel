@@ -25,6 +25,11 @@ class TestMediawiki(BaseMediawikiTest):
             
     def check_contexts(self,wikiId:str,ignoreExceptions:bool=True):
         """
+        check the mediawiki contexts  for the given wikiId
+        
+        Args:
+            wikiId(str): the wikiId to check
+            ignoreExceptions(bool): if True only print out a warning other wise raise exception
         """
         mw_contexts={}
         try:
@@ -34,7 +39,7 @@ class TestMediawiki(BaseMediawikiTest):
                 print(f"{name}: {mw_context.sidif_url()}")
             print (f"found {len(mw_contexts)} Contexts")
         except Exception as ex:
-            print(str(ex),file=sys.stderr)
+            print(f"warning Mediawiki context for {wikiId} fetching failed due to {str(ex)}",file=sys.stderr)
             if not ignoreExceptions:
                 raise ex
         return mw_contexts
@@ -46,6 +51,21 @@ class TestMediawiki(BaseMediawikiTest):
         """
         mw_contexts=self.check_contexts("wiki")
         self.assertTrue(len(mw_contexts)>=15)
+        
+    def test_sortProperties(self):
+        """
+        test the access to the list of sort properties
+        """
+        debug=True
+        mw_contexts=self.check_contexts("wiki")
+        mw_context=mw_contexts["MetaModel"]
+        context,error=Context.fromWikiContext(mw_context, debug=debug)
+        self.assertIsNone(error)
+        topic=context.topics["Property"]
+        sorted_props=topic.sortProperties()
+        self.assertEqual(1,len(sorted_props))
+        sort_prop=sorted_props[0]
+        self.assertEqual("name",sort_prop.name)
         
     def test_Issue3(self):
         """
