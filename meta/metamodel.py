@@ -293,6 +293,21 @@ class Topic(MetaModelElement):
                     prop_list.append(prop)
         prop_list = sorted(prop_list, key=lambda prop: prop.sortPos)
         return prop_list
+    
+    def propertiesByIndex(self) ->list:
+        """
+        return the properties by index
+        
+        Returns:
+            list: the list of properties sorted by index
+        """
+        def index(prop:'Property')->int:
+            if hasattr(prop,"index"):
+                return int(prop.index)
+            else:
+                return sys.maxsize
+        prop_list=sorted(self.properties.values(),key=lambda prop:index(prop))
+        return prop_list
 
     
 class Property(MetaModelElement):

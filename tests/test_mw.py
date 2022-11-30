@@ -74,6 +74,20 @@ class TestMediawiki(BaseMediawikiTest):
         sort_prop=sorted_props[0]
         self.assertEqual("name",sort_prop.name)
         
+    def test_propertiesByIndex(self):
+        """
+        test the properties by Index access
+        """
+        debug=self.debug
+        context=self.getContext(debug=debug)
+        topic=context.topics["Topic"]
+        props=topic.propertiesByIndex()
+        if debug:
+            for prop in props:
+                print(f"{prop.index}:{prop.name}")      
+        self.assertEqual(10,len(props))
+        self.assertTrue("pluralName",props[1].name)  
+        
     def test_topicLinks(self):
         """
         test topic links
