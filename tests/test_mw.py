@@ -51,7 +51,7 @@ class TestMediawiki(BaseMediawikiTest):
         """
         mw_contexts=self.check_contexts(wikiId)
         mw_context=mw_contexts[context_name]
-        context,error=Context.fromWikiContext(mw_context, debug=debug)
+        context,error,errMsg=Context.fromWikiContext(mw_context, debug=debug)
         self.assertIsNone(error)
         return context    
             
@@ -113,7 +113,7 @@ class TestMediawiki(BaseMediawikiTest):
         if "test" in wikiUsers:
             mw_contexts=self.check_contexts("test")
             tc=mw_contexts["Training"]
-            context,error=Context.fromWikiContext(tc, debug=self.debug)
+            context,error,errMsg=Context.fromWikiContext(tc, debug=self.debug)
             self.assertIsNone(context)
             self.assertIsNotNone(error)
             errorMessage=SiDIFParser.errorMessage("Training context parsing error",error)
@@ -132,7 +132,7 @@ class TestMediawiki(BaseMediawikiTest):
             for name,mw_context in mw_contexts.items():
                 if debug:
                     print(f"reading context {name} from wiki {wikiId}")
-                context,error=Context.fromWikiContext(mw_context,debug=debug)
+                context,error,errMsg=Context.fromWikiContext(mw_context,debug=debug)
                 if not lenient:
                     self.assertIsNotNone(context)
                 else:

@@ -198,19 +198,21 @@ true is targetMultiple of it
         return context
         
     @classmethod
-    def fromWikiContext(cls, mw_context:MediaWikiContext, debug:bool=False) -> 'MetaModel':
+    def fromWikiContext(cls, mw_context:MediaWikiContext, depth:int=None,debug:bool=False) -> 'MetaModel':
         """
         initialize me from the given MediaWiki Context
         
         Args:
             mw_context(MediaWikiContext): the Mediawiki context
+            depth(int): the explain depth to show for the errorMessage
             debug(bool): if True handle debugging
             
         Return:
-            MetaModel: the metamodel and potential parsing errors
+            tuple(MetaModel,Exception,str): the metamodel and potential parsing errors as Exception and error Message
         """
         context = None
         error = None
+        errMsg = None
         sidif = None
         if debug:
             print(f"reading sidif for {mw_context.context} from {mw_context.wikiId}")
@@ -218,17 +220,19 @@ true is targetMultiple of it
             sidif = mw_context.read_sidif()
         except BaseException as ex:
             error = ex
+            errMsg=str(ex)
         if sidif is not None:
             sp = SiDIFParser(debug=debug)
-            parsed, error = sp.parseText(sidif, mw_context.wikiId)
+            parsed, error = sp.parseText(sidif, mw_context.wikiId,depth=depth)
             if debug:
                 sp.printResult(parsed)
             if error is None:
                 dif = parsed[0]
                 did = dif.toDictOfDicts()
                 context = Context.fromDictOfDicts(did)
-        return context, error
-    
+            else:
+                errMsg=sp.errorMessage(mw_context.wikiId,error, depth=depth)
+        return context, error,errMsg
     
 class Topic(MetaModelElement):
     """
