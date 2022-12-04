@@ -114,12 +114,13 @@ class TestMediawiki(BaseMediawikiTest):
             mw_contexts=self.check_contexts("test")
             tc=mw_contexts["Training"]
             context,error,errMsg=Context.fromWikiContext(tc, debug=self.debug)
-            self.assertIsNone(context)
-            self.assertIsNotNone(error)
-            errorMessage=SiDIFParser.errorMessage("Training context parsing error",error)
-            if debug:
-                print(errorMessage)
-            self.assertTrue("property Qualität" in errorMessage)
+            self.assertIsNotNone(context)
+            self.assertIsNone(error)
+            # changed 2022-12-04 since error doesn't happen any more
+        #    errorMessage=SiDIFParser.errorMessage("Training context parsing error",error)
+        #    if debug:
+        #        print(errorMessage)
+        #    self.assertTrue("property Qualität" in errorMessage)
 
     def test_metamodel_from_wikis(self):
         """
