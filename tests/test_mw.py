@@ -6,7 +6,7 @@ Created on 2022-11-23
 from tests.basemwtest import BaseMediawikiTest
 from meta.mw import SMWAccess
 from meta.metamodel import Context
-from wikibot.wikiuser import WikiUser
+from wikibot3rd.wikiuser import WikiUser
 from sidif.sidif import SiDIFParser
 import json
 import sys

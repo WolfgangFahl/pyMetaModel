@@ -4,9 +4,9 @@ Created on 23.11.2022
 @author: wf
 '''
 from dataclasses import dataclass
-from wikibot.wikiuser import WikiUser
-from wikibot.wikiclient import WikiClient
-from wikibot.smw import SMWClient
+from wikibot3rd.wikiuser import WikiUser
+from wikibot3rd.wikiclient import WikiClient
+from wikibot3rd.smw import SMWClient
 import mwparserfromhell
 import datetime
    

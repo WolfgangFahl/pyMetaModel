@@ -5,7 +5,7 @@ Created on 2022-11-24
 '''
 from tests.basetest import Basetest
 import os
-from wikibot.wikiuser import WikiUser
+from wikibot3rd.wikiuser import WikiUser
 
 class BaseMediawikiTest(Basetest):
     """
