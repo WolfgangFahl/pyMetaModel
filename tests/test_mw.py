@@ -7,7 +7,6 @@ from tests.basemwtest import BaseMediawikiTest
 from meta.mw import SMWAccess
 from meta.metamodel import Context
 from wikibot3rd.wikiuser import WikiUser
-from sidif.sidif import SiDIFParser
 import json
 import sys
 
@@ -122,6 +121,22 @@ class TestMediawiki(BaseMediawikiTest):
         #        print(errorMessage)
         #    self.assertTrue("property Qualität" in errorMessage)
 
+    def test_Issue8(self):
+        """
+        https://github.com/WolfgangFahl/pyMetaModel/issues/3
+        handle maintopic
+        """
+        debug=True
+        wikiUsers=WikiUser.getWikiUsers(lenient=True)
+        if "wiki" in wikiUsers:
+            mw_contexts=self.check_contexts("wiki")
+            mw_context=mw_contexts["OpenSourceProjectsContext"]
+            context,error,errMsg=Context.fromWikiContext(mw_context,debug=debug)
+            self.assertIsNone(error)
+            self.assertIsNone(errMsg)
+            self.assertTrue("OsProject" in context.topics)
+            pass
+        
     def test_metamodel_from_wikis(self):
         """
         test reading meta models from wikis

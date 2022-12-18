@@ -149,7 +149,7 @@ class Context(MetaModelElement):
             Context: the context read
         """
         context = None
-        for key, record in did.items():
+        for _key, record in did.items():
             isA = record["isA"]
             if isA == "Context":
                 context = Context()
