@@ -323,7 +323,7 @@ class Property(MetaModelElement):
     def getSamples(cls):
         samples = [{"name": "Title",
                 "label": "Offical Name",
-                "type": "Special:Types/Test",
+                "type": "Special:Types/Text",
                 "index": 2,
                 "sortPos": 2,
                 "primaryKey": False,
