@@ -321,7 +321,9 @@ class Property(MetaModelElement):
 
     @classmethod
     def getSamples(cls):
-        samples = [{"name": "Title",
+        samples = [
+            {
+                "name": "Title",
                 "label": "Offical Name",
                 "type": "Special:Types/Text",
                 "index": 2,
@@ -340,13 +342,20 @@ class Property(MetaModelElement):
                 "isLink": False,
                 "nullable": False,
                 "topic": "Concept:Event"
-                },
-               # Properties that are not included in the MetaModel
-               {"placeholder": "e.g. SMWCon",
+            },
+            {
+                "name": "wikidataid",
+                "type": "Special:Types/External identifier",
+                "formatterURI":"https://www.wikidata.org/wiki/$1"
+            },
+            # Properties that are not included in the MetaModel
+            {
+                "placeholder": "e.g. SMWCon",
                 "regexp": "NaturalNumber",
                 "usedFor": "Concept:Event, Concept:Event series",
                 "pageTitle": "Property:Title"
-                }]
+            }
+        ]
         return samples
 
     
