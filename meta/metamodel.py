@@ -195,6 +195,8 @@ true is targetMultiple of it
                 topic=context.lookupTopic(topic_name,f"property {prop.name}")
                 if topic:
                     topic.properties[prop.name] = prop
+        for topic in context.topics.values():
+            topic.setConceptProperty()
         return context
         
     @classmethod
@@ -263,6 +265,22 @@ class Topic(MetaModelElement):
                 "cargo": True
                 }]
         return samples
+    
+    def setConceptProperty(self):
+        """ 
+        set my concept property to any primary key or mandatory property
+        """
+        self.conceptProperty=None 
+        for prop in self.properties.values():
+            mandatory=False
+            primaryKey=False
+            if hasattr(prop, "mandatory"):
+                mandatory=prop.mandatory
+            if hasattr(prop,"primaryKey"):
+                primaryKey=prop.primaryKey
+            if mandatory or primaryKey:
+                self.conceptProperty=prop
+                break
     
     def getPluralName(self) -> str:
         """

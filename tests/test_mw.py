@@ -61,11 +61,23 @@ class TestMediawiki(BaseMediawikiTest):
         mw_contexts=self.check_contexts("wiki")
         self.assertTrue(len(mw_contexts)>=15)
         
+    def test_conceptProperty(self):
+        """
+        test the conceptProperty handling
+        """
+        debug=self.debug
+        context=self.getContext(debug=debug)
+        topic=context.topics["Property"]
+        self.assertIsNotNone(topic.conceptProperty)
+        if debug:
+            print (topic.conceptProperty)
+        self.assertEqual("name",topic.conceptProperty.name)
+        
     def test_sortProperties(self):
         """
         test the access to the list of sort properties
         """
-        debug=True
+        debug=self.debug
         context=self.getContext(debug=debug)
         topic=context.topics["Property"]
         sorted_props=topic.sortProperties()
