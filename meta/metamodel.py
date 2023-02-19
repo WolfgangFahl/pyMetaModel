@@ -232,6 +232,8 @@ true is targetMultiple of it
                 dif = parsed[0]
                 did = dif.toDictOfDicts()
                 context = Context.fromDictOfDicts(did)
+                context.dif=dif
+                context.did=did
             else:
                 errMsg=sp.errorMessage(mw_context.wikiId,error, depth=depth)
         return context, error,errMsg

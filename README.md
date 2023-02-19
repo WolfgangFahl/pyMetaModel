@@ -10,7 +10,9 @@ migrates https://wiki.bitplan.com/index.php/MetaModel#tab=Model to python
 [![License](https://img.shields.io/github/license/WolfgangFahl/pyMetaModel.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Introduction
-pyMetaModel is a python library that started with the ProfiWiki [SemanticMediaWiki MetaModel](https://wiki.bitplan.com/index.php/MetaModel#tab=topics) in
+pyMetaModel is a python library for a Knowledge Graph MetaModel
+
+It started with the ProfiWiki [SemanticMediaWiki MetaModel](https://wiki.bitplan.com/index.php/MetaModel#tab=topics) in
 2015 consisting of
 
 - Context
@@ -19,3 +21,10 @@ pyMetaModel is a python library that started with the ProfiWiki [SemanticMediaWi
 - Property
 - Action
 - SMWType
+
+
+## Documentation
+[Wiki](http://wiki.bitplan.com/index.php/pyMetaModel)
+
+### Authors
+* [Wolfgang Fahl](http://www.bitplan.com/Wolfgang_Fahl)
