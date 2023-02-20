@@ -26,7 +26,7 @@ dependencies = [
 		# https://pypi.org/project/mwparserfromhell/
 		'mwparserfromhell>=0.6.4',
 		# https://pypi.org/project/linkml/
-		'linkml>=1.4.4'
+		'linkml>=1.4.4',
 		# https://pypi.org/project/linkml-runtime/
 		'linkml-runtime>=1.4.5'
      ]
