@@ -1,23 +1,660 @@
 name: MetaModel
 id: MetaModel
 default_prefix: MetaModel/
+slots:
+  Context.name:
+    name: Context.name
+    description: Name of the context
+    from_schema: MetaModel
+  Context.since:
+    name: Context.since
+    description: since when is this context available?
+    from_schema: MetaModel
+  Context.updated:
+    name: Context.updated
+    description: most recent update of the context
+    from_schema: MetaModel
+  Context.copyright:
+    name: Context.copyright
+    description: copyright of the context
+    from_schema: MetaModel
+  Context.master:
+    name: Context.master
+    description: what is the original master source of this context
+    from_schema: MetaModel
+  Property.name:
+    name: Property.name
+    description: The name of the property
+    from_schema: MetaModel
+  Property.label:
+    name: Property.label
+    description: The label to be shown when in a form
+    from_schema: MetaModel
+  Property.type:
+    name: Property.type
+    description: The type of a Property
+    from_schema: MetaModel
+  Property.index:
+    name: Property.index
+    description: A positive number that specifies at which position of a Topic the
+      given property should show. The first property to show has the index 1 each
+      following property has an index that is +1 of the previous.
+    from_schema: MetaModel
+  Property.sortPos:
+    name: Property.sortPos
+    description: "If none empty >0 this is the position in the sort clause of this\
+      \ \nproperty. This is used when displaying list of the topic as the default\
+      \ sort order\nand it is used for selecting topics .\n\nE.g.\nSortpos 1 for attribute\
+      \ lastname and sortpos 2 for attribute firstname leads to  sort by lastname,firstname"
+    from_schema: MetaModel
+  Property.primaryKey:
+    name: Property.primaryKey
+    description: is this property a primary key of it's topic?
+    from_schema: MetaModel
+  Property.mandatory:
+    name: Property.mandatory
+    description: 'Specifies that this field must be filled in by the user. Note: mandatory
+      should not be used in conjunction with hidden. Use of both in any field will
+      cause the mandatory check on any field to fail when the form is saved.
+
+
+      see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
+    from_schema: MetaModel
+  Property.namespace:
+    name: Property.namespace
+    description: namespace prefix
+    from_schema: MetaModel
+  Property.size:
+    name: Property.size
+    description: the display size of the field for the property
+    from_schema: MetaModel
+  Property.uploadable:
+    name: Property.uploadable
+    description: 'Specifies that a link should be placed next to this field, that
+      opens a popup window to let the user upload a file; see ''Uploading files'',
+      below. See
+
+      * https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+
+      * https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Uploading_files
+
+
+      The type of the target property needs to be Page for this to work'
+    from_schema: MetaModel
+  Property.defaultValue:
+    name: Property.defaultValue
+    description: 'default value - Specifies a default value for this field. For date-related
+      fields, default=now will set the value to the current date and possibly time.
+      For text fields, default=current user will set the value to the username of
+      the user adding this page. For the checkbox input type, default=yes will check
+      the checkbox by default. (The ''checkboxes'' input type, on the other hand,
+      like the ''listbox'' type, requires specifying the actual values, like default=Value
+      A, Value C.) You can also include templates, parser functions, and magic words
+      within the ''default='' value.
+
+
+      see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+      (default)'
+    from_schema: MetaModel
+  Property.inputType:
+    name: Property.inputType
+    description: 'see
+
+      * http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>input
+      type - Specifies the type of input this field will have in the form. If a field
+      corresponds to an SMW property or Cargo field, the form will usually have the
+      correct input type by default; otherwise the default is text. If the corresponding
+      SMW property, or Cargo field, cannot be automatically determined, you can use
+      the parameter ''property'', or the parameters ''cargo table'' and ''cargo field'',
+      to manually specify it (see below). The allowed set of input types is different
+      for every semantic property type; see below for the full list of options.
+
+      * http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Allowed_input_types_for_data_types
+
+      * http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs'
+    from_schema: MetaModel
+  Property.allowedValues:
+    name: Property.allowedValues
+    description: 'There are two ways to specified allowed Values:
+
+      # https://semantic-mediawiki.org/wiki/Help:Special_property_Allows_value. <br>Use
+      [[Property:Allows_value]] to see which values are allowed for certain properties
+
+      # http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>values=possible
+      values - Specifies a set of either possible values or autocompletion values
+      (depending on the input type) that this field can have, overriding whatever
+      set of values may have been set from the Semantic MediaWiki property. This set
+      of values is separated by commas by default, but the delimiter can be modified
+      using the delimiter= parameter.
+
+
+      If you specify any values method number 2 will be used here which might override
+      any allowed Values specified with method number 1.'
+    from_schema: MetaModel
+  Property.documentation:
+    name: Property.documentation
+    description: The documentation for a property
+    from_schema: MetaModel
+  Property.values_from:
+    name: Property.values_from
+    description: 'Specifies where to get the possible values to be displayed in a
+      form from see
+
+      http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+
+
+      * values from property=property name - Similar to values=, but gets its values
+      from the the set of all values that a certain SMW property points to.
+
+      * values from category=category name - Similar to values=, but gets its values
+      from the names of all pages belonging to a specific category.
+
+      * values from concept=concept name - Similar to values=, but gets its values
+      from the names of all pages belonging to a specific concept.
+
+      * values from namespace=namespace name - Similar to values=, but gets its values
+      from the names of all pages belonging to a specific namespace. (To get values
+      from the main namespace, use ''Main'' for the namespace name, or just leave
+      it blank.)
+
+      * values from url=URL identifier - Used only for autocompletion. Specifies that
+      autocompletion should be based on the values retrieved from an outside URL;
+      see Autocompleting on outside values for how to do this.
+
+      * values from external data=variable name - Used for autocompletion. You need
+      to have theExternal Data extension installed to be able to use this parameter.
+      It specifies that autocompletion should be based on the data retrieved from
+      an outside source. A large number of data sources are supported, including web
+      APIs, regular wiki pages, files on the local server, databases and LDAP directories.
+      See Autocompletion using External Data.'
+    from_schema: MetaModel
+  Property.externalFormatterURI:
+    name: Property.externalFormatterURI
+    description: see https://www.semantic-mediawiki.org/wiki/Help:Special_property_External_formatter_URI<br>When
+      using this property the type of the property should be set to https://www.semantic-mediawiki.org/wiki/Help:Type_External_identifier
+      automatically by the generator
+    from_schema: MetaModel
+  Property.showInGrid:
+    name: Property.showInGrid
+    description: "I am true if this property is displayed in the default list of properties\
+      \ for my topic as \na column"
+    from_schema: MetaModel
+  Property.isLink:
+    name: Property.isLink
+    description: true if this Property is derived form a Link. It will not be exported
+      to SiDIF separately and automatically be added by the Property Generator
+    from_schema: MetaModel
+  Property.nullable:
+    name: Property.nullable
+    description: should nullvalues be allowed and value set to NULL when empty?
+    from_schema: MetaModel
+  SMW_Type.type:
+    name: SMW_Type.type
+    description: The Semantic MediaWiki type  without the prefix e.g. Text, Number,
+      Boolean
+    from_schema: MetaModel
+  SMW_Type.documentation:
+    name: SMW_Type.documentation
+    description: The documentation of this Semantic Media Wiki type
+    from_schema: MetaModel
+  SMW_Type.id:
+    name: SMW_Type.id
+    description: SMW internal id of the type
+    from_schema: MetaModel
+  SMW_Type.helppage:
+    name: SMW_Type.helppage
+    description: The url of the 'official' documentation page of this type
+    from_schema: MetaModel
+  SMW_Type.typepage:
+    name: SMW_Type.typepage
+    description: The Semantic Media Wiki Special page for this specific type e.g.
+      Special:Types/Text, Special:Types/Boolean, Special:Types/Date, Special:Types/Number,
+      Special:Types/Page
+    from_schema: MetaModel
+  SMW_Type.javaType:
+    name: SMW_Type.javaType
+    description: Java mapping of this type
+    from_schema: MetaModel
+  Topic.name:
+    name: Topic.name
+    description: The name of the topic
+    from_schema: MetaModel
+  Topic.pluralName:
+    name: Topic.pluralName
+    description: The plural of a topic name. E.g. for the topic 'City' the pluralName
+      is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for the
+      topic 'Book' the default pluralName is 'Books'
+    from_schema: MetaModel
+  Topic.icon:
+    name: Topic.icon
+    description: an Icon for the topic
+    from_schema: MetaModel
+  Topic.iconUrl:
+    name: Topic.iconUrl
+    description: the url of an icon
+    from_schema: MetaModel
+  Topic.documentation:
+    name: Topic.documentation
+    description: The plaintext documentation of a Topic. Please do not use markup
+      for this.
+    from_schema: MetaModel
+  Topic.wikiDocumentation:
+    name: Topic.wikiDocumentation
+    description: Documentation of the Topic using MediaWiki / Semantic Mediawiki markup
+    from_schema: MetaModel
+  Topic.defaultstoremode:
+    name: Topic.defaultstoremode
+    description: The default storemode of the topic
+    from_schema: MetaModel
+  Topic.listLimit:
+    name: Topic.listLimit
+    description: 'What is the default #ask list limit for this Topic?'
+    from_schema: MetaModel
+  Topic.cargo:
+    name: Topic.cargo
+    description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
+      Cargo Extension?]
+    from_schema: MetaModel
+  Topic.headerTabs:
+    name: Topic.headerTabs
+    description: shall the forms be generated with header tabs?
+    from_schema: MetaModel
+  Action.name:
+    name: Action.name
+    description: The name of the Action
+    from_schema: MetaModel
+  Action.servicetype:
+    name: Action.servicetype
+    description: The type of the service
+    from_schema: MetaModel
+  Action.service:
+    name: Action.service
+    description: The service to be used
+    from_schema: MetaModel
+  Action.inputtype:
+    name: Action.inputtype
+    description: What is the type of the input?
+    from_schema: MetaModel
+  Action.input:
+    name: Action.input
+    description: the decription of the input e.g. a page name, url or SMW ask query
+    from_schema: MetaModel
+  Action.actionpage:
+    name: Action.actionpage
+    description: What page will 'steer' this action?
+    from_schema: MetaModel
+  Action.output:
+    name: Action.output
+    description: where the output of the action should go
+    from_schema: MetaModel
+  Action.engine:
+    name: Action.engine
+    description: the template engine to be used either [[Rythm]] or [[Freemarker]]
+    from_schema: MetaModel
+  Action.author:
+    name: Action.author
+    description: the author of this action
+    from_schema: MetaModel
+  Action.since:
+    name: Action.since
+    description: since when is this action available?
+    from_schema: MetaModel
+  Action.comment:
+    name: Action.comment
+    description: a comment for the action
+    from_schema: MetaModel
+  TopicLink.name:
+    name: TopicLink.name
+    description: The name of the topic link
+    from_schema: MetaModel
+  TopicLink.source:
+    name: TopicLink.source
+    description: the source of a topic Link
+    from_schema: MetaModel
+  TopicLink.sourceRole:
+    name: TopicLink.sourceRole
+    from_schema: MetaModel
+  TopicLink.sourceMultiple:
+    name: TopicLink.sourceMultiple
+    from_schema: MetaModel
+  TopicLink.sourceDocumentation:
+    name: TopicLink.sourceDocumentation
+    description: Documentation for the source Role
+    from_schema: MetaModel
+  TopicLink.target:
+    name: TopicLink.target
+    from_schema: MetaModel
+  TopicLink.targetRole:
+    name: TopicLink.targetRole
+    from_schema: MetaModel
+  TopicLink.targetMultiple:
+    name: TopicLink.targetMultiple
+    from_schema: MetaModel
+  TopicLink.targetDocumentation:
+    name: TopicLink.targetDocumentation
+    description: Documentation for the target Role
+    from_schema: MetaModel
+  TopicLink.masterDetail:
+    name: TopicLink.masterDetail
+    description: "should the details be displayed in the same form and template?\n\
+      If no \n* for a 1:1 link there will be a linking attribute used and that can\
+      \ be selected. \n* for a 1:n link a link to the list of neighbours will be displayed\n\
+      if yes\n* for a 1:1 link the details\n* for a 1:n link"
+    from_schema: MetaModel
 classes:
   Context:
     name: Context
+    description: A Context groups some topics like a Namespace/Package
     from_schema: MetaModel
+    slots:
+    - name: Context.name
+      description: Name of the context
+      from_schema: MetaModel
+    - name: Context.since
+      description: since when is this context available?
+      from_schema: MetaModel
+    - name: Context.updated
+      description: most recent update of the context
+      from_schema: MetaModel
+    - name: Context.copyright
+      description: copyright of the context
+      from_schema: MetaModel
+    - name: Context.master
+      description: what is the original master source of this context
+      from_schema: MetaModel
   Property:
     name: Property
+    description: a Property is a Feature/Attribute of a Topic
     from_schema: MetaModel
+    slots:
+    - name: Property.name
+      description: The name of the property
+      from_schema: MetaModel
+    - name: Property.label
+      description: The label to be shown when in a form
+      from_schema: MetaModel
+    - name: Property.type
+      description: The type of a Property
+      from_schema: MetaModel
+    - name: Property.index
+      description: A positive number that specifies at which position of a Topic the
+        given property should show. The first property to show has the index 1 each
+        following property has an index that is +1 of the previous.
+      from_schema: MetaModel
+    - name: Property.sortPos
+      description: "If none empty >0 this is the position in the sort clause of this\
+        \ \nproperty. This is used when displaying list of the topic as the default\
+        \ sort order\nand it is used for selecting topics .\n\nE.g.\nSortpos 1 for\
+        \ attribute lastname and sortpos 2 for attribute firstname leads to  sort\
+        \ by lastname,firstname"
+      from_schema: MetaModel
+    - name: Property.primaryKey
+      description: is this property a primary key of it's topic?
+      from_schema: MetaModel
+    - name: Property.mandatory
+      description: 'Specifies that this field must be filled in by the user. Note:
+        mandatory should not be used in conjunction with hidden. Use of both in any
+        field will cause the mandatory check on any field to fail when the form is
+        saved.
+
+
+        see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
+      from_schema: MetaModel
+    - name: Property.namespace
+      description: namespace prefix
+      from_schema: MetaModel
+    - name: Property.size
+      description: the display size of the field for the property
+      from_schema: MetaModel
+    - name: Property.uploadable
+      description: 'Specifies that a link should be placed next to this field, that
+        opens a popup window to let the user upload a file; see ''Uploading files'',
+        below. See
+
+        * https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+
+        * https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Uploading_files
+
+
+        The type of the target property needs to be Page for this to work'
+      from_schema: MetaModel
+    - name: Property.defaultValue
+      description: 'default value - Specifies a default value for this field. For
+        date-related fields, default=now will set the value to the current date and
+        possibly time. For text fields, default=current user will set the value to
+        the username of the user adding this page. For the checkbox input type, default=yes
+        will check the checkbox by default. (The ''checkboxes'' input type, on the
+        other hand, like the ''listbox'' type, requires specifying the actual values,
+        like default=Value A, Value C.) You can also include templates, parser functions,
+        and magic words within the ''default='' value.
+
+
+        see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+        (default)'
+      from_schema: MetaModel
+    - name: Property.inputType
+      description: 'see
+
+        * http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>input
+        type - Specifies the type of input this field will have in the form. If a
+        field corresponds to an SMW property or Cargo field, the form will usually
+        have the correct input type by default; otherwise the default is text. If
+        the corresponding SMW property, or Cargo field, cannot be automatically determined,
+        you can use the parameter ''property'', or the parameters ''cargo table''
+        and ''cargo field'', to manually specify it (see below). The allowed set of
+        input types is different for every semantic property type; see below for the
+        full list of options.
+
+        * http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Allowed_input_types_for_data_types
+
+        * http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs'
+      from_schema: MetaModel
+    - name: Property.allowedValues
+      description: 'There are two ways to specified allowed Values:
+
+        # https://semantic-mediawiki.org/wiki/Help:Special_property_Allows_value.
+        <br>Use [[Property:Allows_value]] to see which values are allowed for certain
+        properties
+
+        # http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>values=possible
+        values - Specifies a set of either possible values or autocompletion values
+        (depending on the input type) that this field can have, overriding whatever
+        set of values may have been set from the Semantic MediaWiki property. This
+        set of values is separated by commas by default, but the delimiter can be
+        modified using the delimiter= parameter.
+
+
+        If you specify any values method number 2 will be used here which might override
+        any allowed Values specified with method number 1.'
+      from_schema: MetaModel
+    - name: Property.documentation
+      description: The documentation for a property
+      from_schema: MetaModel
+    - name: Property.values_from
+      description: 'Specifies where to get the possible values to be displayed in
+        a form from see
+
+        http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+
+
+        * values from property=property name - Similar to values=, but gets its values
+        from the the set of all values that a certain SMW property points to.
+
+        * values from category=category name - Similar to values=, but gets its values
+        from the names of all pages belonging to a specific category.
+
+        * values from concept=concept name - Similar to values=, but gets its values
+        from the names of all pages belonging to a specific concept.
+
+        * values from namespace=namespace name - Similar to values=, but gets its
+        values from the names of all pages belonging to a specific namespace. (To
+        get values from the main namespace, use ''Main'' for the namespace name, or
+        just leave it blank.)
+
+        * values from url=URL identifier - Used only for autocompletion. Specifies
+        that autocompletion should be based on the values retrieved from an outside
+        URL; see Autocompleting on outside values for how to do this.
+
+        * values from external data=variable name - Used for autocompletion. You need
+        to have theExternal Data extension installed to be able to use this parameter.
+        It specifies that autocompletion should be based on the data retrieved from
+        an outside source. A large number of data sources are supported, including
+        web APIs, regular wiki pages, files on the local server, databases and LDAP
+        directories. See Autocompletion using External Data.'
+      from_schema: MetaModel
+    - name: Property.externalFormatterURI
+      description: see https://www.semantic-mediawiki.org/wiki/Help:Special_property_External_formatter_URI<br>When
+        using this property the type of the property should be set to https://www.semantic-mediawiki.org/wiki/Help:Type_External_identifier
+        automatically by the generator
+      from_schema: MetaModel
+    - name: Property.showInGrid
+      description: "I am true if this property is displayed in the default list of\
+        \ properties for my topic as \na column"
+      from_schema: MetaModel
+    - name: Property.isLink
+      description: true if this Property is derived form a Link. It will not be exported
+        to SiDIF separately and automatically be added by the Property Generator
+      from_schema: MetaModel
+    - name: Property.nullable
+      description: should nullvalues be allowed and value set to NULL when empty?
+      from_schema: MetaModel
   SMW_Type:
     name: SMW_Type
+    description: an SMW_Type is a data type which determines the possible values for
+      that type e.g. a Boolean can hold true/false values while a Number can hold
+      3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes
     from_schema: MetaModel
+    slots:
+    - name: SMW_Type.type
+      description: The Semantic MediaWiki type  without the prefix e.g. Text, Number,
+        Boolean
+      from_schema: MetaModel
+    - name: SMW_Type.documentation
+      description: The documentation of this Semantic Media Wiki type
+      from_schema: MetaModel
+    - name: SMW_Type.id
+      description: SMW internal id of the type
+      from_schema: MetaModel
+    - name: SMW_Type.helppage
+      description: The url of the 'official' documentation page of this type
+      from_schema: MetaModel
+    - name: SMW_Type.typepage
+      description: The Semantic Media Wiki Special page for this specific type e.g.
+        Special:Types/Text, Special:Types/Boolean, Special:Types/Date, Special:Types/Number,
+        Special:Types/Page
+      from_schema: MetaModel
+    - name: SMW_Type.javaType
+      description: Java mapping of this type
+      from_schema: MetaModel
   Topic:
     name: Topic
+    description: A Topic is a Concept/Class/Thing/Entity
     from_schema: MetaModel
+    slots:
+    - name: Topic.name
+      description: The name of the topic
+      from_schema: MetaModel
+    - name: Topic.pluralName
+      description: The plural of a topic name. E.g. for the topic 'City' the pluralName
+        is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for the
+        topic 'Book' the default pluralName is 'Books'
+      from_schema: MetaModel
+    - name: Topic.icon
+      description: an Icon for the topic
+      from_schema: MetaModel
+    - name: Topic.iconUrl
+      description: the url of an icon
+      from_schema: MetaModel
+    - name: Topic.documentation
+      description: The plaintext documentation of a Topic. Please do not use markup
+        for this.
+      from_schema: MetaModel
+    - name: Topic.wikiDocumentation
+      description: Documentation of the Topic using MediaWiki / Semantic Mediawiki
+        markup
+      from_schema: MetaModel
+    - name: Topic.defaultstoremode
+      description: The default storemode of the topic
+      from_schema: MetaModel
+    - name: Topic.listLimit
+      description: 'What is the default #ask list limit for this Topic?'
+      from_schema: MetaModel
+    - name: Topic.cargo
+      description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
+        Cargo Extension?]
+      from_schema: MetaModel
+    - name: Topic.headerTabs
+      description: shall the forms be generated with header tabs?
+      from_schema: MetaModel
   Action:
     name: Action
+    description: An action/function/operation to be performed
     from_schema: MetaModel
+    slots:
+    - name: Action.name
+      description: The name of the Action
+      from_schema: MetaModel
+    - name: Action.servicetype
+      description: The type of the service
+      from_schema: MetaModel
+    - name: Action.service
+      description: The service to be used
+      from_schema: MetaModel
+    - name: Action.inputtype
+      description: What is the type of the input?
+      from_schema: MetaModel
+    - name: Action.input
+      description: the decription of the input e.g. a page name, url or SMW ask query
+      from_schema: MetaModel
+    - name: Action.actionpage
+      description: What page will 'steer' this action?
+      from_schema: MetaModel
+    - name: Action.output
+      description: where the output of the action should go
+      from_schema: MetaModel
+    - name: Action.engine
+      description: the template engine to be used either [[Rythm]] or [[Freemarker]]
+      from_schema: MetaModel
+    - name: Action.author
+      description: the author of this action
+      from_schema: MetaModel
+    - name: Action.since
+      description: since when is this action available?
+      from_schema: MetaModel
+    - name: Action.comment
+      description: a comment for the action
+      from_schema: MetaModel
   TopicLink:
     name: TopicLink
+    description: A TopicLink links two Concepts
     from_schema: MetaModel
+    slots:
+    - name: TopicLink.name
+      description: The name of the topic link
+      from_schema: MetaModel
+    - name: TopicLink.source
+      description: the source of a topic Link
+      from_schema: MetaModel
+    - name: TopicLink.sourceRole
+      from_schema: MetaModel
+    - name: TopicLink.sourceMultiple
+      from_schema: MetaModel
+    - name: TopicLink.sourceDocumentation
+      description: Documentation for the source Role
+      from_schema: MetaModel
+    - name: TopicLink.target
+      from_schema: MetaModel
+    - name: TopicLink.targetRole
+      from_schema: MetaModel
+    - name: TopicLink.targetMultiple
+      from_schema: MetaModel
+    - name: TopicLink.targetDocumentation
+      description: Documentation for the target Role
+      from_schema: MetaModel
+    - name: TopicLink.masterDetail
+      description: "should the details be displayed in the same form and template?\n\
+        If no \n* for a 1:1 link there will be a linking attribute used and that can\
+        \ be selected. \n* for a 1:n link a link to the list of neighbours will be\
+        \ displayed\nif yes\n* for a 1:1 link the details\n* for a 1:n link"
+      from_schema: MetaModel
 
