@@ -8,6 +8,7 @@ from meta.mw import MediaWikiContext
 from sidif.sidif import SiDIFParser
 from lodstorage.jsonable import JSONAble
 import sys
+import typing
 
 
 class MetaModelElement(JSONAble):
@@ -198,6 +199,36 @@ true is targetMultiple of it
         for topic in context.topics.values():
             topic.setConceptProperty()
         return context
+    
+    @classmethod
+    def fromSiDIF(cls,sidif:str,title:str,depth:int=None,debug:bool=False)->typing.Tuple['Context',object,str]:
+        """
+        initialize me from the given SiDIF markup
+        
+        Args:
+            sidif(str): the SiDIF markup to parse
+            title(str): the title for the SiDIF
+            depth(int): the explain depth to show for the errorMessage
+            debug(bool): if True handle debugging
+            
+        Returns:
+            Tuple[Context,str,str]: context, error and errorMessage
+            
+        """
+        errMsg = None
+        sp = SiDIFParser(debug=debug)
+        parsed, error = sp.parseText(sidif, title,depth=depth)
+        if debug:
+            sp.printResult(parsed)
+        if error is None:
+            dif = parsed[0]
+            did = dif.toDictOfDicts()
+            context = Context.fromDictOfDicts(did)
+            context.dif=dif
+            context.did=did
+        else:
+            errMsg=sp.errorMessage(title,error, depth=depth)
+        return context, error,errMsg
         
     @classmethod
     def fromWikiContext(cls, mw_context:MediaWikiContext, depth:int=None,debug:bool=False) -> 'MetaModel':
@@ -224,18 +255,7 @@ true is targetMultiple of it
             error = ex
             errMsg=str(ex)
         if sidif is not None:
-            sp = SiDIFParser(debug=debug)
-            parsed, error = sp.parseText(sidif, mw_context.wikiId,depth=depth)
-            if debug:
-                sp.printResult(parsed)
-            if error is None:
-                dif = parsed[0]
-                did = dif.toDictOfDicts()
-                context = Context.fromDictOfDicts(did)
-                context.dif=dif
-                context.did=did
-            else:
-                errMsg=sp.errorMessage(mw_context.wikiId,error, depth=depth)
+            context,error,errMsg=cls.fromSiDIF(sidif=sidif, title=mw_context.wikiId,depth=depth,debug=debug)
         return context, error,errMsg
     
 class Topic(MetaModelElement):

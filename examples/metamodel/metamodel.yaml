@@ -1,0 +1,23 @@
+name: MetaModel
+id: MetaModel
+default_prefix: MetaModel/
+classes:
+  Context:
+    name: Context
+    from_schema: MetaModel
+  Property:
+    name: Property
+    from_schema: MetaModel
+  SMW_Type:
+    name: SMW_Type
+    from_schema: MetaModel
+  Topic:
+    name: Topic
+    from_schema: MetaModel
+  Action:
+    name: Action
+    from_schema: MetaModel
+  TopicLink:
+    name: TopicLink
+    from_schema: MetaModel
+

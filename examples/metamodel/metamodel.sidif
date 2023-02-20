@@ -1,0 +1,1096 @@
+#
+# Context:MetaModel
+#
+MetaModel isA Context
+"MetaModel" is name of it
+"2015-01-23" is since of it
+"2022-11-24" is updated of it
+"2015-2022 BITPlan GmbH" is copyright of it
+"http://master.bitplan.com" is master of it
+#
+#Context
+#
+Context isA Topic
+"Context" is name of it
+"Contexts" is pluralName of it
+"A Context groups some topics like a Namespace/Package" is documentation of it
+"A Context groups some topics like a Namespace/Package" is wikiDocumentation of it
+"File:Registry.png" is icon of it
+"/images/d/d2/Registry.png" is iconUrl of it
+"property" is defaultstoremode of it
+"MetaModel" is context of it
+Context_name addsTo it
+Context_since addsTo it
+Context_updated addsTo it
+Context_master addsTo it
+Context_copyright addsTo it
+# properties of Context
+# property name
+Context_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+80 is size of it
+false is uploadable of it
+"Name of the context" is documentation of it
+false is isLink of it
+"Context" is topic of it
+# property since
+Context_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"since when is this context available?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Context" is topic of it
+# property updated
+Context_updated isA Property
+"updated" is name of it
+"updated" is label of it
+"Date" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"most recent update of the context" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Context" is topic of it
+# property copyright
+Context_copyright isA Property
+"copyright" is name of it
+"copyright" is label of it
+"Text" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"copyright of the context" is documentation of it
+false is isLink of it
+"Context" is topic of it
+# property master
+Context_master isA Property
+"master" is name of it
+"master" is label of it
+"URL" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"what is the original master source of this context" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Context" is topic of it
+#
+#Property
+#
+Property isA Topic
+"Property" is name of it
+"Properties" is pluralName of it
+"a Property is a Feature/Attribute of a Topic" is documentation of it
+"see
+
+* https://semantic-mediawiki.org/wiki/Help:Properties_and_types
+* https://semantic-mediawiki.org/wiki/Help:Special_properties
+* https://semantic-mediawiki.org/wiki/Help:List_of_datatypes" is wikiDocumentation of it
+"File:Element_into_input.png" is icon of it
+"/images/6/6a/Element_into_input.png" is iconUrl of it
+"property" is defaultstoremode of it
+"MetaModel" is context of it
+Property_name addsTo it
+Property_label addsTo it
+Property_type addsTo it
+Property_index addsTo it
+Property_sortPos addsTo it
+Property_primaryKey addsTo it
+Property_mandatory addsTo it
+Property_namespace addsTo it
+Property_size addsTo it
+Property_uploadable addsTo it
+Property_defaultValue addsTo it
+Property_inputType addsTo it
+Property_allowedValues addsTo it
+Property_documentation addsTo it
+Property_values_from addsTo it
+Property_externalFormatterURI addsTo it
+Property_showInGrid addsTo it
+Property_isLink addsTo it
+Property_nullable addsTo it
+# properties of Property
+# property name
+Property_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The name of the property" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property label
+Property_label isA Property
+"label" is name of it
+"label" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The label to be shown when in a form" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property type
+Property_type isA Property
+"type" is name of it
+"type" is label of it
+"Page" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Special:Types/Text" is defaultValue of it
+"dropdown" is inputType of it
+"The type of a Property" is documentation of it
+"property=Property_type" is values_from of it
+true is showInGrid of it
+false is isLink of it
+"Property" is topic of it
+# property index
+Property_index isA Property
+"index" is name of it
+"index" is label of it
+"Number" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"A positive number that specifies at which position of a Topic the given property should show. The first property to show has the index 1 each following property has an index that is +1 of the previous." is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Property" is topic of it
+# property sortPos
+Property_sortPos isA Property
+"sortPos" is name of it
+"sortPos" is label of it
+"Number" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+3 is size of it
+false is uploadable of it
+"If none empty >0 this is the position in the sort clause of this 
+property. This is used when displaying list of the topic as the default sort order
+and it is used for selecting topics .
+
+E.g.
+Sortpos 1 for attribute lastname and sortpos 2 for attribute firstname leads to  sort by lastname,firstname" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property primaryKey
+Property_primaryKey isA Property
+"primaryKey" is name of it
+"primary key" is label of it
+"Boolean" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+4 is size of it
+false is uploadable of it
+"is this property a primary key of it's topic?" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property mandatory
+Property_mandatory isA Property
+"mandatory" is name of it
+"mandatory" is label of it
+"Boolean" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+4 is size of it
+false is uploadable of it
+"Specifies that this field must be filled in by the user. Note: mandatory should not be used in conjunction with hidden. Use of both in any field will cause the mandatory check on any field to fail when the form is saved.
+
+see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property namespace
+Property_namespace isA Property
+"namespace" is name of it
+"namespace" is label of it
+"Text" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+20 is size of it
+false is uploadable of it
+"namespace prefix" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property size
+Property_size isA Property
+"size" is name of it
+"size" is label of it
+"Number" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+3 is size of it
+false is uploadable of it
+"the display size of the field for the property" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property uploadable
+Property_uploadable isA Property
+"uploadable" is name of it
+"uploadable" is label of it
+"Boolean" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+4 is size of it
+false is uploadable of it
+"Specifies that a link should be placed next to this field, that opens a popup window to let the user upload a file; see 'Uploading files', below. See
+* https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+* https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Uploading_files
+
+The type of the target property needs to be Page for this to work" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property defaultValue
+Property_defaultValue isA Property
+"defaultValue" is name of it
+"default" is label of it
+"Code" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"default value - Specifies a default value for this field. For date-related fields, default=now will set the value to the current date and possibly time. For text fields, default=current user will set the value to the username of the user adding this page. For the checkbox input type, default=yes will check the checkbox by default. (The 'checkboxes' input type, on the other hand, like the 'listbox' type, requires specifying the actual values, like default=Value A, Value C.) You can also include templates, parser functions, and magic words within the 'default=' value.
+
+see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag (default)" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property inputType
+Property_inputType isA Property
+"inputType" is name of it
+"inputType" is label of it
+"Text" is type of it
+12 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"dropdown" is inputType of it
+"text, combobox, dropdown, textarea, tree, datetime, datepicker, timepicker, datetimepicker, menuselect,two listboxes, datecheck, regexp, radiobutton, googlemaps" is allowedValues of it
+"see
+* http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>input type - Specifies the type of input this field will have in the form. If a field corresponds to an SMW property or Cargo field, the form will usually have the correct input type by default; otherwise the default is text. If the corresponding SMW property, or Cargo field, cannot be automatically determined, you can use the parameter 'property', or the parameters 'cargo table' and 'cargo field', to manually specify it (see below). The allowed set of input types is different for every semantic property type; see below for the full list of options.
+* http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#Allowed_input_types_for_data_types
+* http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property allowedValues
+Property_allowedValues isA Property
+"allowedValues" is name of it
+"allowedValues" is label of it
+"Text" is type of it
+13 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"There are two ways to specified allowed Values:
+# https://semantic-mediawiki.org/wiki/Help:Special_property_Allows_value. <br>Use [[Property:Allows_value]] to see which values are allowed for certain properties
+# http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag<br>values=possible values - Specifies a set of either possible values or autocompletion values (depending on the input type) that this field can have, overriding whatever set of values may have been set from the Semantic MediaWiki property. This set of values is separated by commas by default, but the delimiter can be modified using the delimiter= parameter.
+
+If you specify any values method number 2 will be used here which might override any allowed Values specified with method number 1." is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property documentation
+Property_documentation isA Property
+"documentation" is name of it
+"documentation" is label of it
+"Text" is type of it
+14 is index of it
+false is primaryKey of it
+false is mandatory of it
+500 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"The documentation for a property" is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property values_from
+Property_values_from isA Property
+"values_from" is name of it
+"values from" is label of it
+"Code" is type of it
+15 is index of it
+false is primaryKey of it
+false is mandatory of it
+200 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"Specifies where to get the possible values to be displayed in a form from see
+http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+
+* values from property=property name - Similar to values=, but gets its values from the the set of all values that a certain SMW property points to.
+* values from category=category name - Similar to values=, but gets its values from the names of all pages belonging to a specific category.
+* values from concept=concept name - Similar to values=, but gets its values from the names of all pages belonging to a specific concept.
+* values from namespace=namespace name - Similar to values=, but gets its values from the names of all pages belonging to a specific namespace. (To get values from the main namespace, use 'Main' for the namespace name, or just leave it blank.)
+* values from url=URL identifier - Used only for autocompletion. Specifies that autocompletion should be based on the values retrieved from an outside URL; see Autocompleting on outside values for how to do this.
+* values from external data=variable name - Used for autocompletion. You need to have theExternal Data extension installed to be able to use this parameter. It specifies that autocompletion should be based on the data retrieved from an outside source. A large number of data sources are supported, including web APIs, regular wiki pages, files on the local server, databases and LDAP directories. See Autocompletion using External Data." is documentation of it
+false is isLink of it
+"Property" is topic of it
+# property externalFormatterURI
+Property_externalFormatterURI isA Property
+"externalFormatterURI" is name of it
+"external formatter URI" is label of it
+"Text" is type of it
+15 is index of it
+false is primaryKey of it
+false is mandatory of it
+200 is size of it
+false is uploadable of it
+"see https://www.semantic-mediawiki.org/wiki/Help:Special_property_External_formatter_URI<br>When using this property the type of the property should be set to https://www.semantic-mediawiki.org/wiki/Help:Type_External_identifier automatically by the generator" is documentation of it
+"Property" is topic of it
+# property showInGrid
+Property_showInGrid isA Property
+"showInGrid" is name of it
+"showInGrid" is label of it
+"Boolean" is type of it
+16 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"true" is defaultValue of it
+"I am true if this property is displayed in the default list of properties for my topic as 
+a column" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Property" is topic of it
+# property isLink
+Property_isLink isA Property
+"isLink" is name of it
+"isLink" is label of it
+"Boolean" is type of it
+17 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"true if this Property is derived form a Link. It will not be exported to SiDIF separately and automatically be added by the Property Generator" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Property" is topic of it
+# property nullable
+Property_nullable isA Property
+"nullable" is name of it
+"allow nulls?" is label of it
+"Boolean" is type of it
+18 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"false" is defaultValue of it
+"should nullvalues be allowed and value set to NULL when empty?" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Property" is topic of it
+#
+#SMW_Type
+#
+SMW_Type isA Topic
+"SMW_Type" is name of it
+"SMW_Types" is pluralName of it
+"an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes" is documentation of it
+"see 
+* https://semantic-mediawiki.org/wiki/Special:Types 
+* https://semantic-mediawiki.org/wiki/Help:List_of_datatypes" is wikiDocumentation of it
+"File:Component.png" is icon of it
+"/images/4/40/Component.png" is iconUrl of it
+"subobject" is defaultstoremode of it
+"MetaModel" is context of it
+SMW_Type_type addsTo it
+SMW_Type_documentation addsTo it
+SMW_Type_helppage addsTo it
+SMW_Type_typepage addsTo it
+SMW_Type_javaType addsTo it
+SMW_Type_id addsTo it
+SMW_Type_type isA Property
+"type" is name of it
+"type" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The Semantic MediaWiki type  without the prefix e.g. Text, Number, Boolean" is documentation of it
+false is isLink of it
+"SMW_Type" is topic of it
+SMW_Type_documentation isA Property
+"documentation" is name of it
+"documentation" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The documentation of this Semantic Media Wiki type" is documentation of it
+false is isLink of it
+"SMW_Type" is topic of it
+# property id
+SMW_Type_id isA Property
+"id" is name of it
+"id" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"SMW internal id of the type" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"SMW_Type" is topic of it
+SMW_Type_helppage isA Property
+"helppage" is name of it
+"helppage" is label of it
+"URL" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The url of the 'official' documentation page of this type" is documentation of it
+false is isLink of it
+"SMW_Type" is topic of it
+SMW_Type_typepage isA Property
+"typepage" is name of it
+"typepage" is label of it
+"Page" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The Semantic Media Wiki Special page for this specific type e.g. Special:Types/Text, Special:Types/Boolean, Special:Types/Date, Special:Types/Number, Special:Types/Page" is documentation of it
+false is isLink of it
+"SMW_Type" is topic of it
+SMW_Type_javaType isA Property
+"javaType" is name of it
+"java Type" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"Java mapping of this type" is documentation of it
+false is isLink of it
+"SMW_Type" is topic of it
+#
+#Topic
+#
+Topic isA Topic
+"Topic" is name of it
+"Topics" is pluralName of it
+"A Topic is a Concept/Class/Thing/Entity" is documentation of it
+"A Topic is a Concept/Class/Thing/Entity" is wikiDocumentation of it
+"File:Index.png" is icon of it
+"/images/a/ae/Index.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+"MetaModel" is context of it
+Topic_name addsTo it
+Topic_pluralName addsTo it
+Topic_icon addsTo it
+Topic_iconUrl addsTo it
+Topic_documentation addsTo it
+Topic_wikiDocumentation addsTo it
+Topic_defaultstoremode addsTo it
+Topic_listLimit addsTo it
+Topic_cargo addsTo it
+Topic_headerTabs addsTo it
+# properties of Topic
+# property name
+Topic_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+80 is size of it
+false is uploadable of it
+"The name of the topic" is documentation of it
+false is isLink of it
+"Topic" is topic of it
+# property pluralName
+Topic_pluralName isA Property
+"pluralName" is name of it
+"pluralName" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The plural of a topic name. E.g. for the topic 'City' the pluralName is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for the topic 'Book' the default pluralName is 'Books'" is documentation of it
+false is isLink of it
+"Topic" is topic of it
+# property icon
+Topic_icon isA Property
+"icon" is name of it
+"icon" is label of it
+"Page" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+"File" is namespace of it
+55 is size of it
+true is uploadable of it
+"an Icon for the topic" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Topic" is topic of it
+# property iconUrl
+Topic_iconUrl isA Property
+"iconUrl" is name of it
+"icon Url" is label of it
+"Code" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"text" is inputType of it
+"the url of an icon" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Topic" is topic of it
+# property documentation
+Topic_documentation isA Property
+"documentation" is name of it
+"documentation" is label of it
+"Text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The plaintext documentation of a Topic. Please do not use markup for this." is documentation of it
+false is isLink of it
+"Topic" is topic of it
+# property wikiDocumentation
+Topic_wikiDocumentation isA Property
+"wikiDocumentation" is name of it
+"wikiDocumentation" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"Documentation of the Topic using MediaWiki / Semantic Mediawiki markup" is documentation of it
+false is isLink of it
+"Topic" is topic of it
+# property defaultstoremode
+Topic_defaultstoremode isA Property
+"defaultstoremode" is name of it
+"default storemode" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"radiobutton" is inputType of it
+"none,property,subobject" is allowedValues of it
+"The default storemode of the topic" is documentation of it
+false is isLink of it
+"Topic" is topic of it
+# property listLimit
+Topic_listLimit isA Property
+"listLimit" is name of it
+"list Limit" is label of it
+"Number" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+4 is size of it
+false is uploadable of it
+"200" is defaultValue of it
+"What is the default #ask list limit for this Topic?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Topic" is topic of it
+# property cargo
+Topic_cargo isA Property
+"cargo" is name of it
+"use cargo" is label of it
+"Boolean" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo Cargo Extension?]" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Topic" is topic of it
+# property headerTabs
+Topic_headerTabs isA Property
+"headerTabs" is name of it
+"headerTabs" is label of it
+"Boolean" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"shall the forms be generated with header tabs?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Topic" is topic of it
+#
+#Action
+#
+Action isA Topic
+"Action" is name of it
+"Actions" is pluralName of it
+"An action/function/operation to be performed" is documentation of it
+"An action/function/operation to be performed" is wikiDocumentation of it
+"File:Actionicon.png" is icon of it
+"/images/e/eb/Actionicon.png" is iconUrl of it
+"subobject" is defaultstoremode of it
+false is cargo of it
+"MetaModel" is context of it
+Action_name addsTo it
+Action_servicetype addsTo it
+Action_service addsTo it
+Action_inputtype addsTo it
+Action_input addsTo it
+Action_actionpage addsTo it
+Action_output addsTo it
+Action_engine addsTo it
+Action_author addsTo it
+Action_since addsTo it
+Action_comment addsTo it
+# properties of Action
+# property name
+Action_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+0 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"The name of the Action" is documentation of it
+false is isLink of it
+"Action" is topic of it
+# property servicetype
+Action_servicetype isA Property
+"servicetype" is name of it
+"servicetype" is label of it
+"Text" is type of it
+1 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"WikiTask" is defaultValue of it
+"radiobutton" is inputType of it
+"WikiTask" is allowedValues of it
+"The type of the service" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property service
+Action_service isA Property
+"service" is name of it
+"service" is label of it
+"URL" is type of it
+2 is index of it
+"The service to be used" is documentation of it
+false is isLink of it
+"Action" is topic of it
+# property inputtype
+Action_inputtype isA Property
+"inputtype" is name of it
+"inputtype" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Page" is defaultValue of it
+"radiobutton" is inputType of it
+"Query,Page,URL" is allowedValues of it
+"What is the type of the input?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property input
+Action_input isA Property
+"input" is name of it
+"input" is label of it
+"Code" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+300 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"the decription of the input e.g. a page name, url or SMW ask query" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property actionpage
+Action_actionpage isA Property
+"actionpage" is name of it
+"actionpage" is label of it
+"Page" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Property:Action actionpage" is defaultValue of it
+"What page will 'steer' this action?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property output
+Action_output isA Property
+"output" is name of it
+"output" is label of it
+"Text" is type of it
+6 is index of it
+"where the output of the action should go" is documentation of it
+false is isLink of it
+"Action" is topic of it
+# property engine
+Action_engine isA Property
+"engine" is name of it
+"engine" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"rythm" is defaultValue of it
+"radiobutton" is inputType of it
+"rythm,freemarker" is allowedValues of it
+"the template engine to be used either [[Rythm]] or [[Freemarker]]" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property author
+Action_author isA Property
+"author" is name of it
+"author" is label of it
+"Page" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"combobox" is inputType of it
+"the author of this action" is documentation of it
+"namespace=User" is values_from of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property since
+Action_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"since when is this action available?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+# property comment
+Action_comment isA Property
+"comment" is name of it
+"comment" is label of it
+"Text" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+400 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"a comment for the action" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Action" is topic of it
+#
+#
+#TopicLink
+#
+TopicLink isA Topic
+"TopicLink" is name of it
+"TopicLinks" is pluralName of it
+"A TopicLink links two Concepts" is documentation of it
+"A TopicLink links two [[Concept:Topic]]s" is wikiDocumentation of it
+"File:Link.png" is icon of it
+"/images/f/fd/Link.png" is iconUrl of it
+"subobject" is defaultstoremode of it
+"MetaModel" is context of it
+TopicLink_name addsTo it
+TopicLink_source addsTo it
+TopicLink_sourceRole addsTo it
+TopicLink_sourceMultiple addsTo it
+TopicLink_sourceDocumentation addsTo it
+TopicLink_target addsTo it
+TopicLink_targetRole addsTo it
+TopicLink_targetMultiple addsTo it
+TopicLink_targetDocumentation addsTo it
+TopicLink_masterDetail addsTo it
+TopicLink_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The name of the topic link" is documentation of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_source isA Property
+"source" is name of it
+"source" is label of it
+"Page" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"dropdown" is inputType of it
+"the source of a topic Link" is documentation of it
+"concept=Topic" is values_from of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_sourceRole isA Property
+"sourceRole" is name of it
+"sourceRole" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_sourceMultiple isA Property
+"sourceMultiple" is name of it
+"sourceMultiple" is label of it
+"Boolean" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_sourceDocumentation isA Property
+"sourceDocumentation" is name of it
+"source Doc" is label of it
+"Text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+300 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"Documentation for the source Role" is documentation of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_target isA Property
+"target" is name of it
+"target" is label of it
+"Page" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_targetRole isA Property
+"targetRole" is name of it
+"targetRole" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_targetMultiple isA Property
+"targetMultiple" is name of it
+"sourceMultiple" is label of it
+"Boolean" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_targetDocumentation isA Property
+"targetDocumentation" is name of it
+"target Doc" is label of it
+"Text" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+300 is size of it
+false is uploadable of it
+"textarea" is inputType of it
+"Documentation for the target Role" is documentation of it
+false is isLink of it
+"TopicLink" is topic of it
+TopicLink_masterDetail isA Property
+"masterDetail" is name of it
+"masterDetail" is label of it
+"Boolean" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"should the details be displayed in the same form and template?
+If no 
+* for a 1:1 link there will be a linking attribute used and that can be selected. 
+* for a 1:n link a link to the list of neighbours will be displayed
+if yes
+* for a 1:1 link the details
+* for a 1:n link" is documentation of it
+false is isLink of it
+"TopicLink" is topic of it
+#
+# TopicLinks
+#
+TopicLinks_containedProperties isA TopicLink
+"containedProperties" is name of it
+"topic" is sourceRole of it
+false is sourceMultiple of it
+"Topic" is source of it
+"properties" is targetRole of it
+true is targetMultiple of it
+"Property" is target of it 
+TopicLinks_containedTopics isA TopicLink
+"containedTopics" is name of it
+"context" is sourceRole of it
+false is sourceMultiple of it
+"Context" is source of it
+"topics" is targetRole of it
+true is targetMultiple of it
+"Topic" is target of it 
+TopicLinks_typeOfProperty isA TopicLink
+"typeOfProperty" is name of it
+"usedByProperties" is sourceRole of it
+true is sourceMultiple of it
+"Property" is source of it
+"the properties having this type" is sourceDocumentation of it
+"smw_type" is targetRole of it
+false is targetMultiple of it
+"SMW_Type" is target of it
+false is masterDetail of it
+"the smw_type being used by this property" is targetDocumentation of it 
+# data
+Annotation_URI isA SMW_Type
+"Annotation URI" is type of it
+"Special:Types/Annotation_URI" is typepage of it
+"Holds URIs, but has some technical differences during export compared to the 'URL' type" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Annotation_URI" is helppage of it
+Boolean isA SMW_Type
+"Boolean" is type of it
+"Special:Types/Boolean" is typepage of it
+"Holds boolean (true/false) values" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Boolean" is helppage of it
+Code isA SMW_Type
+"Code" is type of it
+"Special:Types/Code" is typepage of it
+"Holds technical, pre-formatted texts (similar to type Text)" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Code" is helppage of it
+Date isA SMW_Type
+"Date" is type of it
+"Special:Types/Date" is typepage of it
+"Holds particular points in time" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Date" is helppage of it
+Email isA SMW_Type
+"Email" is type of it
+"Special:Types/Email" is typepage of it
+"Holds e-mail addresses" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Email" is helppage of it
+Geographic_coordinate isA SMW_Type
+"Geographic coordinate" is type of it
+"Special:Types/Geographic_coordinate" is typepage of it
+"Holds coordinates describing geographic locations" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate" is helppage of it
+Number isA SMW_Type
+"Number" is type of it
+"Special:Types/Number" is typepage of it
+"Holds integer and decimal numbers, with an optional exponent" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Number" is helppage of it
+Page isA SMW_Type
+"Page" is type of it
+"Special:Types/Page" is typepage of it
+"Holds names of wiki pages, and displays them as a link" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Page" is helppage of it
+Quantity isA SMW_Type
+"Quantity" is type of it
+"Special:Types/Quantity" is typepage of it
+"Holds values that describe quantities, containing both a number and a unit" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Quantity" is helppage of it
+Record isA SMW_Type
+"Record" is type of it
+"Special:Types/Record" is typepage of it
+"Allows saving compound property values that consist of a short list of values with fixed type and order" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Record" is helppage of it
+Telephone_number isA SMW_Type
+"Telephone number" is type of it
+"Special:Types/Telephone_number" is typepage of it
+"Holds international telephone numbers based on the [https://tools.ietf.org/html/rfc3966 RFC 3966 standard]" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Telephone_number" is helppage of it
+Temperature isA SMW_Type
+"Temperature" is type of it
+"Special:Types/Temperature" is typepage of it
+"Holds temperature values (similar to type Quantity)" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Temperature" is helppage of it
+Text isA SMW_Type
+"Text" is type of it
+"Special:Types/Text" is typepage of it
+"Holds text of arbitrary length" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_Text" is helppage of it
+URL isA SMW_Type
+"URL" is type of it
+"Special:Types/URL" is typepage of it
+"Holds URIs, URNs and URLs" is documentation of it
+"https://semantic-mediawiki.org/wiki/Help:Type_URL" is helppage of it

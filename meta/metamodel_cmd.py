@@ -13,7 +13,7 @@ from meta.mw import SMWAccess
 from meta.uml import PlantUml
 from meta.sidif2linkml import SiDIF2LinkML
 from meta.metamodel import Context
-import yaml
+import urllib3
 import webbrowser
 
 class MetaModelCmd:
@@ -29,21 +29,36 @@ class MetaModelCmd:
             debug(bool): if True switch debugging on
         """
         self.debug=debug
+        self.error=None
+        self.errMsg=None
+        self.context=None
 
-    def readContext(self,wikiId:str,context_name:str):
+    def readContext(self,args):
         """
-        read the context with the given name from the given wiki
+        read the context from the given args
         
         Args:
-            wikiId(str): the wikiId of the wiki to read the context from
-            context_name: the name of the context to read
+            args(Args): command line arguments
         """
-        self.wikiId=wikiId
-        self.smwAccess=SMWAccess(wikiId)
-        self.mw_contexts=self.smwAccess.getMwContexts()
-        self.mw_context=self.mw_contexts.get(context_name,None)
-        self.context,self.error,self.errMsg=Context.fromWikiContext(self.mw_context, debug=self.debug)
-     
+        if args.input:
+            if args.input.startswith("http:"):
+                url=args.input
+                http = urllib3.PoolManager()
+                response = http.request('GET', url)
+                sidif = response.data.decode('utf-8')
+            else:
+                sidif_path=args.input
+                with open(sidif_path, 'r') as sidif_file:
+                    sidif=sidif_file.read()
+            self.context,self.error,self.errMsg=Context.fromSiDIF(sidif, title=args.input, debug=self.debug)
+            pass
+        elif args.wikiId and args.context_name:
+            self.wikiId=args.wikiId
+            self.smwAccess=SMWAccess(args.wikiId)
+            self.mw_contexts=self.smwAccess.getMwContexts()
+            self.mw_context=self.mw_contexts.get(args.context_name,None)
+            self.context,self.error,self.errMsg=Context.fromWikiContext(self.mw_context, debug=self.debug)
+         
     def hasError(self):  
         if self.error is not None:
             print(f"reading Context failed:\n{self.errMsg}\n{self.error}")
@@ -59,7 +74,7 @@ class MetaModelCmd:
         Returns:
             str: the uml markup
         """
-        self.readContext(args.wikiId, args.context)  
+        self.readContext(args)  
         if not self.hasError():
             uml=PlantUml(title=args.title,copyRight=args.copyright)
             uml.fromDIF(self.context.dif)
@@ -75,7 +90,7 @@ class MetaModelCmd:
         Returns:
             str: the uml markup
         """
-        self.readContext(args.wikiId, args.context)  
+        self.readContext(args)  
         if not self.hasError():
             sidif2LinkML=SiDIF2LinkML(self.context)
             yaml_text=sidif2LinkML.asYaml()
@@ -120,7 +135,7 @@ USAGE
         parser.add_argument('--context', default="MetaModel",help='context to read [default: %(default)s]')
         parser.add_argument("--copyright",help="copyright message for diagrams")
         parser.add_argument("-d", "--debug", dest="debug", action="store_true", help="show debug info")
-        parser.add_argument("-i", "--input", nargs="+", help="list of inputs")
+        parser.add_argument("-i", "--input", help="input file")
         parser.add_argument("-l", "--linkml", action="store_true", help="create linkml yaml file")
         parser.add_argument("-t", "--title",help="the title of a diagram")
         parser.add_argument("-u", "--uml", action="store_true", help="create plantuml diagram")
