@@ -6,13 +6,22 @@ Created on 2023-02-20
 from tests.basetest import Basetest
 from meta.metamodel_cmd import MetaModelCmd
 from meta.sidif2linkml import SiDIF2LinkML
+from tests.basemwtest import BaseMediawikiTest
 
-class TestLinkML(Basetest):
+class TestLinkML(BaseMediawikiTest):
     """
     test linkml handling
     
     https://linkml.io/
     """
+    
+    def setUp(self, debug=False, profile=True):
+        """
+        setUp
+        """
+        BaseMediawikiTest.setUp(self, debug=debug, profile=profile)
+        for wikiId in ["wiki","cr"]:
+            self.getWikiUser(wikiId, save=True)
     
     def testSiDIF2LinkML(self):
         """
@@ -22,6 +31,7 @@ class TestLinkML(Basetest):
         debug=True
         mm_cmd=MetaModelCmd(debug=debug)
         for wikiId,context_name in [
+            ("wiki","MetaModel"),
             ("cr","CrSchema")
         ]:
             mm_cmd.readContext(wikiId, context_name)
