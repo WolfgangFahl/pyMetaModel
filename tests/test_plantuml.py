@@ -58,7 +58,7 @@ class TestPlantUml(Basetest):
         '''
         dif=self.getPresentation()
         debug=self.debug
-        debug=True
+        #debug=True
         uml=PlantUml(title="Presentation",copyRight="© BITPlan GmbH 2015-2023")
         uml.fromDIF(dif)
         if debug:
