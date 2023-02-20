@@ -24,7 +24,9 @@ dependencies = [
 		# https://pypi.org/project/pylodstorage/
         'pyLodStorage>=0.4.7',
 		# https://pypi.org/project/mwparserfromhell/
-		'mwparserfromhell>=0.6.4'
+		'mwparserfromhell>=0.6.4',
+		# https://pypi.org/project/linkml-runtime/
+		'linkml-runtime>=1.4.5'
      ]
 
 requires-python = ">=3.7"

@@ -3,6 +3,7 @@
 	<name>pyMetaModel</name>
 	<comment></comment>
 	<projects>
+		<project>linkml</project>
 		<project>py-sidif</project>
 	</projects>
 	<buildSpec>

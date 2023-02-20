@@ -11,8 +11,9 @@ import os
 from meta.version import Version
 from meta.mw import SMWAccess
 from meta.uml import PlantUml
+from meta.sidif2linkml import SiDIF2LinkML
 from meta.metamodel import Context
-
+import yaml
 import webbrowser
 
 class MetaModelCmd:
@@ -42,22 +43,43 @@ class MetaModelCmd:
         self.mw_contexts=self.smwAccess.getMwContexts()
         self.mw_context=self.mw_contexts.get(context_name,None)
         self.context,self.error,self.errMsg=Context.fromWikiContext(self.mw_context, debug=self.debug)
-        
-    def genUml(self,args):
+     
+    def hasError(self):  
+        if self.error is not None:
+            print(f"reading Context failed:\n{self.errMsg}\n{self.error}")
+        return self.error
+         
+    def genUml(self,args)->str:
         """
         generate uml for the given context with the given name from the given wiki
         
         Args:
            args: the command line arguments
+           
+        Returns:
+            str: the uml markup
         """
         self.readContext(args.wikiId, args.context)  
-        if self.error is not None:
-            print(f"reading Context failed:\n{self.errMsg}\n{self.error}")
-            return None
-        else:
+        if not self.hasError():
             uml=PlantUml(title=args.title,copyRight=args.copyright)
             uml.fromDIF(self.context.dif)
             return str(uml)
+        
+    def genLinkML(self,args)->str:
+        """
+        generate linkML yaml for the given command line arguments
+        
+        Args:
+           args: the command line arguments
+           
+        Returns:
+            str: the uml markup
+        """
+        self.readContext(args.wikiId, args.context)  
+        if not self.hasError():
+            sidif2LinkML=SiDIF2LinkML(self.context)
+            yaml_text=sidif2LinkML.asYaml()
+            return yaml_text
 
 __version__ = Version.version
 __date__ = Version.date
@@ -99,9 +121,10 @@ USAGE
         parser.add_argument("--copyright",help="copyright message for diagrams")
         parser.add_argument("-d", "--debug", dest="debug", action="store_true", help="show debug info")
         parser.add_argument("-i", "--input", nargs="+", help="list of inputs")
-        parser.add_argument('--wikiId', default="wiki",help='id of the wiki to generate for [default: %(default)s]')
-        parser.add_argument("-u", "--uml", action="store_true", help="create plantuml diagram")
+        parser.add_argument("-l", "--linkml", action="store_true", help="create linkml yaml file")
         parser.add_argument("-t", "--title",help="the title of a diagram")
+        parser.add_argument("-u", "--uml", action="store_true", help="create plantuml diagram")
+        parser.add_argument('--wikiId', default="wiki",help='id of the wiki to generate for [default: %(default)s]')
         if len(argv) < 1:
             parser.print_usage()
             sys.exit(1)
@@ -115,6 +138,11 @@ USAGE
             mm_cmd=MetaModelCmd(debug=args.debug)
             uml=mm_cmd.genUml(args)
             print(uml)
+        elif args.linkml:
+            mm_cmd=MetaModelCmd(debug=args.debug)
+            linkml_yaml=mm_cmd.genLinkML(args)
+            print (linkml_yaml)
+            
     
     except KeyboardInterrupt:
         ### handle keyboard interrupt ###
