@@ -3,7 +3,6 @@ Created on 2023-02-20
 
 @author: wf
 '''
-from tests.basetest import Basetest
 from meta.metamodel_cmd import MetaModelCmd
 from meta.sidif2linkml import SiDIF2LinkML
 from tests.basemwtest import BaseMediawikiTest
@@ -29,12 +28,14 @@ class TestLinkML(BaseMediawikiTest):
         """
         debug=self.debug
         debug=True
+        parser=MetaModelCmd.getArgParser()
         mm_cmd=MetaModelCmd(debug=debug)
         for wikiId,context_name in [
             ("wiki","MetaModel"),
             ("cr","CrSchema")
         ]:
-            mm_cmd.readContext(wikiId, context_name)
+            args=parser.parse_args(["--wikiId",wikiId,"--context",context_name])
+            mm_cmd.readContext(args)
             self.assertTrue(not mm_cmd.hasError())
             s2l=SiDIF2LinkML(mm_cmd.context)
             yaml_text=s2l.asYaml()
