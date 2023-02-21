@@ -6,6 +6,8 @@ do
   root=$(dirname $f)
   base=$(basename $f .sidif)
   base_path=$root/$base
+  echo "generating PlantUML for $base_path"
+  mm_cmd -i $f -u > $base_path.puml
   echo "generating linkML for $base_path"
   mm_cmd -i $f -l > $base_path.yaml
   echo "generating mermaid ER Diagram for $base_path"
