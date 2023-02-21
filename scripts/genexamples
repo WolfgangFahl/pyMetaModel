@@ -8,5 +8,6 @@ do
   base_path=$root/$base
   echo "generating linkML for $base_path"
   mm_cmd -i $f -l > $base_path.yaml
-  gen-erdiagram $base_path.yaml
+  echo "generating mermaid ER Diagram for $base_path"
+  gen-erdiagram $base_path.yaml > $base_path.mermaid
 done

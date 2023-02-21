@@ -16,7 +16,7 @@ class SiDIF2LinkML:
     def __init__(self,context:Context):
         self.context=context
         
-    def asYaml(self,common_property_slots:bool=True)->str:
+    def asYaml(self,common_property_slots:bool=True,delim="_")->str:
         """
         convert my context
         
@@ -35,15 +35,20 @@ class SiDIF2LinkML:
             cd.description=topic.documentation
             sv.add_class(cd)
             for prop in topic.properties.values():
-                if prop.name in sd.slots:
-                    slot=sd.slots[prop.name]
-                    slot.description+=","+prop.documentation
+                slot=None
+                if common_property_slots:
+                    qname=prop.name
+                    if prop.name in sd.slots:
+                        slot=sd.slots[prop.name]
+                        slot.description+=","+prop.documentation
                 else:
-                    slot=SlotDefinition(name=prop.name)
+                    qname=f"{topic.name}{delim}{prop.name}"
+                if slot is None:
+                    slot=SlotDefinition(name=qname)
                     if hasattr(prop,"documentation"):
                         slot.description=prop.documentation         
                     sv.add_slot(slot)
-                cd.attributes[prop.name]=slot
+                cd.attributes[qname]=slot
                 pass
             
             pass
