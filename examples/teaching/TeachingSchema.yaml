@@ -1,0 +1,591 @@
+name: TeachingSchema
+id: TeachingSchema
+default_prefix: TeachingSchema/
+slots:
+  key:
+    name: key
+    description: The key of the presentation for this Chapter ,The key of the Presentation,The
+      local key of the LearningGoal,The keyword,the local key of this check
+    from_schema: TeachingSchema
+  'no':
+    name: 'no'
+    description: 'The number of the Chapter '
+    from_schema: TeachingSchema
+  pres_id:
+    name: pres_id
+    description: 'The numeric id of the presentation for the Chapter '
+    from_schema: TeachingSchema
+  week:
+    name: week
+    description: 'The relative week of the Chapter '
+    from_schema: TeachingSchema
+  de:
+    name: de
+    description: Das Thema des Kapitels in deutsch,german wikipedia article of the
+      keyword
+    from_schema: TeachingSchema
+  en:
+    name: en
+    description: The topic of the chapter in english,english wikipedia article of
+      the keyword
+    from_schema: TeachingSchema
+  num:
+    name: num
+    description: The number of the Presentation
+    from_schema: TeachingSchema
+  name:
+    name: name
+    description: The name of the Presentation,name of the slide
+    from_schema: TeachingSchema
+  ppt_file:
+    name: ppt_file
+    description: The powert point file name of the Presentation
+    from_schema: TeachingSchema
+  sciebo:
+    name: sciebo
+    description: The sciebo link suffix of this Presentation
+    from_schema: TeachingSchema
+  gitlab:
+    name: gitlab
+    description: The gitlab url of the Presentation
+    from_schema: TeachingSchema
+  moodle:
+    name: moodle
+    description: The moodle pdf annotator page id of the Presentation
+    from_schema: TeachingSchema
+  qKey:
+    name: qKey
+    description: The fully qualifing key of the LearningGoal,the full qualifying (primary)
+      key of this check
+    from_schema: TeachingSchema
+  id:
+    name: id
+    description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
+      RelevanceLevel,The id (e.g. bibtex key) of the Publication
+    from_schema: TeachingSchema
+  chapter:
+    name: chapter
+    description: The chapter of the LearningGoal
+    from_schema: TeachingSchema
+  chapterKey:
+    name: chapterKey
+    description: The key of the chapter of the LearningGoal
+    from_schema: TeachingSchema
+  subChapter:
+    name: subChapter
+    description: The subChapter of the LearningGoal
+    from_schema: TeachingSchema
+  subChapterKey:
+    name: subChapterKey
+    description: The key of the subChapter of the LearningGoal
+    from_schema: TeachingSchema
+  relevance:
+    name: relevance
+    description: The relevance of the LearningGoal
+    from_schema: TeachingSchema
+  keywords:
+    name: keywords
+    description: keywords the learningGoal references,keywords the slide references
+    from_schema: TeachingSchema
+  since:
+    name: since
+    description: The year since when this learningGoal is active,the date this check
+      was activated
+    from_schema: TeachingSchema
+  until:
+    name: until
+    description: The year until this learningGoal was active
+    from_schema: TeachingSchema
+  aliases:
+    name: aliases
+    description: optional, comma separated aliases of the keyword
+    from_schema: TeachingSchema
+  wikidataid:
+    name: wikidataid
+    description: The wikidataItem,The wikidataid of the Publication
+    from_schema: TeachingSchema
+  links:
+    name: links
+    description: comma separated list of links to other keywords,names of slide referenced
+      by this slide
+    from_schema: TeachingSchema
+  literature:
+    name: literature
+    description: comma separated list of publication keys,dois or wikidataids of literature
+      referenced by this slide
+    from_schema: TeachingSchema
+  urls:
+    name: urls
+    description: comma separated list of external links that explain the keyword
+    from_schema: TeachingSchema
+  stackoverflow_tag:
+    name: stackoverflow_tag
+    description: stackoverflow tag for this keyword
+    from_schema: TeachingSchema
+  qkey:
+    name: qkey
+    description: fully qualifying key of the slide
+    from_schema: TeachingSchema
+  pkey:
+    name: pkey
+    description: key of the presentation of this slide
+    from_schema: TeachingSchema
+  basename:
+    name: basename
+    description: basename of the ppt presentation of this slide
+    from_schema: TeachingSchema
+  page:
+    name: page
+    description: page number of the slide
+    from_schema: TeachingSchema
+  title:
+    name: title
+    description: title of the slide,The title of the Publication
+    from_schema: TeachingSchema
+  learningGoal:
+    name: learningGoal
+    description: learningGoal this slide links to
+    from_schema: TeachingSchema
+  concept:
+    name: concept
+    description: the concept of the items being checked by this check,the concept
+      this Sheet hold data for
+    from_schema: TeachingSchema
+  check:
+    name: check
+    description: the description of what is checked by this Check,the check this issue
+      references
+    from_schema: TeachingSchema
+  problem:
+    name: problem
+    description: problem of this item
+    from_schema: TeachingSchema
+  ok:
+    name: ok
+    description: number of items that pass the check/are ok
+    from_schema: TeachingSchema
+  total:
+    name: total
+    description: number of items that are checked in total
+    from_schema: TeachingSchema
+  pain:
+    name: pain
+    description: pain of this item
+    from_schema: TeachingSchema
+  item:
+    name: item
+    description: the item this issue references
+    from_schema: TeachingSchema
+  fix:
+    name: fix
+    description: a potential fix for the issue
+    from_schema: TeachingSchema
+  expectation:
+    name: expectation
+    description: the expectation for this RelevanceLevel
+    from_schema: TeachingSchema
+  examination:
+    name: examination
+    description: how items for this RelevanceLevel are covered during examination
+    from_schema: TeachingSchema
+  description:
+    name: description
+    description: the description of this RelevanceLevel
+    from_schema: TeachingSchema
+  doi:
+    name: doi
+    description: The doi of the Publication
+    from_schema: TeachingSchema
+  isbn:
+    name: isbn
+    description: The ISBN-13 of the Publication
+    from_schema: TeachingSchema
+  authors:
+    name: authors
+    description: authors of the Publication
+    from_schema: TeachingSchema
+  publisher:
+    name: publisher
+    description: publisher of the Publication
+    from_schema: TeachingSchema
+  year:
+    name: year
+    description: year of the Publication
+    from_schema: TeachingSchema
+  pdfUrl:
+    name: pdfUrl
+    description: the url for the pdf of this Publication
+    from_schema: TeachingSchema
+  gid:
+    name: gid
+    description: the gid of this Sheet
+    from_schema: TeachingSchema
+  url:
+    name: url
+    description: the base url for the sheet
+    from_schema: TeachingSchema
+classes:
+  Chapter:
+    name: Chapter
+    description: a chapter of a lecture
+    from_schema: TeachingSchema
+    attributes:
+      key:
+        name: key
+        description: The key of the presentation for this Chapter ,The key of the
+          Presentation,The local key of the LearningGoal,The keyword,the local key
+          of this check
+        from_schema: TeachingSchema
+      'no':
+        name: 'no'
+        description: 'The number of the Chapter '
+        from_schema: TeachingSchema
+      pres_id:
+        name: pres_id
+        description: 'The numeric id of the presentation for the Chapter '
+        from_schema: TeachingSchema
+      week:
+        name: week
+        description: 'The relative week of the Chapter '
+        from_schema: TeachingSchema
+      de:
+        name: de
+        description: Das Thema des Kapitels in deutsch,german wikipedia article of
+          the keyword
+        from_schema: TeachingSchema
+      en:
+        name: en
+        description: The topic of the chapter in english,english wikipedia article
+          of the keyword
+        from_schema: TeachingSchema
+  Presentation:
+    name: Presentation
+    description: a presentation of a lecture
+    from_schema: TeachingSchema
+    attributes:
+      key:
+        name: key
+        description: The key of the presentation for this Chapter ,The key of the
+          Presentation,The local key of the LearningGoal,The keyword,the local key
+          of this check
+        from_schema: TeachingSchema
+      num:
+        name: num
+        description: The number of the Presentation
+        from_schema: TeachingSchema
+      name:
+        name: name
+        description: The name of the Presentation,name of the slide
+        from_schema: TeachingSchema
+      ppt_file:
+        name: ppt_file
+        description: The powert point file name of the Presentation
+        from_schema: TeachingSchema
+      sciebo:
+        name: sciebo
+        description: The sciebo link suffix of this Presentation
+        from_schema: TeachingSchema
+      gitlab:
+        name: gitlab
+        description: The gitlab url of the Presentation
+        from_schema: TeachingSchema
+      moodle:
+        name: moodle
+        description: The moodle pdf annotator page id of the Presentation
+        from_schema: TeachingSchema
+  LearningGoal:
+    name: LearningGoal
+    description: a LearningGoal of a lecture
+    from_schema: TeachingSchema
+    attributes:
+      key:
+        name: key
+        description: The key of the presentation for this Chapter ,The key of the
+          Presentation,The local key of the LearningGoal,The keyword,the local key
+          of this check
+        from_schema: TeachingSchema
+      qKey:
+        name: qKey
+        description: The fully qualifing key of the LearningGoal,the full qualifying
+          (primary) key of this check
+        from_schema: TeachingSchema
+      id:
+        name: id
+        description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
+          RelevanceLevel,The id (e.g. bibtex key) of the Publication
+        from_schema: TeachingSchema
+      chapter:
+        name: chapter
+        description: The chapter of the LearningGoal
+        from_schema: TeachingSchema
+      chapterKey:
+        name: chapterKey
+        description: The key of the chapter of the LearningGoal
+        from_schema: TeachingSchema
+      subChapter:
+        name: subChapter
+        description: The subChapter of the LearningGoal
+        from_schema: TeachingSchema
+      subChapterKey:
+        name: subChapterKey
+        description: The key of the subChapter of the LearningGoal
+        from_schema: TeachingSchema
+      relevance:
+        name: relevance
+        description: The relevance of the LearningGoal
+        from_schema: TeachingSchema
+      keywords:
+        name: keywords
+        description: keywords the learningGoal references,keywords the slide references
+        from_schema: TeachingSchema
+      since:
+        name: since
+        description: The year since when this learningGoal is active,the date this
+          check was activated
+        from_schema: TeachingSchema
+      until:
+        name: until
+        description: The year until this learningGoal was active
+        from_schema: TeachingSchema
+  Keyword:
+    name: Keyword
+    description: a keyword
+    from_schema: TeachingSchema
+    attributes:
+      key:
+        name: key
+        description: The key of the presentation for this Chapter ,The key of the
+          Presentation,The local key of the LearningGoal,The keyword,the local key
+          of this check
+        from_schema: TeachingSchema
+      aliases:
+        name: aliases
+        description: optional, comma separated aliases of the keyword
+        from_schema: TeachingSchema
+      de:
+        name: de
+        description: Das Thema des Kapitels in deutsch,german wikipedia article of
+          the keyword
+        from_schema: TeachingSchema
+      en:
+        name: en
+        description: The topic of the chapter in english,english wikipedia article
+          of the keyword
+        from_schema: TeachingSchema
+      wikidataid:
+        name: wikidataid
+        description: The wikidataItem,The wikidataid of the Publication
+        from_schema: TeachingSchema
+      links:
+        name: links
+        description: comma separated list of links to other keywords,names of slide
+          referenced by this slide
+        from_schema: TeachingSchema
+      literature:
+        name: literature
+        description: comma separated list of publication keys,dois or wikidataids
+          of literature referenced by this slide
+        from_schema: TeachingSchema
+      urls:
+        name: urls
+        description: comma separated list of external links that explain the keyword
+        from_schema: TeachingSchema
+      stackoverflow_tag:
+        name: stackoverflow_tag
+        description: stackoverflow tag for this keyword
+        from_schema: TeachingSchema
+  Slide:
+    name: Slide
+    description: I am a presentation slide
+    from_schema: TeachingSchema
+    attributes:
+      qkey:
+        name: qkey
+        description: fully qualifying key of the slide
+        from_schema: TeachingSchema
+      pkey:
+        name: pkey
+        description: key of the presentation of this slide
+        from_schema: TeachingSchema
+      basename:
+        name: basename
+        description: basename of the ppt presentation of this slide
+        from_schema: TeachingSchema
+      page:
+        name: page
+        description: page number of the slide
+        from_schema: TeachingSchema
+      name:
+        name: name
+        description: The name of the Presentation,name of the slide
+        from_schema: TeachingSchema
+      title:
+        name: title
+        description: title of the slide,The title of the Publication
+        from_schema: TeachingSchema
+      keywords:
+        name: keywords
+        description: keywords the learningGoal references,keywords the slide references
+        from_schema: TeachingSchema
+      links:
+        name: links
+        description: comma separated list of links to other keywords,names of slide
+          referenced by this slide
+        from_schema: TeachingSchema
+      literature:
+        name: literature
+        description: comma separated list of publication keys,dois or wikidataids
+          of literature referenced by this slide
+        from_schema: TeachingSchema
+      learningGoal:
+        name: learningGoal
+        description: learningGoal this slide links to
+        from_schema: TeachingSchema
+  Check:
+    name: Check
+    description: I am a quality check
+    from_schema: TeachingSchema
+    attributes:
+      qKey:
+        name: qKey
+        description: The fully qualifing key of the LearningGoal,the full qualifying
+          (primary) key of this check
+        from_schema: TeachingSchema
+      key:
+        name: key
+        description: The key of the presentation for this Chapter ,The key of the
+          Presentation,The local key of the LearningGoal,The keyword,the local key
+          of this check
+        from_schema: TeachingSchema
+      concept:
+        name: concept
+        description: the concept of the items being checked by this check,the concept
+          this Sheet hold data for
+        from_schema: TeachingSchema
+      since:
+        name: since
+        description: The year since when this learningGoal is active,the date this
+          check was activated
+        from_schema: TeachingSchema
+      check:
+        name: check
+        description: the description of what is checked by this Check,the check this
+          issue references
+        from_schema: TeachingSchema
+      problem:
+        name: problem
+        description: problem of this item
+        from_schema: TeachingSchema
+      ok:
+        name: ok
+        description: number of items that pass the check/are ok
+        from_schema: TeachingSchema
+      total:
+        name: total
+        description: number of items that are checked in total
+        from_schema: TeachingSchema
+      pain:
+        name: pain
+        description: pain of this item
+        from_schema: TeachingSchema
+  Issue:
+    name: Issue
+    description: I am a an issue
+    from_schema: TeachingSchema
+    attributes:
+      item:
+        name: item
+        description: the item this issue references
+        from_schema: TeachingSchema
+      check:
+        name: check
+        description: the description of what is checked by this Check,the check this
+          issue references
+        from_schema: TeachingSchema
+      fix:
+        name: fix
+        description: a potential fix for the issue
+        from_schema: TeachingSchema
+  RelevanceLevel:
+    name: RelevanceLevel
+    description: I am a relevance level
+    from_schema: TeachingSchema
+    attributes:
+      id:
+        name: id
+        description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
+          RelevanceLevel,The id (e.g. bibtex key) of the Publication
+        from_schema: TeachingSchema
+      expectation:
+        name: expectation
+        description: the expectation for this RelevanceLevel
+        from_schema: TeachingSchema
+      examination:
+        name: examination
+        description: how items for this RelevanceLevel are covered during examination
+        from_schema: TeachingSchema
+      description:
+        name: description
+        description: the description of this RelevanceLevel
+        from_schema: TeachingSchema
+  Publication:
+    name: Publication
+    description: A Publication is e.g. a scholarly article
+    from_schema: TeachingSchema
+    attributes:
+      id:
+        name: id
+        description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
+          RelevanceLevel,The id (e.g. bibtex key) of the Publication
+        from_schema: TeachingSchema
+      doi:
+        name: doi
+        description: The doi of the Publication
+        from_schema: TeachingSchema
+      wikidataid:
+        name: wikidataid
+        description: The wikidataItem,The wikidataid of the Publication
+        from_schema: TeachingSchema
+      isbn:
+        name: isbn
+        description: The ISBN-13 of the Publication
+        from_schema: TeachingSchema
+      title:
+        name: title
+        description: title of the slide,The title of the Publication
+        from_schema: TeachingSchema
+      authors:
+        name: authors
+        description: authors of the Publication
+        from_schema: TeachingSchema
+      publisher:
+        name: publisher
+        description: publisher of the Publication
+        from_schema: TeachingSchema
+      year:
+        name: year
+        description: year of the Publication
+        from_schema: TeachingSchema
+      pdfUrl:
+        name: pdfUrl
+        description: the url for the pdf of this Publication
+        from_schema: TeachingSchema
+  Sheet:
+    name: Sheet
+    description: I am a relevance level
+    from_schema: TeachingSchema
+    attributes:
+      gid:
+        name: gid
+        description: the gid of this Sheet
+        from_schema: TeachingSchema
+      concept:
+        name: concept
+        description: the concept of the items being checked by this check,the concept
+          this Sheet hold data for
+        from_schema: TeachingSchema
+      url:
+        name: url
+        description: the base url for the sheet
+        from_schema: TeachingSchema
+

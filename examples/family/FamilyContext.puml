@@ -1,4 +1,3 @@
-@startuml
 package FamilyContext {
 Note top of Family
 In most societies, the family is the principal institution for the socialization of children.
@@ -117,4 +116,4 @@ skinparam object {
 }
 hide Circle
 ' end of skinparams '
-@enduml
+

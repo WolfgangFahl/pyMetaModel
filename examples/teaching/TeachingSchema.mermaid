@@ -1,0 +1,98 @@
+```mermaid
+erDiagram
+Chapter {
+    string key  
+    string no  
+    string pres_id  
+    string week  
+    string de  
+    string en  
+}
+Presentation {
+    string key  
+    string num  
+    string name  
+    string ppt_file  
+    string sciebo  
+    string gitlab  
+    string moodle  
+}
+LearningGoal {
+    string key  
+    string qKey  
+    string id  
+    string chapter  
+    string chapterKey  
+    string subChapter  
+    string subChapterKey  
+    string relevance  
+    string keywords  
+    string since  
+    string until  
+}
+Keyword {
+    string key  
+    string aliases  
+    string de  
+    string en  
+    string wikidataid  
+    string links  
+    string literature  
+    string urls  
+    string stackoverflow_tag  
+}
+Slide {
+    string qkey  
+    string pkey  
+    string basename  
+    string page  
+    string name  
+    string title  
+    string keywords  
+    string links  
+    string literature  
+    string learningGoal  
+}
+Check {
+    string qKey  
+    string key  
+    string concept  
+    string since  
+    string check  
+    string problem  
+    string ok  
+    string total  
+    string pain  
+}
+Issue {
+    string item  
+    string check  
+    string fix  
+}
+RelevanceLevel {
+    string id  
+    string expectation  
+    string examination  
+    string description  
+}
+Publication {
+    string id  
+    string doi  
+    string wikidataid  
+    string isbn  
+    string title  
+    string authors  
+    string publisher  
+    string year  
+    string pdfUrl  
+}
+Sheet {
+    string gid  
+    string concept  
+    string url  
+}
+
+
+
+```
+

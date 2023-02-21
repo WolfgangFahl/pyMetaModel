@@ -1,0 +1,1158 @@
+#
+# Context:TeachingSchema
+#
+TeachingSchema isA Context
+"TeachingSchema" is name of it
+"http://test.bitplan.com" is master of it
+"2023-01-16" is since of it
+#
+# Chapter
+#
+Chapter isA Topic
+"Chapter" is name of it
+"Chapters" is pluralName of it
+"a chapter of a lecture" is documentation of it
+"a chapter of a lecture" is wikiDocumentation of it
+"File:ChapterLogo-64px.png" is icon of it
+"/images/7/76/ChapterLogo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"TeachingSchema" is context of it
+Chapter_key addsTo it
+Chapter_no addsTo it
+Chapter_id addsTo it
+Chapter_week addsTo it
+Chapter_de addsTo it
+Chapter_en addsTo it
+# properties of Chapter
+# property key
+Chapter_key isA Property
+"key" is name of it
+"key" is label of it
+"text" is type of it
+1 is index of it
+false is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The key of the presentation for this Chapter " is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+Chapter_no isA Property
+"no" is name of it
+"no" is label of it
+"number" is type of it
+2 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+5 is size of it
+false is uploadable of it
+"The number of the Chapter " is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+Chapter_pres_id isA Property
+"pres_id" is name of it
+"pres_id" is label of it
+"number" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+5 is size of it
+false is uploadable of it
+"The numeric id of the presentation for the Chapter " is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+Chapter_week isA Property
+"week" is name of it
+"week" is label of it
+"number" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+5 is size of it
+false is uploadable of it
+"The relative week of the Chapter " is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+# property de
+Chapter_de isA Property
+"de" is name of it
+"de" is label of it
+"text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"Das Thema des Kapitels in deutsch" is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+# property de
+Chapter_en isA Property
+"en" is name of it
+"en" is label of it
+"text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"The topic of the chapter in english" is documentation of it
+false is isLink of it
+"Chapter" is topic of it
+#
+# Presentation
+#
+Presentation isA Topic
+"Presentation" is name of it
+"Presentations" is pluralName of it
+"a presentation of a lecture" is documentation of it
+"a presentation of a lecture" is wikiDocumentation of it
+"File:PresentationLogo-64px.png" is icon of it
+"/images/d/da/PresentationLogo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"TeachingSchema" is context of it
+Presentation_key addsTo it
+Presentation_num addsTo it
+Presentation_ppt_file addsTo it
+Presentation_sciebo addsTo it
+Presentation_gitlab addsTo it
+Presentation_moodle addsTo it
+# properties of Presentation
+# property key
+Presentation_key isA Property
+"key" is name of it
+"key" is label of it
+"External identifier" is type of it
+"https://dbis.rwth-aachen.de/dbis-vl/$1" is formatterURI of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The key of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+# property num
+Presentation_num isA Property
+"num" is name of it
+"num" is label of it
+"number" is type of it
+2 is index of it
+1 is sortPos of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The number of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+Presentation_name isA Property
+"name" is name of it
+"name" is label of it
+"text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"The name of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+Presentation_ppt_file isA Property
+"ppt_file" is name of it
+"ppt_file" is label of it
+"text" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"The powert point file name of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+# property sciebo
+Presentation_sciebo isA Property
+"sciebo" is name of it
+"sciebo" is label of it
+"External identifier" is type of it
+"https://rwth-aachen.sciebo.de/apps/onlyoffice/$1" is formatterURI of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"The sciebo link suffix of this Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+# property gitlab
+Presentation_gitlab isA Property
+"gitlab" is name of it
+"gitlab" is label of it
+"External identifier" is type of it
+"https://git.rwth-aachen.de/i5/teaching/dbis-vl/-/raw/main/$1" is formatterURI of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"The gitlab url of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+Presentation_moodle isA Property
+"moodle" is name of it
+"moodle" is label of it
+"External identifier" is type of it
+"https://moodle.rwth-aachen.de/mod/pdfannotator/view.php?id=$1" is formatterURI of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+80 is size of it
+false is uploadable of it
+"The moodle pdf annotator page id of the Presentation" is documentation of it
+false is isLink of it
+"Presentation" is topic of it
+#
+# LearningGoal
+#
+LearningGoal isA Topic
+"LearningGoal" is name of it
+"LearningGoals" is pluralName of it
+"a LearningGoal of a lecture" is documentation of it
+"a LearningGoal of a lecture" is wikiDocumentation of it
+"File:LearningGoalLogo-64px.png" is icon of it
+"/images/3/3b/LearningGoalLogo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"TeachingSchema" is context of it
+LearningGoal_key addsTo it
+LearningGoal_id addsTo it
+LearningGoal_chapter addsTo it
+LearningGoal_chapterKey addsTo it
+LearningGoal_subChapter addsTo it
+LearningGoal_id addsTo it
+LearningGoal_level addsTo it
+LearningGoal_qKey addsTo it
+LearningGoal_learningGoal addsTo it
+LearningGoal_relevance addsTo it
+LearningGoal_expectedKnowledge addsTo it
+LearningGoal_keywords addsTo it
+LearningGoal_since addsTo it
+LearningGoal_until addsTo it
+# properties of LearningGoal
+# property key
+LearningGoal_key isA Property
+"key" is name of it
+"key" is label of it
+"text" is type of it
+1 is index of it
+false is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The local key of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property qKey
+LearningGoal_qKey isA Property
+"qKey" is name of it
+"qKey" is label of it
+"text" is type of it
+2 is index of it
+true is primaryKey of it
+true is mandatory of it
+70 is size of it
+false is uploadable of it
+"The fully qualifing key of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# propert id
+LearningGoal_id isA Property
+"id" is name of it
+"id" is label of it
+"text" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The hierachical id of the LearningGoal e.g. 1.1.1" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+LearningGoal_qKey isA Property
+"qKey" is name of it
+"qKey" is label of it
+"text" is type of it
+# property chapter
+LearningGoal_chapter isA Property
+"chapter" is name of it
+"chapter" is label of it
+"number" is type of it
+4 is index of it
+1 is sortPos of it
+false is primaryKey of it
+false is mandatory of it
+4 is size of it
+false is uploadable of it
+"The chapter of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property chapterKey
+LearningGoal_chapterKey isA Property
+"chapterKey" is name of it
+"chapterKey" is label of it
+"text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+60 is size of it
+false is uploadable of it
+"The key of the chapter of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property subChapter
+LearningGoal_subChapter isA Property
+"subChapter" is name of it
+"subChapter" is label of it
+"number" is type of it
+6 is index of it
+2 is sortPos of it
+false is primaryKey of it
+false is mandatory of it
+60 is size of it
+false is uploadable of it
+"The subChapter of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property subChapterKey
+LearningGoal_subChapterKey isA Property
+"subChapterKey" is name of it
+"subChapterKey" is label of it
+"text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+60 is size of it
+false is uploadable of it
+"The key of the subChapter of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property relevance
+LearningGoal_relevance isA Property
+"relevance" is name of it
+"relevanc" is label of it
+"text" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+60 is size of it
+false is uploadable of it
+"The relevance of the LearningGoal" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# property keywords
+LearningGoal_keywords isA Property
+"keywords" is name of it
+"keywords" is label of it
+"Text" is type of it
+9 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"keywords the learningGoal references" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"LearningGoal" is topic of it
+# Property since
+LearningGoal_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+"datepicker" is inputType of it
+10 is index of it
+"The year since when this learningGoal is active" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+# Property until
+LearningGoal_until isA Property
+"until" is name of it
+"until" is label of it
+"Date" is type of it
+"datepicker" is inputType of it
+11 is index of it
+"The year until this learningGoal was active" is documentation of it
+false is isLink of it
+"LearningGoal" is topic of it
+#
+# Keyword
+#
+Keyword isA Topic
+"Keyword" is name of it
+"Keywords" is pluralName of it
+"a keyword" is documentation of it
+"a keyword" is wikiDocumentation of it
+"File:KeywordIcon-64px.png" is icon of it
+"/images/8/87/KeywordIcon-64px.png" is iconUrl of it
+1000 is listLimit of it
+"property" is defaultstoremode of it
+"TeachingSchema" is context of it
+Keyword_key addsTo it
+Keyword_aliases addsTo it
+Keyword_de addsTo it
+Keyword_en addsTo it
+Keyword_wikidataid addsTo it
+Keyword_links addsTo it
+Keyword_literature addsTo it
+Keyword_urls addsTo it
+Keyword_stackoverflow_tag addsTo it
+# properties of Keyword
+# property key
+Keyword_key isA Property
+"key" is name of it
+"key" is label of it
+"text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property key
+Keyword_aliases isA Property
+"aliases" is name of it
+"aliases" is label of it
+"text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"optional, comma separated aliases of the keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property de
+Keyword_de isA Property
+"de" is name of it
+"de" is label of it
+"External identifier" is type of it
+"https://de.wikipedia.org/wiki/$1" is formatterURI of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"german wikipedia article of the keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property en
+Keyword_en isA Property
+"en" is name of it
+"en" is label of it
+"External identifier" is type of it
+"https://en.wikipedia.org/wiki/$1" is formatterURI of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"english wikipedia article of the keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property wikidataid
+Keyword_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+4 is index of it
+true is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The wikidataItem" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property links
+Keyword_links isA Property
+"links" is name of it
+"links" is label of it
+"text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+200 is size of it
+"textarea" is inputType of it
+false is uploadable of it
+"comma separated list of links to other keywords" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property literature
+Keyword_literature isA Property
+"literature" is name of it
+"literature" is label of it
+"text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+200 is size of it
+"textarea" is inputType of it
+false is uploadable of it
+"comma separated list of publication keys" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property urls
+Keyword_urls isA Property
+"urls" is name of it
+"urls" is label of it
+"text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+200 is size of it
+"textarea" is inputType of it
+false is uploadable of it
+"comma separated list of external links that explain the keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+# property wikidataid
+Keyword_stackoverflow_tag isA Property
+"stackoverflow_tag" is name of it
+"stackoverflow_tag" is label of it
+"External identifier" is type of it
+"https://stackoverflow.com/tags/$1/info" is formatterURI of it
+8 is index of it
+true is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"stackoverflow tag for this keyword" is documentation of it
+false is isLink of it
+"Keyword" is topic of it
+#
+#Slide
+#
+Slide isA Topic
+"Slide" is name of it
+"Slides" is pluralName of it
+"I am a presentation slide" is documentation of it
+"I am presentation slide which consists of a single Wiki Page" is wikiDocumentation of it
+"File:SlideIcon-64px.png" is icon of it
+"/images/f/fb/SlideIcon-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+1000 is listLimit of it
+"TeachingSchema" is context of it
+Slide_qkey addsTo it
+Slide_pkey addsTo it
+Slide_basename addsTo it
+Slide_name addsTo it
+Slide_title addsTo it
+Slide_keywords addsTo it
+Slide_literature addsTo it
+Slide_links addsTo it
+Slide_learningGoal addsTo it
+# properties of Slide
+# property qkey
+Slide_qkey isA Property
+"qkey" is name of it
+"qkey" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"fully qualifying key of the slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property pkey
+Slide_pkey isA Property
+"pkey" is name of it
+"pkey" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"key of the presentation of this slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property basename
+Slide_basename isA Property
+"basename" is name of it
+"basename" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"basename of the ppt presentation of this slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property page
+Slide_page isA Property
+"page" is name of it
+"page" is label of it
+"number" is type of it
+4 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"page number of the slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property name
+Slide_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"name of the slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property title
+Slide_title isA Property
+"title" is name of it
+"title" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"title of the slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property keywords
+Slide_keywords isA Property
+"keywords" is name of it
+"keywords" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"keywords the slide references" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property links
+Slide_links isA Property
+"links" is name of it
+"links" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"names of slide referenced by this slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property literatur
+Slide_literature isA Property
+"literature" is name of it
+"literature" is label of it
+"Text" is type of it
+8 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"dois or wikidataids of literature referenced by this slide" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+# property learningGoal
+Slide_learningGoal isA Property
+"learningGoal" is name of it
+"learningGoal" is label of it
+"Page" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"learningGoal this slide links to" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Slide" is topic of it
+#
+# Check
+#
+Check isA Topic
+"Check" is name of it
+"Checks" is pluralName of it
+"I am a quality check" is documentation of it
+"I am a quality check" is wikiDocumentation of it
+"File:CheckIcon-64px.png" is icon of it
+"/images/3/39/CheckIcon-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+"TeachingSchema" is context of it
+# Properties
+Check_qKey addsTo it
+Check_key addsTo it
+Check_concept addsTo it
+Check_since addsTo it
+Check_check addsTo it
+Check_problem addsTo it
+Check_ok addsTo it
+Check_total addsTo it
+Check_pain addsTo it
+#
+# Properties of Check
+#
+# Property key
+Check_qKey isA Property
+"qKey" is name of it
+"qKey" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the full qualifying (primary) key of this check" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# Property key
+Check_key isA Property
+"key" is name of it
+"key" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the local key of this check" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# Property key
+Check_concept isA Property
+"concept" is name of it
+"concept" is label of it
+"Page" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the concept of the items being checked by this check" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# Property since
+Check_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+"datepicker" is inputType of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"the date this check was activated" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# Property check
+Check_check isA Property
+"check" is name of it
+"check" is label of it
+"Text" is type of it
+"textarea" is inputType of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"the description of what is checked by this Check" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# property problem
+Check_problem isA Property
+"problem" is name of it
+"problem" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"problem of this item" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# property ok
+Check_ok isA Property
+"ok" is name of it
+"ok" is label of it
+"Number" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"number of items that pass the check/are ok" is documentation of it
+"number of items that pass the check/are ok" is wikiDocumentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# property total
+Check_total isA Property
+"total" is name of it
+"total" is label of it
+"Number" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"number of items that are checked in total" is documentation of it
+"number of items that are checked in total" is wikiDocumentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+# property pain
+Check_pain isA Property
+"pain" is name of it
+"pain" is label of it
+"Number" is type of it
+9 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"pain of this item" is documentation of it
+"see [https://wiki.bitplan.com/index.php/Pain_Scale Pain Scale]" is wikiDocumentation of it
+true is showInGrid of it
+false is isLink of it
+"Check" is topic of it
+#
+# Issue
+#
+Issue isA Topic
+"Issue" is name of it
+"Issues" is pluralName of it
+"I am a an issue" is documentation of it
+"I am an issue of a item" is wikiDocumentation of it
+"File:IssueIcon-64px.png" is icon of it
+"/images/b/be/IssueIcon-64px.png" is iconUrl of it
+"subobject" is defaultstoremode of it
+false is cargo of it
+"TeachingSchema" is context of it
+Issue_item addsTo it
+Issue_check addsTo it
+Issue_fix addsTo it
+# properties of Issue
+# property item
+Issue_item isA Property
+"item" is name of it
+"item" is label of it
+"Page" is type of it
+1 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the item this issue references" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Issue" is topic of it
+# property check
+Issue_check isA Property
+"check" is name of it
+"check" is label of it
+"Page" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the check this issue references" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Issue" is topic of it
+# property check
+Issue_fix isA Property
+"fix" is name of it
+"fix" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"a potential fix for the issue" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Issue" is topic of it
+#
+# RelevanceLevel
+#
+RelevanceLevel isA Topic
+"RelevanceLevel" is name of it
+"RelevanceLevels" is pluralName of it
+"I am a relevance level" is documentation of it
+"I am a relevance level" is wikiDocumentation of it
+"File:RelevanceLevelIcon-64px.png" is icon of it
+"/images/1/1b/RelevanceLevelIcon-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+"TeachingSchema" is context of it
+# Properties
+RelevanceLevel_id addsTo it
+RelevanceLevel_expectation addsTo it
+RelevanceLevel_examination addsTo it
+RelevanceLevel_description addsTo it
+#
+# Properties of RelevanceLevel
+#
+# Property id
+RelevanceLevel_id isA Property
+"id" is name of it
+"id" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the id of this RelevanceLevel" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"RelevanceLevel" is topic of it
+# Property expectation
+RelevanceLevel_expectation isA Property
+"expectation" is name of it
+"expectation" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the expectation for this RelevanceLevel" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"RelevanceLevel" is topic of it
+# Property examination
+RelevanceLevel_examination isA Property
+"examination" is name of it
+"examination" is label of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"how items for this RelevanceLevel are covered during examination" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"RelevanceLevel" is topic of it
+# Property description
+RelevanceLevel_description isA Property
+"description" is name of it
+"description" is label of it
+"Text" is type of it
+4 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the description of this RelevanceLevel" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"RelevanceLevel" is topic of it
+#
+# Publication
+#
+Publication isA Topic
+"Publication" is name of it
+"Publications" is pluralName of it
+"A Publication is e.g. a scholarly article" is documentation of it
+"A Publication is e.g. a scholarly article" is wikiDocumentation of it
+"File:PublicationIcon-64px.png" is icon of it
+"/images/5/5d/PublicationIcon-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"TeachingSchema" is context of it
+Publication_id addsTo it
+Publication_doi addsTo it
+Publication_wikidataid addsTo it
+Publication_isbn addsTo it
+Publication_title addsTo it
+Publication_authors addsTo it
+Publication_publisher addsTo it
+Publication_year addsTo it
+Publication_pdfUrl addsTo it
+# properties of Publication
+# property id
+Publication_id isA Property
+"id" is name of it
+"id" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The id (e.g. bibtex key) of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property doi
+Publication_doi isA Property
+"doi" is name of it
+"doi" is label of it
+"External identifier" is type of it
+"https://doi.org/$1" is formatterURI of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The doi of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property wikidataid
+Publication_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+3 is index of it
+50 is size of it
+false is uploadable of it
+"The wikidataid of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property isbn
+Publication_isbn isA Property
+"isbn" is name of it
+"isbn" is label of it
+"External identifier" is type of it
+"https://isbnsearch.org/isbn/$1" is formatterURI of it
+4 is index of it
+50 is size of it
+false is uploadable of it
+"The ISBN-13 of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property title
+Publication_title isA Property
+"title" is name of it
+"title" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+"textarea" is inputType of it
+true is mandatory of it
+5 is index of it
+300 is size of it
+false is uploadable of it
+"The title of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property authors
+Publication_authors isA Property
+"authors" is name of it
+"authors" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+false is mandatory of it
+6 is index of it
+300 is size of it
+false is uploadable of it
+"authors of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property publisher
+Publication_publisher isA Property
+"publisher" is name of it
+"publisher" is label of it
+"Text" is type of it
+false is mandatory of it
+7 is index of it
+80 is size of it
+false is uploadable of it
+"publisher of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property year
+Publication_year isA Property
+"year" is name of it
+"year" is label of it
+"Number" is type of it
+false is mandatory of it
+8 is index of it
+80 is size of it
+false is uploadable of it
+"year of the Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+# property pdfUrl
+Publication_pdfUrl isA Property
+"pdfUrl" is name of it
+"pdf" is label of it
+"URL" is type of it
+false is mandatory of it
+9 is index of it
+false is uploadable of it
+"the url for the pdf of this Publication" is documentation of it
+false is isLink of it
+"Publication" is topic of it
+#
+# Sheet
+#
+Sheet isA Topic
+"Sheet" is name of it
+"Sheets" is pluralName of it
+"I am a relevance level" is documentation of it
+"I am a relevance level" is wikiDocumentation of it
+"File:SheetIcon-64px.png" is icon of it
+"/images/c/c1/SheetIcon64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+"TeachingSchema" is context of it
+# Properties
+Sheet_gid addsTo it
+Sheet_concept addsTo it
+Sheet_url addsTo it
+#
+# Properties of Sheet
+#
+# Property gid
+Sheet_gid isA Property
+"gid" is name of it
+"gid" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the gid of this Sheet" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Sheet" is topic of it
+# Property concept
+Sheet_concept isA Property
+"concept" is name of it
+"concept" is label of it
+"Text" is type of it
+2 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the concept this Sheet hold data for" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Sheet" is topic of it
+# Property url
+Sheet_url isA Property
+"url" is name of it
+"url" is label of it
+"Url" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the base url for the sheet" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Sheet" is topic of it
