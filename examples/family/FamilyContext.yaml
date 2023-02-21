@@ -1,0 +1,197 @@
+name: FamilyContext
+id: FamilyContext
+default_prefix: FamilyContext/
+slots:
+  name:
+    name: name
+    description: the name of the family,The full name of the person
+    from_schema: FamilyContext
+  weddingDate:
+    name: weddingDate
+    description: The date of the wedding
+    from_schema: FamilyContext
+  weddingPlace:
+    name: weddingPlace
+    from_schema: FamilyContext
+  yearMarried:
+    name: yearMarried
+    from_schema: FamilyContext
+  monthMarried:
+    name: monthMarried
+    from_schema: FamilyContext
+  divorced:
+    name: divorced
+    from_schema: FamilyContext
+  husbandOf:
+    name: husbandOf
+    description: the male head of family/ father
+    from_schema: FamilyContext
+  wifeOf:
+    name: wifeOf
+    description: the female head of family / mother
+    from_schema: FamilyContext
+  qid:
+    name: qid
+    description: the id of a Person in WikiData
+    from_schema: FamilyContext
+  royal92id:
+    name: royal92id
+    description: the royal92id of a Person in the GEDCOM standard
+    from_schema: FamilyContext
+  nobleTitle:
+    name: nobleTitle
+    description: The noble title of the person
+    from_schema: FamilyContext
+  picture:
+    name: picture
+    description: The URL of a picture of the person
+    from_schema: FamilyContext
+  sex:
+    name: sex
+    description: the gender of a person - female or male
+    from_schema: FamilyContext
+  born:
+    name: born
+    description: The date the person was born
+    from_schema: FamilyContext
+  yearBorn:
+    name: yearBorn
+    description: The year the person was born
+    from_schema: FamilyContext
+  monthBorn:
+    name: monthBorn
+    description: The month the person was born
+    from_schema: FamilyContext
+  birthPlace:
+    name: birthPlace
+    description: The location where the person was born
+    from_schema: FamilyContext
+  died:
+    name: died
+    description: the date the person died
+    from_schema: FamilyContext
+  diedAt:
+    name: diedAt
+    description: The location where the person died
+    from_schema: FamilyContext
+  yearDied:
+    name: yearDied
+    description: The year the person died
+    from_schema: FamilyContext
+  monthDied:
+    name: monthDied
+    description: The month the person died
+    from_schema: FamilyContext
+  noInLine:
+    name: noInLine
+    description: the number in Line to the Throne of this person
+    from_schema: FamilyContext
+  wikiPedia:
+    name: wikiPedia
+    description: the wikiPedia link of the Person
+    from_schema: FamilyContext
+classes:
+  Family:
+    name: Family
+    description: In most societies, the family is the principal institution for the
+      socialization of children.
+    from_schema: FamilyContext
+    attributes:
+      name:
+        name: name
+        description: the name of the family,The full name of the person
+        from_schema: FamilyContext
+      weddingDate:
+        name: weddingDate
+        description: The date of the wedding
+        from_schema: FamilyContext
+      weddingPlace:
+        name: weddingPlace
+        from_schema: FamilyContext
+      yearMarried:
+        name: yearMarried
+        from_schema: FamilyContext
+      monthMarried:
+        name: monthMarried
+        from_schema: FamilyContext
+      divorced:
+        name: divorced
+        from_schema: FamilyContext
+      husbandOf:
+        name: husbandOf
+        description: the male head of family/ father
+        from_schema: FamilyContext
+      wifeOf:
+        name: wifeOf
+        description: the female head of family / mother
+        from_schema: FamilyContext
+  Person:
+    name: Person
+    description: A Person is a human being
+    from_schema: FamilyContext
+    attributes:
+      qid:
+        name: qid
+        description: the id of a Person in WikiData
+        from_schema: FamilyContext
+      royal92id:
+        name: royal92id
+        description: the royal92id of a Person in the GEDCOM standard
+        from_schema: FamilyContext
+      name:
+        name: name
+        description: the name of the family,The full name of the person
+        from_schema: FamilyContext
+      nobleTitle:
+        name: nobleTitle
+        description: The noble title of the person
+        from_schema: FamilyContext
+      picture:
+        name: picture
+        description: The URL of a picture of the person
+        from_schema: FamilyContext
+      sex:
+        name: sex
+        description: the gender of a person - female or male
+        from_schema: FamilyContext
+      born:
+        name: born
+        description: The date the person was born
+        from_schema: FamilyContext
+      yearBorn:
+        name: yearBorn
+        description: The year the person was born
+        from_schema: FamilyContext
+      monthBorn:
+        name: monthBorn
+        description: The month the person was born
+        from_schema: FamilyContext
+      birthPlace:
+        name: birthPlace
+        description: The location where the person was born
+        from_schema: FamilyContext
+      died:
+        name: died
+        description: the date the person died
+        from_schema: FamilyContext
+      diedAt:
+        name: diedAt
+        description: The location where the person died
+        from_schema: FamilyContext
+      yearDied:
+        name: yearDied
+        description: The year the person died
+        from_schema: FamilyContext
+      monthDied:
+        name: monthDied
+        description: The month the person died
+        from_schema: FamilyContext
+      noInLine:
+        name: noInLine
+        description: the number in Line to the Throne of this person
+        from_schema: FamilyContext
+      wikiPedia:
+        name: wikiPedia
+        description: the wikiPedia link of the Person
+        from_schema: FamilyContext
+

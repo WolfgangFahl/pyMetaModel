@@ -1,0 +1,366 @@
+#
+# Context:FamilyContext
+#
+FamilyContext isA Context
+"FamilyContext" is name of it
+#
+#Family
+#
+Family isA Topic
+"Family" is name of it
+"Families" is pluralName of it
+"In most societies, the family is the principal institution for the socialization of children." is documentation of it
+"see [https://en.wikipedia.org/wiki/Family WikiPedia Article on Family]" is wikiDocumentation of it
+"File:Family-icon48px.png" is icon of it
+"/images/thumb/9/92/10415.svg/48px-10415.svg.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+false is headerTabs of it
+"FamilyContext" is context of it
+Family_name addsTo it
+Family_weddingDate addsTo it
+Family_weddingPlace addsTo it
+Family_yearMarried addsTo it
+Family_monthMarried addsTo it
+Family_divorced addsTo it
+Family_husbandOf addsTo it
+Family_wifeOf addsTo it
+# properties of Family
+# property name
+Family_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+false is primaryKey of it
+"the name of the family" is documentation of it
+true is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"Family" is topic of it
+# property weddingDate
+Family_weddingDate isA Property
+"weddingDate" is name of it
+"weddingDate" is label of it
+"Date" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"The date of the wedding" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Family" is topic of it
+# property weddingPlace
+Family_weddingPlace isA Property
+"weddingPlace" is name of it
+"weddingPlace" is label of it
+"Text" is type of it
+3 is index of it
+false is isLink of it
+"Family" is topic of it
+# property yearMarried
+Family_yearMarried isA Property
+"yearMarried" is name of it
+"yearMarried" is label of it
+"Number" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"Family" is topic of it
+# property monthMarried
+Family_monthMarried isA Property
+"monthMarried" is name of it
+"monthMarried" is label of it
+"Number" is type of it
+5 is index of it
+false is isLink of it
+"Family" is topic of it
+# property divorced
+Family_divorced isA Property
+"divorced" is name of it
+"divorced" is label of it
+"Date" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"Family" is topic of it
+# property husbandOf
+Family_husbandOf isA Property
+"the male head of family/ father" is documentation of it
+"concept=Person" is values_from of it
+"combobox" is inputType of it
+"husbandOf" is name of it
+"husbandOf" is label of it
+"Page" is type of it
+8 is index of it
+false is isLink of it
+"Family" is topic of it
+# property husbandOf
+Family_wifeOf isA Property
+"wifeOf" is name of it
+"wifeOf" is label of it
+"the female head of family / mother" is documentation of it
+"combobox" is inputType of it
+"Page" is type of it
+"concept=Person" is values_from of it
+9 is index of it
+false is isLink of it
+"Family" is topic of it
+#
+#Person
+#
+Person isA Topic
+"Person" is name of it
+"Persons" is pluralName of it
+"A Person is a human being" is documentation of it
+"File:PersonIcon.png" is icon of it
+"/images/6/6a/PersonIcon.png" is iconUrl of it
+"property" is defaultstoremode of it
+false is cargo of it
+false is headerTabs of it
+"FamilyContext" is context of it
+Person_qid addsTo it
+Person_royal92id addsTo it
+Person_name addsTo it
+Person_nobleTitle addsTo it
+Person_picture addsTo it
+Person_sex addsTo it
+Person_born addsTo it
+Person_yearBorn addsTo it
+Person_monthBorn addsTo it
+Person_birthPlace addsTo it
+Person_died addsTo it
+Person_diedAt addsTo it
+Person_yearDied addsTo it
+Person_monthDied addsTo it
+Person_noInLine addsTo it
+Person_wikiPedia addsTo it
+# properties of Person
+# property qid
+Person_qid isA Property
+"qid" is name of it
+"qid" is label of it
+"Text" is type of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"the id of a Person in WikiData" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property royal92id
+Person_royal92id isA Property
+"royal92id" is name of it
+"royal92id" is label of it
+"Text" is type of it
+2 is index of it
+false is uploadable of it
+"the royal92id of a Person in the GEDCOM standard" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property name
+Person_name isA Property
+"name" is name of it
+"name" is label of it
+"The full name of the person" is documentation of it
+"Text" is type of it
+3 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property nobleTitle
+Person_nobleTitle isA Property
+"nobleTitle" is name of it
+"nobleTitle" is label of it
+"Text" is type of it
+"The noble title of the person" is documentation of it
+4 is index of it
+false is isLink of it
+"Person" is topic of it
+# property picture
+Person_picture isA Property
+"picture" is name of it
+"picture" is label of it
+"URL" is type of it
+"The URL of a picture of the person" is documentation of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property sex
+Person_sex isA Property
+"sex" is name of it
+"sex" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"radiobutton" is inputType of it
+"the gender of a person - female or male" is documentation of it
+"female,male" is allowedValues of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property born
+Person_born isA Property
+"born" is name of it
+"born" is label of it
+"Date" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datetime" is inputType of it
+"The date the person was born" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property yearBorn
+Person_yearBorn isA Property
+"yearBorn" is name of it
+"yearBorn" is label of it
+"Number" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The year the person was born" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property monthBorn
+Person_monthBorn isA Property
+"monthBorn" is name of it
+"monthBorn" is label of it
+"Number" is type of it
+"The month the person was born" is documentation of it
+9 is index of it
+false is isLink of it
+"Person" is topic of it
+# property birthPlace
+Person_birthPlace isA Property
+"birthPlace" is name of it
+"birthPlace" is label of it
+"Text" is type of it
+"The location where the person was born" is documentation of it
+10 is index of it
+false is isLink of it
+"Person" is topic of it
+# property died
+Person_died isA Property
+"died" is name of it
+"died" is label of it
+"Date" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"the date the person died" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property diedAt
+Person_diedAt isA Property
+"diedAt" is name of it
+"diedAt" is label of it
+"Text" is type of it
+"The location where the person died" is documentation of it
+12 is index of it
+false is isLink of it
+"Person" is topic of it
+# property yearDied
+Person_yearDied isA Property
+"yearDied" is name of it
+"yearDied" is label of it
+"Number" is type of it
+"The year the person died" is documentation of it
+13 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property monthDied
+Person_monthDied isA Property
+"monthDied" is name of it
+"monthDied" is label of it
+"Number" is type of it
+"The month the person died" is documentation of it
+14 is index of it
+false is isLink of it
+"Person" is topic of it
+# property noInLine
+Person_noInLine isA Property
+"noInLine" is name of it
+"noInLine" is label of it
+"Number" is type of it
+15 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"the number in Line to the Throne of this person" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+# property wikiPedia
+Person_wikiPedia isA Property
+"wikiPedia" is name of it
+"wikiPedia" is label of it
+"URL" is type of it
+16 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"the wikiPedia link of the Person" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Person" is topic of it
+#
+# TopicLinks
+#
+# TopicLink childOf
+Person_childOf_Family isA TopicLink
+"Person-childOf-Family" is name of it
+"childOf" is sourceRole of it
+false is sourceMultiple of it
+"Family" is source of it
+"children" is targetRole of it
+true is targetMultiple of it
+"Person" is target of it
+# TopicLink parentOf
+Person_parentOf_Family isA TopicLink
+"Person-parentOf-Family" is name of it
+"parentOf" is sourceRole of it
+false is sourceMultiple of it
+"Family" is source of it
+"parents" is targetRole of it
+true is targetMultiple of it
+"Person" is target of it
+# TopicLink spouseOf
+Person_spouseOf_Person isA TopicLink
+"Person-spouseOf-Person" is name of it
+"spouse" is sourceRole of it
+false is sourceMultiple of it
+"Person" is source of it
+"spouses" is targetRole of it
+true is targetMultiple of it
+"Person" is target of it

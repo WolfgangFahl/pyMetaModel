@@ -16,9 +16,16 @@ class SiDIF2LinkML:
     def __init__(self,context:Context):
         self.context=context
         
-    def asYaml(self)->str:
+    def asYaml(self,common_property_slots:bool=True)->str:
         """
         convert my context
+        
+        Args:
+            common_property_slots(bool): if True reuse slots 
+            
+        Returns:
+            str: the yaml markup
+        
         """
         # https://linkml.io/linkml-model/docs/SchemaDefinition/
         sd=SchemaDefinition(id=self.context.name,name=self.context.name)
@@ -28,12 +35,15 @@ class SiDIF2LinkML:
             cd.description=topic.documentation
             sv.add_class(cd)
             for prop in topic.properties.values():
-                qname=f"{topic.name}.{prop.name}"
-                slot=SlotDefinition(name=qname)
-                if hasattr(prop,"documentation"):
-                    slot.description=prop.documentation
-                sv.add_slot(slot)
-                cd.slots.append(slot)
+                if prop.name in sd.slots:
+                    slot=sd.slots[prop.name]
+                    slot.description+=","+prop.documentation
+                else:
+                    slot=SlotDefinition(name=prop.name)
+                    if hasattr(prop,"documentation"):
+                        slot.description=prop.documentation         
+                    sv.add_slot(slot)
+                cd.attributes[prop.name]=slot
                 pass
             
             pass

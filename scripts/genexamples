@@ -6,7 +6,7 @@ do
   root=$(dirname $f)
   base=$(basename $f .sidif)
   base_path=$root/$base
-  echo "generatin linkML for $base_path"
+  echo "generating linkML for $base_path"
   mm_cmd -i $f -l > $base_path.yaml
   gen-erdiagram $base_path.yaml
 done
