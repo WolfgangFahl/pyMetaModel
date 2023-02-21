@@ -1,3 +1,4 @@
+@startuml
 package MetaModel {
 Note top of Context
 A Context groups some topics like a Namespace/Package
@@ -173,4 +174,4 @@ skinparam object {
 }
 hide Circle
 ' end of skinparams '
-
+@enduml
