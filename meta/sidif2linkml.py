@@ -62,7 +62,19 @@ class SiDIF2LinkML:
                     slot=SlotDefinition(name=qname)
                     if hasattr(prop,"documentation"):
                         slot.description=prop.documentation  
-                    slot.range="string"       
+                    typesMap={
+                        "Boolean": "boolean",
+                        "Code": "string", # @TODO will need special type
+                        "Date": "date",
+                        "Text": "string",
+                        "URL": "uri",
+                        "Page": "string", # @TODO will need own type
+                        "Number": "double", # @TODO will need special type handling
+                    }
+                    if prop.type in typesMap:
+                        slot.range=typesMap[prop.type]
+                    else:
+                        slot.range="string"       
                     sv.add_slot(slot)
                 cd.attributes[qname]=slot
                 pass
