@@ -1103,8 +1103,8 @@ false is isLink of it
 Sheet isA Topic
 "Sheet" is name of it
 "Sheets" is pluralName of it
-"I am a relevance level" is documentation of it
-"I am a relevance level" is wikiDocumentation of it
+"I am a sheet in a spreadsheet" is documentation of it
+"I am a sheet in a spreadsheet" is wikiDocumentation of it
 "File:SheetIcon-64px.png" is icon of it
 "/images/c/c1/SheetIcon64px.png" is iconUrl of it
 "property" is defaultstoremode of it

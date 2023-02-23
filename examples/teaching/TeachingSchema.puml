@@ -113,7 +113,7 @@ End note
     pdfUrl:URL
   }
 Note top of Sheet
-I am a relevance level
+I am a sheet in a spreadsheet
 End note
   class Sheet {
     gid:Text

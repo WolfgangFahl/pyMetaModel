@@ -1,5 +1,5 @@
 # Auto generated from TeachingSchema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-23T20:08:11
+# Generation date: 2023-02-23T20:29:00
 # Schema: TeachingSchema
 #
 # id: TeachingSchema
@@ -600,7 +600,7 @@ class Publication(YAMLRoot):
 @dataclass
 class Sheet(YAMLRoot):
     """
-    I am a relevance level
+    I am a sheet in a spreadsheet
     """
     _inherited_slots: ClassVar[List[str]] = []
 

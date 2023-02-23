@@ -855,7 +855,7 @@ classes:
         range: string
   Sheet:
     name: Sheet
-    description: I am a relevance level
+    description: I am a sheet in a spreadsheet
     from_schema: TeachingSchema
     attributes:
       gid:
