@@ -8,6 +8,8 @@ from linkml_runtime.utils.schemaview import SchemaView
 from linkml_runtime.linkml_model import SchemaDefinition, ClassDefinition, SlotDefinition
 from linkml.generators.linkmlgen import LinkmlGenerator
 from linkml_runtime.linkml_model import Prefix
+from linkml.utils.schema_builder import SchemaBuilder
+
 
 class SiDIF2LinkML:
     """
@@ -28,11 +30,11 @@ class SiDIF2LinkML:
             str: the yaml markup
         
         """
-        # https://linkml.io/linkml-model/docs/SchemaDefinition/
         context=self.context
-        sd=SchemaDefinition(id=context.name,name=context.name)
-        sd.default_range="string"
-        sd.default_prefix=context.name
+        sb=SchemaBuilder(id=context.name,name=context.name)
+        # https://linkml.io/linkml-model/docs/SchemaDefinition/
+        sb.add_defaults()
+        sd=sb.schema
         sv=SchemaView(sd)
         if hasattr(context,"copyright"):
             copyright_str=f" copyright {context.copyright}"
@@ -43,17 +45,6 @@ class SiDIF2LinkML:
         else:
             master="http://example.com"
         uri=f"{master}/{context.name}"
-        # Create a Prefix instance
-        prefix = Prefix(
-            #name=context.name,
-            prefix_prefix=context.name,
-            prefix_reference=uri,
-            #default_curi=True,
-            #description=f"{context.name}{copyright_str}"
-        )
-
-        # Add the Prefix instance to the SchemaDefinition
-        sd.prefixes[context.name] = prefix
         for topic in self.context.topics.values():
             cd=ClassDefinition(name=topic.name)
             cd.description=topic.documentation
