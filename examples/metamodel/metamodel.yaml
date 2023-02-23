@@ -1,43 +1,56 @@
 name: MetaModel
 id: MetaModel
-default_prefix: MetaModel/
+prefixes:
+  MetaModel:
+    prefix_prefix: MetaModel
+    prefix_reference: http://master.bitplan.com/MetaModel
+default_prefix: MetaModel
+default_range: string
 slots:
   name:
     name: name
     description: Name of the context,The name of the property,The name of the topic,The
       name of the Action,The name of the topic link
     from_schema: MetaModel
+    range: string
   since:
     name: since
     description: since when is this context available?,since when is this action available?
     from_schema: MetaModel
+    range: string
   updated:
     name: updated
     description: most recent update of the context
     from_schema: MetaModel
+    range: string
   copyright:
     name: copyright
     description: copyright of the context
     from_schema: MetaModel
+    range: string
   master:
     name: master
     description: what is the original master source of this context
     from_schema: MetaModel
+    range: string
   label:
     name: label
     description: The label to be shown when in a form
     from_schema: MetaModel
+    range: string
   type:
     name: type
     description: The type of a Property,The Semantic MediaWiki type  without the prefix
       e.g. Text, Number, Boolean
     from_schema: MetaModel
+    range: string
   index:
     name: index
     description: A positive number that specifies at which position of a Topic the
       given property should show. The first property to show has the index 1 each
       following property has an index that is +1 of the previous.
     from_schema: MetaModel
+    range: string
   sortPos:
     name: sortPos
     description: "If none empty >0 this is the position in the sort clause of this\
@@ -45,10 +58,12 @@ slots:
       \ sort order\nand it is used for selecting topics .\n\nE.g.\nSortpos 1 for attribute\
       \ lastname and sortpos 2 for attribute firstname leads to  sort by lastname,firstname"
     from_schema: MetaModel
+    range: string
   primaryKey:
     name: primaryKey
     description: is this property a primary key of it's topic?
     from_schema: MetaModel
+    range: string
   mandatory:
     name: mandatory
     description: 'Specifies that this field must be filled in by the user. Note: mandatory
@@ -58,14 +73,17 @@ slots:
 
       see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
     from_schema: MetaModel
+    range: string
   namespace:
     name: namespace
     description: namespace prefix
     from_schema: MetaModel
+    range: string
   size:
     name: size
     description: the display size of the field for the property
     from_schema: MetaModel
+    range: string
   uploadable:
     name: uploadable
     description: 'Specifies that a link should be placed next to this field, that
@@ -79,6 +97,7 @@ slots:
 
       The type of the target property needs to be Page for this to work'
     from_schema: MetaModel
+    range: string
   defaultValue:
     name: defaultValue
     description: 'default value - Specifies a default value for this field. For date-related
@@ -94,6 +113,7 @@ slots:
       see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
       (default)'
     from_schema: MetaModel
+    range: string
   inputType:
     name: inputType
     description: 'see
@@ -111,6 +131,7 @@ slots:
 
       * http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs'
     from_schema: MetaModel
+    range: string
   allowedValues:
     name: allowedValues
     description: 'There are two ways to specified allowed Values:
@@ -129,12 +150,14 @@ slots:
       If you specify any values method number 2 will be used here which might override
       any allowed Values specified with method number 1.'
     from_schema: MetaModel
+    range: string
   documentation:
     name: documentation
     description: The documentation for a property,The documentation of this Semantic
       Media Wiki type,The plaintext documentation of a Topic. Please do not use markup
       for this.
     from_schema: MetaModel
+    range: string
   values_from:
     name: values_from
     description: 'Specifies where to get the possible values to be displayed in a
@@ -168,142 +191,176 @@ slots:
       APIs, regular wiki pages, files on the local server, databases and LDAP directories.
       See Autocompletion using External Data.'
     from_schema: MetaModel
+    range: string
   externalFormatterURI:
     name: externalFormatterURI
     description: see https://www.semantic-mediawiki.org/wiki/Help:Special_property_External_formatter_URI<br>When
       using this property the type of the property should be set to https://www.semantic-mediawiki.org/wiki/Help:Type_External_identifier
       automatically by the generator
     from_schema: MetaModel
+    range: string
   showInGrid:
     name: showInGrid
     description: "I am true if this property is displayed in the default list of properties\
       \ for my topic as \na column"
     from_schema: MetaModel
+    range: string
   isLink:
     name: isLink
     description: true if this Property is derived form a Link. It will not be exported
       to SiDIF separately and automatically be added by the Property Generator
     from_schema: MetaModel
+    range: string
   nullable:
     name: nullable
     description: should nullvalues be allowed and value set to NULL when empty?
     from_schema: MetaModel
+    range: string
   id:
     name: id
     description: SMW internal id of the type
     from_schema: MetaModel
+    range: string
   helppage:
     name: helppage
     description: The url of the 'official' documentation page of this type
     from_schema: MetaModel
+    range: string
   typepage:
     name: typepage
     description: The Semantic Media Wiki Special page for this specific type e.g.
       Special:Types/Text, Special:Types/Boolean, Special:Types/Date, Special:Types/Number,
       Special:Types/Page
     from_schema: MetaModel
+    range: string
   javaType:
     name: javaType
     description: Java mapping of this type
     from_schema: MetaModel
+    range: string
   pluralName:
     name: pluralName
     description: The plural of a topic name. E.g. for the topic 'City' the pluralName
       is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for the
       topic 'Book' the default pluralName is 'Books'
     from_schema: MetaModel
+    range: string
   icon:
     name: icon
     description: an Icon for the topic
     from_schema: MetaModel
+    range: string
   iconUrl:
     name: iconUrl
     description: the url of an icon
     from_schema: MetaModel
+    range: string
   wikiDocumentation:
     name: wikiDocumentation
     description: Documentation of the Topic using MediaWiki / Semantic Mediawiki markup
     from_schema: MetaModel
+    range: string
   defaultstoremode:
     name: defaultstoremode
     description: The default storemode of the topic
     from_schema: MetaModel
+    range: string
   listLimit:
     name: listLimit
     description: 'What is the default #ask list limit for this Topic?'
     from_schema: MetaModel
+    range: string
   cargo:
     name: cargo
     description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
       Cargo Extension?]
     from_schema: MetaModel
+    range: string
   headerTabs:
     name: headerTabs
     description: shall the forms be generated with header tabs?
     from_schema: MetaModel
+    range: string
   servicetype:
     name: servicetype
     description: The type of the service
     from_schema: MetaModel
+    range: string
   service:
     name: service
     description: The service to be used
     from_schema: MetaModel
+    range: string
   inputtype:
     name: inputtype
     description: What is the type of the input?
     from_schema: MetaModel
+    range: string
   input:
     name: input
     description: the decription of the input e.g. a page name, url or SMW ask query
     from_schema: MetaModel
+    range: string
   actionpage:
     name: actionpage
     description: What page will 'steer' this action?
     from_schema: MetaModel
+    range: string
   output:
     name: output
     description: where the output of the action should go
     from_schema: MetaModel
+    range: string
   engine:
     name: engine
     description: the template engine to be used either [[Rythm]] or [[Freemarker]]
     from_schema: MetaModel
+    range: string
   author:
     name: author
     description: the author of this action
     from_schema: MetaModel
+    range: string
   comment:
     name: comment
     description: a comment for the action
     from_schema: MetaModel
+    range: string
   source:
     name: source
     description: the source of a topic Link
     from_schema: MetaModel
+    range: string
   sourceRole:
     name: sourceRole
     from_schema: MetaModel
+    range: string
   sourceMultiple:
     name: sourceMultiple
     from_schema: MetaModel
+    range: string
   sourceDocumentation:
     name: sourceDocumentation
     description: Documentation for the source Role
     from_schema: MetaModel
+    range: string
   target:
     name: target
     from_schema: MetaModel
+    range: string
   targetRole:
     name: targetRole
     from_schema: MetaModel
+    range: string
   targetMultiple:
     name: targetMultiple
     from_schema: MetaModel
+    range: string
   targetDocumentation:
     name: targetDocumentation
     description: Documentation for the target Role
     from_schema: MetaModel
+    range: string
   masterDetail:
     name: masterDetail
     description: "should the details be displayed in the same form and template?\n\
@@ -311,6 +368,7 @@ slots:
       \ be selected. \n* for a 1:n link a link to the list of neighbours will be displayed\n\
       if yes\n* for a 1:1 link the details\n* for a 1:n link"
     from_schema: MetaModel
+    range: string
 classes:
   Context:
     name: Context
@@ -322,23 +380,28 @@ classes:
         description: Name of the context,The name of the property,The name of the
           topic,The name of the Action,The name of the topic link
         from_schema: MetaModel
+        range: string
       since:
         name: since
         description: since when is this context available?,since when is this action
           available?
         from_schema: MetaModel
+        range: string
       updated:
         name: updated
         description: most recent update of the context
         from_schema: MetaModel
+        range: string
       copyright:
         name: copyright
         description: copyright of the context
         from_schema: MetaModel
+        range: string
       master:
         name: master
         description: what is the original master source of this context
         from_schema: MetaModel
+        range: string
   Property:
     name: Property
     description: a Property is a Feature/Attribute of a Topic
@@ -349,21 +412,25 @@ classes:
         description: Name of the context,The name of the property,The name of the
           topic,The name of the Action,The name of the topic link
         from_schema: MetaModel
+        range: string
       label:
         name: label
         description: The label to be shown when in a form
         from_schema: MetaModel
+        range: string
       type:
         name: type
         description: The type of a Property,The Semantic MediaWiki type  without the
           prefix e.g. Text, Number, Boolean
         from_schema: MetaModel
+        range: string
       index:
         name: index
         description: A positive number that specifies at which position of a Topic
           the given property should show. The first property to show has the index
           1 each following property has an index that is +1 of the previous.
         from_schema: MetaModel
+        range: string
       sortPos:
         name: sortPos
         description: "If none empty >0 this is the position in the sort clause of\
@@ -372,10 +439,12 @@ classes:
           \ 1 for attribute lastname and sortpos 2 for attribute firstname leads to\
           \  sort by lastname,firstname"
         from_schema: MetaModel
+        range: string
       primaryKey:
         name: primaryKey
         description: is this property a primary key of it's topic?
         from_schema: MetaModel
+        range: string
       mandatory:
         name: mandatory
         description: 'Specifies that this field must be filled in by the user. Note:
@@ -386,14 +455,17 @@ classes:
 
           see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
         from_schema: MetaModel
+        range: string
       namespace:
         name: namespace
         description: namespace prefix
         from_schema: MetaModel
+        range: string
       size:
         name: size
         description: the display size of the field for the property
         from_schema: MetaModel
+        range: string
       uploadable:
         name: uploadable
         description: 'Specifies that a link should be placed next to this field, that
@@ -407,6 +479,7 @@ classes:
 
           The type of the target property needs to be Page for this to work'
         from_schema: MetaModel
+        range: string
       defaultValue:
         name: defaultValue
         description: 'default value - Specifies a default value for this field. For
@@ -422,6 +495,7 @@ classes:
           see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
           (default)'
         from_schema: MetaModel
+        range: string
       inputType:
         name: inputType
         description: 'see
@@ -440,6 +514,7 @@ classes:
 
           * http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs'
         from_schema: MetaModel
+        range: string
       allowedValues:
         name: allowedValues
         description: 'There are two ways to specified allowed Values:
@@ -459,12 +534,14 @@ classes:
           If you specify any values method number 2 will be used here which might
           override any allowed Values specified with method number 1.'
         from_schema: MetaModel
+        range: string
       documentation:
         name: documentation
         description: The documentation for a property,The documentation of this Semantic
           Media Wiki type,The plaintext documentation of a Topic. Please do not use
           markup for this.
         from_schema: MetaModel
+        range: string
       values_from:
         name: values_from
         description: 'Specifies where to get the possible values to be displayed in
@@ -499,27 +576,32 @@ classes:
           including web APIs, regular wiki pages, files on the local server, databases
           and LDAP directories. See Autocompletion using External Data.'
         from_schema: MetaModel
+        range: string
       externalFormatterURI:
         name: externalFormatterURI
         description: see https://www.semantic-mediawiki.org/wiki/Help:Special_property_External_formatter_URI<br>When
           using this property the type of the property should be set to https://www.semantic-mediawiki.org/wiki/Help:Type_External_identifier
           automatically by the generator
         from_schema: MetaModel
+        range: string
       showInGrid:
         name: showInGrid
         description: "I am true if this property is displayed in the default list\
           \ of properties for my topic as \na column"
         from_schema: MetaModel
+        range: string
       isLink:
         name: isLink
         description: true if this Property is derived form a Link. It will not be
           exported to SiDIF separately and automatically be added by the Property
           Generator
         from_schema: MetaModel
+        range: string
       nullable:
         name: nullable
         description: should nullvalues be allowed and value set to NULL when empty?
         from_schema: MetaModel
+        range: string
   SMW_Type:
     name: SMW_Type
     description: an SMW_Type is a data type which determines the possible values for
@@ -532,30 +614,36 @@ classes:
         description: The type of a Property,The Semantic MediaWiki type  without the
           prefix e.g. Text, Number, Boolean
         from_schema: MetaModel
+        range: string
       documentation:
         name: documentation
         description: The documentation for a property,The documentation of this Semantic
           Media Wiki type,The plaintext documentation of a Topic. Please do not use
           markup for this.
         from_schema: MetaModel
+        range: string
       id:
         name: id
         description: SMW internal id of the type
         from_schema: MetaModel
+        range: string
       helppage:
         name: helppage
         description: The url of the 'official' documentation page of this type
         from_schema: MetaModel
+        range: string
       typepage:
         name: typepage
         description: The Semantic Media Wiki Special page for this specific type e.g.
           Special:Types/Text, Special:Types/Boolean, Special:Types/Date, Special:Types/Number,
           Special:Types/Page
         from_schema: MetaModel
+        range: string
       javaType:
         name: javaType
         description: Java mapping of this type
         from_schema: MetaModel
+        range: string
   Topic:
     name: Topic
     description: A Topic is a Concept/Class/Thing/Entity
@@ -566,48 +654,58 @@ classes:
         description: Name of the context,The name of the property,The name of the
           topic,The name of the Action,The name of the topic link
         from_schema: MetaModel
+        range: string
       pluralName:
         name: pluralName
         description: The plural of a topic name. E.g. for the topic 'City' the pluralName
           is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for
           the topic 'Book' the default pluralName is 'Books'
         from_schema: MetaModel
+        range: string
       icon:
         name: icon
         description: an Icon for the topic
         from_schema: MetaModel
+        range: string
       iconUrl:
         name: iconUrl
         description: the url of an icon
         from_schema: MetaModel
+        range: string
       documentation:
         name: documentation
         description: The documentation for a property,The documentation of this Semantic
           Media Wiki type,The plaintext documentation of a Topic. Please do not use
           markup for this.
         from_schema: MetaModel
+        range: string
       wikiDocumentation:
         name: wikiDocumentation
         description: Documentation of the Topic using MediaWiki / Semantic Mediawiki
           markup
         from_schema: MetaModel
+        range: string
       defaultstoremode:
         name: defaultstoremode
         description: The default storemode of the topic
         from_schema: MetaModel
+        range: string
       listLimit:
         name: listLimit
         description: 'What is the default #ask list limit for this Topic?'
         from_schema: MetaModel
+        range: string
       cargo:
         name: cargo
         description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
           Cargo Extension?]
         from_schema: MetaModel
+        range: string
       headerTabs:
         name: headerTabs
         description: shall the forms be generated with header tabs?
         from_schema: MetaModel
+        range: string
   Action:
     name: Action
     description: An action/function/operation to be performed
@@ -618,48 +716,59 @@ classes:
         description: Name of the context,The name of the property,The name of the
           topic,The name of the Action,The name of the topic link
         from_schema: MetaModel
+        range: string
       servicetype:
         name: servicetype
         description: The type of the service
         from_schema: MetaModel
+        range: string
       service:
         name: service
         description: The service to be used
         from_schema: MetaModel
+        range: string
       inputtype:
         name: inputtype
         description: What is the type of the input?
         from_schema: MetaModel
+        range: string
       input:
         name: input
         description: the decription of the input e.g. a page name, url or SMW ask
           query
         from_schema: MetaModel
+        range: string
       actionpage:
         name: actionpage
         description: What page will 'steer' this action?
         from_schema: MetaModel
+        range: string
       output:
         name: output
         description: where the output of the action should go
         from_schema: MetaModel
+        range: string
       engine:
         name: engine
         description: the template engine to be used either [[Rythm]] or [[Freemarker]]
         from_schema: MetaModel
+        range: string
       author:
         name: author
         description: the author of this action
         from_schema: MetaModel
+        range: string
       since:
         name: since
         description: since when is this context available?,since when is this action
           available?
         from_schema: MetaModel
+        range: string
       comment:
         name: comment
         description: a comment for the action
         from_schema: MetaModel
+        range: string
   TopicLink:
     name: TopicLink
     description: A TopicLink links two Concepts
@@ -670,33 +779,42 @@ classes:
         description: Name of the context,The name of the property,The name of the
           topic,The name of the Action,The name of the topic link
         from_schema: MetaModel
+        range: string
       source:
         name: source
         description: the source of a topic Link
         from_schema: MetaModel
+        range: string
       sourceRole:
         name: sourceRole
         from_schema: MetaModel
+        range: string
       sourceMultiple:
         name: sourceMultiple
         from_schema: MetaModel
+        range: string
       sourceDocumentation:
         name: sourceDocumentation
         description: Documentation for the source Role
         from_schema: MetaModel
+        range: string
       target:
         name: target
         from_schema: MetaModel
+        range: string
       targetRole:
         name: targetRole
         from_schema: MetaModel
+        range: string
       targetMultiple:
         name: targetMultiple
         from_schema: MetaModel
+        range: string
       targetDocumentation:
         name: targetDocumentation
         description: Documentation for the target Role
         from_schema: MetaModel
+        range: string
       masterDetail:
         name: masterDetail
         description: "should the details be displayed in the same form and template?\n\
@@ -704,4 +822,5 @@ classes:
           \ can be selected. \n* for a 1:n link a link to the list of neighbours will\
           \ be displayed\nif yes\n* for a 1:1 link the details\n* for a 1:n link"
         from_schema: MetaModel
+        range: string
 

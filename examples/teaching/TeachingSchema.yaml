@@ -1,229 +1,287 @@
 name: TeachingSchema
 id: TeachingSchema
-default_prefix: TeachingSchema/
+prefixes:
+  TeachingSchema:
+    prefix_prefix: TeachingSchema
+    prefix_reference: http://test.bitplan.com/TeachingSchema
+default_prefix: TeachingSchema
+default_range: string
 slots:
   key:
     name: key
     description: The key of the presentation for this Chapter ,The key of the Presentation,The
       local key of the LearningGoal,The keyword,the local key of this check
     from_schema: TeachingSchema
+    range: string
   'no':
     name: 'no'
     description: 'The number of the Chapter '
     from_schema: TeachingSchema
+    range: string
   pres_id:
     name: pres_id
     description: 'The numeric id of the presentation for the Chapter '
     from_schema: TeachingSchema
+    range: string
   week:
     name: week
     description: 'The relative week of the Chapter '
     from_schema: TeachingSchema
+    range: string
   de:
     name: de
     description: Das Thema des Kapitels in deutsch,german wikipedia article of the
       keyword
     from_schema: TeachingSchema
+    range: string
   en:
     name: en
     description: The topic of the chapter in english,english wikipedia article of
       the keyword
     from_schema: TeachingSchema
+    range: string
   num:
     name: num
     description: The number of the Presentation
     from_schema: TeachingSchema
+    range: string
   name:
     name: name
     description: The name of the Presentation,name of the slide
     from_schema: TeachingSchema
+    range: string
   ppt_file:
     name: ppt_file
     description: The powert point file name of the Presentation
     from_schema: TeachingSchema
+    range: string
   sciebo:
     name: sciebo
     description: The sciebo link suffix of this Presentation
     from_schema: TeachingSchema
+    range: string
   gitlab:
     name: gitlab
     description: The gitlab url of the Presentation
     from_schema: TeachingSchema
+    range: string
   moodle:
     name: moodle
     description: The moodle pdf annotator page id of the Presentation
     from_schema: TeachingSchema
+    range: string
   qKey:
     name: qKey
     description: The fully qualifing key of the LearningGoal,the full qualifying (primary)
       key of this check
     from_schema: TeachingSchema
+    range: string
   id:
     name: id
     description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
       RelevanceLevel,The id (e.g. bibtex key) of the Publication
     from_schema: TeachingSchema
+    range: string
   chapter:
     name: chapter
     description: The chapter of the LearningGoal
     from_schema: TeachingSchema
+    range: string
   chapterKey:
     name: chapterKey
     description: The key of the chapter of the LearningGoal
     from_schema: TeachingSchema
+    range: string
   subChapter:
     name: subChapter
     description: The subChapter of the LearningGoal
     from_schema: TeachingSchema
+    range: string
   subChapterKey:
     name: subChapterKey
     description: The key of the subChapter of the LearningGoal
     from_schema: TeachingSchema
+    range: string
   relevance:
     name: relevance
     description: The relevance of the LearningGoal
     from_schema: TeachingSchema
+    range: string
   keywords:
     name: keywords
     description: keywords the learningGoal references,keywords the slide references
     from_schema: TeachingSchema
+    range: string
   since:
     name: since
     description: The year since when this learningGoal is active,the date this check
       was activated
     from_schema: TeachingSchema
+    range: string
   until:
     name: until
     description: The year until this learningGoal was active
     from_schema: TeachingSchema
+    range: string
   aliases:
     name: aliases
     description: optional, comma separated aliases of the keyword
     from_schema: TeachingSchema
+    range: string
   wikidataid:
     name: wikidataid
     description: The wikidataItem,The wikidataid of the Publication
     from_schema: TeachingSchema
+    range: string
   links:
     name: links
     description: comma separated list of links to other keywords,names of slide referenced
       by this slide
     from_schema: TeachingSchema
+    range: string
   literature:
     name: literature
     description: comma separated list of publication keys,dois or wikidataids of literature
       referenced by this slide
     from_schema: TeachingSchema
+    range: string
   urls:
     name: urls
     description: comma separated list of external links that explain the keyword
     from_schema: TeachingSchema
+    range: string
   stackoverflow_tag:
     name: stackoverflow_tag
     description: stackoverflow tag for this keyword
     from_schema: TeachingSchema
+    range: string
   qkey:
     name: qkey
     description: fully qualifying key of the slide
     from_schema: TeachingSchema
+    range: string
   pkey:
     name: pkey
     description: key of the presentation of this slide
     from_schema: TeachingSchema
+    range: string
   basename:
     name: basename
     description: basename of the ppt presentation of this slide
     from_schema: TeachingSchema
+    range: string
   page:
     name: page
     description: page number of the slide
     from_schema: TeachingSchema
+    range: string
   title:
     name: title
     description: title of the slide,The title of the Publication
     from_schema: TeachingSchema
+    range: string
   learningGoal:
     name: learningGoal
     description: learningGoal this slide links to
     from_schema: TeachingSchema
+    range: string
   concept:
     name: concept
     description: the concept of the items being checked by this check,the concept
       this Sheet hold data for
     from_schema: TeachingSchema
+    range: string
   check:
     name: check
     description: the description of what is checked by this Check,the check this issue
       references
     from_schema: TeachingSchema
+    range: string
   problem:
     name: problem
     description: problem of this item
     from_schema: TeachingSchema
+    range: string
   ok:
     name: ok
     description: number of items that pass the check/are ok
     from_schema: TeachingSchema
+    range: string
   total:
     name: total
     description: number of items that are checked in total
     from_schema: TeachingSchema
+    range: string
   pain:
     name: pain
     description: pain of this item
     from_schema: TeachingSchema
+    range: string
   item:
     name: item
     description: the item this issue references
     from_schema: TeachingSchema
+    range: string
   fix:
     name: fix
     description: a potential fix for the issue
     from_schema: TeachingSchema
+    range: string
   expectation:
     name: expectation
     description: the expectation for this RelevanceLevel
     from_schema: TeachingSchema
+    range: string
   examination:
     name: examination
     description: how items for this RelevanceLevel are covered during examination
     from_schema: TeachingSchema
+    range: string
   description:
     name: description
     description: the description of this RelevanceLevel
     from_schema: TeachingSchema
+    range: string
   doi:
     name: doi
     description: The doi of the Publication
     from_schema: TeachingSchema
+    range: string
   isbn:
     name: isbn
     description: The ISBN-13 of the Publication
     from_schema: TeachingSchema
+    range: string
   authors:
     name: authors
     description: authors of the Publication
     from_schema: TeachingSchema
+    range: string
   publisher:
     name: publisher
     description: publisher of the Publication
     from_schema: TeachingSchema
+    range: string
   year:
     name: year
     description: year of the Publication
     from_schema: TeachingSchema
+    range: string
   pdfUrl:
     name: pdfUrl
     description: the url for the pdf of this Publication
     from_schema: TeachingSchema
+    range: string
   gid:
     name: gid
     description: the gid of this Sheet
     from_schema: TeachingSchema
+    range: string
   url:
     name: url
     description: the base url for the sheet
     from_schema: TeachingSchema
+    range: string
 classes:
   Chapter:
     name: Chapter
@@ -236,28 +294,34 @@ classes:
           Presentation,The local key of the LearningGoal,The keyword,the local key
           of this check
         from_schema: TeachingSchema
+        range: string
       'no':
         name: 'no'
         description: 'The number of the Chapter '
         from_schema: TeachingSchema
+        range: string
       pres_id:
         name: pres_id
         description: 'The numeric id of the presentation for the Chapter '
         from_schema: TeachingSchema
+        range: string
       week:
         name: week
         description: 'The relative week of the Chapter '
         from_schema: TeachingSchema
+        range: string
       de:
         name: de
         description: Das Thema des Kapitels in deutsch,german wikipedia article of
           the keyword
         from_schema: TeachingSchema
+        range: string
       en:
         name: en
         description: The topic of the chapter in english,english wikipedia article
           of the keyword
         from_schema: TeachingSchema
+        range: string
   Presentation:
     name: Presentation
     description: a presentation of a lecture
@@ -269,30 +333,37 @@ classes:
           Presentation,The local key of the LearningGoal,The keyword,the local key
           of this check
         from_schema: TeachingSchema
+        range: string
       num:
         name: num
         description: The number of the Presentation
         from_schema: TeachingSchema
+        range: string
       name:
         name: name
         description: The name of the Presentation,name of the slide
         from_schema: TeachingSchema
+        range: string
       ppt_file:
         name: ppt_file
         description: The powert point file name of the Presentation
         from_schema: TeachingSchema
+        range: string
       sciebo:
         name: sciebo
         description: The sciebo link suffix of this Presentation
         from_schema: TeachingSchema
+        range: string
       gitlab:
         name: gitlab
         description: The gitlab url of the Presentation
         from_schema: TeachingSchema
+        range: string
       moodle:
         name: moodle
         description: The moodle pdf annotator page id of the Presentation
         from_schema: TeachingSchema
+        range: string
   LearningGoal:
     name: LearningGoal
     description: a LearningGoal of a lecture
@@ -304,49 +375,60 @@ classes:
           Presentation,The local key of the LearningGoal,The keyword,the local key
           of this check
         from_schema: TeachingSchema
+        range: string
       qKey:
         name: qKey
         description: The fully qualifing key of the LearningGoal,the full qualifying
           (primary) key of this check
         from_schema: TeachingSchema
+        range: string
       id:
         name: id
         description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
           RelevanceLevel,The id (e.g. bibtex key) of the Publication
         from_schema: TeachingSchema
+        range: string
       chapter:
         name: chapter
         description: The chapter of the LearningGoal
         from_schema: TeachingSchema
+        range: string
       chapterKey:
         name: chapterKey
         description: The key of the chapter of the LearningGoal
         from_schema: TeachingSchema
+        range: string
       subChapter:
         name: subChapter
         description: The subChapter of the LearningGoal
         from_schema: TeachingSchema
+        range: string
       subChapterKey:
         name: subChapterKey
         description: The key of the subChapter of the LearningGoal
         from_schema: TeachingSchema
+        range: string
       relevance:
         name: relevance
         description: The relevance of the LearningGoal
         from_schema: TeachingSchema
+        range: string
       keywords:
         name: keywords
         description: keywords the learningGoal references,keywords the slide references
         from_schema: TeachingSchema
+        range: string
       since:
         name: since
         description: The year since when this learningGoal is active,the date this
           check was activated
         from_schema: TeachingSchema
+        range: string
       until:
         name: until
         description: The year until this learningGoal was active
         from_schema: TeachingSchema
+        range: string
   Keyword:
     name: Keyword
     description: a keyword
@@ -358,42 +440,51 @@ classes:
           Presentation,The local key of the LearningGoal,The keyword,the local key
           of this check
         from_schema: TeachingSchema
+        range: string
       aliases:
         name: aliases
         description: optional, comma separated aliases of the keyword
         from_schema: TeachingSchema
+        range: string
       de:
         name: de
         description: Das Thema des Kapitels in deutsch,german wikipedia article of
           the keyword
         from_schema: TeachingSchema
+        range: string
       en:
         name: en
         description: The topic of the chapter in english,english wikipedia article
           of the keyword
         from_schema: TeachingSchema
+        range: string
       wikidataid:
         name: wikidataid
         description: The wikidataItem,The wikidataid of the Publication
         from_schema: TeachingSchema
+        range: string
       links:
         name: links
         description: comma separated list of links to other keywords,names of slide
           referenced by this slide
         from_schema: TeachingSchema
+        range: string
       literature:
         name: literature
         description: comma separated list of publication keys,dois or wikidataids
           of literature referenced by this slide
         from_schema: TeachingSchema
+        range: string
       urls:
         name: urls
         description: comma separated list of external links that explain the keyword
         from_schema: TeachingSchema
+        range: string
       stackoverflow_tag:
         name: stackoverflow_tag
         description: stackoverflow tag for this keyword
         from_schema: TeachingSchema
+        range: string
   Slide:
     name: Slide
     description: I am a presentation slide
@@ -403,44 +494,54 @@ classes:
         name: qkey
         description: fully qualifying key of the slide
         from_schema: TeachingSchema
+        range: string
       pkey:
         name: pkey
         description: key of the presentation of this slide
         from_schema: TeachingSchema
+        range: string
       basename:
         name: basename
         description: basename of the ppt presentation of this slide
         from_schema: TeachingSchema
+        range: string
       page:
         name: page
         description: page number of the slide
         from_schema: TeachingSchema
+        range: string
       name:
         name: name
         description: The name of the Presentation,name of the slide
         from_schema: TeachingSchema
+        range: string
       title:
         name: title
         description: title of the slide,The title of the Publication
         from_schema: TeachingSchema
+        range: string
       keywords:
         name: keywords
         description: keywords the learningGoal references,keywords the slide references
         from_schema: TeachingSchema
+        range: string
       links:
         name: links
         description: comma separated list of links to other keywords,names of slide
           referenced by this slide
         from_schema: TeachingSchema
+        range: string
       literature:
         name: literature
         description: comma separated list of publication keys,dois or wikidataids
           of literature referenced by this slide
         from_schema: TeachingSchema
+        range: string
       learningGoal:
         name: learningGoal
         description: learningGoal this slide links to
         from_schema: TeachingSchema
+        range: string
   Check:
     name: Check
     description: I am a quality check
@@ -451,43 +552,52 @@ classes:
         description: The fully qualifing key of the LearningGoal,the full qualifying
           (primary) key of this check
         from_schema: TeachingSchema
+        range: string
       key:
         name: key
         description: The key of the presentation for this Chapter ,The key of the
           Presentation,The local key of the LearningGoal,The keyword,the local key
           of this check
         from_schema: TeachingSchema
+        range: string
       concept:
         name: concept
         description: the concept of the items being checked by this check,the concept
           this Sheet hold data for
         from_schema: TeachingSchema
+        range: string
       since:
         name: since
         description: The year since when this learningGoal is active,the date this
           check was activated
         from_schema: TeachingSchema
+        range: string
       check:
         name: check
         description: the description of what is checked by this Check,the check this
           issue references
         from_schema: TeachingSchema
+        range: string
       problem:
         name: problem
         description: problem of this item
         from_schema: TeachingSchema
+        range: string
       ok:
         name: ok
         description: number of items that pass the check/are ok
         from_schema: TeachingSchema
+        range: string
       total:
         name: total
         description: number of items that are checked in total
         from_schema: TeachingSchema
+        range: string
       pain:
         name: pain
         description: pain of this item
         from_schema: TeachingSchema
+        range: string
   Issue:
     name: Issue
     description: I am a an issue
@@ -497,15 +607,18 @@ classes:
         name: item
         description: the item this issue references
         from_schema: TeachingSchema
+        range: string
       check:
         name: check
         description: the description of what is checked by this Check,the check this
           issue references
         from_schema: TeachingSchema
+        range: string
       fix:
         name: fix
         description: a potential fix for the issue
         from_schema: TeachingSchema
+        range: string
   RelevanceLevel:
     name: RelevanceLevel
     description: I am a relevance level
@@ -516,18 +629,22 @@ classes:
         description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
           RelevanceLevel,The id (e.g. bibtex key) of the Publication
         from_schema: TeachingSchema
+        range: string
       expectation:
         name: expectation
         description: the expectation for this RelevanceLevel
         from_schema: TeachingSchema
+        range: string
       examination:
         name: examination
         description: how items for this RelevanceLevel are covered during examination
         from_schema: TeachingSchema
+        range: string
       description:
         name: description
         description: the description of this RelevanceLevel
         from_schema: TeachingSchema
+        range: string
   Publication:
     name: Publication
     description: A Publication is e.g. a scholarly article
@@ -538,38 +655,47 @@ classes:
         description: The hierachical id of the LearningGoal e.g. 1.1.1,the id of this
           RelevanceLevel,The id (e.g. bibtex key) of the Publication
         from_schema: TeachingSchema
+        range: string
       doi:
         name: doi
         description: The doi of the Publication
         from_schema: TeachingSchema
+        range: string
       wikidataid:
         name: wikidataid
         description: The wikidataItem,The wikidataid of the Publication
         from_schema: TeachingSchema
+        range: string
       isbn:
         name: isbn
         description: The ISBN-13 of the Publication
         from_schema: TeachingSchema
+        range: string
       title:
         name: title
         description: title of the slide,The title of the Publication
         from_schema: TeachingSchema
+        range: string
       authors:
         name: authors
         description: authors of the Publication
         from_schema: TeachingSchema
+        range: string
       publisher:
         name: publisher
         description: publisher of the Publication
         from_schema: TeachingSchema
+        range: string
       year:
         name: year
         description: year of the Publication
         from_schema: TeachingSchema
+        range: string
       pdfUrl:
         name: pdfUrl
         description: the url for the pdf of this Publication
         from_schema: TeachingSchema
+        range: string
   Sheet:
     name: Sheet
     description: I am a relevance level
@@ -579,13 +705,16 @@ classes:
         name: gid
         description: the gid of this Sheet
         from_schema: TeachingSchema
+        range: string
       concept:
         name: concept
         description: the concept of the items being checked by this check,the concept
           this Sheet hold data for
         from_schema: TeachingSchema
+        range: string
       url:
         name: url
         description: the base url for the sheet
         from_schema: TeachingSchema
+        range: string
 

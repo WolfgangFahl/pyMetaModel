@@ -1,95 +1,123 @@
 name: FamilyContext
 id: FamilyContext
-default_prefix: FamilyContext/
+prefixes:
+  FamilyContext:
+    prefix_prefix: FamilyContext
+    prefix_reference: http://example.com/FamilyContext
+default_prefix: FamilyContext
+default_range: string
 slots:
   name:
     name: name
     description: the name of the family,The full name of the person
     from_schema: FamilyContext
+    range: string
   weddingDate:
     name: weddingDate
     description: The date of the wedding
     from_schema: FamilyContext
+    range: string
   weddingPlace:
     name: weddingPlace
     from_schema: FamilyContext
+    range: string
   yearMarried:
     name: yearMarried
     from_schema: FamilyContext
+    range: string
   monthMarried:
     name: monthMarried
     from_schema: FamilyContext
+    range: string
   divorced:
     name: divorced
     from_schema: FamilyContext
+    range: string
   husbandOf:
     name: husbandOf
     description: the male head of family/ father
     from_schema: FamilyContext
+    range: string
   wifeOf:
     name: wifeOf
     description: the female head of family / mother
     from_schema: FamilyContext
+    range: string
   qid:
     name: qid
     description: the id of a Person in WikiData
     from_schema: FamilyContext
+    range: string
   royal92id:
     name: royal92id
     description: the royal92id of a Person in the GEDCOM standard
     from_schema: FamilyContext
+    range: string
   nobleTitle:
     name: nobleTitle
     description: The noble title of the person
     from_schema: FamilyContext
+    range: string
   picture:
     name: picture
     description: The URL of a picture of the person
     from_schema: FamilyContext
+    range: string
   sex:
     name: sex
     description: the gender of a person - female or male
     from_schema: FamilyContext
+    range: string
   born:
     name: born
     description: The date the person was born
     from_schema: FamilyContext
+    range: string
   yearBorn:
     name: yearBorn
     description: The year the person was born
     from_schema: FamilyContext
+    range: string
   monthBorn:
     name: monthBorn
     description: The month the person was born
     from_schema: FamilyContext
+    range: string
   birthPlace:
     name: birthPlace
     description: The location where the person was born
     from_schema: FamilyContext
+    range: string
   died:
     name: died
     description: the date the person died
     from_schema: FamilyContext
+    range: string
   diedAt:
     name: diedAt
     description: The location where the person died
     from_schema: FamilyContext
+    range: string
   yearDied:
     name: yearDied
     description: The year the person died
     from_schema: FamilyContext
+    range: string
   monthDied:
     name: monthDied
     description: The month the person died
     from_schema: FamilyContext
+    range: string
   noInLine:
     name: noInLine
     description: the number in Line to the Throne of this person
     from_schema: FamilyContext
+    range: string
   wikiPedia:
     name: wikiPedia
     description: the wikiPedia link of the Person
     from_schema: FamilyContext
+    range: string
 classes:
   Family:
     name: Family
@@ -101,30 +129,38 @@ classes:
         name: name
         description: the name of the family,The full name of the person
         from_schema: FamilyContext
+        range: string
       weddingDate:
         name: weddingDate
         description: The date of the wedding
         from_schema: FamilyContext
+        range: string
       weddingPlace:
         name: weddingPlace
         from_schema: FamilyContext
+        range: string
       yearMarried:
         name: yearMarried
         from_schema: FamilyContext
+        range: string
       monthMarried:
         name: monthMarried
         from_schema: FamilyContext
+        range: string
       divorced:
         name: divorced
         from_schema: FamilyContext
+        range: string
       husbandOf:
         name: husbandOf
         description: the male head of family/ father
         from_schema: FamilyContext
+        range: string
       wifeOf:
         name: wifeOf
         description: the female head of family / mother
         from_schema: FamilyContext
+        range: string
   Person:
     name: Person
     description: A Person is a human being
@@ -134,64 +170,80 @@ classes:
         name: qid
         description: the id of a Person in WikiData
         from_schema: FamilyContext
+        range: string
       royal92id:
         name: royal92id
         description: the royal92id of a Person in the GEDCOM standard
         from_schema: FamilyContext
+        range: string
       name:
         name: name
         description: the name of the family,The full name of the person
         from_schema: FamilyContext
+        range: string
       nobleTitle:
         name: nobleTitle
         description: The noble title of the person
         from_schema: FamilyContext
+        range: string
       picture:
         name: picture
         description: The URL of a picture of the person
         from_schema: FamilyContext
+        range: string
       sex:
         name: sex
         description: the gender of a person - female or male
         from_schema: FamilyContext
+        range: string
       born:
         name: born
         description: The date the person was born
         from_schema: FamilyContext
+        range: string
       yearBorn:
         name: yearBorn
         description: The year the person was born
         from_schema: FamilyContext
+        range: string
       monthBorn:
         name: monthBorn
         description: The month the person was born
         from_schema: FamilyContext
+        range: string
       birthPlace:
         name: birthPlace
         description: The location where the person was born
         from_schema: FamilyContext
+        range: string
       died:
         name: died
         description: the date the person died
         from_schema: FamilyContext
+        range: string
       diedAt:
         name: diedAt
         description: The location where the person died
         from_schema: FamilyContext
+        range: string
       yearDied:
         name: yearDied
         description: The year the person died
         from_schema: FamilyContext
+        range: string
       monthDied:
         name: monthDied
         description: The month the person died
         from_schema: FamilyContext
+        range: string
       noInLine:
         name: noInLine
         description: the number in Line to the Throne of this person
         from_schema: FamilyContext
+        range: string
       wikiPedia:
         name: wikiPedia
         description: the wikiPedia link of the Person
         from_schema: FamilyContext
+        range: string
 
