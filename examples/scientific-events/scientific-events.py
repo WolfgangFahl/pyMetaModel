@@ -1,5 +1,5 @@
 # Auto generated from scientific-events.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-24T09:10:53
+# Generation date: 2023-02-24T13:09:38
 # Schema: CrSchema
 #
 # id: CrSchema

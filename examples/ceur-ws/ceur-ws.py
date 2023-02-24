@@ -1,5 +1,5 @@
 # Auto generated from ceur-ws.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-24T09:05:31
+# Generation date: 2023-02-24T13:10:03
 # Schema: CeurwsSchema
 #
 # id: CeurwsSchema

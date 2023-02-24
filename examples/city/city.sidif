@@ -1,0 +1,64 @@
+#
+# Context:City
+#
+City isA Context
+"City" is name of it
+"2015-08-22" is since of it
+"2015 Wolfgang Fahl" is copyright of it
+"https://wiki.bitplan.com/City" is master of it
+#
+#City
+#
+City isA Topic
+"City" is name of it
+"Cities" is pluralName of it
+"I represent a City like Berlin, New York or Tokyo" is documentation of it
+"property" is defaultstoremode of it
+"City" is context of it
+City_name addsTo it
+City_webpage addsTo it
+City_wikipedia_url addsTo it
+City_Population addsTo it
+# properties of City
+# property name
+City_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+false is isLink of it
+true is mandatory of it
+"City" is topic of it
+# property webpage
+City_webpage isA Property
+"webpage" is name of it
+"webpage" is label of it
+"URL" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"City" is topic of it
+# property wikipedia_url
+City_wikipedia_url isA Property
+"wikipedia_url" is name of it
+"wikipedia" is label of it
+"URL" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+false is showInGrid of it
+false is isLink of it
+"City" is topic of it
+# property Population
+City_Population isA Property
+"Population" is name of it
+"Population" is label of it
+"Number" is type of it
+3 is index of it
+false is isLink of it
+"City" is topic of it
+Country isA Topic

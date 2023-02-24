@@ -1,5 +1,5 @@
 # Auto generated from metamodel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-24T09:05:25
+# Generation date: 2023-02-24T13:09:58
 # Schema: MetaModel
 #
 # id: MetaModel
