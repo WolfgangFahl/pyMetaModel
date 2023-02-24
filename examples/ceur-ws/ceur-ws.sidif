@@ -1,0 +1,178 @@
+#
+# Context:CeurwsSchema
+#
+CeurwsSchema isA Context
+"CeurwsSchema" is name of it
+"http://ceur-ws.bitplan.com" is master of it
+"2020-07-20" is since of it
+#
+# Volume
+#
+Volume isA Topic
+"Volume" is name of it
+"Volumes" is pluralName of it
+"A Volume is a collection of papers mostly documenting the results of an academic event" is documentation of it
+"A Volume is a collection of papers mostly documenting the results of an academic event" is wikiDocumentation of it
+"File:Volume-64px.png" is icon of it
+"/images/ceur-ws/5/53/Volume-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+4000 is listLimit of it
+"CeurwsSchema" is context of it
+Volume_number addsTo it
+Volume_title addsTo it
+# properties of Volume
+# property number
+Volume_number isA Property
+"number" is name of it
+"number" is label of it
+"Number" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The number Volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property title
+Volume_title isA Property
+"title" is name of it
+"title" is label of it
+"Text" is type of it
+"textarea" is inputType of it
+2 is index of it
+2 is sortPos of it
+true is mandatory of it
+300 is size of it
+false is uploadable of it
+"The title of the Volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+#
+# Session
+#
+Session isA Topic
+"Session" is name of it
+"Sessions" is pluralName of it
+"A Session is a a collection of papers as part of a Volume" is documentation of it
+"A Session is a a collection of papers as part of a Volume" is wikiDocumentation of it
+"File:Session-logo-64px.png" is icon of it
+"/images/ceur-ws/3/31/Session-logo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"CeurwsSchema" is context of it
+Session_title addsTo it
+# properties of Session
+# property title
+Session_title isA Property
+"title" is name of it
+"title" is label of it
+"Text" is type of it
+"textarea" is inputType of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+150 is size of it
+false is uploadable of it
+"The title of the Session" is documentation of it
+false is isLink of it
+"Session" is topic of it
+#
+# Paper
+#
+Paper isA Topic
+"Paper" is name of it
+"Papers" is pluralName of it
+"A paper is e.g. a scholarly article" is documentation of it
+"A paper is e.g. a scholarly article" is wikiDocumentation of it
+"File:Paper-logo-64px.png" is icon of it
+"/images/ceur-ws/e/e7/Paper-logo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"CeurwsSchema" is context of it
+Paper_id addsTo it
+Paper_title addsTo it
+Paper_authors addsTo it
+Paper_pdfUrl addsTo it
+# properties of Paper
+# property id
+Paper_id isA Property
+"id" is name of it
+"id" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The id (filename) of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property title
+Paper_title isA Property
+"title" is name of it
+"title" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+true is mandatory of it
+2 is index of it
+300 is size of it
+false is uploadable of it
+"The title of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property authors
+Paper_authors isA Property
+"authors" is name of it
+"authors" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+false is mandatory of it
+3 is index of it
+300 is size of it
+false is uploadable of it
+"authors of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property pdfUrl
+Paper_pdfUrl isA Property
+"pdfUrl" is name of it
+"pdf" is label of it
+"URL" is type of it
+false is mandatory of it
+4 is index of it
+false is uploadable of it
+"the url for the pdf of this paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+#
+# TopicLinks
+#
+# Volume 1 : n Session
+Volume_has_Sessions isA TopicLink
+"sessionsOfVolume" is name of it
+"volume" is sourceRole of it
+false is sourceMultiple of it
+"Volume" is source of it
+"sessions" is targetRole of it
+true is targetMultiple of it
+"Session" is target of it
+# Volume 1 : n Paper
+Volume_has_Papers isA TopicLink
+"papersOfVolume" is name of it
+"volume" is sourceRole of it
+false is sourceMultiple of it
+"Volume" is source of it
+"papers" is targetRole of it
+true is targetMultiple of it
+"Paper" is target of it
+# Session 1 : n Paper
+Session_has_Papers isA TopicLink
+"papersOfSession" is name of it
+"session" is sourceRole of it
+false is sourceMultiple of it
+"Session" is source of it
+"papers" is targetRole of it
+true is targetMultiple of it
+"Paper" is target of it 

@@ -1,0 +1,484 @@
+name: CrSchema
+id: CrSchema
+prefixes:
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  CrSchema:
+    prefix_prefix: CrSchema
+    prefix_reference: CrSchema/
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+  shex:
+    prefix_prefix: shex
+    prefix_reference: http://www.w3.org/ns/shex#
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+default_prefix: CrSchema
+default_range: string
+types:
+  string:
+    name: string
+    description: A character string
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    description: An integer
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    description: A binary (true or false) value
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    description: A real number that conforms to the xsd:float specification
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    description: A real number that conforms to the xsd:double specification
+    from_schema: https://w3id.org/linkml/types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    from_schema: https://w3id.org/linkml/types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:dateTime
+    repr: str
+  date:
+    name: date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    description: The combination of a date and time
+    from_schema: https://w3id.org/linkml/types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    description: Either a date or a datetime
+    from_schema: https://w3id.org/linkml/types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    description: a URI or a CURIE
+    from_schema: https://w3id.org/linkml/types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    description: Prefix part of CURIE
+    from_schema: https://w3id.org/linkml/types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    comments:
+    - Used for inheritence and type checking
+    from_schema: https://w3id.org/linkml/types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    from_schema: https://w3id.org/linkml/types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+slots:
+  acronym:
+    name: acronym
+    description: 'The official acronym of the event series. ,The official acronym
+      of the academic event, if it has one. '
+    from_schema: CrSchema
+    range: string
+  title:
+    name: title
+    description: The tile of the event series. ,The title of the Proceedings,The name/title
+      of the Institution
+    from_schema: CrSchema
+    range: string
+  wikidataid:
+    name: wikidataid
+    description: The wikidataid of the event series,The wikidataid of the event,The
+      wikidataid of the city,The wikidataid of the Country,The wikidataid of the Region,The
+      wikidata Q-Identifier of the Proceedings record,wikidata id of the Institution
+    from_schema: CrSchema
+    range: string
+  homepage:
+    name: homepage
+    description: The homepage of the event series,The homepage of the event,The homepage
+      of the scholar,The homepage of the Institution
+    from_schema: CrSchema
+    range: string
+  name:
+    name: name
+    description: The name of the city,The name of the Country,The name of the Region,The
+      last name of the scholar
+    from_schema: CrSchema
+    range: string
+  wikiDataId:
+    name: wikiDataId
+    description: wikidata id of the scholar
+    from_schema: CrSchema
+    range: string
+  firstName:
+    name: firstName
+    description: The first name of the scholar
+    from_schema: CrSchema
+    range: string
+  description:
+    name: description
+    description: A wikidata compatible description of the scholar
+    from_schema: CrSchema
+    range: string
+  orcid:
+    name: orcid
+    description: 'orcid id of the scholar it is used to provide the identifier with
+      which an entity is indexed in http://orcid.org '
+    from_schema: CrSchema
+    range: string
+  dblpId:
+    name: dblpId
+    description: dblp id of the scholar as index in https://dblp.org/
+    from_schema: CrSchema
+    range: string
+  googleScholarUser:
+    name: googleScholarUser
+    description: googleScholarUser Author id of the scholar
+    from_schema: CrSchema
+    range: string
+  linkedInId:
+    name: linkedInId
+    description: linkedIn id of the scholar
+    from_schema: CrSchema
+    range: string
+  researchGate:
+    name: researchGate
+    description: research gate profile id of the scholar as indexed in https://www.researchgate.net
+    from_schema: CrSchema
+    range: string
+  gndId:
+    name: gndId
+    description: gnd id of the scholar as indexed in https://portal.dnb.de/opac.htm
+    from_schema: CrSchema
+    range: string
+  smartCRMId:
+    name: smartCRMId
+    description: smartCRM id of the scholar,smartCRM id of the scholar
+    from_schema: CrSchema
+    range: string
+classes:
+  EventSeries:
+    name: EventSeries
+    description: a series of Events
+    from_schema: CrSchema
+    attributes:
+      acronym:
+        name: acronym
+        description: 'The official acronym of the event series. ,The official acronym
+          of the academic event, if it has one. '
+        from_schema: CrSchema
+        range: string
+      title:
+        name: title
+        description: The tile of the event series. ,The title of the Proceedings,The
+          name/title of the Institution
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+      homepage:
+        name: homepage
+        description: The homepage of the event series,The homepage of the event,The
+          homepage of the scholar,The homepage of the Institution
+        from_schema: CrSchema
+        range: string
+  Event:
+    name: Event
+    description: a meeting of researchers at a specific time and place
+    from_schema: CrSchema
+    attributes:
+      acronym:
+        name: acronym
+        description: 'The official acronym of the event series. ,The official acronym
+          of the academic event, if it has one. '
+        from_schema: CrSchema
+        range: string
+      homepage:
+        name: homepage
+        description: The homepage of the event series,The homepage of the event,The
+          homepage of the scholar,The homepage of the Institution
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+  City:
+    name: City
+    description: large permanent human settlement
+    from_schema: CrSchema
+    attributes:
+      name:
+        name: name
+        description: The name of the city,The name of the Country,The name of the
+          Region,The last name of the scholar
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+  Country:
+    name: Country
+    description: distinct region in geography; a broad term that can include political
+      divisions or regions associated with distinct political characteristics
+    from_schema: CrSchema
+    attributes:
+      name:
+        name: name
+        description: The name of the city,The name of the Country,The name of the
+          Region,The last name of the scholar
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+  Region:
+    name: Region
+    description: first-level administrative country subdivision e.g. Region/province
+    from_schema: CrSchema
+    attributes:
+      name:
+        name: name
+        description: The name of the city,The name of the Country,The name of the
+          Region,The last name of the scholar
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+  Proceedings:
+    name: Proceedings
+    description: Proceedings are a collection of papers mostly documenting the results
+      of an academic event
+    from_schema: CrSchema
+    attributes:
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+      title:
+        name: title
+        description: The tile of the event series. ,The title of the Proceedings,The
+          name/title of the Institution
+        from_schema: CrSchema
+        range: string
+  Scholar:
+    name: Scholar
+    description: 'scholar/researcher: person who engages in research, professionally
+      or otherwise'
+    from_schema: CrSchema
+    attributes:
+      wikiDataId:
+        name: wikiDataId
+        description: wikidata id of the scholar
+        from_schema: CrSchema
+        range: string
+      name:
+        name: name
+        description: The name of the city,The name of the Country,The name of the
+          Region,The last name of the scholar
+        from_schema: CrSchema
+        range: string
+      firstName:
+        name: firstName
+        description: The first name of the scholar
+        from_schema: CrSchema
+        range: string
+      description:
+        name: description
+        description: A wikidata compatible description of the scholar
+        from_schema: CrSchema
+        range: string
+      homepage:
+        name: homepage
+        description: The homepage of the event series,The homepage of the event,The
+          homepage of the scholar,The homepage of the Institution
+        from_schema: CrSchema
+        range: string
+      orcid:
+        name: orcid
+        description: 'orcid id of the scholar it is used to provide the identifier
+          with which an entity is indexed in http://orcid.org '
+        from_schema: CrSchema
+        range: string
+      dblpId:
+        name: dblpId
+        description: dblp id of the scholar as index in https://dblp.org/
+        from_schema: CrSchema
+        range: string
+      googleScholarUser:
+        name: googleScholarUser
+        description: googleScholarUser Author id of the scholar
+        from_schema: CrSchema
+        range: string
+      linkedInId:
+        name: linkedInId
+        description: linkedIn id of the scholar
+        from_schema: CrSchema
+        range: string
+      researchGate:
+        name: researchGate
+        description: research gate profile id of the scholar as indexed in https://www.researchgate.net
+        from_schema: CrSchema
+        range: string
+      gndId:
+        name: gndId
+        description: gnd id of the scholar as indexed in https://portal.dnb.de/opac.htm
+        from_schema: CrSchema
+        range: string
+      smartCRMId:
+        name: smartCRMId
+        description: smartCRM id of the scholar,smartCRM id of the scholar
+        from_schema: CrSchema
+        range: string
+  Institution:
+    name: Institution
+    description: structure or mechanism of social order and cooperation governing
+      the behaviour of a set of individuals within a given community
+    from_schema: CrSchema
+    attributes:
+      title:
+        name: title
+        description: The tile of the event series. ,The title of the Proceedings,The
+          name/title of the Institution
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution
+        from_schema: CrSchema
+        range: string
+      homepage:
+        name: homepage
+        description: The homepage of the event series,The homepage of the event,The
+          homepage of the scholar,The homepage of the Institution
+        from_schema: CrSchema
+        range: string
+      smartCRMId:
+        name: smartCRMId
+        description: smartCRM id of the scholar,smartCRM id of the scholar
+        from_schema: CrSchema
+        range: string
+
