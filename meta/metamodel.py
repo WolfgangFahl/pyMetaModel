@@ -9,7 +9,7 @@ from sidif.sidif import SiDIFParser
 from lodstorage.jsonable import JSONAble
 import sys
 import typing
-
+import urllib3
 
 class MetaModelElement(JSONAble):
     '''
@@ -64,8 +64,8 @@ class Context(MetaModelElement):
         samples = [{
             "name": "MetaModel",
             "since": datetime.strptime("2015-01-23", "%Y-%m-%d"),
-            "copyright": "2015-2022 BITPlan GmbH",
-            "master": "http://master.bitplan.com"
+            "copyright": "2015-2023 BITPlan GmbH",
+            "master": "http://smw-meta.bitplan.com"
         }]
         return samples
     
@@ -199,6 +199,30 @@ true is targetMultiple of it
         for topic in context.topics.values():
             topic.setConceptProperty()
         return context
+    
+    @classmethod
+    def fromSiDIF_input(cls,sidif_input:str,debug:bool=False):
+        """
+        initialize me from the given SiDIF input which might be a file path
+        or url
+        
+        Args:
+            sidif_input: path to local file or URL
+            debug(bool): if True swith debugging on
+            
+        Returns:
+            Tuple[Context,str,str]: context, error and errorMessage
+        """
+        if sidif_input.startswith("http:") or sidif_input.startswith("https:"):
+            url=sidif_input
+            http = urllib3.PoolManager()
+            response = http.request('GET', url)
+            sidif = response.data.decode('utf-8')
+        else:
+            sidif_path=sidif_input
+            with open(sidif_path, 'r') as sidif_file:
+                sidif=sidif_file.read()
+        return Context.fromSiDIF(sidif, title=sidif_input, debug=debug)
     
     @classmethod
     def fromSiDIF(cls,sidif:str,title:str,depth:int=None,debug:bool=False)->typing.Tuple['Context',object,str]:

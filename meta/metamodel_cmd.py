@@ -13,7 +13,6 @@ from meta.mw import SMWAccess
 from meta.uml import PlantUml
 from meta.sidif2linkml import SiDIF2LinkML
 from meta.metamodel import Context
-import urllib3
 import webbrowser
 
 class MetaModelCmd:
@@ -42,7 +41,7 @@ class MetaModelCmd:
         program_license = '''%s
         
           Created by %s on %s.
-          Copyright 2022 Wolfgang Fahl. All rights reserved.
+          Copyright 2022-2023 Wolfgang Fahl. All rights reserved.
         
           Licensed under the Apache License 2.0
           http://www.apache.org/licenses/LICENSE-2.0
@@ -72,23 +71,13 @@ class MetaModelCmd:
             args(Args): command line arguments
         """
         if args.input:
-            if args.input.startswith("http:"):
-                url=args.input
-                http = urllib3.PoolManager()
-                response = http.request('GET', url)
-                sidif = response.data.decode('utf-8')
-            else:
-                sidif_path=args.input
-                with open(sidif_path, 'r') as sidif_file:
-                    sidif=sidif_file.read()
-            self.context,self.error,self.errMsg=Context.fromSiDIF(sidif, title=args.input, debug=self.debug)
-            pass
+            self.context.self.error,self.errMsg=Context.fromSiDIF_input(args.input,debug=args.debug)
         elif args.wikiId and args.context:
             self.wikiId=args.wikiId
             self.smwAccess=SMWAccess(args.wikiId)
             self.mw_contexts=self.smwAccess.getMwContexts()
             self.mw_context=self.mw_contexts.get(args.context,None)
-            self.context,self.error,self.errMsg=Context.fromWikiContext(self.mw_context, debug=self.debug)
+            self.context,self.error,self.errMsg=Context.fromWikiContext(self.mw_context, debug=args.debug)
          
     def hasError(self):  
         if self.error is not None:
