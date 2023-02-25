@@ -30,7 +30,7 @@ dependencies = [
 		# https://pypi.org/project/linkml/
 		'linkml>=1.4.4',
 		# https://pypi.org/project/linkml-runtime/
-		'linkml-runtime>=1.4.5'
+		'linkml-runtime>=1.4.5',
 		# https://github.com/konradhalas/dacite
 		'dacite>=1.7.0',
      ]
