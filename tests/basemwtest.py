@@ -6,6 +6,7 @@ Created on 2022-11-24
 from tests.basetest import Basetest
 import os
 from wikibot3rd.wikiuser import WikiUser
+from meta.mw import SMWAccess
 
 class BaseMediawikiTest(Basetest):
     """
@@ -14,6 +15,12 @@ class BaseMediawikiTest(Basetest):
     
     def setUp(self, debug=False, profile=True):
         Basetest.setUp(self, debug=debug, profile=profile)
+        self.smwAccessMap={}
+ 
+    def getSMWAccess(self,wikiId,save=False):
+        self.getWikiUser(wikiId, save)
+        smwAccess=SMWAccess(wikiId,debug=self.debug)
+        self.smwAccessMap[wikiId]=smwAccess
 
     def getWikiUser(self, wikiId="ceur-ws", save=False):
         """

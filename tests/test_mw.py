@@ -21,7 +21,7 @@ class TestMediawiki(BaseMediawikiTest):
         """
         BaseMediawikiTest.setUp(self, debug=debug, profile=profile)
         for wikiId in ["wiki","royals","cr"]:
-            self.getWikiUser(wikiId, save=True)
+            self.getSMWAccess(wikiId, save=True)
             
     def check_contexts(self,wikiId:str,ignoreExceptions:bool=True):
         """
@@ -33,7 +33,7 @@ class TestMediawiki(BaseMediawikiTest):
         """
         mw_contexts={}
         try:
-            smwAccess=SMWAccess(wikiId,debug=self.debug)
+            smwAccess=self.smwAccessMap[wikiId]
             mw_contexts=smwAccess.getMwContexts()
             for name,mw_context in mw_contexts.items():
                 print(f"{name}: {mw_context.sidif_url()}")
@@ -148,7 +148,7 @@ class TestMediawiki(BaseMediawikiTest):
             self.assertIsNone(errMsg)
             self.assertTrue("OsProject" in context.topics)
             pass
-        
+                
     def test_metamodel_from_wikis(self):
         """
         test reading meta models from wikis
