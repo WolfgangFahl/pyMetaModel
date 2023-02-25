@@ -31,6 +31,8 @@ dependencies = [
 		'linkml>=1.4.4',
 		# https://pypi.org/project/linkml-runtime/
 		'linkml-runtime>=1.4.5'
+		# https://github.com/konradhalas/dacite
+		'dacite>=1.7.0',
      ]
 
 requires-python = ">=3.8"
