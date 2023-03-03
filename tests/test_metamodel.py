@@ -24,10 +24,13 @@ class TestMetaModel(BaseMediawikiTest):
         """
         test SMW_Type handling
         """
+        debug=True
         smwAccess=self.smwAccessMap["wiki"]
         ask_query=SMW_Type.askQuery()
         did=smwAccess.smw.query(ask_query)
         for record in did.values():
             smw_Type=SMW_Type.fromDict(record)
+            if debug:
+                print(smw_Type)
             pass
         

@@ -376,6 +376,48 @@ class Topic(MetaModelElement):
                 return sys.maxsize
         prop_list=sorted(self.properties.values(),key=lambda prop:index(prop))
         return prop_list
+    
+    def askSort(self)->str:
+        """
+        generate the sort clause for my SMW ask query
+        
+        Returns:
+            str: the generated wiki markup 
+        """
+        sort=""
+        order=""
+        delim=""
+        sortproperties=self.sortProperties()
+        for prop in sortproperties:
+            direction="ascending" if getattr(prop,"sortAscending",True) else "descending"
+            sort+=delim+f"{self.name} {prop.name}"
+            order+=delim+direction
+            delim=","
+            pass
+        sortClause=f"|sort={sort}\n" if sort else ""
+        orderClause=f"|order={order}\n" if order else ""
+        markup=f"{sortClause}{orderClause}"
+        return markup
+    
+    def askQuery(self,mainlabel:str=None)->str:
+        """
+        get the askQuery for the me topic
+        
+        Args:
+            mainlabel(str): the mainlabel to use - topic.name as default
+        Returns:
+            str: the markup for the query
+        """
+        if mainlabel is None:
+            mainlabel=self.name
+        markup=f"""{{{{#ask: [[Concept:{self.name}]]
+|mainlabel={mainlabel}
+"""
+        for prop in self.properties.values():
+            markup+=f"|?{self.name} {prop.name} = {prop.name}\n"
+        markup+=f"| limit={self.getListLimit()}\n"
+        markup+=f"""{self.askSort()}}}}}"""
+        return markup
 
     
 class Property(MetaModelElement):

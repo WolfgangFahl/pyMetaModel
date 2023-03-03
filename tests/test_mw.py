@@ -99,6 +99,18 @@ class TestMediawiki(BaseMediawikiTest):
         self.assertEqual(10,len(props))
         self.assertTrue("pluralName",props[1].name)  
         
+    def testAskQuery4Topic(self):
+        """
+        test creating the askquery for a topic
+        """
+        debug=self.debug
+        debug=True
+        context=self.getContext(debug=debug)
+        topic=context.topics["Property"]
+        ask_query=topic.askQuery()
+        if debug:
+            print(ask_query)
+        
     def test_topicLinks(self):
         """
         test topic links
