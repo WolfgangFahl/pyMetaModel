@@ -399,15 +399,18 @@ class Topic(MetaModelElement):
         markup=f"{sortClause}{orderClause}"
         return markup
     
-    def askQuery(self,mainlabel:str=None)->str:
+    def askQuery(self,mainlabel:str=None,listLimit:int=None)->str:
         """
         get the askQuery for the me topic
         
         Args:
             mainlabel(str): the mainlabel to use - topic.name as default
+            listLimit(int): the list limit to use
         Returns:
             str: the markup for the query
         """
+        if listLimit is None:
+            listLimit=self.getListLimit()
         if mainlabel is None:
             mainlabel=self.name
         markup=f"""{{{{#ask: [[Concept:{self.name}]]
@@ -415,7 +418,7 @@ class Topic(MetaModelElement):
 """
         for prop in self.properties.values():
             markup+=f"|?{self.name} {prop.name} = {prop.name}\n"
-        markup+=f"| limit={self.getListLimit()}\n"
+        markup+=f"| limit={listLimit}\n"
         markup+=f"""{self.askSort()}}}}}"""
         return markup
 
