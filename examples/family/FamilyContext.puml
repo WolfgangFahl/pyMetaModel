@@ -1,3 +1,4 @@
+@startuml
 package FamilyContext {
   class Family {
     name:Text
@@ -116,4 +117,4 @@ skinparam object {
 }
 hide Circle
 ' end of skinparams '
-
+@enduml
