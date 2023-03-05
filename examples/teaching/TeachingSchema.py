@@ -1,5 +1,5 @@
 # Auto generated from TeachingSchema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T16:13:42
+# Generation date: 2023-03-05T16:29:04
 # Schema: TeachingSchema
 #
 # id: TeachingSchema

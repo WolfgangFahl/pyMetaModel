@@ -1,19 +1,16 @@
 package CeurwsSchema {
-Note top of Volume
-A Volume is a collection of papers mostly documenting the results of an academic event
-End note
   class Volume {
     number:Number
     title:Text
   }
-Note top of Session
-A Session is a a collection of papers as part of a Volume
+Note top of Volume
+A Volume is a collection of papers mostly documenting the results of an academic event
 End note
   class Session {
     title:Text
   }
-Note top of Paper
-A paper is e.g. a scholarly article
+Note top of Session
+A Session is a a collection of papers as part of a Volume
 End note
   class Paper {
     id:Text
@@ -21,6 +18,9 @@ End note
     authors:Text
     pdfUrl:URL
   }
+Note top of Paper
+A paper is e.g. a scholarly article
+End note
 }
 Volume "volume 1" -- "sessions *" Session
 Volume "volume 1" -- "papers *" Paper

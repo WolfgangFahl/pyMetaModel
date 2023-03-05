@@ -168,7 +168,7 @@ slots:
     name: number
     description: The number Volume
     from_schema: CeurwsSchema
-    range: string
+    range: double
   title:
     name: title
     description: The title of the Volume,The title of the Session,The title of the
@@ -189,7 +189,7 @@ slots:
     name: pdfUrl
     description: the url for the pdf of this paper
     from_schema: CeurwsSchema
-    range: string
+    range: uri
 classes:
   Volume:
     name: Volume
@@ -201,7 +201,7 @@ classes:
         name: number
         description: The number Volume
         from_schema: CeurwsSchema
-        range: string
+        range: double
       title:
         name: title
         description: The title of the Volume,The title of the Session,The title of
@@ -244,5 +244,5 @@ classes:
         name: pdfUrl
         description: the url for the pdf of this paper
         from_schema: CeurwsSchema
-        range: string
+        range: uri
 

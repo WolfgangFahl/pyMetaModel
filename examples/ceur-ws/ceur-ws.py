@@ -1,5 +1,5 @@
 # Auto generated from ceur-ws.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-24T13:10:03
+# Generation date: 2023-03-05T16:29:16
 # Schema: CeurwsSchema
 #
 # id: CeurwsSchema
@@ -184,12 +184,12 @@ class Volume(YAMLRoot):
     class_name: ClassVar[str] = "Volume"
     class_model_uri: ClassVar[URIRef] = CEURWSSCHEMA.Volume
 
-    number: Optional[str] = None
+    number: Optional[float] = None
     title: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.number is not None and not isinstance(self.number, str):
-            self.number = str(self.number)
+        if self.number is not None and not isinstance(self.number, float):
+            self.number = float(self.number)
 
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
@@ -233,7 +233,7 @@ class Paper(YAMLRoot):
     id: Optional[str] = None
     title: Optional[str] = None
     authors: Optional[str] = None
-    pdfUrl: Optional[str] = None
+    pdfUrl: Optional[Union[str, URI]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is not None and not isinstance(self.id, str):
@@ -245,8 +245,8 @@ class Paper(YAMLRoot):
         if self.authors is not None and not isinstance(self.authors, str):
             self.authors = str(self.authors)
 
-        if self.pdfUrl is not None and not isinstance(self.pdfUrl, str):
-            self.pdfUrl = str(self.pdfUrl)
+        if self.pdfUrl is not None and not isinstance(self.pdfUrl, URI):
+            self.pdfUrl = URI(self.pdfUrl)
 
         super().__post_init__(**kwargs)
 
@@ -259,7 +259,7 @@ class slots:
     pass
 
 slots.number = Slot(uri=CEURWSSCHEMA.number, name="number", curie=CEURWSSCHEMA.curie('number'),
-                   model_uri=CEURWSSCHEMA.number, domain=None, range=Optional[str])
+                   model_uri=CEURWSSCHEMA.number, domain=None, range=Optional[float])
 
 slots.title = Slot(uri=CEURWSSCHEMA.title, name="title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.title, domain=None, range=Optional[str])
@@ -271,10 +271,10 @@ slots.authors = Slot(uri=CEURWSSCHEMA.authors, name="authors", curie=CEURWSSCHEM
                    model_uri=CEURWSSCHEMA.authors, domain=None, range=Optional[str])
 
 slots.pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
-                   model_uri=CEURWSSCHEMA.pdfUrl, domain=None, range=Optional[str])
+                   model_uri=CEURWSSCHEMA.pdfUrl, domain=None, range=Optional[Union[str, URI]])
 
 slots.volume__number = Slot(uri=CEURWSSCHEMA.number, name="volume__number", curie=CEURWSSCHEMA.curie('number'),
-                   model_uri=CEURWSSCHEMA.volume__number, domain=None, range=Optional[str])
+                   model_uri=CEURWSSCHEMA.volume__number, domain=None, range=Optional[float])
 
 slots.volume__title = Slot(uri=CEURWSSCHEMA.title, name="volume__title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.volume__title, domain=None, range=Optional[str])
@@ -292,4 +292,4 @@ slots.paper__authors = Slot(uri=CEURWSSCHEMA.authors, name="paper__authors", cur
                    model_uri=CEURWSSCHEMA.paper__authors, domain=None, range=Optional[str])
 
 slots.paper__pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="paper__pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
-                   model_uri=CEURWSSCHEMA.paper__pdfUrl, domain=None, range=Optional[str])
+                   model_uri=CEURWSSCHEMA.paper__pdfUrl, domain=None, range=Optional[Union[str, URI]])

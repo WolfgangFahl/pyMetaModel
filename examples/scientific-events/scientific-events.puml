@@ -1,7 +1,4 @@
 package CrSchema {
-Note top of EventSeries
-a series of Events
-End note
   class EventSeries {
     acronym:text
     description:text
@@ -9,8 +6,8 @@ End note
     wikidataid:External identifier
     homepage:url
   }
-Note top of Event
-a meeting of researchers at a specific time and place
+Note top of EventSeries
+a series of Events
 End note
   class Event {
     acronym:text
@@ -19,36 +16,36 @@ End note
     homepage:url
     wikidataid:External identifier
   }
+Note top of Event
+a meeting of researchers at a specific time and place
+End note
+  class City {
+    name:text
+    wikidataid:External identifier
+  }
 Note top of City
 large permanent human settlement
 End note
-  class City {
+  class Country {
     name:text
     wikidataid:External identifier
   }
 Note top of Country
 distinct region in geography; a broad term that can include political divisions or regions associated with distinct political characteristics
 End note
-  class Country {
+  class Region {
     name:text
     wikidataid:External identifier
   }
 Note top of Region
 first-level administrative country subdivision e.g. Region/province
 End note
-  class Region {
-    name:text
-    wikidataid:External identifier
-  }
-Note top of Proceedings
-Proceedings are a collection of papers mostly documenting the results of an academic event
-End note
   class Proceedings {
     wikidataid:External identifier
     title:Text
   }
-Note top of Scholar
-scholar/researcher: person who engages in research, professionally or otherwise
+Note top of Proceedings
+Proceedings are a collection of papers mostly documenting the results of an academic event
 End note
   class Scholar {
     wikiDataId:External identifier
@@ -64,8 +61,8 @@ End note
     gndId:External identifier
     smartCRMId:External identifier
   }
-Note top of Institution
-structure or mechanism of social order and cooperation governing the behaviour of a set of individuals within a given community
+Note top of Scholar
+scholar/researcher: person who engages in research, professionally or otherwise
 End note
   class Institution {
     title:text
@@ -73,6 +70,9 @@ End note
     homepage:url
     smartCRMId:External identifier
   }
+Note top of Institution
+structure or mechanism of social order and cooperation governing the behaviour of a set of individuals within a given community
+End note
 }
 EventSeries "series 1" -- "events *" Event
 City "city 1" -- "event *" Event

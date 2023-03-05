@@ -1,7 +1,4 @@
 package MetaModel {
-Note top of Context
-A Context groups some topics like a Namespace/Package
-End note
   class Context {
     name:Text
     since:Date
@@ -9,8 +6,8 @@ End note
     copyright:Text
     master:URL
   }
-Note top of Property
-a Property is a Feature/Attribute of a Topic
+Note top of Context
+A Context groups some topics like a Namespace/Package
 End note
   class Property {
     name:Text
@@ -33,8 +30,8 @@ End note
     isLink:Boolean
     nullable:Boolean
   }
-Note top of SMW_Type
-an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes
+Note top of Property
+a Property is a Feature/Attribute of a Topic
 End note
   class SMW_Type {
     type:Text
@@ -44,8 +41,8 @@ End note
     typepage:Page
     javaType:Text
   }
-Note top of Topic
-A Topic is a Concept/Class/Thing/Entity
+Note top of SMW_Type
+an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes
 End note
   class Topic {
     name:Text
@@ -59,8 +56,8 @@ End note
     cargo:Boolean
     headerTabs:Boolean
   }
-Note top of Action
-An action/function/operation to be performed
+Note top of Topic
+A Topic is a Concept/Class/Thing/Entity
 End note
   class Action {
     name:Text
@@ -75,8 +72,8 @@ End note
     since:Date
     comment:Text
   }
-Note top of TopicLink
-A TopicLink links two Concepts
+Note top of Action
+An action/function/operation to be performed
 End note
   class TopicLink {
     name:Text
@@ -90,6 +87,9 @@ End note
     targetDocumentation:Text
     masterDetail:Boolean
   }
+Note top of TopicLink
+A TopicLink links two Concepts
+End note
 }
 Topic "topic 1" -- "properties *" Property
 Context "context 1" -- "topics *" Topic

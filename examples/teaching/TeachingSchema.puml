@@ -1,7 +1,4 @@
 package TeachingSchema {
-Note top of Chapter
-a chapter of a lecture
-End note
   class Chapter {
     key:text
     no:number
@@ -10,8 +7,8 @@ End note
     de:text
     en:text
   }
-Note top of Presentation
-a presentation of a lecture
+Note top of Chapter
+a chapter of a lecture
 End note
   class Presentation {
     key:External identifier
@@ -22,8 +19,8 @@ End note
     gitlab:External identifier
     moodle:External identifier
   }
-Note top of LearningGoal
-a LearningGoal of a lecture
+Note top of Presentation
+a presentation of a lecture
 End note
   class LearningGoal {
     key:text
@@ -38,8 +35,8 @@ End note
     since:Date
     until:Date
   }
-Note top of Keyword
-a keyword
+Note top of LearningGoal
+a LearningGoal of a lecture
 End note
   class Keyword {
     key:text
@@ -52,8 +49,8 @@ End note
     urls:text
     stackoverflow_tag:External identifier
   }
-Note top of Slide
-I am a presentation slide
+Note top of Keyword
+a keyword
 End note
   class Slide {
     qkey:Text
@@ -67,8 +64,8 @@ End note
     literature:Text
     learningGoal:Page
   }
-Note top of Check
-I am a quality check
+Note top of Slide
+I am a presentation slide
 End note
   class Check {
     qKey:Text
@@ -81,16 +78,16 @@ End note
     total:Number
     pain:Number
   }
-Note top of Issue
-I am a an issue
+Note top of Check
+I am a quality check
 End note
   class Issue {
     item:Page
     check:Page
     fix:Text
   }
-Note top of RelevanceLevel
-I am a relevance level
+Note top of Issue
+I am a an issue
 End note
   class RelevanceLevel {
     id:Text
@@ -98,8 +95,8 @@ End note
     examination:Text
     description:Text
   }
-Note top of Publication
-A Publication is e.g. a scholarly article
+Note top of RelevanceLevel
+I am a relevance level
 End note
   class Publication {
     id:Text
@@ -112,14 +109,17 @@ End note
     year:Number
     pdfUrl:URL
   }
-Note top of Sheet
-I am a sheet in a spreadsheet
+Note top of Publication
+A Publication is e.g. a scholarly article
 End note
   class Sheet {
     gid:Text
     concept:Text
     url:Url
   }
+Note top of Sheet
+I am a sheet in a spreadsheet
+End note
 }
 
 ' BITPlan Corporate identity skin params

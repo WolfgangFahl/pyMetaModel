@@ -1,7 +1,4 @@
 package FamilyContext {
-Note top of Family
-In most societies, the family is the principal institution for the socialization of children.
-End note
   class Family {
     name:Text
     weddingDate:Date
@@ -12,8 +9,8 @@ End note
     husbandOf:Page
     wifeOf:Page
   }
-Note top of Person
-A Person is a human being
+Note top of Family
+In most societies, the family is the principal institution for the socialization of children.
 End note
   class Person {
     qid:Text
@@ -33,6 +30,9 @@ End note
     noInLine:Number
     wikiPedia:URL
   }
+Note top of Person
+A Person is a human being
+End note
 }
 Family "childOf 1" -- "children *" Person
 Family "parentOf 1" -- "parents *" Person
