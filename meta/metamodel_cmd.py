@@ -71,7 +71,8 @@ class MetaModelCmd:
             args(Args): command line arguments
         """
         if args.input:
-            self.context.self.error,self.errMsg=Context.fromSiDIF_input(args.input,debug=args.debug)
+            result_tuple=Context.fromSiDIF_input(args.input,debug=args.debug)
+            self.context,self.error,self.errMsg=result_tuple
         elif args.wikiId and args.context:
             self.wikiId=args.wikiId
             self.smwAccess=SMWAccess(args.wikiId)
