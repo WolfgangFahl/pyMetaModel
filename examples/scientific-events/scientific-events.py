@@ -1,5 +1,5 @@
 # Auto generated from scientific-events.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T16:28:47
+# Generation date: 2023-03-05T17:59:56
 # Schema: CrSchema
 #
 # id: CrSchema
@@ -446,6 +446,47 @@ class Institution(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
+@dataclass
+class Paper(YAMLRoot):
+    """
+    A paper is e.g. a scholarly article
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CRSCHEMA.Paper
+    class_class_curie: ClassVar[str] = "CrSchema:Paper"
+    class_name: ClassVar[str] = "Paper"
+    class_model_uri: ClassVar[URIRef] = CRSCHEMA.Paper
+
+    description: Optional[str] = None
+    id: Optional[str] = None
+    wikidataid: Optional[str] = None
+    title: Optional[str] = None
+    authors: Optional[str] = None
+    pdfUrl: Optional[Union[str, URI]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.id is not None and not isinstance(self.id, str):
+            self.id = str(self.id)
+
+        if self.wikidataid is not None and not isinstance(self.wikidataid, str):
+            self.wikidataid = str(self.wikidataid)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.authors is not None and not isinstance(self.authors, str):
+            self.authors = str(self.authors)
+
+        if self.pdfUrl is not None and not isinstance(self.pdfUrl, URI):
+            self.pdfUrl = URI(self.pdfUrl)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 
 
@@ -497,6 +538,15 @@ slots.gndId = Slot(uri=CRSCHEMA.gndId, name="gndId", curie=CRSCHEMA.curie('gndId
 
 slots.smartCRMId = Slot(uri=CRSCHEMA.smartCRMId, name="smartCRMId", curie=CRSCHEMA.curie('smartCRMId'),
                    model_uri=CRSCHEMA.smartCRMId, domain=None, range=Optional[str])
+
+slots.id = Slot(uri=CRSCHEMA.id, name="id", curie=CRSCHEMA.curie('id'),
+                   model_uri=CRSCHEMA.id, domain=None, range=Optional[str])
+
+slots.authors = Slot(uri=CRSCHEMA.authors, name="authors", curie=CRSCHEMA.curie('authors'),
+                   model_uri=CRSCHEMA.authors, domain=None, range=Optional[str])
+
+slots.pdfUrl = Slot(uri=CRSCHEMA.pdfUrl, name="pdfUrl", curie=CRSCHEMA.curie('pdfUrl'),
+                   model_uri=CRSCHEMA.pdfUrl, domain=None, range=Optional[Union[str, URI]])
 
 slots.eventSeries__acronym = Slot(uri=CRSCHEMA.acronym, name="eventSeries__acronym", curie=CRSCHEMA.curie('acronym'),
                    model_uri=CRSCHEMA.eventSeries__acronym, domain=None, range=Optional[str])
@@ -599,3 +649,21 @@ slots.institution__homepage = Slot(uri=CRSCHEMA.homepage, name="institution__hom
 
 slots.institution__smartCRMId = Slot(uri=CRSCHEMA.smartCRMId, name="institution__smartCRMId", curie=CRSCHEMA.curie('smartCRMId'),
                    model_uri=CRSCHEMA.institution__smartCRMId, domain=None, range=Optional[str])
+
+slots.paper__description = Slot(uri=CRSCHEMA.description, name="paper__description", curie=CRSCHEMA.curie('description'),
+                   model_uri=CRSCHEMA.paper__description, domain=None, range=Optional[str])
+
+slots.paper__id = Slot(uri=CRSCHEMA.id, name="paper__id", curie=CRSCHEMA.curie('id'),
+                   model_uri=CRSCHEMA.paper__id, domain=None, range=Optional[str])
+
+slots.paper__wikidataid = Slot(uri=CRSCHEMA.wikidataid, name="paper__wikidataid", curie=CRSCHEMA.curie('wikidataid'),
+                   model_uri=CRSCHEMA.paper__wikidataid, domain=None, range=Optional[str])
+
+slots.paper__title = Slot(uri=CRSCHEMA.title, name="paper__title", curie=CRSCHEMA.curie('title'),
+                   model_uri=CRSCHEMA.paper__title, domain=None, range=Optional[str])
+
+slots.paper__authors = Slot(uri=CRSCHEMA.authors, name="paper__authors", curie=CRSCHEMA.curie('authors'),
+                   model_uri=CRSCHEMA.paper__authors, domain=None, range=Optional[str])
+
+slots.paper__pdfUrl = Slot(uri=CRSCHEMA.pdfUrl, name="paper__pdfUrl", curie=CRSCHEMA.curie('pdfUrl'),
+                   model_uri=CRSCHEMA.paper__pdfUrl, domain=None, range=Optional[Union[str, URI]])

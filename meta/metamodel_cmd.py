@@ -60,6 +60,7 @@ class MetaModelCmd:
         parser.add_argument("-l", "--linkml", action="store_true", help="create linkml yaml file")
         parser.add_argument("-t", "--title",help="the title of a diagram")
         parser.add_argument("-u", "--uml", action="store_true", help="create plantuml diagram")
+        parser.add_argument("-at","--withAt",action="store_true",help="generate with @startuml/@enduml bracket")
         parser.add_argument('--wikiId', default="wiki",help='id of the wiki to generate for [default: %(default)s]')
         return parser
 
@@ -97,7 +98,7 @@ class MetaModelCmd:
         """
         self.readContext(args)  
         if not self.hasError():
-            uml=PlantUml(title=args.title,copyRight=args.copyright)
+            uml=PlantUml(title=args.title,copyRight=args.copyright,withAt=args.withAt)
             uml.fromDIF(self.context.dif)
             return str(uml)
         
@@ -147,14 +148,12 @@ def main(argv=None): # IGNORE:C0111
             print(f"see {Version.doc_url}")
             webbrowser.open(Version.doc_url)
         if args.uml:
-          
             uml=mm_cmd.genUml(args)
             print(uml)
         elif args.linkml:
             mm_cmd=MetaModelCmd(debug=args.debug)
             linkml_yaml=mm_cmd.genLinkML(args)
             print (linkml_yaml)
-            
     
     except KeyboardInterrupt:
         ### handle keyboard interrupt ###

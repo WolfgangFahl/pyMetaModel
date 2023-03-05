@@ -174,20 +174,22 @@ slots:
     name: description
     description: A wikidata compatible description of the event series,A wikidata
       compatible description of the event,A wikidata compatible description of the
-      scholar
+      scholar,A wikidata compatible description of the paper
     from_schema: CrSchema
     range: string
   title:
     name: title
     description: The title of the event series. ,The title of the event series. ,The
-      title of the Proceedings,The name/title of the Institution
+      title of the Proceedings,The name/title of the Institution,The title of the
+      Paper
     from_schema: CrSchema
     range: string
   wikidataid:
     name: wikidataid
     description: The wikidataid of the event series,The wikidataid of the event,The
       wikidataid of the city,The wikidataid of the Country,The wikidataid of the Region,The
-      wikidata Q-Identifier of the Proceedings record,wikidata id of the Institution
+      wikidata Q-Identifier of the Proceedings record,wikidata id of the Institution,The
+      wikidataid of the paper
     from_schema: CrSchema
     range: string
   homepage:
@@ -248,6 +250,21 @@ slots:
     description: smartCRM id of the scholar,smartCRM id of the scholar
     from_schema: CrSchema
     range: string
+  id:
+    name: id
+    description: The id (filename) of the Paper
+    from_schema: CrSchema
+    range: string
+  authors:
+    name: authors
+    description: authors of the Paper
+    from_schema: CrSchema
+    range: string
+  pdfUrl:
+    name: pdfUrl
+    description: the url for the pdf of this paper
+    from_schema: CrSchema
+    range: uri
 classes:
   EventSeries:
     name: EventSeries
@@ -264,13 +281,14 @@ classes:
         name: description
         description: A wikidata compatible description of the event series,A wikidata
           compatible description of the event,A wikidata compatible description of
-          the scholar
+          the scholar,A wikidata compatible description of the paper
         from_schema: CrSchema
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
-          ,The title of the Proceedings,The name/title of the Institution
+          ,The title of the Proceedings,The name/title of the Institution,The title
+          of the Paper
         from_schema: CrSchema
         range: string
       wikidataid:
@@ -278,7 +296,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
       homepage:
@@ -302,13 +320,14 @@ classes:
         name: description
         description: A wikidata compatible description of the event series,A wikidata
           compatible description of the event,A wikidata compatible description of
-          the scholar
+          the scholar,A wikidata compatible description of the paper
         from_schema: CrSchema
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
-          ,The title of the Proceedings,The name/title of the Institution
+          ,The title of the Proceedings,The name/title of the Institution,The title
+          of the Paper
         from_schema: CrSchema
         range: string
       homepage:
@@ -322,7 +341,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
   City:
@@ -341,7 +360,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
   Country:
@@ -361,7 +380,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
   Region:
@@ -380,7 +399,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
   Proceedings:
@@ -394,13 +413,14 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
-          ,The title of the Proceedings,The name/title of the Institution
+          ,The title of the Proceedings,The name/title of the Institution,The title
+          of the Paper
         from_schema: CrSchema
         range: string
   Scholar:
@@ -429,7 +449,7 @@ classes:
         name: description
         description: A wikidata compatible description of the event series,A wikidata
           compatible description of the event,A wikidata compatible description of
-          the scholar
+          the scholar,A wikidata compatible description of the paper
         from_schema: CrSchema
         range: string
       homepage:
@@ -483,7 +503,8 @@ classes:
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
-          ,The title of the Proceedings,The name/title of the Institution
+          ,The title of the Proceedings,The name/title of the Institution,The title
+          of the Paper
         from_schema: CrSchema
         range: string
       wikidataid:
@@ -491,7 +512,7 @@ classes:
         description: The wikidataid of the event series,The wikidataid of the event,The
           wikidataid of the city,The wikidataid of the Country,The wikidataid of the
           Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution
+          the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
       homepage:
@@ -505,4 +526,46 @@ classes:
         description: smartCRM id of the scholar,smartCRM id of the scholar
         from_schema: CrSchema
         range: string
+  Paper:
+    name: Paper
+    description: A paper is e.g. a scholarly article
+    from_schema: CrSchema
+    attributes:
+      description:
+        name: description
+        description: A wikidata compatible description of the event series,A wikidata
+          compatible description of the event,A wikidata compatible description of
+          the scholar,A wikidata compatible description of the paper
+        from_schema: CrSchema
+        range: string
+      id:
+        name: id
+        description: The id (filename) of the Paper
+        from_schema: CrSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the event series,The wikidataid of the event,The
+          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
+          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
+          the Institution,The wikidataid of the paper
+        from_schema: CrSchema
+        range: string
+      title:
+        name: title
+        description: The title of the event series. ,The title of the event series.
+          ,The title of the Proceedings,The name/title of the Institution,The title
+          of the Paper
+        from_schema: CrSchema
+        range: string
+      authors:
+        name: authors
+        description: authors of the Paper
+        from_schema: CrSchema
+        range: string
+      pdfUrl:
+        name: pdfUrl
+        description: the url for the pdf of this paper
+        from_schema: CrSchema
+        range: uri
 

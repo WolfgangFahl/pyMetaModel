@@ -613,6 +613,103 @@ false is uploadable of it
 false is isLink of it
 "Institution" is topic of it
 #
+# Paper
+#
+Paper isA Topic
+"Paper" is name of it
+"Papers" is pluralName of it
+"A paper is e.g. a scholarly article" is documentation of it
+"A paper is e.g. a scholarly article" is wikiDocumentation of it
+"File:Paper-logo-64px.png" is icon of it
+"/images/e/e7/Paper-logo-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"CrSchema" is context of it
+Paper_id addsTo it
+Paper_wikidataid addsTo it
+Paper_description addsTo i
+Paper_title addsTo it
+Paper_authors addsTo it
+Paper_pdfUrl addsTo it
+# properties of Paper
+# property id
+Paper_id isA Property
+"id" is name of it
+"id" is label of it
+"Text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The id (filename) of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property wikidataid
+Paper_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The wikidataid of the paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property description
+Paper_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A wikidata compatible description of the paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property title
+Paper_title isA Property
+"title" is name of it
+"title" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+true is mandatory of it
+3 is index of it
+300 is size of it
+false is uploadable of it
+"The title of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property authors
+Paper_authors isA Property
+"authors" is name of it
+"authors" is label of it
+"textarea" is inputType of it
+"Text" is type of it
+false is mandatory of it
+4 is index of it
+300 is size of it
+false is uploadable of it
+"authors of the Paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property pdfUrl
+Paper_pdfUrl isA Property
+"pdfUrl" is name of it
+"pdf" is label of it
+"URL" is type of it
+false is mandatory of it
+5 is index of it
+false is uploadable of it
+"the url for the pdf of this paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+#
 # TopicLinks
 #
 # Event n : 1 EventSeries

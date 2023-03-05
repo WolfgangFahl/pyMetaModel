@@ -91,18 +91,33 @@ hide Circle
 ' end of skinparams '
 """
 
-    def __init__(self,copyRight=None,title=None,debug=False,withSkin=True):
+    def __init__(self,copyRight=None,title=None,debug=False,withSkin:bool=True,withAt:bool=False):
         '''
         Constructor
         '''
         self.debug=debug
         self.withSkin=withSkin
+        self.withAt=withAt
         self.uml=""
         self.title=title
         self.copyRight=copyRight
         
     def __str__(self):
-        return self.uml
+        return self.atIt(self.uml)
+    
+    def atIt(self,markup:str):
+        """
+        Args:
+            markup(str): the markup
+        Returns:
+            str: markup with @startuml and @enduml
+        """
+        if not self.withAt:
+            return markup
+        at_markup=f"""@startuml
+{markup}
+@enduml"""
+        return at_markup
     
     def asUmlDict(self,dif):
         '''

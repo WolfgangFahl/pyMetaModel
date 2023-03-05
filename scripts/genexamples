@@ -8,6 +8,7 @@ do
   base_path=$root/$base
   echo "generating PlantUML for $base_path"
   mm_cmd -i $f -u > $base_path.puml
+  mm_cmd -i $f -u --withAt > ${base_path}_puml.txt
   echo "generating linkML for $base_path"
   mm_cmd -i $f -l > $base_path.yaml
   echo "generating mermaid ER Diagram for $base_path"

@@ -1,43 +1,31 @@
 @startuml
-package FamilyContext {
-  class Family {
-    name:Text
-    weddingDate:Date
-    weddingPlace:Text
-    yearMarried:Number
-    monthMarried:Number
-    divorced:Date
-    husbandOf:Page
-    wifeOf:Page
+package CeurwsSchema {
+  class Volume {
+    number:Number
+    title:Text
   }
-Note top of Family
-In most societies, the family is the principal institution for the socialization of children.
+Note top of Volume
+A Volume is a collection of papers mostly documenting the results of an academic event
 End note
-  class Person {
-    qid:Text
-    royal92id:Text
-    name:Text
-    nobleTitle:Text
-    picture:URL
-    sex:Text
-    born:Date
-    yearBorn:Number
-    monthBorn:Number
-    birthPlace:Text
-    died:Date
-    diedAt:Text
-    yearDied:Number
-    monthDied:Number
-    noInLine:Number
-    wikiPedia:URL
+  class Session {
+    title:Text
   }
-Note top of Person
-A Person is a human being
+Note top of Session
+A Session is a a collection of papers as part of a Volume
+End note
+  class Paper {
+    id:Text
+    title:Text
+    authors:Text
+    pdfUrl:URL
+  }
+Note top of Paper
+A paper is e.g. a scholarly article
 End note
 }
-Family "childOf 1" -- "children *" Person
-Family "parentOf 1" -- "parents *" Person
-Person "spouse 1" -- "spouses *" Person
+Volume "volume 1" -- "sessions *" Session
+Volume "volume 1" -- "papers *" Paper
+Session "session 1" -- "papers *" Paper
 
 ' BITPlan Corporate identity skin params
 ' Copyright (c) 2015-2023 BITPlan GmbH
@@ -117,4 +105,5 @@ skinparam object {
 }
 hide Circle
 ' end of skinparams '
+
 @enduml
