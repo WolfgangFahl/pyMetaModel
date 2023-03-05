@@ -2,37 +2,37 @@
 erDiagram
 Context {
     string name  
-    string since  
-    string updated  
+    date since  
+    date updated  
     string copyright  
-    string master  
+    uri master  
 }
 Property {
     string name  
     string label  
     string type  
-    string index  
-    string sortPos  
-    string primaryKey  
-    string mandatory  
+    double index  
+    double sortPos  
+    boolean primaryKey  
+    boolean mandatory  
     string namespace  
-    string size  
-    string uploadable  
+    double size  
+    boolean uploadable  
     string defaultValue  
     string inputType  
     string allowedValues  
     string documentation  
     string values_from  
     string externalFormatterURI  
-    string showInGrid  
-    string isLink  
-    string nullable  
+    boolean showInGrid  
+    boolean isLink  
+    boolean nullable  
 }
 SMWType {
     string type  
     string documentation  
     string id  
-    string helppage  
+    uri helppage  
     string typepage  
     string javaType  
 }
@@ -44,34 +44,34 @@ Topic {
     string documentation  
     string wikiDocumentation  
     string defaultstoremode  
-    string listLimit  
-    string cargo  
-    string headerTabs  
+    double listLimit  
+    boolean cargo  
+    boolean headerTabs  
 }
 Action {
     string name  
     string servicetype  
-    string service  
+    uri service  
     string inputtype  
     string input  
     string actionpage  
     string output  
     string engine  
     string author  
-    string since  
+    date since  
     string comment  
 }
 TopicLink {
     string name  
     string source  
     string sourceRole  
-    string sourceMultiple  
+    boolean sourceMultiple  
     string sourceDocumentation  
     string target  
     string targetRole  
-    string targetMultiple  
+    boolean targetMultiple  
     string targetDocumentation  
-    string masterDetail  
+    boolean masterDetail  
 }
 
 

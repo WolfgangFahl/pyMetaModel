@@ -274,12 +274,12 @@ slots:
     description: The year since when this learningGoal is active,the date this check
       was activated
     from_schema: TeachingSchema
-    range: string
+    range: date
   until:
     name: until
     description: The year until this learningGoal was active
     from_schema: TeachingSchema
-    range: string
+    range: date
   aliases:
     name: aliases
     description: optional, comma separated aliases of the keyword
@@ -363,17 +363,17 @@ slots:
     name: ok
     description: number of items that pass the check/are ok
     from_schema: TeachingSchema
-    range: string
+    range: double
   total:
     name: total
     description: number of items that are checked in total
     from_schema: TeachingSchema
-    range: string
+    range: double
   pain:
     name: pain
     description: pain of this item
     from_schema: TeachingSchema
-    range: string
+    range: double
   item:
     name: item
     description: the item this issue references
@@ -423,12 +423,12 @@ slots:
     name: year
     description: year of the Publication
     from_schema: TeachingSchema
-    range: string
+    range: double
   pdfUrl:
     name: pdfUrl
     description: the url for the pdf of this Publication
     from_schema: TeachingSchema
-    range: string
+    range: uri
   gid:
     name: gid
     description: the gid of this Sheet
@@ -580,12 +580,12 @@ classes:
         description: The year since when this learningGoal is active,the date this
           check was activated
         from_schema: TeachingSchema
-        range: string
+        range: date
       until:
         name: until
         description: The year until this learningGoal was active
         from_schema: TeachingSchema
-        range: string
+        range: date
   Keyword:
     name: Keyword
     description: a keyword
@@ -728,7 +728,7 @@ classes:
         description: The year since when this learningGoal is active,the date this
           check was activated
         from_schema: TeachingSchema
-        range: string
+        range: date
       check:
         name: check
         description: the description of what is checked by this Check,the check this
@@ -744,17 +744,17 @@ classes:
         name: ok
         description: number of items that pass the check/are ok
         from_schema: TeachingSchema
-        range: string
+        range: double
       total:
         name: total
         description: number of items that are checked in total
         from_schema: TeachingSchema
-        range: string
+        range: double
       pain:
         name: pain
         description: pain of this item
         from_schema: TeachingSchema
-        range: string
+        range: double
   Issue:
     name: Issue
     description: I am a an issue
@@ -847,12 +847,12 @@ classes:
         name: year
         description: year of the Publication
         from_schema: TeachingSchema
-        range: string
+        range: double
       pdfUrl:
         name: pdfUrl
         description: the url for the pdf of this Publication
         from_schema: TeachingSchema
-        range: string
+        range: uri
   Sheet:
     name: Sheet
     description: I am a sheet in a spreadsheet

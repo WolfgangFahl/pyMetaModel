@@ -1,5 +1,5 @@
 # Auto generated from TeachingSchema.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-02-24T13:09:52
+# Generation date: 2023-03-05T16:13:42
 # Schema: TeachingSchema
 #
 # id: TeachingSchema
@@ -279,8 +279,8 @@ class LearningGoal(YAMLRoot):
     subChapterKey: Optional[str] = None
     relevance: Optional[str] = None
     keywords: Optional[str] = None
-    since: Optional[str] = None
-    until: Optional[str] = None
+    since: Optional[Union[str, XSDDate]] = None
+    until: Optional[Union[str, XSDDate]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.key is not None and not isinstance(self.key, str):
@@ -310,11 +310,11 @@ class LearningGoal(YAMLRoot):
         if self.keywords is not None and not isinstance(self.keywords, str):
             self.keywords = str(self.keywords)
 
-        if self.since is not None and not isinstance(self.since, str):
-            self.since = str(self.since)
+        if self.since is not None and not isinstance(self.since, XSDDate):
+            self.since = XSDDate(self.since)
 
-        if self.until is not None and not isinstance(self.until, str):
-            self.until = str(self.until)
+        if self.until is not None and not isinstance(self.until, XSDDate):
+            self.until = XSDDate(self.until)
 
         super().__post_init__(**kwargs)
 
@@ -444,12 +444,12 @@ class Check(YAMLRoot):
     qKey: Optional[str] = None
     key: Optional[str] = None
     concept: Optional[str] = None
-    since: Optional[str] = None
+    since: Optional[Union[str, XSDDate]] = None
     check: Optional[str] = None
     problem: Optional[str] = None
-    ok: Optional[str] = None
-    total: Optional[str] = None
-    pain: Optional[str] = None
+    ok: Optional[float] = None
+    total: Optional[float] = None
+    pain: Optional[float] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.qKey is not None and not isinstance(self.qKey, str):
@@ -461,8 +461,8 @@ class Check(YAMLRoot):
         if self.concept is not None and not isinstance(self.concept, str):
             self.concept = str(self.concept)
 
-        if self.since is not None and not isinstance(self.since, str):
-            self.since = str(self.since)
+        if self.since is not None and not isinstance(self.since, XSDDate):
+            self.since = XSDDate(self.since)
 
         if self.check is not None and not isinstance(self.check, str):
             self.check = str(self.check)
@@ -470,14 +470,14 @@ class Check(YAMLRoot):
         if self.problem is not None and not isinstance(self.problem, str):
             self.problem = str(self.problem)
 
-        if self.ok is not None and not isinstance(self.ok, str):
-            self.ok = str(self.ok)
+        if self.ok is not None and not isinstance(self.ok, float):
+            self.ok = float(self.ok)
 
-        if self.total is not None and not isinstance(self.total, str):
-            self.total = str(self.total)
+        if self.total is not None and not isinstance(self.total, float):
+            self.total = float(self.total)
 
-        if self.pain is not None and not isinstance(self.pain, str):
-            self.pain = str(self.pain)
+        if self.pain is not None and not isinstance(self.pain, float):
+            self.pain = float(self.pain)
 
         super().__post_init__(**kwargs)
 
@@ -563,8 +563,8 @@ class Publication(YAMLRoot):
     title: Optional[str] = None
     authors: Optional[str] = None
     publisher: Optional[str] = None
-    year: Optional[str] = None
-    pdfUrl: Optional[str] = None
+    year: Optional[float] = None
+    pdfUrl: Optional[Union[str, URI]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is not None and not isinstance(self.id, str):
@@ -588,11 +588,11 @@ class Publication(YAMLRoot):
         if self.publisher is not None and not isinstance(self.publisher, str):
             self.publisher = str(self.publisher)
 
-        if self.year is not None and not isinstance(self.year, str):
-            self.year = str(self.year)
+        if self.year is not None and not isinstance(self.year, float):
+            self.year = float(self.year)
 
-        if self.pdfUrl is not None and not isinstance(self.pdfUrl, str):
-            self.pdfUrl = str(self.pdfUrl)
+        if self.pdfUrl is not None and not isinstance(self.pdfUrl, URI):
+            self.pdfUrl = URI(self.pdfUrl)
 
         super().__post_init__(**kwargs)
 
@@ -694,10 +694,10 @@ slots.keywords = Slot(uri=TEACHINGSCHEMA.keywords, name="keywords", curie=TEACHI
                    model_uri=TEACHINGSCHEMA.keywords, domain=None, range=Optional[str])
 
 slots.since = Slot(uri=TEACHINGSCHEMA.since, name="since", curie=TEACHINGSCHEMA.curie('since'),
-                   model_uri=TEACHINGSCHEMA.since, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.since, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.until = Slot(uri=TEACHINGSCHEMA.until, name="until", curie=TEACHINGSCHEMA.curie('until'),
-                   model_uri=TEACHINGSCHEMA.until, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.until, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.aliases = Slot(uri=TEACHINGSCHEMA.aliases, name="aliases", curie=TEACHINGSCHEMA.curie('aliases'),
                    model_uri=TEACHINGSCHEMA.aliases, domain=None, range=Optional[str])
@@ -745,13 +745,13 @@ slots.problem = Slot(uri=TEACHINGSCHEMA.problem, name="problem", curie=TEACHINGS
                    model_uri=TEACHINGSCHEMA.problem, domain=None, range=Optional[str])
 
 slots.ok = Slot(uri=TEACHINGSCHEMA.ok, name="ok", curie=TEACHINGSCHEMA.curie('ok'),
-                   model_uri=TEACHINGSCHEMA.ok, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.ok, domain=None, range=Optional[float])
 
 slots.total = Slot(uri=TEACHINGSCHEMA.total, name="total", curie=TEACHINGSCHEMA.curie('total'),
-                   model_uri=TEACHINGSCHEMA.total, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.total, domain=None, range=Optional[float])
 
 slots.pain = Slot(uri=TEACHINGSCHEMA.pain, name="pain", curie=TEACHINGSCHEMA.curie('pain'),
-                   model_uri=TEACHINGSCHEMA.pain, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.pain, domain=None, range=Optional[float])
 
 slots.item = Slot(uri=TEACHINGSCHEMA.item, name="item", curie=TEACHINGSCHEMA.curie('item'),
                    model_uri=TEACHINGSCHEMA.item, domain=None, range=Optional[str])
@@ -781,10 +781,10 @@ slots.publisher = Slot(uri=TEACHINGSCHEMA.publisher, name="publisher", curie=TEA
                    model_uri=TEACHINGSCHEMA.publisher, domain=None, range=Optional[str])
 
 slots.year = Slot(uri=TEACHINGSCHEMA.year, name="year", curie=TEACHINGSCHEMA.curie('year'),
-                   model_uri=TEACHINGSCHEMA.year, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.year, domain=None, range=Optional[float])
 
 slots.pdfUrl = Slot(uri=TEACHINGSCHEMA.pdfUrl, name="pdfUrl", curie=TEACHINGSCHEMA.curie('pdfUrl'),
-                   model_uri=TEACHINGSCHEMA.pdfUrl, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.pdfUrl, domain=None, range=Optional[Union[str, URI]])
 
 slots.gid = Slot(uri=TEACHINGSCHEMA.gid, name="gid", curie=TEACHINGSCHEMA.curie('gid'),
                    model_uri=TEACHINGSCHEMA.gid, domain=None, range=Optional[str])
@@ -859,10 +859,10 @@ slots.learningGoal__keywords = Slot(uri=TEACHINGSCHEMA.keywords, name="learningG
                    model_uri=TEACHINGSCHEMA.learningGoal__keywords, domain=None, range=Optional[str])
 
 slots.learningGoal__since = Slot(uri=TEACHINGSCHEMA.since, name="learningGoal__since", curie=TEACHINGSCHEMA.curie('since'),
-                   model_uri=TEACHINGSCHEMA.learningGoal__since, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.learningGoal__since, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.learningGoal__until = Slot(uri=TEACHINGSCHEMA.until, name="learningGoal__until", curie=TEACHINGSCHEMA.curie('until'),
-                   model_uri=TEACHINGSCHEMA.learningGoal__until, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.learningGoal__until, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.keyword__key = Slot(uri=TEACHINGSCHEMA.key, name="keyword__key", curie=TEACHINGSCHEMA.curie('key'),
                    model_uri=TEACHINGSCHEMA.keyword__key, domain=None, range=Optional[str])
@@ -931,7 +931,7 @@ slots.check__concept = Slot(uri=TEACHINGSCHEMA.concept, name="check__concept", c
                    model_uri=TEACHINGSCHEMA.check__concept, domain=None, range=Optional[str])
 
 slots.check__since = Slot(uri=TEACHINGSCHEMA.since, name="check__since", curie=TEACHINGSCHEMA.curie('since'),
-                   model_uri=TEACHINGSCHEMA.check__since, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.check__since, domain=None, range=Optional[Union[str, XSDDate]])
 
 slots.check__check = Slot(uri=TEACHINGSCHEMA.check, name="check__check", curie=TEACHINGSCHEMA.curie('check'),
                    model_uri=TEACHINGSCHEMA.check__check, domain=None, range=Optional[str])
@@ -940,13 +940,13 @@ slots.check__problem = Slot(uri=TEACHINGSCHEMA.problem, name="check__problem", c
                    model_uri=TEACHINGSCHEMA.check__problem, domain=None, range=Optional[str])
 
 slots.check__ok = Slot(uri=TEACHINGSCHEMA.ok, name="check__ok", curie=TEACHINGSCHEMA.curie('ok'),
-                   model_uri=TEACHINGSCHEMA.check__ok, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.check__ok, domain=None, range=Optional[float])
 
 slots.check__total = Slot(uri=TEACHINGSCHEMA.total, name="check__total", curie=TEACHINGSCHEMA.curie('total'),
-                   model_uri=TEACHINGSCHEMA.check__total, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.check__total, domain=None, range=Optional[float])
 
 slots.check__pain = Slot(uri=TEACHINGSCHEMA.pain, name="check__pain", curie=TEACHINGSCHEMA.curie('pain'),
-                   model_uri=TEACHINGSCHEMA.check__pain, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.check__pain, domain=None, range=Optional[float])
 
 slots.issue__item = Slot(uri=TEACHINGSCHEMA.item, name="issue__item", curie=TEACHINGSCHEMA.curie('item'),
                    model_uri=TEACHINGSCHEMA.issue__item, domain=None, range=Optional[str])
@@ -991,10 +991,10 @@ slots.publication__publisher = Slot(uri=TEACHINGSCHEMA.publisher, name="publicat
                    model_uri=TEACHINGSCHEMA.publication__publisher, domain=None, range=Optional[str])
 
 slots.publication__year = Slot(uri=TEACHINGSCHEMA.year, name="publication__year", curie=TEACHINGSCHEMA.curie('year'),
-                   model_uri=TEACHINGSCHEMA.publication__year, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.publication__year, domain=None, range=Optional[float])
 
 slots.publication__pdfUrl = Slot(uri=TEACHINGSCHEMA.pdfUrl, name="publication__pdfUrl", curie=TEACHINGSCHEMA.curie('pdfUrl'),
-                   model_uri=TEACHINGSCHEMA.publication__pdfUrl, domain=None, range=Optional[str])
+                   model_uri=TEACHINGSCHEMA.publication__pdfUrl, domain=None, range=Optional[Union[str, URI]])
 
 slots.sheet__gid = Slot(uri=TEACHINGSCHEMA.gid, name="sheet__gid", curie=TEACHINGSCHEMA.curie('gid'),
                    model_uri=TEACHINGSCHEMA.sheet__gid, domain=None, range=Optional[str])

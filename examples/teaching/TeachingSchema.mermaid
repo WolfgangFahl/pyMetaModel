@@ -27,8 +27,8 @@ LearningGoal {
     string subChapterKey  
     string relevance  
     string keywords  
-    string since  
-    string until  
+    date since  
+    date until  
 }
 Keyword {
     string key  
@@ -57,12 +57,12 @@ Check {
     string qKey  
     string key  
     string concept  
-    string since  
+    date since  
     string check  
     string problem  
-    string ok  
-    string total  
-    string pain  
+    double ok  
+    double total  
+    double pain  
 }
 Issue {
     string item  
@@ -83,8 +83,8 @@ Publication {
     string title  
     string authors  
     string publisher  
-    string year  
-    string pdfUrl  
+    double year  
+    uri pdfUrl  
 }
 Sheet {
     string gid  

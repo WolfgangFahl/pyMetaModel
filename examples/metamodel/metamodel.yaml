@@ -174,12 +174,12 @@ slots:
     name: since
     description: since when is this context available?,since when is this action available?
     from_schema: MetaModel
-    range: string
+    range: date
   updated:
     name: updated
     description: most recent update of the context
     from_schema: MetaModel
-    range: string
+    range: date
   copyright:
     name: copyright
     description: copyright of the context
@@ -189,7 +189,7 @@ slots:
     name: master
     description: what is the original master source of this context
     from_schema: MetaModel
-    range: string
+    range: uri
   label:
     name: label
     description: The label to be shown when in a form
@@ -207,7 +207,7 @@ slots:
       given property should show. The first property to show has the index 1 each
       following property has an index that is +1 of the previous.
     from_schema: MetaModel
-    range: string
+    range: double
   sortPos:
     name: sortPos
     description: "If none empty >0 this is the position in the sort clause of this\
@@ -215,12 +215,12 @@ slots:
       \ sort order\nand it is used for selecting topics .\n\nE.g.\nSortpos 1 for attribute\
       \ lastname and sortpos 2 for attribute firstname leads to  sort by lastname,firstname"
     from_schema: MetaModel
-    range: string
+    range: double
   primaryKey:
     name: primaryKey
     description: is this property a primary key of it's topic?
     from_schema: MetaModel
-    range: string
+    range: boolean
   mandatory:
     name: mandatory
     description: 'Specifies that this field must be filled in by the user. Note: mandatory
@@ -230,7 +230,7 @@ slots:
 
       see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
     from_schema: MetaModel
-    range: string
+    range: boolean
   namespace:
     name: namespace
     description: namespace prefix
@@ -240,7 +240,7 @@ slots:
     name: size
     description: the display size of the field for the property
     from_schema: MetaModel
-    range: string
+    range: double
   uploadable:
     name: uploadable
     description: 'Specifies that a link should be placed next to this field, that
@@ -254,7 +254,7 @@ slots:
 
       The type of the target property needs to be Page for this to work'
     from_schema: MetaModel
-    range: string
+    range: boolean
   defaultValue:
     name: defaultValue
     description: 'default value - Specifies a default value for this field. For date-related
@@ -361,18 +361,18 @@ slots:
     description: "I am true if this property is displayed in the default list of properties\
       \ for my topic as \na column"
     from_schema: MetaModel
-    range: string
+    range: boolean
   isLink:
     name: isLink
     description: true if this Property is derived form a Link. It will not be exported
       to SiDIF separately and automatically be added by the Property Generator
     from_schema: MetaModel
-    range: string
+    range: boolean
   nullable:
     name: nullable
     description: should nullvalues be allowed and value set to NULL when empty?
     from_schema: MetaModel
-    range: string
+    range: boolean
   id:
     name: id
     description: SMW internal id of the type
@@ -382,7 +382,7 @@ slots:
     name: helppage
     description: The url of the 'official' documentation page of this type
     from_schema: MetaModel
-    range: string
+    range: uri
   typepage:
     name: typepage
     description: The Semantic Media Wiki Special page for this specific type e.g.
@@ -426,18 +426,18 @@ slots:
     name: listLimit
     description: 'What is the default #ask list limit for this Topic?'
     from_schema: MetaModel
-    range: string
+    range: double
   cargo:
     name: cargo
     description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
       Cargo Extension?]
     from_schema: MetaModel
-    range: string
+    range: boolean
   headerTabs:
     name: headerTabs
     description: shall the forms be generated with header tabs?
     from_schema: MetaModel
-    range: string
+    range: boolean
   servicetype:
     name: servicetype
     description: The type of the service
@@ -447,7 +447,7 @@ slots:
     name: service
     description: The service to be used
     from_schema: MetaModel
-    range: string
+    range: uri
   inputtype:
     name: inputtype
     description: What is the type of the input?
@@ -495,7 +495,7 @@ slots:
   sourceMultiple:
     name: sourceMultiple
     from_schema: MetaModel
-    range: string
+    range: boolean
   sourceDocumentation:
     name: sourceDocumentation
     description: Documentation for the source Role
@@ -512,7 +512,7 @@ slots:
   targetMultiple:
     name: targetMultiple
     from_schema: MetaModel
-    range: string
+    range: boolean
   targetDocumentation:
     name: targetDocumentation
     description: Documentation for the target Role
@@ -525,7 +525,7 @@ slots:
       \ be selected. \n* for a 1:n link a link to the list of neighbours will be displayed\n\
       if yes\n* for a 1:1 link the details\n* for a 1:n link"
     from_schema: MetaModel
-    range: string
+    range: boolean
 classes:
   Context:
     name: Context
@@ -543,12 +543,12 @@ classes:
         description: since when is this context available?,since when is this action
           available?
         from_schema: MetaModel
-        range: string
+        range: date
       updated:
         name: updated
         description: most recent update of the context
         from_schema: MetaModel
-        range: string
+        range: date
       copyright:
         name: copyright
         description: copyright of the context
@@ -558,7 +558,7 @@ classes:
         name: master
         description: what is the original master source of this context
         from_schema: MetaModel
-        range: string
+        range: uri
   Property:
     name: Property
     description: a Property is a Feature/Attribute of a Topic
@@ -587,7 +587,7 @@ classes:
           the given property should show. The first property to show has the index
           1 each following property has an index that is +1 of the previous.
         from_schema: MetaModel
-        range: string
+        range: double
       sortPos:
         name: sortPos
         description: "If none empty >0 this is the position in the sort clause of\
@@ -596,12 +596,12 @@ classes:
           \ 1 for attribute lastname and sortpos 2 for attribute firstname leads to\
           \  sort by lastname,firstname"
         from_schema: MetaModel
-        range: string
+        range: double
       primaryKey:
         name: primaryKey
         description: is this property a primary key of it's topic?
         from_schema: MetaModel
-        range: string
+        range: boolean
       mandatory:
         name: mandatory
         description: 'Specifies that this field must be filled in by the user. Note:
@@ -612,7 +612,7 @@ classes:
 
           see http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag'
         from_schema: MetaModel
-        range: string
+        range: boolean
       namespace:
         name: namespace
         description: namespace prefix
@@ -622,7 +622,7 @@ classes:
         name: size
         description: the display size of the field for the property
         from_schema: MetaModel
-        range: string
+        range: double
       uploadable:
         name: uploadable
         description: 'Specifies that a link should be placed next to this field, that
@@ -636,7 +636,7 @@ classes:
 
           The type of the target property needs to be Page for this to work'
         from_schema: MetaModel
-        range: string
+        range: boolean
       defaultValue:
         name: defaultValue
         description: 'default value - Specifies a default value for this field. For
@@ -746,19 +746,19 @@ classes:
         description: "I am true if this property is displayed in the default list\
           \ of properties for my topic as \na column"
         from_schema: MetaModel
-        range: string
+        range: boolean
       isLink:
         name: isLink
         description: true if this Property is derived form a Link. It will not be
           exported to SiDIF separately and automatically be added by the Property
           Generator
         from_schema: MetaModel
-        range: string
+        range: boolean
       nullable:
         name: nullable
         description: should nullvalues be allowed and value set to NULL when empty?
         from_schema: MetaModel
-        range: string
+        range: boolean
   SMW_Type:
     name: SMW_Type
     description: an SMW_Type is a data type which determines the possible values for
@@ -788,7 +788,7 @@ classes:
         name: helppage
         description: The url of the 'official' documentation page of this type
         from_schema: MetaModel
-        range: string
+        range: uri
       typepage:
         name: typepage
         description: The Semantic Media Wiki Special page for this specific type e.g.
@@ -851,18 +851,18 @@ classes:
         name: listLimit
         description: 'What is the default #ask list limit for this Topic?'
         from_schema: MetaModel
-        range: string
+        range: double
       cargo:
         name: cargo
         description: Should the Topic be stored using the [https://www.mediawiki.org/wiki/Extension:Cargo
           Cargo Extension?]
         from_schema: MetaModel
-        range: string
+        range: boolean
       headerTabs:
         name: headerTabs
         description: shall the forms be generated with header tabs?
         from_schema: MetaModel
-        range: string
+        range: boolean
   Action:
     name: Action
     description: An action/function/operation to be performed
@@ -883,7 +883,7 @@ classes:
         name: service
         description: The service to be used
         from_schema: MetaModel
-        range: string
+        range: uri
       inputtype:
         name: inputtype
         description: What is the type of the input?
@@ -920,7 +920,7 @@ classes:
         description: since when is this context available?,since when is this action
           available?
         from_schema: MetaModel
-        range: string
+        range: date
       comment:
         name: comment
         description: a comment for the action
@@ -949,7 +949,7 @@ classes:
       sourceMultiple:
         name: sourceMultiple
         from_schema: MetaModel
-        range: string
+        range: boolean
       sourceDocumentation:
         name: sourceDocumentation
         description: Documentation for the source Role
@@ -966,7 +966,7 @@ classes:
       targetMultiple:
         name: targetMultiple
         from_schema: MetaModel
-        range: string
+        range: boolean
       targetDocumentation:
         name: targetDocumentation
         description: Documentation for the target Role
@@ -979,5 +979,5 @@ classes:
           \ can be selected. \n* for a 1:n link a link to the list of neighbours will\
           \ be displayed\nif yes\n* for a 1:1 link the details\n* for a 1:n link"
         from_schema: MetaModel
-        range: string
+        range: boolean
 
