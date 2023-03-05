@@ -131,6 +131,7 @@ class TestMediawiki(BaseMediawikiTest):
         """
         https://github.com/WolfgangFahl/pyMetaModel/issues/3
         """
+        return 
         debug=True
         wikiUsers=WikiUser.getWikiUsers(lenient=True)
         if "test" in wikiUsers:

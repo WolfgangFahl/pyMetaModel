@@ -17,9 +17,11 @@ EventSeries isA Topic
 "/images/cr/d/d1/EventSeriesLogo-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
 "CrSchema" is context of it
-EventSeries_title addsTo it
 EventSeries_acronym addsTo it
+EventSeries_description addsTo it
+EventSeries_title addsTo it
 EventSeries_homepage addsTo it
+EventSeries_wikidataid addsTo it
 # properties of Event
 # property acronym
 EventSeries_acronym isA Property
@@ -35,17 +37,30 @@ false is uploadable of it
 "The official acronym of the event series. " is documentation of it
 false is isLink of it
 "EventSeries" is topic of it
+# property description
+EventSeries_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A wikidata compatible description of the event series" is documentation of it
+false is isLink of it
+"EventSeries" is topic of it
 # property title
 EventSeries_title isA Property
 "title" is name of it
 "title" is label of it
 "text" is type of it
-2 is index of it
+3 is index of it
 false is primaryKey of it
 false is mandatory of it
 100 is size of it
 false is uploadable of it
-"The tile of the event series. " is documentation of it
+"The title of the event series. " is documentation of it
 false is isLink of it
 "EventSeries" is topic of it
 # property wikidataid
@@ -54,7 +69,7 @@ EventSeries_wikidataid isA Property
 "wikidataid" is label of it
 "External identifier" is type of it
 "https://www.wikidata.org/wiki/$1" is formatterURI of it
-3 is index of it
+4 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -67,7 +82,7 @@ EventSeries_homepage isA Property
 "homepage" is name of it
 "homepage" is label of it
 "url" is type of it
-4 is index of it
+5 is index of it
 false is primaryKey of it
 false is mandatory of it
 100 is size of it
@@ -88,6 +103,8 @@ Event isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 Event_acronym addsTo it
+Event_description addsTo it
+Event_title addsTo it
 Event_homepage addsTo it
 Event_wikidataid addsTo it
 # properties of Event
@@ -103,6 +120,32 @@ false is mandatory of it
 50 is size of it
 false is uploadable of it
 "The official acronym of the academic event, if it has one. " is documentation of it
+false is isLink of it
+"Event" is topic of it
+# property description
+Event_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A wikidata compatible description of the event" is documentation of it
+false is isLink of it
+"Event" is topic of it
+# property title
+Event_title isA Property
+"title" is name of it
+"title" is label of it
+"text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"The title of the event series. " is documentation of it
 false is isLink of it
 "Event" is topic of it
 # property homepage
@@ -294,7 +337,7 @@ Proceedings_title isA Property
 "title" is name of it
 "title" is label of it
 "Text" is type of it
-"textarea" is inputType of it
+"textarea" is inputType of it 
 2 is index of it
 2 is sortPos of it
 true is mandatory of it
@@ -488,7 +531,7 @@ Scholar_smartCRMId isA Property
 "smartCRMId" is name of it
 "smartCRMId" is label of it
 "External identifier" is type of it
-"http://crm.bitplan.com/smartcrm/person/$1" is formatterURI of it
+"http://crm.bitplan.com/smartcrm/person/$1" is formatterURI of it 
 12 is index of it
 false is primaryKey of it
 false is mandatory of it
@@ -560,7 +603,7 @@ Institution_smartCRMId isA Property
 "smartCRMId" is name of it
 "smartCRMId" is label of it
 "External identifier" is type of it
-"http://crm.bitplan.com/smartcrm/organisation/$1" is formatterURI of it
+"http://crm.bitplan.com/smartcrm/organisation/$1" is formatterURI of it 
 4 is index of it
 false is primaryKey of it
 false is mandatory of it
@@ -580,7 +623,7 @@ false is sourceMultiple of it
 "EventSeries" is source of it
 "events" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it
+"Event" is target of it 
 # Event n : 1 City
 Event_in_City isA TopicLink
 "eventInCity" is name of it
@@ -589,7 +632,7 @@ false is sourceMultiple of it
 "City" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it
+"Event" is target of it 
 # Event n : 1 Region
 Event_in_Region isA TopicLink
 "eventInRegion" is name of it
@@ -598,7 +641,7 @@ false is sourceMultiple of it
 "Region" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it
+"Event" is target of it 
 # Event n : 1 Country
 Event_in_Country isA TopicLink
 "eventInCountry" is name of it
@@ -607,7 +650,7 @@ false is sourceMultiple of it
 "Country" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it
+"Event" is target of it 
 # Scholar 1 : n Institution
 Scholar_affiliation_Institution isA TopicLink
 "affiliation" is name of it
@@ -616,4 +659,4 @@ false is sourceMultiple of it
 "Scholar" is source of it
 "institutions" is targetRole of it
 true is targetMultiple of it
-"Institution" is target of it
+"Institution" is target of it 
