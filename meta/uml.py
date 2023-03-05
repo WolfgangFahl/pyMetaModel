@@ -167,13 +167,13 @@ hide Circle
             for classKey in package["classes"]:
                 uclass=package["classes"][classKey]
                 className=uclass['name']
-                if 'documentation' in uclass:
-                    self.uml+="Note top of %s\n%s\nEnd note\n" % (className,uclass['documentation'])
                 self.uml+="  class %s {\n" % className
                 for propKey in uclass["properties"]:
                     prop=uclass["properties"][propKey]
                     self.uml+="    %s:%s\n" % (prop['name'],prop['type'])
                 self.uml+="  }\n"
+                if 'documentation' in uclass:
+                    self.uml+="Note top of %s\n%s\nEnd note\n" % (className,uclass['documentation'])
             self.uml+="}\n"        
         links=umlDict['topiclinks']
         for linkKey in links.keys():
