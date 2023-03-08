@@ -198,6 +198,26 @@ slots:
       of the scholar,The homepage of the Institution
     from_schema: CrSchema
     range: string
+  series:
+    name: series
+    description: series
+    from_schema: CrSchema
+    range: EventSeries
+  city:
+    name: city
+    description: city
+    from_schema: CrSchema
+    range: City
+  country:
+    name: country
+    description: country
+    from_schema: CrSchema
+    range: Country
+  region:
+    name: region
+    description: region
+    from_schema: CrSchema
+    range: Region
   name:
     name: name
     description: The name of the city,The name of the Country,The name of the Region,The
@@ -250,6 +270,11 @@ slots:
     description: smartCRM id of the scholar,smartCRM id of the scholar
     from_schema: CrSchema
     range: string
+  scholar:
+    name: scholar
+    description: scholar
+    from_schema: CrSchema
+    range: Scholar
   id:
     name: id
     description: The id (filename) of the Paper
@@ -344,6 +369,26 @@ classes:
           the Institution,The wikidataid of the paper
         from_schema: CrSchema
         range: string
+      series:
+        name: series
+        description: series
+        from_schema: CrSchema
+        range: EventSeries
+      city:
+        name: city
+        description: city
+        from_schema: CrSchema
+        range: City
+      country:
+        name: country
+        description: country
+        from_schema: CrSchema
+        range: Country
+      region:
+        name: region
+        description: region
+        from_schema: CrSchema
+        range: Region
   City:
     name: City
     description: large permanent human settlement
@@ -526,6 +571,11 @@ classes:
         description: smartCRM id of the scholar,smartCRM id of the scholar
         from_schema: CrSchema
         range: string
+      scholar:
+        name: scholar
+        description: scholar
+        from_schema: CrSchema
+        range: Scholar
   Paper:
     name: Paper
     description: A paper is e.g. a scholarly article

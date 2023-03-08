@@ -1,5 +1,5 @@
 # Auto generated from metamodel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T18:06:02
+# Generation date: 2023-03-08T09:55:01
 # Schema: MetaModel
 #
 # id: MetaModel
@@ -240,6 +240,7 @@ class Property(YAMLRoot):
     showInGrid: Optional[Union[bool, Bool]] = None
     isLink: Optional[Union[bool, Bool]] = None
     nullable: Optional[Union[bool, Bool]] = None
+    topic: Optional[Union[dict, "Topic"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.name is not None and not isinstance(self.name, str):
@@ -299,6 +300,9 @@ class Property(YAMLRoot):
         if self.nullable is not None and not isinstance(self.nullable, Bool):
             self.nullable = Bool(self.nullable)
 
+        if self.topic is not None and not isinstance(self.topic, Topic):
+            self.topic = Topic(**as_dict(self.topic))
+
         super().__post_init__(**kwargs)
 
 
@@ -322,6 +326,7 @@ class SMWType(YAMLRoot):
     helppage: Optional[Union[str, URI]] = None
     typepage: Optional[str] = None
     javaType: Optional[str] = None
+    usedByProperties: Optional[Union[dict, Property]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.type is not None and not isinstance(self.type, str):
@@ -341,6 +346,9 @@ class SMWType(YAMLRoot):
 
         if self.javaType is not None and not isinstance(self.javaType, str):
             self.javaType = str(self.javaType)
+
+        if self.usedByProperties is not None and not isinstance(self.usedByProperties, Property):
+            self.usedByProperties = Property(**as_dict(self.usedByProperties))
 
         super().__post_init__(**kwargs)
 
@@ -367,6 +375,7 @@ class Topic(YAMLRoot):
     listLimit: Optional[float] = None
     cargo: Optional[Union[bool, Bool]] = None
     headerTabs: Optional[Union[bool, Bool]] = None
+    context: Optional[Union[dict, Context]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.name is not None and not isinstance(self.name, str):
@@ -398,6 +407,9 @@ class Topic(YAMLRoot):
 
         if self.headerTabs is not None and not isinstance(self.headerTabs, Bool):
             self.headerTabs = Bool(self.headerTabs)
+
+        if self.context is not None and not isinstance(self.context, Context):
+            self.context = Context(**as_dict(self.context))
 
         super().__post_init__(**kwargs)
 
@@ -596,6 +608,9 @@ slots.isLink = Slot(uri=METAMODEL.isLink, name="isLink", curie=METAMODEL.curie('
 slots.nullable = Slot(uri=METAMODEL.nullable, name="nullable", curie=METAMODEL.curie('nullable'),
                    model_uri=METAMODEL.nullable, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.topic = Slot(uri=METAMODEL.topic, name="topic", curie=METAMODEL.curie('topic'),
+                   model_uri=METAMODEL.topic, domain=None, range=Optional[Union[dict, Topic]])
+
 slots.id = Slot(uri=METAMODEL.id, name="id", curie=METAMODEL.curie('id'),
                    model_uri=METAMODEL.id, domain=None, range=Optional[str])
 
@@ -607,6 +622,9 @@ slots.typepage = Slot(uri=METAMODEL.typepage, name="typepage", curie=METAMODEL.c
 
 slots.javaType = Slot(uri=METAMODEL.javaType, name="javaType", curie=METAMODEL.curie('javaType'),
                    model_uri=METAMODEL.javaType, domain=None, range=Optional[str])
+
+slots.usedByProperties = Slot(uri=METAMODEL.usedByProperties, name="usedByProperties", curie=METAMODEL.curie('usedByProperties'),
+                   model_uri=METAMODEL.usedByProperties, domain=None, range=Optional[Union[dict, Property]])
 
 slots.pluralName = Slot(uri=METAMODEL.pluralName, name="pluralName", curie=METAMODEL.curie('pluralName'),
                    model_uri=METAMODEL.pluralName, domain=None, range=Optional[str])
@@ -631,6 +649,9 @@ slots.cargo = Slot(uri=METAMODEL.cargo, name="cargo", curie=METAMODEL.curie('car
 
 slots.headerTabs = Slot(uri=METAMODEL.headerTabs, name="headerTabs", curie=METAMODEL.curie('headerTabs'),
                    model_uri=METAMODEL.headerTabs, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.context = Slot(uri=METAMODEL.context, name="context", curie=METAMODEL.curie('context'),
+                   model_uri=METAMODEL.context, domain=None, range=Optional[Union[dict, Context]])
 
 slots.servicetype = Slot(uri=METAMODEL.servicetype, name="servicetype", curie=METAMODEL.curie('servicetype'),
                    model_uri=METAMODEL.servicetype, domain=None, range=Optional[str])
@@ -758,6 +779,9 @@ slots.property__isLink = Slot(uri=METAMODEL.isLink, name="property__isLink", cur
 slots.property__nullable = Slot(uri=METAMODEL.nullable, name="property__nullable", curie=METAMODEL.curie('nullable'),
                    model_uri=METAMODEL.property__nullable, domain=None, range=Optional[Union[bool, Bool]])
 
+slots.property__topic = Slot(uri=METAMODEL.topic, name="property__topic", curie=METAMODEL.curie('topic'),
+                   model_uri=METAMODEL.property__topic, domain=None, range=Optional[Union[dict, Topic]])
+
 slots.sMWType__type = Slot(uri=METAMODEL.type, name="sMWType__type", curie=METAMODEL.curie('type'),
                    model_uri=METAMODEL.sMWType__type, domain=None, range=Optional[str])
 
@@ -775,6 +799,9 @@ slots.sMWType__typepage = Slot(uri=METAMODEL.typepage, name="sMWType__typepage",
 
 slots.sMWType__javaType = Slot(uri=METAMODEL.javaType, name="sMWType__javaType", curie=METAMODEL.curie('javaType'),
                    model_uri=METAMODEL.sMWType__javaType, domain=None, range=Optional[str])
+
+slots.sMWType__usedByProperties = Slot(uri=METAMODEL.usedByProperties, name="sMWType__usedByProperties", curie=METAMODEL.curie('usedByProperties'),
+                   model_uri=METAMODEL.sMWType__usedByProperties, domain=None, range=Optional[Union[dict, Property]])
 
 slots.topic__name = Slot(uri=METAMODEL.name, name="topic__name", curie=METAMODEL.curie('name'),
                    model_uri=METAMODEL.topic__name, domain=None, range=Optional[str])
@@ -805,6 +832,9 @@ slots.topic__cargo = Slot(uri=METAMODEL.cargo, name="topic__cargo", curie=METAMO
 
 slots.topic__headerTabs = Slot(uri=METAMODEL.headerTabs, name="topic__headerTabs", curie=METAMODEL.curie('headerTabs'),
                    model_uri=METAMODEL.topic__headerTabs, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.topic__context = Slot(uri=METAMODEL.context, name="topic__context", curie=METAMODEL.curie('context'),
+                   model_uri=METAMODEL.topic__context, domain=None, range=Optional[Union[dict, Context]])
 
 slots.action__name = Slot(uri=METAMODEL.name, name="action__name", curie=METAMODEL.curie('name'),
                    model_uri=METAMODEL.action__name, domain=None, range=Optional[str])

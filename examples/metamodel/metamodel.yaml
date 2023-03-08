@@ -373,6 +373,11 @@ slots:
     description: should nullvalues be allowed and value set to NULL when empty?
     from_schema: MetaModel
     range: boolean
+  topic:
+    name: topic
+    description: topic
+    from_schema: MetaModel
+    range: Topic
   id:
     name: id
     description: SMW internal id of the type
@@ -395,6 +400,11 @@ slots:
     description: Java mapping of this type
     from_schema: MetaModel
     range: string
+  usedByProperties:
+    name: usedByProperties
+    description: the properties having this type
+    from_schema: MetaModel
+    range: Property
   pluralName:
     name: pluralName
     description: The plural of a topic name. E.g. for the topic 'City' the pluralName
@@ -438,6 +448,11 @@ slots:
     description: shall the forms be generated with header tabs?
     from_schema: MetaModel
     range: boolean
+  context:
+    name: context
+    description: context
+    from_schema: MetaModel
+    range: Context
   servicetype:
     name: servicetype
     description: The type of the service
@@ -759,6 +774,11 @@ classes:
         description: should nullvalues be allowed and value set to NULL when empty?
         from_schema: MetaModel
         range: boolean
+      topic:
+        name: topic
+        description: topic
+        from_schema: MetaModel
+        range: Topic
   SMW_Type:
     name: SMW_Type
     description: an SMW_Type is a data type which determines the possible values for
@@ -801,6 +821,11 @@ classes:
         description: Java mapping of this type
         from_schema: MetaModel
         range: string
+      usedByProperties:
+        name: usedByProperties
+        description: the properties having this type
+        from_schema: MetaModel
+        range: Property
   Topic:
     name: Topic
     description: A Topic is a Concept/Class/Thing/Entity
@@ -863,6 +888,11 @@ classes:
         description: shall the forms be generated with header tabs?
         from_schema: MetaModel
         range: boolean
+      context:
+        name: context
+        description: context
+        from_schema: MetaModel
+        range: Context
   Action:
     name: Action
     description: An action/function/operation to be performed

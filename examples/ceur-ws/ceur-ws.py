@@ -1,5 +1,5 @@
 # Auto generated from ceur-ws.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T18:06:09
+# Generation date: 2023-03-08T09:55:09
 # Schema: CeurwsSchema
 #
 # id: CeurwsSchema
@@ -210,10 +210,14 @@ class Session(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CEURWSSCHEMA.Session
 
     title: Optional[str] = None
+    volume: Optional[Union[dict, Volume]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
+
+        if self.volume is not None and not isinstance(self.volume, Volume):
+            self.volume = Volume(**as_dict(self.volume))
 
         super().__post_init__(**kwargs)
 
@@ -234,6 +238,8 @@ class Paper(YAMLRoot):
     title: Optional[str] = None
     authors: Optional[str] = None
     pdfUrl: Optional[Union[str, URI]] = None
+    volume: Optional[Union[dict, Volume]] = None
+    session: Optional[Union[dict, Session]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.id is not None and not isinstance(self.id, str):
@@ -247,6 +253,12 @@ class Paper(YAMLRoot):
 
         if self.pdfUrl is not None and not isinstance(self.pdfUrl, URI):
             self.pdfUrl = URI(self.pdfUrl)
+
+        if self.volume is not None and not isinstance(self.volume, Volume):
+            self.volume = Volume(**as_dict(self.volume))
+
+        if self.session is not None and not isinstance(self.session, Session):
+            self.session = Session(**as_dict(self.session))
 
         super().__post_init__(**kwargs)
 
@@ -264,6 +276,9 @@ slots.number = Slot(uri=CEURWSSCHEMA.number, name="number", curie=CEURWSSCHEMA.c
 slots.title = Slot(uri=CEURWSSCHEMA.title, name="title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.title, domain=None, range=Optional[str])
 
+slots.volume = Slot(uri=CEURWSSCHEMA.volume, name="volume", curie=CEURWSSCHEMA.curie('volume'),
+                   model_uri=CEURWSSCHEMA.volume, domain=None, range=Optional[Union[dict, Volume]])
+
 slots.id = Slot(uri=CEURWSSCHEMA.id, name="id", curie=CEURWSSCHEMA.curie('id'),
                    model_uri=CEURWSSCHEMA.id, domain=None, range=Optional[str])
 
@@ -273,6 +288,9 @@ slots.authors = Slot(uri=CEURWSSCHEMA.authors, name="authors", curie=CEURWSSCHEM
 slots.pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
                    model_uri=CEURWSSCHEMA.pdfUrl, domain=None, range=Optional[Union[str, URI]])
 
+slots.session = Slot(uri=CEURWSSCHEMA.session, name="session", curie=CEURWSSCHEMA.curie('session'),
+                   model_uri=CEURWSSCHEMA.session, domain=None, range=Optional[Union[dict, Session]])
+
 slots.volume__number = Slot(uri=CEURWSSCHEMA.number, name="volume__number", curie=CEURWSSCHEMA.curie('number'),
                    model_uri=CEURWSSCHEMA.volume__number, domain=None, range=Optional[float])
 
@@ -281,6 +299,9 @@ slots.volume__title = Slot(uri=CEURWSSCHEMA.title, name="volume__title", curie=C
 
 slots.session__title = Slot(uri=CEURWSSCHEMA.title, name="session__title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.session__title, domain=None, range=Optional[str])
+
+slots.session__volume = Slot(uri=CEURWSSCHEMA.volume, name="session__volume", curie=CEURWSSCHEMA.curie('volume'),
+                   model_uri=CEURWSSCHEMA.session__volume, domain=None, range=Optional[Union[dict, Volume]])
 
 slots.paper__id = Slot(uri=CEURWSSCHEMA.id, name="paper__id", curie=CEURWSSCHEMA.curie('id'),
                    model_uri=CEURWSSCHEMA.paper__id, domain=None, range=Optional[str])
@@ -293,3 +314,9 @@ slots.paper__authors = Slot(uri=CEURWSSCHEMA.authors, name="paper__authors", cur
 
 slots.paper__pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="paper__pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
                    model_uri=CEURWSSCHEMA.paper__pdfUrl, domain=None, range=Optional[Union[str, URI]])
+
+slots.paper__volume = Slot(uri=CEURWSSCHEMA.volume, name="paper__volume", curie=CEURWSSCHEMA.curie('volume'),
+                   model_uri=CEURWSSCHEMA.paper__volume, domain=None, range=Optional[Union[dict, Volume]])
+
+slots.paper__session = Slot(uri=CEURWSSCHEMA.session, name="paper__session", curie=CEURWSSCHEMA.curie('session'),
+                   model_uri=CEURWSSCHEMA.paper__session, domain=None, range=Optional[Union[dict, Session]])

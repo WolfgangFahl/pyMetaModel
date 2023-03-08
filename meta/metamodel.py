@@ -169,10 +169,14 @@ class Context(MetaModelElement):
         """
         # see https://wiki.bitplan.com/index.php/SiDIFTemplates#properties
         prop=Property()
-        prop.topic=tl.target
-        prop.type="Page"
         prop.name=tl.sourceRole
         prop.label=prop.name
+        if hasattr(tl, "sourceDocumentation"):
+            prop.documentation=tl.sourceDocumentation
+        else:
+            prop.documentation=f"{prop.name}"
+        prop.topic=tl.target
+        prop.type="Page"
         prop.topicLink=tl
         prop.isLink=True
         return prop

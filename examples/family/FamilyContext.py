@@ -1,5 +1,5 @@
 # Auto generated from FamilyContext.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T18:05:46
+# Generation date: 2023-03-08T09:54:40
 # Schema: FamilyContext
 #
 # id: FamilyContext
@@ -249,6 +249,9 @@ class Person(YAMLRoot):
     monthDied: Optional[float] = None
     noInLine: Optional[float] = None
     wikiPedia: Optional[Union[str, URI]] = None
+    childOf: Optional[Union[dict, Family]] = None
+    parentOf: Optional[Union[dict, Family]] = None
+    spouse: Optional[Union[dict, "Person"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.qid is not None and not isinstance(self.qid, str):
@@ -298,6 +301,15 @@ class Person(YAMLRoot):
 
         if self.wikiPedia is not None and not isinstance(self.wikiPedia, URI):
             self.wikiPedia = URI(self.wikiPedia)
+
+        if self.childOf is not None and not isinstance(self.childOf, Family):
+            self.childOf = Family(**as_dict(self.childOf))
+
+        if self.parentOf is not None and not isinstance(self.parentOf, Family):
+            self.parentOf = Family(**as_dict(self.parentOf))
+
+        if self.spouse is not None and not isinstance(self.spouse, Person):
+            self.spouse = Person(**as_dict(self.spouse))
 
         super().__post_init__(**kwargs)
 
@@ -378,6 +390,15 @@ slots.noInLine = Slot(uri=FAMILYCONTEXT.noInLine, name="noInLine", curie=FAMILYC
 slots.wikiPedia = Slot(uri=FAMILYCONTEXT.wikiPedia, name="wikiPedia", curie=FAMILYCONTEXT.curie('wikiPedia'),
                    model_uri=FAMILYCONTEXT.wikiPedia, domain=None, range=Optional[Union[str, URI]])
 
+slots.childOf = Slot(uri=FAMILYCONTEXT.childOf, name="childOf", curie=FAMILYCONTEXT.curie('childOf'),
+                   model_uri=FAMILYCONTEXT.childOf, domain=None, range=Optional[Union[dict, Family]])
+
+slots.parentOf = Slot(uri=FAMILYCONTEXT.parentOf, name="parentOf", curie=FAMILYCONTEXT.curie('parentOf'),
+                   model_uri=FAMILYCONTEXT.parentOf, domain=None, range=Optional[Union[dict, Family]])
+
+slots.spouse = Slot(uri=FAMILYCONTEXT.spouse, name="spouse", curie=FAMILYCONTEXT.curie('spouse'),
+                   model_uri=FAMILYCONTEXT.spouse, domain=None, range=Optional[Union[dict, Person]])
+
 slots.family__name = Slot(uri=FAMILYCONTEXT.name, name="family__name", curie=FAMILYCONTEXT.curie('name'),
                    model_uri=FAMILYCONTEXT.family__name, domain=None, range=Optional[str])
 
@@ -449,3 +470,12 @@ slots.person__noInLine = Slot(uri=FAMILYCONTEXT.noInLine, name="person__noInLine
 
 slots.person__wikiPedia = Slot(uri=FAMILYCONTEXT.wikiPedia, name="person__wikiPedia", curie=FAMILYCONTEXT.curie('wikiPedia'),
                    model_uri=FAMILYCONTEXT.person__wikiPedia, domain=None, range=Optional[Union[str, URI]])
+
+slots.person__childOf = Slot(uri=FAMILYCONTEXT.childOf, name="person__childOf", curie=FAMILYCONTEXT.curie('childOf'),
+                   model_uri=FAMILYCONTEXT.person__childOf, domain=None, range=Optional[Union[dict, Family]])
+
+slots.person__parentOf = Slot(uri=FAMILYCONTEXT.parentOf, name="person__parentOf", curie=FAMILYCONTEXT.curie('parentOf'),
+                   model_uri=FAMILYCONTEXT.person__parentOf, domain=None, range=Optional[Union[dict, Family]])
+
+slots.person__spouse = Slot(uri=FAMILYCONTEXT.spouse, name="person__spouse", curie=FAMILYCONTEXT.curie('spouse'),
+                   model_uri=FAMILYCONTEXT.person__spouse, domain=None, range=Optional[Union[dict, Person]])

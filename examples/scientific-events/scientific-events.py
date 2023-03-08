@@ -1,5 +1,5 @@
 # Auto generated from scientific-events.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T18:05:32
+# Generation date: 2023-03-08T09:54:23
 # Schema: CrSchema
 #
 # id: CrSchema
@@ -226,6 +226,10 @@ class Event(YAMLRoot):
     title: Optional[str] = None
     homepage: Optional[str] = None
     wikidataid: Optional[str] = None
+    series: Optional[Union[dict, EventSeries]] = None
+    city: Optional[Union[dict, "City"]] = None
+    country: Optional[Union[dict, "Country"]] = None
+    region: Optional[Union[dict, "Region"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.acronym is not None and not isinstance(self.acronym, str):
@@ -242,6 +246,18 @@ class Event(YAMLRoot):
 
         if self.wikidataid is not None and not isinstance(self.wikidataid, str):
             self.wikidataid = str(self.wikidataid)
+
+        if self.series is not None and not isinstance(self.series, EventSeries):
+            self.series = EventSeries(**as_dict(self.series))
+
+        if self.city is not None and not isinstance(self.city, City):
+            self.city = City(**as_dict(self.city))
+
+        if self.country is not None and not isinstance(self.country, Country):
+            self.country = Country(**as_dict(self.country))
+
+        if self.region is not None and not isinstance(self.region, Region):
+            self.region = Region(**as_dict(self.region))
 
         super().__post_init__(**kwargs)
 
@@ -429,6 +445,7 @@ class Institution(YAMLRoot):
     wikidataid: Optional[str] = None
     homepage: Optional[str] = None
     smartCRMId: Optional[str] = None
+    scholar: Optional[Union[dict, Scholar]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.title is not None and not isinstance(self.title, str):
@@ -442,6 +459,9 @@ class Institution(YAMLRoot):
 
         if self.smartCRMId is not None and not isinstance(self.smartCRMId, str):
             self.smartCRMId = str(self.smartCRMId)
+
+        if self.scholar is not None and not isinstance(self.scholar, Scholar):
+            self.scholar = Scholar(**as_dict(self.scholar))
 
         super().__post_init__(**kwargs)
 
@@ -509,6 +529,18 @@ slots.wikidataid = Slot(uri=CRSCHEMA.wikidataid, name="wikidataid", curie=CRSCHE
 slots.homepage = Slot(uri=CRSCHEMA.homepage, name="homepage", curie=CRSCHEMA.curie('homepage'),
                    model_uri=CRSCHEMA.homepage, domain=None, range=Optional[str])
 
+slots.series = Slot(uri=CRSCHEMA.series, name="series", curie=CRSCHEMA.curie('series'),
+                   model_uri=CRSCHEMA.series, domain=None, range=Optional[Union[dict, EventSeries]])
+
+slots.city = Slot(uri=CRSCHEMA.city, name="city", curie=CRSCHEMA.curie('city'),
+                   model_uri=CRSCHEMA.city, domain=None, range=Optional[Union[dict, City]])
+
+slots.country = Slot(uri=CRSCHEMA.country, name="country", curie=CRSCHEMA.curie('country'),
+                   model_uri=CRSCHEMA.country, domain=None, range=Optional[Union[dict, Country]])
+
+slots.region = Slot(uri=CRSCHEMA.region, name="region", curie=CRSCHEMA.curie('region'),
+                   model_uri=CRSCHEMA.region, domain=None, range=Optional[Union[dict, Region]])
+
 slots.name = Slot(uri=CRSCHEMA.name, name="name", curie=CRSCHEMA.curie('name'),
                    model_uri=CRSCHEMA.name, domain=None, range=Optional[str])
 
@@ -538,6 +570,9 @@ slots.gndId = Slot(uri=CRSCHEMA.gndId, name="gndId", curie=CRSCHEMA.curie('gndId
 
 slots.smartCRMId = Slot(uri=CRSCHEMA.smartCRMId, name="smartCRMId", curie=CRSCHEMA.curie('smartCRMId'),
                    model_uri=CRSCHEMA.smartCRMId, domain=None, range=Optional[str])
+
+slots.scholar = Slot(uri=CRSCHEMA.scholar, name="scholar", curie=CRSCHEMA.curie('scholar'),
+                   model_uri=CRSCHEMA.scholar, domain=None, range=Optional[Union[dict, Scholar]])
 
 slots.id = Slot(uri=CRSCHEMA.id, name="id", curie=CRSCHEMA.curie('id'),
                    model_uri=CRSCHEMA.id, domain=None, range=Optional[str])
@@ -577,6 +612,18 @@ slots.event__homepage = Slot(uri=CRSCHEMA.homepage, name="event__homepage", curi
 
 slots.event__wikidataid = Slot(uri=CRSCHEMA.wikidataid, name="event__wikidataid", curie=CRSCHEMA.curie('wikidataid'),
                    model_uri=CRSCHEMA.event__wikidataid, domain=None, range=Optional[str])
+
+slots.event__series = Slot(uri=CRSCHEMA.series, name="event__series", curie=CRSCHEMA.curie('series'),
+                   model_uri=CRSCHEMA.event__series, domain=None, range=Optional[Union[dict, EventSeries]])
+
+slots.event__city = Slot(uri=CRSCHEMA.city, name="event__city", curie=CRSCHEMA.curie('city'),
+                   model_uri=CRSCHEMA.event__city, domain=None, range=Optional[Union[dict, City]])
+
+slots.event__country = Slot(uri=CRSCHEMA.country, name="event__country", curie=CRSCHEMA.curie('country'),
+                   model_uri=CRSCHEMA.event__country, domain=None, range=Optional[Union[dict, Country]])
+
+slots.event__region = Slot(uri=CRSCHEMA.region, name="event__region", curie=CRSCHEMA.curie('region'),
+                   model_uri=CRSCHEMA.event__region, domain=None, range=Optional[Union[dict, Region]])
 
 slots.city__name = Slot(uri=CRSCHEMA.name, name="city__name", curie=CRSCHEMA.curie('name'),
                    model_uri=CRSCHEMA.city__name, domain=None, range=Optional[str])
@@ -649,6 +696,9 @@ slots.institution__homepage = Slot(uri=CRSCHEMA.homepage, name="institution__hom
 
 slots.institution__smartCRMId = Slot(uri=CRSCHEMA.smartCRMId, name="institution__smartCRMId", curie=CRSCHEMA.curie('smartCRMId'),
                    model_uri=CRSCHEMA.institution__smartCRMId, domain=None, range=Optional[str])
+
+slots.institution__scholar = Slot(uri=CRSCHEMA.scholar, name="institution__scholar", curie=CRSCHEMA.curie('scholar'),
+                   model_uri=CRSCHEMA.institution__scholar, domain=None, range=Optional[Union[dict, Scholar]])
 
 slots.paper__description = Slot(uri=CRSCHEMA.description, name="paper__description", curie=CRSCHEMA.curie('description'),
                    model_uri=CRSCHEMA.paper__description, domain=None, range=Optional[str])

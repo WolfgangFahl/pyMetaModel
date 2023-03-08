@@ -175,6 +175,11 @@ slots:
       Paper
     from_schema: CeurwsSchema
     range: string
+  volume:
+    name: volume
+    description: volume,volume
+    from_schema: CeurwsSchema
+    range: Volume
   id:
     name: id
     description: The id (filename) of the Paper
@@ -190,6 +195,11 @@ slots:
     description: the url for the pdf of this paper
     from_schema: CeurwsSchema
     range: uri
+  session:
+    name: session
+    description: session
+    from_schema: CeurwsSchema
+    range: Session
 classes:
   Volume:
     name: Volume
@@ -219,6 +229,11 @@ classes:
           the Paper
         from_schema: CeurwsSchema
         range: string
+      volume:
+        name: volume
+        description: volume,volume
+        from_schema: CeurwsSchema
+        range: Volume
   Paper:
     name: Paper
     description: A paper is e.g. a scholarly article
@@ -245,4 +260,14 @@ classes:
         description: the url for the pdf of this paper
         from_schema: CeurwsSchema
         range: uri
+      volume:
+        name: volume
+        description: volume,volume
+        from_schema: CeurwsSchema
+        range: Volume
+      session:
+        name: session
+        description: session
+        from_schema: CeurwsSchema
+        range: Session
 

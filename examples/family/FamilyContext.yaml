@@ -275,6 +275,21 @@ slots:
     description: the wikiPedia link of the Person
     from_schema: FamilyContext
     range: uri
+  childOf:
+    name: childOf
+    description: childOf
+    from_schema: FamilyContext
+    range: Family
+  parentOf:
+    name: parentOf
+    description: parentOf
+    from_schema: FamilyContext
+    range: Family
+  spouse:
+    name: spouse
+    description: spouse
+    from_schema: FamilyContext
+    range: Person
 classes:
   Family:
     name: Family
@@ -403,4 +418,19 @@ classes:
         description: the wikiPedia link of the Person
         from_schema: FamilyContext
         range: uri
+      childOf:
+        name: childOf
+        description: childOf
+        from_schema: FamilyContext
+        range: Family
+      parentOf:
+        name: parentOf
+        description: parentOf
+        from_schema: FamilyContext
+        range: Family
+      spouse:
+        name: spouse
+        description: spouse
+        from_schema: FamilyContext
+        range: Person
 

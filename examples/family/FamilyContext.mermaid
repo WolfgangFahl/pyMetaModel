@@ -29,7 +29,9 @@ Person {
     uri wikiPedia  
 }
 
-
+Person ||--|o Family : "childOf"
+Person ||--|o Family : "parentOf"
+Person ||--|o Person : "spouse"
 
 ```
 

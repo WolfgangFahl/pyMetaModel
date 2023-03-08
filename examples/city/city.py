@@ -1,5 +1,5 @@
 # Auto generated from city.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-05T18:05:39
+# Generation date: 2023-03-08T09:54:31
 # Schema: GeneralContext
 #
 # id: GeneralContext
