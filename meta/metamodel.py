@@ -136,7 +136,46 @@ class Context(MetaModelElement):
         tl.sourceTopic=self.lookupTopic(tl.source,f"topicLink {tl.name}")
         tl.targetTopic=self.lookupTopic(tl.target,f"topicLink {tl.name}")
         if tl.targetTopic is not None and tl.sourceTopic is not None:
-            self.link_source_with_target(tl, tl.sourceTopic, tl.targetTopic)      
+            self.link_source_with_target(tl, tl.sourceTopic, tl.targetTopic)   
+            
+    def addProperty(self,prop:'Property')->bool:
+        """
+        add the given property to this context
+        
+        Args:
+            prop(Property): the property to add
+        
+        Returns:
+            bool: True if the property adding was successful
+        """
+        if not hasattr(prop, "topic"):
+            self.error(f"prop  {prop} has no topic")
+            return False
+        topic_name = prop.topic
+        if not hasattr(prop, "name"):
+            self.error(f"prop {prop} has no name")
+            return False
+        topic=self.lookupTopic(topic_name,f"property {prop.name}")
+        if topic:
+            topic.properties[prop.name] = prop  
+            return True 
+        
+    def createProperty4TopicLink(self,tl:'TopicLink')->'Propertx':
+        """
+        create a property for the given topic link
+        
+        Args:
+            tl: TopicLink - the topiclink to create a property for
+        """
+        # see https://wiki.bitplan.com/index.php/SiDIFTemplates#properties
+        prop=Property()
+        prop.topic=tl.target
+        prop.type="Page"
+        prop.name=tl.sourceRole
+        prop.label=prop.name
+        prop.topicLink=tl
+        prop.isLink=True
+        return prop
         
     @classmethod
     def fromDictOfDicts(cls, did:dict) -> 'Context':
@@ -185,19 +224,17 @@ true is targetMultiple of it
                 context.addLink(tl)
             elif isA == "Property":
                 prop = Property()
+                prop.isLink=False
                 prop.fromDict(record)
-                if not hasattr(prop, "topic"):
-                    context.error(f"prop  {prop} has no topic")
-                    continue
-                topic_name = prop.topic
-                if not hasattr(prop, "name"):
-                    context.error(f"prop {prop} has no name")
-                    continue
-                topic=context.lookupTopic(topic_name,f"property {prop.name}")
-                if topic:
-                    topic.properties[prop.name] = prop
+                context.addProperty(prop)
+                    
+        # link topic to concepts and add topicLinks
         for topic in context.topics.values():
             topic.setConceptProperty()
+            for _tl_name,tl in topic.targetTopicLinks.items():
+                prop=context.createProperty4TopicLink(tl)
+                context.addProperty(prop)
+                pass
         return context
     
     @classmethod

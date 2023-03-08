@@ -71,10 +71,14 @@ class SiDIF2LinkML:
                         "Page": "string", # @TODO will need own type
                         "Number": "double", # @TODO will need special type handling
                     }
-                    if prop.type in typesMap:
-                        slot.range=typesMap[prop.type]
+                    if prop.isLink:
+                        # 1:1 and 1:n handling
+                        slot.range=prop.topicLink.source
                     else:
-                        slot.range="string"       
+                        if prop.type in typesMap:
+                            slot.range=typesMap[prop.type]
+                        else:
+                            slot.range="string"       
                     sv.add_slot(slot)
                 cd.attributes[qname]=slot
                 pass
