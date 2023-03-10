@@ -101,7 +101,7 @@ class TestMediawiki(BaseMediawikiTest):
         
     def testAskQuery4Topic(self):
         """
-        test creating the askquery for a topic
+        test creating the ask query for a topic
         """
         debug=self.debug
         debug=True
@@ -161,6 +161,12 @@ class TestMediawiki(BaseMediawikiTest):
             self.assertIsNone(errMsg)
             self.assertTrue("OsProject" in context.topics)
             pass
+        
+    def test_Issue23(self):
+        """
+        https://github.com/WolfgangFahl/pyMetaModel/issues/23
+        handle "showInGrid"
+        """
                 
     def test_metamodel_from_wikis(self):
         """

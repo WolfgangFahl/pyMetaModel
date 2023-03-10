@@ -440,12 +440,13 @@ class Topic(MetaModelElement):
         markup=f"{sortClause}{orderClause}"
         return markup
     
-    def askQuery(self,mainlabel:str=None,listLimit:int=None)->str:
+    def askQuery(self,mainlabel:str=None,filterShowInGrid:bool=True,listLimit:int=None)->str:
         """
         get the askQuery for the me topic
         
         Args:
             mainlabel(str): the mainlabel to use - topic.name as default
+            filterShowInGrid(bool): if True include only properties with showInGrid not being false
             listLimit(int): the list limit to use
         Returns:
             str: the markup for the query
@@ -458,8 +459,13 @@ class Topic(MetaModelElement):
 |mainlabel={mainlabel}
 """
         for prop in self.properties.values():
-            markup+=f"|?{self.name} {prop.name} = {prop.name}\n"
-        markup+=f"| limit={listLimit}\n"
+            if filterShowInGrid and hasattr(prop, "showInGrid"):
+                show=prop.showInGrid
+            else:
+                show=True
+            if show:
+                markup+=f"|?{self.name} {prop.name} = {prop.name}\n"
+        markup+=f"|limit={listLimit}\n"
         markup+=f"""{self.askSort()}}}}}"""
         return markup
 
@@ -468,6 +474,12 @@ class Property(MetaModelElement):
     """
     Provides helper functions and constants for properties
     """
+    
+    def __init__(self):
+        """
+        constructor
+        """
+        MetaModelElement.__init__(self)
 
     @classmethod
     def getSamples(cls):
