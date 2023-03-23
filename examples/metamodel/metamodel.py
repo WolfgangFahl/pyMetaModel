@@ -1,5 +1,5 @@
 # Auto generated from metamodel.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-08T09:55:01
+# Generation date: 2023-03-23T06:11:31
 # Schema: MetaModel
 #
 # id: MetaModel
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
+from linkml_runtime.utils.metamodelcore import Bool, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
 version = None
@@ -33,7 +33,6 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 # Namespaces
 METAMODEL = CurieNamespace('MetaModel', 'MetaModel/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SHEX = CurieNamespace('shex', 'http://www.w3.org/ns/shex#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = METAMODEL
@@ -126,14 +125,6 @@ class Uriorcurie(URIorCURIE):
     type_class_curie = "xsd:anyURI"
     type_name = "uriorcurie"
     type_model_uri = METAMODEL.Uriorcurie
-
-
-class Curie(Curie):
-    """ a compact URI """
-    type_class_uri = XSD.string
-    type_class_curie = "xsd:string"
-    type_name = "curie"
-    type_model_uri = METAMODEL.Curie
 
 
 class Uri(URI):
