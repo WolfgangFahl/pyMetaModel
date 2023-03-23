@@ -130,10 +130,51 @@ slots:
     description: The number Volume
     from_schema: CeurwsSchema
     range: double
+  acronym:
+    name: acronym
+    description: The official acronym/short name of the Volume
+    from_schema: CeurwsSchema
+    range: string
+  wikidataid:
+    name: wikidataid
+    description: The wikidataid of the volume,The wikidataid of the paper
+    from_schema: CeurwsSchema
+    range: string
   title:
     name: title
     description: The title of the Volume,The title of the Session,The title of the
       Paper
+    from_schema: CeurwsSchema
+    range: string
+  description:
+    name: description
+    description: A wikidata compatible description of the volume,A wikidata compatible
+      description of the paper
+    from_schema: CeurwsSchema
+    range: string
+  url:
+    name: url
+    description: The url of the volume
+    from_schema: CeurwsSchema
+    range: string
+  date:
+    name: date
+    description: The publication date of the volume
+    from_schema: CeurwsSchema
+    range: date
+  dblp:
+    name: dblp
+    description: The dblp publication id of the volume
+    from_schema: CeurwsSchema
+    range: string
+  k10plus:
+    name: k10plus
+    description: The k10 plus PPN id of the volume
+    from_schema: CeurwsSchema
+    range: string
+  urn:
+    name: urn
+    description: The URN-NBN id of the volume
     from_schema: CeurwsSchema
     range: string
   volume:
@@ -144,11 +185,6 @@ slots:
   id:
     name: id
     description: The id (filename) of the Paper
-    from_schema: CeurwsSchema
-    range: string
-  authors:
-    name: authors
-    description: authors of the Paper
     from_schema: CeurwsSchema
     range: string
   pdfUrl:
@@ -173,10 +209,51 @@ classes:
         description: The number Volume
         from_schema: CeurwsSchema
         range: double
+      acronym:
+        name: acronym
+        description: The official acronym/short name of the Volume
+        from_schema: CeurwsSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the volume,The wikidataid of the paper
+        from_schema: CeurwsSchema
+        range: string
       title:
         name: title
         description: The title of the Volume,The title of the Session,The title of
           the Paper
+        from_schema: CeurwsSchema
+        range: string
+      description:
+        name: description
+        description: A wikidata compatible description of the volume,A wikidata compatible
+          description of the paper
+        from_schema: CeurwsSchema
+        range: string
+      url:
+        name: url
+        description: The url of the volume
+        from_schema: CeurwsSchema
+        range: string
+      date:
+        name: date
+        description: The publication date of the volume
+        from_schema: CeurwsSchema
+        range: date
+      dblp:
+        name: dblp
+        description: The dblp publication id of the volume
+        from_schema: CeurwsSchema
+        range: string
+      k10plus:
+        name: k10plus
+        description: The k10 plus PPN id of the volume
+        from_schema: CeurwsSchema
+        range: string
+      urn:
+        name: urn
+        description: The URN-NBN id of the volume
         from_schema: CeurwsSchema
         range: string
   Session:
@@ -200,20 +277,26 @@ classes:
     description: A paper is e.g. a scholarly article
     from_schema: CeurwsSchema
     attributes:
+      description:
+        name: description
+        description: A wikidata compatible description of the volume,A wikidata compatible
+          description of the paper
+        from_schema: CeurwsSchema
+        range: string
       id:
         name: id
         description: The id (filename) of the Paper
+        from_schema: CeurwsSchema
+        range: string
+      wikidataid:
+        name: wikidataid
+        description: The wikidataid of the volume,The wikidataid of the paper
         from_schema: CeurwsSchema
         range: string
       title:
         name: title
         description: The title of the Volume,The title of the Session,The title of
           the Paper
-        from_schema: CeurwsSchema
-        range: string
-      authors:
-        name: authors
-        description: authors of the Paper
         from_schema: CeurwsSchema
         range: string
       pdfUrl:

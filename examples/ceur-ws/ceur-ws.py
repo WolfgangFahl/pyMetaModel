@@ -1,5 +1,5 @@
 # Auto generated from ceur-ws.yaml by pythongen.py version: 0.9.0
-# Generation date: 2023-03-23T06:11:36
+# Generation date: 2023-03-23T07:28:10
 # Schema: CeurwsSchema
 #
 # id: CeurwsSchema
@@ -176,14 +176,46 @@ class Volume(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = CEURWSSCHEMA.Volume
 
     number: Optional[float] = None
+    acronym: Optional[str] = None
+    wikidataid: Optional[str] = None
     title: Optional[str] = None
+    description: Optional[str] = None
+    url: Optional[str] = None
+    date: Optional[Union[str, XSDDate]] = None
+    dblp: Optional[str] = None
+    k10plus: Optional[str] = None
+    urn: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.number is not None and not isinstance(self.number, float):
             self.number = float(self.number)
 
+        if self.acronym is not None and not isinstance(self.acronym, str):
+            self.acronym = str(self.acronym)
+
+        if self.wikidataid is not None and not isinstance(self.wikidataid, str):
+            self.wikidataid = str(self.wikidataid)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.url is not None and not isinstance(self.url, str):
+            self.url = str(self.url)
+
+        if self.date is not None and not isinstance(self.date, XSDDate):
+            self.date = XSDDate(self.date)
+
+        if self.dblp is not None and not isinstance(self.dblp, str):
+            self.dblp = str(self.dblp)
+
+        if self.k10plus is not None and not isinstance(self.k10plus, str):
+            self.k10plus = str(self.k10plus)
+
+        if self.urn is not None and not isinstance(self.urn, str):
+            self.urn = str(self.urn)
 
         super().__post_init__(**kwargs)
 
@@ -225,22 +257,26 @@ class Paper(YAMLRoot):
     class_name: ClassVar[str] = "Paper"
     class_model_uri: ClassVar[URIRef] = CEURWSSCHEMA.Paper
 
+    description: Optional[str] = None
     id: Optional[str] = None
+    wikidataid: Optional[str] = None
     title: Optional[str] = None
-    authors: Optional[str] = None
     pdfUrl: Optional[Union[str, URI]] = None
     volume: Optional[Union[dict, Volume]] = None
     session: Optional[Union[dict, Session]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self.id is not None and not isinstance(self.id, str):
             self.id = str(self.id)
 
+        if self.wikidataid is not None and not isinstance(self.wikidataid, str):
+            self.wikidataid = str(self.wikidataid)
+
         if self.title is not None and not isinstance(self.title, str):
             self.title = str(self.title)
-
-        if self.authors is not None and not isinstance(self.authors, str):
-            self.authors = str(self.authors)
 
         if self.pdfUrl is not None and not isinstance(self.pdfUrl, URI):
             self.pdfUrl = URI(self.pdfUrl)
@@ -264,17 +300,38 @@ class slots:
 slots.number = Slot(uri=CEURWSSCHEMA.number, name="number", curie=CEURWSSCHEMA.curie('number'),
                    model_uri=CEURWSSCHEMA.number, domain=None, range=Optional[float])
 
+slots.acronym = Slot(uri=CEURWSSCHEMA.acronym, name="acronym", curie=CEURWSSCHEMA.curie('acronym'),
+                   model_uri=CEURWSSCHEMA.acronym, domain=None, range=Optional[str])
+
+slots.wikidataid = Slot(uri=CEURWSSCHEMA.wikidataid, name="wikidataid", curie=CEURWSSCHEMA.curie('wikidataid'),
+                   model_uri=CEURWSSCHEMA.wikidataid, domain=None, range=Optional[str])
+
 slots.title = Slot(uri=CEURWSSCHEMA.title, name="title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.title, domain=None, range=Optional[str])
+
+slots.description = Slot(uri=CEURWSSCHEMA.description, name="description", curie=CEURWSSCHEMA.curie('description'),
+                   model_uri=CEURWSSCHEMA.description, domain=None, range=Optional[str])
+
+slots.url = Slot(uri=CEURWSSCHEMA.url, name="url", curie=CEURWSSCHEMA.curie('url'),
+                   model_uri=CEURWSSCHEMA.url, domain=None, range=Optional[str])
+
+slots.date = Slot(uri=CEURWSSCHEMA.date, name="date", curie=CEURWSSCHEMA.curie('date'),
+                   model_uri=CEURWSSCHEMA.date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.dblp = Slot(uri=CEURWSSCHEMA.dblp, name="dblp", curie=CEURWSSCHEMA.curie('dblp'),
+                   model_uri=CEURWSSCHEMA.dblp, domain=None, range=Optional[str])
+
+slots.k10plus = Slot(uri=CEURWSSCHEMA.k10plus, name="k10plus", curie=CEURWSSCHEMA.curie('k10plus'),
+                   model_uri=CEURWSSCHEMA.k10plus, domain=None, range=Optional[str])
+
+slots.urn = Slot(uri=CEURWSSCHEMA.urn, name="urn", curie=CEURWSSCHEMA.curie('urn'),
+                   model_uri=CEURWSSCHEMA.urn, domain=None, range=Optional[str])
 
 slots.volume = Slot(uri=CEURWSSCHEMA.volume, name="volume", curie=CEURWSSCHEMA.curie('volume'),
                    model_uri=CEURWSSCHEMA.volume, domain=None, range=Optional[Union[dict, Volume]])
 
 slots.id = Slot(uri=CEURWSSCHEMA.id, name="id", curie=CEURWSSCHEMA.curie('id'),
                    model_uri=CEURWSSCHEMA.id, domain=None, range=Optional[str])
-
-slots.authors = Slot(uri=CEURWSSCHEMA.authors, name="authors", curie=CEURWSSCHEMA.curie('authors'),
-                   model_uri=CEURWSSCHEMA.authors, domain=None, range=Optional[str])
 
 slots.pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
                    model_uri=CEURWSSCHEMA.pdfUrl, domain=None, range=Optional[Union[str, URI]])
@@ -285,8 +342,32 @@ slots.session = Slot(uri=CEURWSSCHEMA.session, name="session", curie=CEURWSSCHEM
 slots.volume__number = Slot(uri=CEURWSSCHEMA.number, name="volume__number", curie=CEURWSSCHEMA.curie('number'),
                    model_uri=CEURWSSCHEMA.volume__number, domain=None, range=Optional[float])
 
+slots.volume__acronym = Slot(uri=CEURWSSCHEMA.acronym, name="volume__acronym", curie=CEURWSSCHEMA.curie('acronym'),
+                   model_uri=CEURWSSCHEMA.volume__acronym, domain=None, range=Optional[str])
+
+slots.volume__wikidataid = Slot(uri=CEURWSSCHEMA.wikidataid, name="volume__wikidataid", curie=CEURWSSCHEMA.curie('wikidataid'),
+                   model_uri=CEURWSSCHEMA.volume__wikidataid, domain=None, range=Optional[str])
+
 slots.volume__title = Slot(uri=CEURWSSCHEMA.title, name="volume__title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.volume__title, domain=None, range=Optional[str])
+
+slots.volume__description = Slot(uri=CEURWSSCHEMA.description, name="volume__description", curie=CEURWSSCHEMA.curie('description'),
+                   model_uri=CEURWSSCHEMA.volume__description, domain=None, range=Optional[str])
+
+slots.volume__url = Slot(uri=CEURWSSCHEMA.url, name="volume__url", curie=CEURWSSCHEMA.curie('url'),
+                   model_uri=CEURWSSCHEMA.volume__url, domain=None, range=Optional[str])
+
+slots.volume__date = Slot(uri=CEURWSSCHEMA.date, name="volume__date", curie=CEURWSSCHEMA.curie('date'),
+                   model_uri=CEURWSSCHEMA.volume__date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.volume__dblp = Slot(uri=CEURWSSCHEMA.dblp, name="volume__dblp", curie=CEURWSSCHEMA.curie('dblp'),
+                   model_uri=CEURWSSCHEMA.volume__dblp, domain=None, range=Optional[str])
+
+slots.volume__k10plus = Slot(uri=CEURWSSCHEMA.k10plus, name="volume__k10plus", curie=CEURWSSCHEMA.curie('k10plus'),
+                   model_uri=CEURWSSCHEMA.volume__k10plus, domain=None, range=Optional[str])
+
+slots.volume__urn = Slot(uri=CEURWSSCHEMA.urn, name="volume__urn", curie=CEURWSSCHEMA.curie('urn'),
+                   model_uri=CEURWSSCHEMA.volume__urn, domain=None, range=Optional[str])
 
 slots.session__title = Slot(uri=CEURWSSCHEMA.title, name="session__title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.session__title, domain=None, range=Optional[str])
@@ -294,14 +375,17 @@ slots.session__title = Slot(uri=CEURWSSCHEMA.title, name="session__title", curie
 slots.session__volume = Slot(uri=CEURWSSCHEMA.volume, name="session__volume", curie=CEURWSSCHEMA.curie('volume'),
                    model_uri=CEURWSSCHEMA.session__volume, domain=None, range=Optional[Union[dict, Volume]])
 
+slots.paper__description = Slot(uri=CEURWSSCHEMA.description, name="paper__description", curie=CEURWSSCHEMA.curie('description'),
+                   model_uri=CEURWSSCHEMA.paper__description, domain=None, range=Optional[str])
+
 slots.paper__id = Slot(uri=CEURWSSCHEMA.id, name="paper__id", curie=CEURWSSCHEMA.curie('id'),
                    model_uri=CEURWSSCHEMA.paper__id, domain=None, range=Optional[str])
 
+slots.paper__wikidataid = Slot(uri=CEURWSSCHEMA.wikidataid, name="paper__wikidataid", curie=CEURWSSCHEMA.curie('wikidataid'),
+                   model_uri=CEURWSSCHEMA.paper__wikidataid, domain=None, range=Optional[str])
+
 slots.paper__title = Slot(uri=CEURWSSCHEMA.title, name="paper__title", curie=CEURWSSCHEMA.curie('title'),
                    model_uri=CEURWSSCHEMA.paper__title, domain=None, range=Optional[str])
-
-slots.paper__authors = Slot(uri=CEURWSSCHEMA.authors, name="paper__authors", curie=CEURWSSCHEMA.curie('authors'),
-                   model_uri=CEURWSSCHEMA.paper__authors, domain=None, range=Optional[str])
 
 slots.paper__pdfUrl = Slot(uri=CEURWSSCHEMA.pdfUrl, name="paper__pdfUrl", curie=CEURWSSCHEMA.curie('pdfUrl'),
                    model_uri=CEURWSSCHEMA.paper__pdfUrl, domain=None, range=Optional[Union[str, URI]])

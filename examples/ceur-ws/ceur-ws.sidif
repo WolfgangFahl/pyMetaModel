@@ -19,7 +19,15 @@ Volume isA Topic
 4000 is listLimit of it
 "CeurwsSchema" is context of it
 Volume_number addsTo it
+Volume_acronym addsTo it
+Volume_wikidataid addsTo it
 Volume_title addsTo it
+Volume_description addsTo it
+Volume_date addsTo it
+Volume_url addsTo it
+Volume_dblp addsTo it
+Volume_k10Plus addsTo it
+Volume_urn addsTo it
 # properties of Volume
 # property number
 Volume_number isA Property
@@ -35,18 +43,125 @@ false is uploadable of it
 "The number Volume" is documentation of it
 false is isLink of it
 "Volume" is topic of it
+# property acronym
+Volume_acronym isA Property
+"acronym" is name of it
+"acronym" is label of it
+"text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The official acronym/short name of the Volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property wikidataid
+Volume_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+3 is index of it
+true is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The wikidataid of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
 # property title
 Volume_title isA Property
 "title" is name of it
 "title" is label of it
 "Text" is type of it
-"textarea" is inputType of it
-2 is index of it
-2 is sortPos of it
+"textarea" is inputType of it 
+4 is index of it
 true is mandatory of it
 300 is size of it
 false is uploadable of it
 "The title of the Volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property description
+Volume_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A wikidata compatible description of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property url
+Volume_url isA Property
+"url" is name of it
+"url" is label of it
+"text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The url of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property date
+Volume_date isA Property
+"date" is name of it
+"date" is label of it
+"Date" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+10 is size of it
+false is uploadable of it
+"The publication date of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property dblp
+Volume_dblp isA Property
+"dblp" is name of it
+"dblp" is label of it
+"External identifier" is type of it
+"https://dblp.org/rec/$1.html" is formatterURI of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+20 is size of it
+false is uploadable of it
+"The dblp publication id of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property k10plus
+Volume_k10plus isA Property
+"k10plus" is name of it
+"k10plus" is label of it
+"External identifier" is type of it
+"https://opac.k10plus.de/DB=2.299/PPNSET?PPN=$1" is formatterURI of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+20 is size of it
+false is uploadable of it
+"The k10 plus PPN id of the volume" is documentation of it
+false is isLink of it
+"Volume" is topic of it
+# property urn
+Volume_urn isA Property
+"urn" is name of it
+"urn" is label of it
+"External identifier" is type of it
+"https://nbn-resolving.org/$1" is formatterURI of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+20 is size of it
+false is uploadable of it
+"The URN-NBN id of the volume" is documentation of it
 false is isLink of it
 "Volume" is topic of it
 #
@@ -68,7 +183,7 @@ Session_title isA Property
 "title" is name of it
 "title" is label of it
 "Text" is type of it
-"textarea" is inputType of it
+"textarea" is inputType of it 
 1 is index of it
 1 is sortPos of it
 true is primaryKey of it
@@ -91,8 +206,9 @@ Paper isA Topic
 "property" is defaultstoremode of it
 "CeurwsSchema" is context of it
 Paper_id addsTo it
+Paper_wikidataid addsTo it
+Paper_description addsTo i
 Paper_title addsTo it
-Paper_authors addsTo it
 Paper_pdfUrl addsTo it
 # properties of Paper
 # property id
@@ -109,6 +225,33 @@ false is uploadable of it
 "The id (filename) of the Paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
+# property wikidataid
+Paper_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The wikidataid of the paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
+# property description
+Paper_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A wikidata compatible description of the paper" is documentation of it
+false is isLink of it
+"Paper" is topic of it
 # property title
 Paper_title isA Property
 "title" is name of it
@@ -116,23 +259,10 @@ Paper_title isA Property
 "textarea" is inputType of it
 "Text" is type of it
 true is mandatory of it
-2 is index of it
-300 is size of it
-false is uploadable of it
-"The title of the Paper" is documentation of it
-false is isLink of it
-"Paper" is topic of it
-# property authors
-Paper_authors isA Property
-"authors" is name of it
-"authors" is label of it
-"textarea" is inputType of it
-"Text" is type of it
-false is mandatory of it
 3 is index of it
 300 is size of it
 false is uploadable of it
-"authors of the Paper" is documentation of it
+"The title of the Paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
 # property pdfUrl
@@ -141,7 +271,7 @@ Paper_pdfUrl isA Property
 "pdf" is label of it
 "URL" is type of it
 false is mandatory of it
-4 is index of it
+5 is index of it
 false is uploadable of it
 "the url for the pdf of this paper" is documentation of it
 false is isLink of it
@@ -157,7 +287,7 @@ false is sourceMultiple of it
 "Volume" is source of it
 "sessions" is targetRole of it
 true is targetMultiple of it
-"Session" is target of it
+"Session" is target of it 
 # Volume 1 : n Paper
 Volume_has_Papers isA TopicLink
 "papersOfVolume" is name of it
@@ -166,7 +296,17 @@ false is sourceMultiple of it
 "Volume" is source of it
 "papers" is targetRole of it
 true is targetMultiple of it
-"Paper" is target of it
+"Paper" is target of it 
+# Scholar n : m Editors
+Volume_has_Editors isA TopicLink
+"editors of volume" is name of it
+"volumes" is sourceRole of it
+"Volume" is source of it
+true is sourceMultiple of it
+"Scholar" is target of it
+"editors" is targetRole of it
+"," is separator of it
+true is targetMultiple of it
 # Session 1 : n Paper
 Session_has_Papers isA TopicLink
 "papersOfSession" is name of it
@@ -176,3 +316,13 @@ false is sourceMultiple of it
 "papers" is targetRole of it
 true is targetMultiple of it
 "Paper" is target of it 
+# Paper n : m Author
+Paper_has_Authors isA TopicLink
+"authors of paper" is name of it
+"papers" is sourceRole of it
+"Paper" is source of it
+true is sourceMultiple of it
+"Scholar" is target of it
+"authors" is targetRole of it
+"," is separator of it
+true is targetMultiple of it

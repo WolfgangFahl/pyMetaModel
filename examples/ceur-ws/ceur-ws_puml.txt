@@ -2,7 +2,15 @@
 package CeurwsSchema {
   class Volume {
     number:Number
+    acronym:text
+    wikidataid:External identifier
     title:Text
+    description:text
+    url:text
+    date:Date
+    dblp:External identifier
+    k10plus:External identifier
+    urn:External identifier
   }
 Note top of Volume
 A Volume is a collection of papers mostly documenting the results of an academic event
@@ -15,8 +23,9 @@ A Session is a a collection of papers as part of a Volume
 End note
   class Paper {
     id:Text
+    wikidataid:External identifier
+    description:text
     title:Text
-    authors:Text
     pdfUrl:URL
   }
 Note top of Paper
@@ -25,7 +34,9 @@ End note
 }
 Volume "volume 1" -- "sessions *" Session
 Volume "volume 1" -- "papers *" Paper
+Volume "volumes *" -- "editors *" Scholar
 Session "session 1" -- "papers *" Paper
+Paper "papers *" -- "authors *" Scholar
 
 ' BITPlan Corporate identity skin params
 ' Copyright (c) 2015-2023 BITPlan GmbH
