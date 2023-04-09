@@ -155,6 +155,8 @@ class Context(MetaModelElement):
         if not hasattr(prop, "name"):
             self.error(f"prop {prop} has no name")
             return False
+        if not hasattr(prop, "type"):
+            prop.type="Text"
         topic=self.lookupTopic(topic_name,f"property {prop.name}")
         if topic:
             topic.properties[prop.name] = prop  
