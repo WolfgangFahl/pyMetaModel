@@ -283,6 +283,7 @@ true is targetMultiple of it
             
         """
         errMsg = None
+        context = None
         sp = SiDIFParser(debug=debug)
         parsed, error = sp.parseText(sidif, title,depth=depth)
         if debug:
