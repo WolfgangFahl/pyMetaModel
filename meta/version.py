@@ -13,12 +13,12 @@ class Version(object):
     description='pyMetaModel: MetaModel for Knowledge Graphs'
     version=meta.__version__
     date = '2022-11-30'
-    updated = '2023-04-19'
+    updated = '2023-12-19'
     authors='Wolfgang Fahl'
     doc_url="https://wiki.bitplan.com/index.php/pyMetaModel"
     chat_url="https://github.com/WolfgangFahl/pyMetaModel/discussions"
     cm_url="https://github.com/WolfgangFahl/pyMetaModel"
-    license=f'''Copyright 2022 contributors. All rights reserved.
+    license=f'''Copyright 2022-2023 contributors. All rights reserved.
   Licensed under the Apache License 2.0
   http://www.apache.org/licenses/LICENSE-2.0
   Distributed on an "AS IS" basis without warranties

@@ -335,7 +335,9 @@ class Topic(MetaModelElement):
         """
         constructor
         """
-        MetaModelElement.__init__(self)
+        MetaModelElement.__init__(self)  
+        self._pluralName = None  # Initialize with underscore to indicate a protected attribute
+      
         self.properties = {}
         self.sourceTopicLinks={}
         self.targetTopicLinks={}
@@ -371,7 +373,28 @@ class Topic(MetaModelElement):
             if mandatory or primaryKey:
                 self.conceptProperty=prop
                 break
+                   
+    @property
+    def pluralName(self):
+        """
+        Getter for pluralName.
+
+        Returns:
+            str: The plural name of the topic.
+        """
+        # Default behavior if _pluralName is not explicitly set
+        return self._pluralName if self._pluralName is not None else f"{self.name}s"
     
+    @pluralName.setter
+    def pluralName(self, value):
+        """
+        Setter for pluralName.
+
+        Args:
+            value (str): The plural name to be set for the topic.
+        """
+        self._pluralName = value
+ 
     def getPluralName(self) -> str:
         """
         get the plural name for this topic
@@ -380,8 +403,7 @@ class Topic(MetaModelElement):
             str: the pluralname e.g. "Topics" for "Topic" or "Status" for "Status" or
             "Entities" for "Entity"
         """
-        plural_name = self.pluralName if hasattr(self, "pluralName") else f"{self.name}s"
-        return plural_name
+        return self.pluralName
     
     def getListLimit(self) -> int:
         """
