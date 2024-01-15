@@ -228,7 +228,6 @@ hide Circle
             for classKey in package["classes"]:
                 uclass = package["classes"][classKey]
                 className = uclass["name"]
-                uml += "  class %s {\n" % className
                 uml += f"  class {className} {{\n"
                 for propKey in uclass["properties"]:
                     prop = uclass["properties"][propKey]
