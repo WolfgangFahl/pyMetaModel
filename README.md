@@ -27,7 +27,7 @@ It started with the ProfiWiki [SemanticMediaWiki MetaModel](https://wiki.bitplan
 [Wiki](http://wiki.bitplan.com/index.php/pyMetaModel)
 
 ### Model
-![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/metamodel.puml?fmt=svg&version=1)
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/metamodel.puml?fmt=svg&version=2)
 
 ### Authors
 * [Wolfgang Fahl](http://www.bitplan.com/Wolfgang_Fahl)
