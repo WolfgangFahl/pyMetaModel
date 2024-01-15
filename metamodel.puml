@@ -9,7 +9,8 @@ package MetaModel {
     master:URL
   }
 Note top of Context
-A Context groups some topics like a Namespace/Package
+A Context groups some topics like a
+Namespace/Package
 End note
   class Property {
   class Property {
@@ -34,7 +35,8 @@ End note
     nullable:Boolean
   }
 Note top of Property
-a Property is a Feature/Attribute of a Topic
+a Property is a Feature/Attribute of a
+Topic
 End note
   class SMW_Type {
   class SMW_Type {
@@ -46,7 +48,13 @@ End note
     javaType:Text
   }
 Note top of SMW_Type
-an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes
+an SMW_Type is a data type which
+determines the possible values for that
+type e.g. a Boolean can hold true/false
+values while a Number can hold 3.1459 or
+20. A Page can hold the name of a Wiki
+page see https://semantic-mediawiki.org/
+wiki/Help:List_of_datatypes
 End note
   class Topic {
   class Topic {
@@ -79,7 +87,8 @@ End note
     comment:Text
   }
 Note top of Action
-An action/function/operation to be performed
+An action/function/operation to be
+performed
 End note
   class TopicLink {
   class TopicLink {

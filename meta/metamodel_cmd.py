@@ -73,7 +73,12 @@ class MetaModelCmd:
         parser.add_argument(
             "-d", "--debug", dest="debug", action="store_true", help="show debug info"
         )
-        parser.add_argument("-i", "--input", help="input file")
+        parser.add_argument("-wd", "--doc_width",
+                    help="Maximum width of documentation (default: %(default)s)",
+                    type=int,
+                    default=40)
+        parser.add_argument("-i", "--input", help="input file") 
+        
         parser.add_argument(
             "-l", "--linkml", action="store_true", help="create linkml yaml file"
         )
@@ -131,7 +136,10 @@ class MetaModelCmd:
         self.readContext(args)
         if not self.hasError():
             uml = PlantUml(
-                title=args.title, copyRight=args.copyright, withAt=args.withAt
+                title=args.title, 
+                copyRight=args.copyright, 
+                withAt=args.withAt,
+                doc_width=args.doc_width
             )
             uml.fromDIF(self.context.dif)
             return str(uml)
