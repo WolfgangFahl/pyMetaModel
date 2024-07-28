@@ -10,8 +10,19 @@ Device {
     string model  
     string serial  
 }
+Computer {
+    string os  
+    string osversion  
+    string location  
+    string vm  
+}
+Harddisk {
+    double size  
+    string formfactor  
+    string rpm  
+}
 
-
+Harddisk ||--|o Computer : "computer"
 
 ```
 

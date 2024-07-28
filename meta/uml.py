@@ -175,10 +175,10 @@ hide Circle
                     properties[propKey] = {}
                     it = properties[propKey]
                 else:
-                    # triple.o == "Topic":
+                    isA=triple.o
                     classKey = itkey
                     classes = packages[packageKey]["classes"]
-                    classes[itkey] = {"properties": {}}
+                    classes[itkey] = {"isA": isA,"properties": {}}
                     it = classes[itkey]
             elif triple.o == "it":
                 if triple.p == "addsTo":
@@ -237,7 +237,12 @@ hide Circle
             for classKey in package["classes"]:
                 uclass = package["classes"][classKey]
                 className = uclass["name"]
-                uml += f"  class {className} {{\n"
+                isA=uclass["isA"]
+                if isA!="Topic":
+                    extends=f"extends {isA} "
+                else:
+                    extends=""
+                uml += f"  class {className} {extends}{{\n"
                 for propKey in uclass["properties"]:
                     prop = uclass["properties"][propKey]
                     uml += f"    {prop['name']}:{prop['type']}\n"
@@ -250,6 +255,7 @@ hide Circle
 End note
 """
             uml += "}\n"
+
         links = umlDict["topiclinks"]
         for linkKey in links.keys():
             link = links[linkKey]

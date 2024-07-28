@@ -290,6 +290,46 @@ slots:
     description: The serial number of the device
     from_schema: Infrastructure
     range: string
+  os:
+    name: os
+    description: The operating system of the computer
+    from_schema: Infrastructure
+    range: string
+  osversion:
+    name: osversion
+    description: The operating system version of the computer
+    from_schema: Infrastructure
+    range: string
+  location:
+    name: location
+    description: The location of the computer
+    from_schema: Infrastructure
+    range: string
+  vm:
+    name: vm
+    description: The virtual machine being used by the computer
+    from_schema: Infrastructure
+    range: string
+  size:
+    name: size
+    description: Size of the harddisk in GB
+    from_schema: Infrastructure
+    range: double
+  formfactor:
+    name: formfactor
+    description: Form factor of the harddisk in inches
+    from_schema: Infrastructure
+    range: string
+  rpm:
+    name: rpm
+    description: The number of rounds per minute or SSD if this is a solid-state drive
+    from_schema: Infrastructure
+    range: string
+  computer:
+    name: computer
+    description: Computer of this Harddisk
+    from_schema: Infrastructure
+    range: Computer
 classes:
   Device:
     name: Device
@@ -336,4 +376,55 @@ classes:
         description: The serial number of the device
         from_schema: Infrastructure
         range: string
+  Computer:
+    name: Computer
+    description: A computer runs software to automate tasks
+    from_schema: Infrastructure
+    attributes:
+      os:
+        name: os
+        description: The operating system of the computer
+        from_schema: Infrastructure
+        range: string
+      osversion:
+        name: osversion
+        description: The operating system version of the computer
+        from_schema: Infrastructure
+        range: string
+      location:
+        name: location
+        description: The location of the computer
+        from_schema: Infrastructure
+        range: string
+      vm:
+        name: vm
+        description: The virtual machine being used by the computer
+        from_schema: Infrastructure
+        range: string
+  Harddisk:
+    name: Harddisk
+    description: A harddisk stores data on magnetic media or using SSD technology
+    from_schema: Infrastructure
+    attributes:
+      size:
+        name: size
+        description: Size of the harddisk in GB
+        from_schema: Infrastructure
+        range: double
+      formfactor:
+        name: formfactor
+        description: Form factor of the harddisk in inches
+        from_schema: Infrastructure
+        range: string
+      rpm:
+        name: rpm
+        description: The number of rounds per minute or SSD if this is a solid-state
+          drive
+        from_schema: Infrastructure
+        range: string
+      computer:
+        name: computer
+        description: Computer of this Harddisk
+        from_schema: Infrastructure
+        range: Computer
 

@@ -89,4 +89,4 @@ class TestPlantUml(Basetest):
         title="Infrastructure"
         copy_right="© BITPlan GmbH 2024"
         uml=self.getPlantUmlFromSidifUrl(url, title, copy_right,debug=True)
-
+        self.assertTrue("Harddisk extends Device" in uml.uml)
