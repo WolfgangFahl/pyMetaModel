@@ -54,28 +54,26 @@ class TestPlantUml(Basetest):
         dif = parsed[0]
         return dif
 
-
-    def getPresentation(self):
-        """
-        get the SiDIF parse result for the presentation example
-        """
-        self.baseUrl = "https://raw.githubusercontent.com/BITPlan/org.sidif.triplestore/master/src/test/resources/sidif"
-        url = f"{self.baseUrl}/presentation.sidif"
-        dif=self.getDif(url, title="Presentation")
-        return dif
+    def getPlantUmlFromSidifUrl(self,url,title,copy_right):
+        debug = self.debug
+        debug = True
+        dif=self.getDif(url, title)
+        uml = PlantUml(title=title, copyRight=copy_right)
+        uml.fromDIF(dif)
+        if debug:
+            print(uml)
+        return uml
 
     def testIssue5(self):
         """
         https://github.com/WolfgangFahl/py-sidif/issues/5
         convert sidif to plantuml #5
         """
-        dif = self.getPresentation()
-        debug = self.debug
-        debug = True
-        uml = PlantUml(title="Presentation", copyRight="© BITPlan GmbH 2015-2024")
-        uml.fromDIF(dif)
-        if debug:
-            print(uml)
+        self.baseUrl = "https://raw.githubusercontent.com/BITPlan/org.sidif.triplestore/master/src/test/resources/sidif"
+        url = f"{self.baseUrl}/presentation.sidif"
+        title="Presentation"
+        copy_right="© BITPlan GmbH 2015-2024"
+        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right)
         self.assertTrue("package Presentation {" in uml.uml)
         self.assertTrue("class Icon {" in uml.uml)
         self.assertTrue("author:Text" in uml.uml)
@@ -85,3 +83,9 @@ class TestPlantUml(Basetest):
         """
 
         """
+        url="https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/examples/infrastructure/infrastructure.sidif"
+        title="Infrastructure"
+        dif=self.getDif(url, title)
+        copy_right="© BITPlan GmbH 2024"
+        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right)
+
