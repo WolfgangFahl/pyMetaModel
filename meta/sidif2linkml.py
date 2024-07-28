@@ -3,6 +3,7 @@ Created on 2023-02-20
 
 @author: wf
 """
+
 from linkml.generators.linkmlgen import LinkmlGenerator
 from linkml.utils.schema_builder import SchemaBuilder
 from linkml_runtime.linkml_model import (

@@ -3,6 +3,7 @@ Created on 2023-02-20
 
 @author: wf
 """
+
 from meta.metamodel_cmd import MetaModelCmd
 from meta.sidif2linkml import SiDIF2LinkML
 from tests.basemwtest import BaseMediawikiTest

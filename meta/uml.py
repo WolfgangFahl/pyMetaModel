@@ -3,8 +3,10 @@ Created on 2020-11-12
 
 @author: wf
 """
-from typing import Dict
+
 import textwrap
+from typing import Dict
+
 
 class PlantUml(object):
     """
@@ -100,7 +102,7 @@ hide Circle
         debug=False,
         withSkin: bool = True,
         withAt: bool = False,
-        doc_width: int = 40
+        doc_width: int = 40,
     ):
         """
         Constructor
@@ -108,14 +110,14 @@ hide Circle
         self.debug = debug
         self.withSkin = withSkin
         self.withAt = withAt
-        self.uml=""
+        self.uml = ""
         self.title = title
         self.copyRight = copyRight
         self.doc_width = doc_width
 
     def __str__(self):
         return self.atIt(self.uml)
-            
+
     def atIt(self, markup: str):
         """
         Args:
@@ -129,8 +131,8 @@ hide Circle
 {markup}
 @enduml"""
         return at_markup
-    
-    def multi_line_doc(self, doc:str,width: int) -> str:
+
+    def multi_line_doc(self, doc: str, width: int) -> str:
         """
         Returns the given documentation as a multiline string with a limited length per line.
         Lines are broken at whitespace.
@@ -189,32 +191,32 @@ hide Circle
                     it[triple.p] = triple.s
         return uml
 
-    def fromDIF(self, dif)->str:
+    def fromDIF(self, dif) -> str:
         """
         create a UML from a Data Interchange
-        
+
         Args:
             dif: DataInterchange - the data interchange
-            
+
         Returns:
             str: the planuml markup
-   
+
         """
         umlDict = self.asUmlDict(dif)
-        self.uml=self.fromUmlDict(umlDict)
-        return     
-       
-    def fromUmlDict(self,umlDict:Dict)->str:
+        self.uml = self.fromUmlDict(umlDict)
+        return
+
+    def fromUmlDict(self, umlDict: Dict) -> str:
         """
         convert the given umlDict Dict to a plantuml string
-        
+
         Args:
             umlDict(Dict): the dictionary of packages,classes and properties
-            
+
         Returns:
             str: the planuml markup
         """
-        uml=""
+        uml = ""
         if self.title is not None:
             if self.copyRight is None:
                 copyRight = ""
@@ -234,8 +236,8 @@ hide Circle
                     uml += f"    {prop['name']}:{prop['type']}\n"
                 uml += "  }\n"
                 if "documentation" in uclass:
-                    doc=uclass['documentation']
-                    doc=self.multi_line_doc(doc, self.doc_width)
+                    doc = uclass["documentation"]
+                    doc = self.multi_line_doc(doc, self.doc_width)
                     uml += f"""Note top of {className}
 {doc}
 End note
@@ -250,7 +252,7 @@ End note
             targetRole = link["targetRole"] if "targetRole" in link else ""
             source = link["source"]
             target = link["target"]
-            uml += f"{source} \"{sourceRole} {sourceMany}\" -- \"{targetRole} {targetMany}\" {target}\n"
+            uml += f'{source} "{sourceRole} {sourceMany}" -- "{targetRole} {targetMany}" {target}\n'
 
         if self.withSkin:
             uml += PlantUml.skinparams

@@ -3,6 +3,7 @@ Created on 19.02.2023
 
 @author: wf
 """
+
 from urllib.request import urlopen
 
 import xmltodict
@@ -37,8 +38,8 @@ class TestPlantUml(Basetest):
             title="CEUR-WS", copyRight="© Christoph Lange and contributors 2012–2020"
         )
         uml.fromDIF(dif)
-        debug=self.debug
-        debug=True
+        debug = self.debug
+        debug = True
         if debug:
             print(uml)
         self.assertTrue("""workshop " 1" -- "editors *" editor""" in uml.uml)
@@ -65,7 +66,7 @@ class TestPlantUml(Basetest):
         """
         dif = self.getPresentation()
         debug = self.debug
-        debug=True
+        debug = True
         uml = PlantUml(title="Presentation", copyRight="© BITPlan GmbH 2015-2024")
         uml.fromDIF(dif)
         if debug:

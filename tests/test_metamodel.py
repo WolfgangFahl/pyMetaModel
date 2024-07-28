@@ -3,8 +3,10 @@ Created on 2023-02-25
 
 @author: wf
 """
+
 from meta.smw_type import SMW_Type
 from tests.basemwtest import BaseMediawikiTest
+
 
 class TestMetaModel(BaseMediawikiTest):
     """
