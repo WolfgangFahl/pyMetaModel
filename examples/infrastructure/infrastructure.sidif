@@ -1,0 +1,276 @@
+Infrastructure isA Context
+"Infrastructure" is name of it
+
+#
+#Device
+#
+Device isA Topic
+"Device" is name of it
+"Devices" is pluralName of it
+"A general class for electronic devices" is documentation of it
+"File:Component.png" is icon of it
+"/images/4/40/Component.png" is iconUrl of it
+"property" is defaultstoremode of it
+"Infrastructure" is context of it
+Device_name addsTo it
+Device_since addsTo it
+Device_until addsTo it
+Device_active addsTo it
+Device_purpose addsTo it
+Device_manufacturer addsTo it
+Device_model addsTo it
+Device_serial addsTo it
+
+# properties of Device
+# property name
+Device_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"The name of the device" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property since
+Device_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"The date when the device was put into use" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property until
+Device_until isA Property
+"until" is name of it
+"until" is label of it
+"Date" is type of it
+3 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"The date when the device was put out of use" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property active
+Device_active isA Property
+"active" is name of it
+"active" is label of it
+"boolean" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"True if the device is currently in operation" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property purpose
+Device_purpose isA Property
+"purpose" is name of it
+"purpose" is label of it
+"Text" is type of it
+5 is index of it
+"The purpose the device is used for" is documentation of it
+false is isLink of it
+"Device" is topic of it
+
+# property manufacturer
+Device_manufacturer isA Property
+"manufacturer" is name of it
+"manufacturer" is label of it
+"Text" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The manufacturer of the device" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property model
+Device_model isA Property
+"model" is name of it
+"model" is label of it
+"Text" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The model of the device" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Device" is topic of it
+
+# property serial
+Device_serial isA Property
+"serial" is name of it
+"serial" is label of it
+"Text" is type of it
+8 is index of it
+"The serial number of the device" is documentation of it
+false is isLink of it
+"Device" is topic of it
+
+#
+#Computer
+#
+Computer isA Device
+"Computer" is name of it
+"Computers" is pluralName of it
+"A computer runs software to automate tasks" is documentation of it
+"File:Workplace.png" is icon of it
+"/images/b/be/Workplace.png" is iconUrl of it
+"Infrastructure" is context of it
+Computer_os addsTo it
+Computer_osversion addsTo it
+Computer_location addsTo it
+Computer_vm addsTo it
+
+# properties specific to Computer
+# property os
+Computer_os isA Property
+"os" is name of it
+"os" is label of it
+"Text" is type of it
+9 is index of it
+"The operating system of the computer" is documentation of it
+false is isLink of it
+"Computer" is topic of it
+
+# property osversion
+Computer_osversion isA Property
+"osversion" is name of it
+"osversion" is label of it
+"Text" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The operating system version of the computer" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Computer" is topic of it
+
+# property location
+Computer_location isA Property
+"location" is name of it
+"location" is label of it
+"Text" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The location of the computer" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Computer" is topic of it
+
+# property vm
+Computer_vm isA Property
+"vm" is name of it
+"vm" is label of it
+"Text" is type of it
+12 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"combobox" is inputType of it
+"The virtual machine being used by the computer" is documentation of it
+"property=Computer vm" is values_from of it
+true is showInGrid of it
+false is isLink of it
+"Computer" is topic of it
+
+#
+#Harddisk
+#
+Harddisk isA Device
+"Harddisk" is name of it
+"Harddisks" is pluralName of it
+"A harddisk stores data on magnetic media or using SSD technology" is documentation of it
+"File:Harddisk.png" is icon of it
+"/images/e/ea/Harddisk.png" is iconUrl of it
+"Infrastructure" is context of it
+Harddisk_size addsTo it
+Harddisk_formfactor addsTo it
+Harddisk_rpm addsTo it
+
+# properties specific to Harddisk
+# property size
+Harddisk_size isA Property
+"size" is name of it
+"size" is label of it
+"Number" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Size of the harddisk in GB" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Harddisk" is topic of it
+
+# property formfactor
+Harddisk_formfactor isA Property
+"formfactor" is name of it
+"formfactor" is label of it
+"Text" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"radiobutton" is inputType of it
+"2.5, 3.5" is allowedValues of it
+"Form factor of the harddisk in inches" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Harddisk" is topic of it
+
+# property rpm
+Harddisk_rpm isA Property
+"rpm" is name of it
+"rpm" is label of it
+"Text" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"radiobutton" is inputType of it
+"5400,7200,SSD" is allowedValues of it
+"The number of rounds per minute or SSD if this is a solid-state drive" is documentation of it
+false is showInGrid of it
+false is isLink of it
+"Harddisk" is topic of it
+
+#
+# TopicLinks
+#
+# Computer Harddisk 1:n
+Computer_has_Harddisks isA TopicLink
+"Computer_has_Harddisks" is name of it
+"Computer" is source of it
+"Computer of this Harddisk" is sourceDocumentation of it
+"computer" is sourceRole of it
+false is sourceMultiple of it
+"Harddisk" is target of it
+"harddisks" is targetRole of it
+"Harddisks of a computer" is targetDocumentation of it
+true is targetMultiple of it
+true is masterDetail of it

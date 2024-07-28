@@ -1,12 +1,12 @@
-name: CeurwsSchema
-id: CeurwsSchema
+name: Infrastructure
+id: Infrastructure
 prefixes:
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
-  CeurwsSchema:
-    prefix_prefix: CeurwsSchema
-    prefix_reference: CeurwsSchema/
+  Infrastructure:
+    prefix_prefix: Infrastructure
+    prefix_reference: Infrastructure/
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
@@ -16,7 +16,7 @@ prefixes:
   schema:
     prefix_prefix: schema
     prefix_reference: http://schema.org/
-default_prefix: CeurwsSchema
+default_prefix: Infrastructure
 default_range: string
 types:
   string:
@@ -250,193 +250,90 @@ types:
     uri: xsd:string
     repr: str
 slots:
-  number:
-    name: number
-    description: The number Volume
-    from_schema: CeurwsSchema
-    range: double
-  acronym:
-    name: acronym
-    description: The official acronym/short name of the Volume
-    from_schema: CeurwsSchema
+  name:
+    name: name
+    description: The name of the device
+    from_schema: Infrastructure
     range: string
-  wikidataid:
-    name: wikidataid
-    description: The wikidataid of the volume,The wikidataid of the paper
-    from_schema: CeurwsSchema
-    range: string
-  title:
-    name: title
-    description: The title of the Volume,The title of the Session,The title of the
-      Paper
-    from_schema: CeurwsSchema
-    range: string
-  description:
-    name: description
-    description: A wikidata compatible description of the volume,A wikidata compatible
-      description of the paper
-    from_schema: CeurwsSchema
-    range: string
-  url:
-    name: url
-    description: The url of the volume
-    from_schema: CeurwsSchema
-    range: string
-  date:
-    name: date
-    description: The publication date of the volume
-    from_schema: CeurwsSchema
+  since:
+    name: since
+    description: The date when the device was put into use
+    from_schema: Infrastructure
     range: date
-  dblp:
-    name: dblp
-    description: The dblp publication id of the volume
-    from_schema: CeurwsSchema
+  until:
+    name: until
+    description: The date when the device was put out of use
+    from_schema: Infrastructure
+    range: date
+  active:
+    name: active
+    description: True if the device is currently in operation
+    from_schema: Infrastructure
     range: string
-  k10plus:
-    name: k10plus
-    description: The k10 plus PPN id of the volume
-    from_schema: CeurwsSchema
+  purpose:
+    name: purpose
+    description: The purpose the device is used for
+    from_schema: Infrastructure
     range: string
-  urn:
-    name: urn
-    description: The URN-NBN id of the volume
-    from_schema: CeurwsSchema
+  manufacturer:
+    name: manufacturer
+    description: The manufacturer of the device
+    from_schema: Infrastructure
     range: string
-  volume:
-    name: volume
-    description: volume,volume
-    from_schema: CeurwsSchema
-    range: Volume
-  id:
-    name: id
-    description: The id (filename) of the Paper
-    from_schema: CeurwsSchema
+  model:
+    name: model
+    description: The model of the device
+    from_schema: Infrastructure
     range: string
-  pdfUrl:
-    name: pdfUrl
-    description: the url for the pdf of this paper
-    from_schema: CeurwsSchema
-    range: uri
-  session:
-    name: session
-    description: session
-    from_schema: CeurwsSchema
-    range: Session
+  serial:
+    name: serial
+    description: The serial number of the device
+    from_schema: Infrastructure
+    range: string
 classes:
-  Volume:
-    name: Volume
-    description: A Volume is a collection of papers mostly documenting the results
-      of an academic event
-    from_schema: CeurwsSchema
+  Device:
+    name: Device
+    description: A general class for electronic devices
+    from_schema: Infrastructure
     attributes:
-      number:
-        name: number
-        description: The number Volume
-        from_schema: CeurwsSchema
-        range: double
-      acronym:
-        name: acronym
-        description: The official acronym/short name of the Volume
-        from_schema: CeurwsSchema
+      name:
+        name: name
+        description: The name of the device
+        from_schema: Infrastructure
         range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the volume,The wikidataid of the paper
-        from_schema: CeurwsSchema
-        range: string
-      title:
-        name: title
-        description: The title of the Volume,The title of the Session,The title of
-          the Paper
-        from_schema: CeurwsSchema
-        range: string
-      description:
-        name: description
-        description: A wikidata compatible description of the volume,A wikidata compatible
-          description of the paper
-        from_schema: CeurwsSchema
-        range: string
-      url:
-        name: url
-        description: The url of the volume
-        from_schema: CeurwsSchema
-        range: string
-      date:
-        name: date
-        description: The publication date of the volume
-        from_schema: CeurwsSchema
+      since:
+        name: since
+        description: The date when the device was put into use
+        from_schema: Infrastructure
         range: date
-      dblp:
-        name: dblp
-        description: The dblp publication id of the volume
-        from_schema: CeurwsSchema
+      until:
+        name: until
+        description: The date when the device was put out of use
+        from_schema: Infrastructure
+        range: date
+      active:
+        name: active
+        description: True if the device is currently in operation
+        from_schema: Infrastructure
         range: string
-      k10plus:
-        name: k10plus
-        description: The k10 plus PPN id of the volume
-        from_schema: CeurwsSchema
+      purpose:
+        name: purpose
+        description: The purpose the device is used for
+        from_schema: Infrastructure
         range: string
-      urn:
-        name: urn
-        description: The URN-NBN id of the volume
-        from_schema: CeurwsSchema
+      manufacturer:
+        name: manufacturer
+        description: The manufacturer of the device
+        from_schema: Infrastructure
         range: string
-  Session:
-    name: Session
-    description: A Session is a a collection of papers as part of a Volume
-    from_schema: CeurwsSchema
-    attributes:
-      title:
-        name: title
-        description: The title of the Volume,The title of the Session,The title of
-          the Paper
-        from_schema: CeurwsSchema
+      model:
+        name: model
+        description: The model of the device
+        from_schema: Infrastructure
         range: string
-      volume:
-        name: volume
-        description: volume,volume
-        from_schema: CeurwsSchema
-        range: Volume
-  Paper:
-    name: Paper
-    description: A paper is e.g. a scholarly article
-    from_schema: CeurwsSchema
-    attributes:
-      description:
-        name: description
-        description: A wikidata compatible description of the volume,A wikidata compatible
-          description of the paper
-        from_schema: CeurwsSchema
+      serial:
+        name: serial
+        description: The serial number of the device
+        from_schema: Infrastructure
         range: string
-      id:
-        name: id
-        description: The id (filename) of the Paper
-        from_schema: CeurwsSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the volume,The wikidataid of the paper
-        from_schema: CeurwsSchema
-        range: string
-      title:
-        name: title
-        description: The title of the Volume,The title of the Session,The title of
-          the Paper
-        from_schema: CeurwsSchema
-        range: string
-      pdfUrl:
-        name: pdfUrl
-        description: the url for the pdf of this paper
-        from_schema: CeurwsSchema
-        range: uri
-      volume:
-        name: volume
-        description: volume,volume
-        from_schema: CeurwsSchema
-        range: Volume
-      session:
-        name: session
-        description: session
-        from_schema: CeurwsSchema
-        range: Session
 

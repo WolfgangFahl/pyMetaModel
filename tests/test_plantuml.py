@@ -44,12 +44,7 @@ class TestPlantUml(Basetest):
             print(uml)
         self.assertTrue("""workshop " 1" -- "editors *" editor""" in uml.uml)
 
-    def getPresentation(self):
-        """
-        get the SiDIF parse result for the presentation example
-        """
-        self.baseUrl = "https://raw.githubusercontent.com/BITPlan/org.sidif.triplestore/master/src/test/resources/sidif"
-        url = f"{self.baseUrl}/presentation.sidif"
+    def getDif(self,url,title:str):
         sp = SiDIFParser(debug=self.debug)
         parsed, error = sp.parseUrl(url, title="Presentation")
         self.assertTrue(error is None)
@@ -57,6 +52,16 @@ class TestPlantUml(Basetest):
         if self.debug:
             sp.printResult(parsed)
         dif = parsed[0]
+        return dif
+
+
+    def getPresentation(self):
+        """
+        get the SiDIF parse result for the presentation example
+        """
+        self.baseUrl = "https://raw.githubusercontent.com/BITPlan/org.sidif.triplestore/master/src/test/resources/sidif"
+        url = f"{self.baseUrl}/presentation.sidif"
+        dif=self.getDif(url, title="Presentation")
         return dif
 
     def testIssue5(self):
@@ -74,3 +79,9 @@ class TestPlantUml(Basetest):
         self.assertTrue("package Presentation {" in uml.uml)
         self.assertTrue("class Icon {" in uml.uml)
         self.assertTrue("author:Text" in uml.uml)
+
+
+    def testIssue25(self):
+        """
+
+        """
