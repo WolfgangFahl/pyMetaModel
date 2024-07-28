@@ -54,9 +54,9 @@ class TestPlantUml(Basetest):
         dif = parsed[0]
         return dif
 
-    def getPlantUmlFromSidifUrl(self,url,title,copy_right):
-        debug = self.debug
-        debug = True
+    def getPlantUmlFromSidifUrl(self,url,title,copy_right,debug:bool=None):
+        if debug is None:
+            debug=self.debug
         dif=self.getDif(url, title)
         uml = PlantUml(title=title, copyRight=copy_right)
         uml.fromDIF(dif)
@@ -81,11 +81,12 @@ class TestPlantUml(Basetest):
 
     def testIssue25(self):
         """
+        https://github.com/WolfgangFahl/pyMetaModel/issues/25
+        support inheritance of topics
 
         """
         url="https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/examples/infrastructure/infrastructure.sidif"
         title="Infrastructure"
-        dif=self.getDif(url, title)
         copy_right="© BITPlan GmbH 2024"
-        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right)
+        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right,debug=True)
 

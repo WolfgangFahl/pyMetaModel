@@ -6,6 +6,7 @@ Created on 2022-11-23
 
 import sys
 import typing
+from typing import Tuple, Optional
 from datetime import datetime
 
 import urllib3
@@ -69,7 +70,7 @@ class Context(MetaModelElement):
             {
                 "name": "MetaModel",
                 "since": datetime.strptime("2015-01-23", "%Y-%m-%d"),
-                "copyright": "2015-2023 BITPlan GmbH",
+                "copyright": "2015-2024 BITPlan GmbH",
                 "master": "http://smw-meta.bitplan.com",
             }
         ]
@@ -179,7 +180,7 @@ class Context(MetaModelElement):
             topic.properties[prop.name] = prop
             return True
 
-    def createProperty4TopicLink(self, tl: "TopicLink") -> "Propertx":
+    def createProperty4TopicLink(self, tl: "TopicLink") -> "Property":
         """
         create a property for the given topic link
 
@@ -217,19 +218,6 @@ class Context(MetaModelElement):
             if isA == "Context":
                 context = Context()
                 context.fromDict(record)
-            elif isA == "Topic":
-                topic = Topic()
-                topic.fromDict(record)
-                if context is None:
-                    context = Context()
-                    context.name = "GeneralContext"
-                    context.since = "2022-11-26"
-                    context.master = "http://master.bitplan.com"
-                    context.error(f"topic {topic.name} has no defined context")
-                if hasattr(topic, "name"):
-                    context.topics[topic.name] = topic
-                else:
-                    context.error(f"missing name for topic {topic}")
             elif isA == "TopicLink":
                 """
                 # Event n : 1 City
@@ -250,6 +238,19 @@ class Context(MetaModelElement):
                 prop.isLink = False
                 prop.fromDict(record)
                 context.addProperty(prop)
+            else: # isA == Topic or in declared topics
+                topic = Topic()
+                topic.fromDict(record)
+                if context is None:
+                    context = Context()
+                    context.name = "GeneralContext"
+                    context.since = "2022-11-26"
+                    context.master = "http://master.bitplan.com"
+                    context.error(f"topic {topic.name} has no defined context")
+                if hasattr(topic, "name"):
+                    context.topics[topic.name] = topic
+                else:
+                    context.error(f"missing name for topic {topic}")
 
         # link topic to concepts and add topicLinks
         for topic in context.topics.values():
@@ -320,7 +321,7 @@ class Context(MetaModelElement):
     @classmethod
     def fromWikiContext(
         cls, mw_context: MediaWikiContext, depth: int = None, debug: bool = False
-    ) -> "MetaModel":
+    ) ->  Tuple["Context", Optional[Exception], Optional[str]]:
         """
         initialize me from the given MediaWiki Context
 
@@ -330,7 +331,7 @@ class Context(MetaModelElement):
             debug(bool): if True handle debugging
 
         Return:
-            tuple(MetaModel,Exception,str): the metamodel and potential parsing errors as Exception and error Message
+            tuple(Context,Exception,str): the metamodel and potential parsing errors as Exception and error Message
         """
         context = None
         error = None

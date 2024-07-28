@@ -7,7 +7,6 @@ Created on 2020-11-12
 import textwrap
 from typing import Dict
 
-
 class PlantUml(object):
     """
     Plant UML support
@@ -151,7 +150,9 @@ hide Circle
         return the given DataInterchange as an UML Dict
         """
         uml = {"packages": {}, "topiclinks": {}}
-        for triple in dif.triples:
+        classKey=None
+        classes = {}
+        for _i,triple in enumerate(dif.triples):
             if self.debug:
                 print(triple)
             if triple.p == "isA":
@@ -165,18 +166,24 @@ hide Circle
                     links = uml["topiclinks"]
                     links[itkey] = {}
                     it = links[itkey]
-                elif triple.o == "Topic":
+                elif triple.o == "Property":
+                    propKey = itkey
+                    if not classKey:
+                        print(f"invalid property {propKey} declared out of class scope")
+                        continue
+                    properties = classes[classKey]["properties"]
+                    properties[propKey] = {}
+                    it = properties[propKey]
+                else:
+                    # triple.o == "Topic":
                     classKey = itkey
                     classes = packages[packageKey]["classes"]
                     classes[itkey] = {"properties": {}}
                     it = classes[itkey]
-                elif triple.o == "Property":
-                    propKey = itkey
-                    properties = classes[classKey]["properties"]
-                    properties[propKey] = {}
-                    it = properties[propKey]
             elif triple.o == "it":
                 if triple.p == "addsTo":
+                    # @TODO might note be redundant but
+                    # declaring a default
                     # redundant forward declaration
                     pass
                 elif triple.p == "context":
