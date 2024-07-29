@@ -1,9 +1,6 @@
 Infrastructure isA Context
 "Infrastructure" is name of it
 
-#
-#Device
-#
 Device isA Topic
 "Device" is name of it
 "Devices" is pluralName of it
@@ -13,6 +10,7 @@ Device isA Topic
 "property" is defaultstoremode of it
 "Infrastructure" is context of it
 Device_name addsTo it
+Device_type addsTo it
 Device_since addsTo it
 Device_until addsTo it
 Device_active addsTo it
@@ -20,6 +18,13 @@ Device_purpose addsTo it
 Device_manufacturer addsTo it
 Device_model addsTo it
 Device_serial addsTo it
+Device_location addsTo it
+Device_ip addsTo it
+Device_mac addsTo it
+Device_website addsTo it
+Device_driver addsTo it
+Device_support addsTo it
+Device_comment addsTo it
 
 # properties of Device
 # property name
@@ -28,12 +33,20 @@ Device_name isA Property
 "name" is label of it
 "Text" is type of it
 1 is index of it
-false is primaryKey of it
 true is mandatory of it
-false is uploadable of it
 "The name of the device" is documentation of it
 true is showInGrid of it
-false is isLink of it
+"Device" is topic of it
+
+# property type
+Device_type isA Property
+"type" is name of it
+"type" is label of it
+"Text" is type of it
+2 is index of it
+true is mandatory of it
+"The type of the device" is documentation of it
+true is showInGrid of it
 "Device" is topic of it
 
 # property since
@@ -41,14 +54,10 @@ Device_since isA Property
 "since" is name of it
 "since" is label of it
 "Date" is type of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
+3 is index of it
 "datepicker" is inputType of it
 "The date when the device was put into use" is documentation of it
 true is showInGrid of it
-false is isLink of it
 "Device" is topic of it
 
 # property until
@@ -56,14 +65,10 @@ Device_until isA Property
 "until" is name of it
 "until" is label of it
 "Date" is type of it
-3 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
+4 is index of it
 "datepicker" is inputType of it
 "The date when the device was put out of use" is documentation of it
 true is showInGrid of it
-false is isLink of it
 "Device" is topic of it
 
 # property active
@@ -71,13 +76,9 @@ Device_active isA Property
 "active" is name of it
 "active" is label of it
 "boolean" is type of it
-4 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
+5 is index of it
 "True if the device is currently in operation" is documentation of it
 true is showInGrid of it
-false is isLink of it
 "Device" is topic of it
 
 # property purpose
@@ -85,9 +86,8 @@ Device_purpose isA Property
 "purpose" is name of it
 "purpose" is label of it
 "Text" is type of it
-5 is index of it
+6 is index of it
 "The purpose the device is used for" is documentation of it
-false is isLink of it
 "Device" is topic of it
 
 # property manufacturer
@@ -95,13 +95,9 @@ Device_manufacturer isA Property
 "manufacturer" is name of it
 "manufacturer" is label of it
 "Text" is type of it
-6 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
+7 is index of it
 "The manufacturer of the device" is documentation of it
 true is showInGrid of it
-false is isLink of it
 "Device" is topic of it
 
 # property model
@@ -109,13 +105,9 @@ Device_model isA Property
 "model" is name of it
 "model" is label of it
 "Text" is type of it
-7 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
+8 is index of it
 "The model of the device" is documentation of it
 true is showInGrid of it
-false is isLink of it
 "Device" is topic of it
 
 # property serial
@@ -123,9 +115,72 @@ Device_serial isA Property
 "serial" is name of it
 "serial" is label of it
 "Text" is type of it
-8 is index of it
+9 is index of it
 "The serial number of the device" is documentation of it
-false is isLink of it
+"Device" is topic of it
+
+# property location
+Device_location isA Property
+"location" is name of it
+"location" is label of it
+"Text" is type of it
+10 is index of it
+"The location of the device" is documentation of it
+"Device" is topic of it
+
+# property ip
+Device_ip isA Property
+"ip" is name of it
+"ip" is label of it
+"Text" is type of it
+11 is index of it
+"The IP address assigned to the device" is documentation of it
+"Device" is topic of it
+
+# property mac
+Device_mac isA Property
+"mac" is name of it
+"mac" is label of it
+"Text" is type of it
+12 is index of it
+"MAC hardware address of the device" is documentation of it
+"Device" is topic of it
+
+# property website
+Device_website isA Property
+"website" is name of it
+"website" is label of it
+"Text" is type of it
+13 is index of it
+"The website the device offers as a control panel" is documentation of it
+"Device" is topic of it
+
+# property driver
+Device_driver isA Property
+"driver" is name of it
+"driver" is label of it
+"Text" is type of it
+13 is index of it
+"The URL for the device driver of this device" is documentation of it
+"Device" is topic of it
+
+# property support
+Device_support isA Property
+"support" is name of it
+"support" is label of it
+"URL" is type of it
+14 is index of it
+"Website for device support" is documentation of it
+"Device" is topic of it
+
+# property comment
+Device_comment isA Property
+"comment" is name of it
+"comment" is label of it
+"Text" is type of it
+15 is index of it
+"textarea" is inputType of it
+"Any comments about the device" is documentation of it
 "Device" is topic of it
 
 #
@@ -164,20 +219,6 @@ false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
 "The operating system version of the computer" is documentation of it
-true is showInGrid of it
-false is isLink of it
-"Computer" is topic of it
-
-# property location
-Computer_location isA Property
-"location" is name of it
-"location" is label of it
-"Text" is type of it
-11 is index of it
-false is primaryKey of it
-false is mandatory of it
-false is uploadable of it
-"The location of the computer" is documentation of it
 true is showInGrid of it
 false is isLink of it
 "Computer" is topic of it
@@ -259,18 +300,48 @@ false is showInGrid of it
 false is isLink of it
 "Harddisk" is topic of it
 
+Monitor isA Device
+"Monitor" is name of it
+"Monitors" is pluralName of it
+"A display device for computers" is documentation of it
+"File:Monitor.png" is icon of it
+"/images/f/f1/Monitor.png" is iconUrl of it
+"Infrastructure" is context of it
+Monitor_resolution addsTo it
+
+# properties specific to Monitor
+# property resolution
+Monitor_resolution isA Property
+"resolution" is name of it
+"resolution" is label of it
+"Text" is type of it
+16 is index of it
+true is mandatory of it
+"The display resolution of the monitor (e.g., 1920x1080)" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Monitor" is topic of it
+
+Printer isA Device
+"Printer" is name of it
+"Printers" is pluralName of it
+"Paper printer" is documentation of it
+"File:Printer3.png" is icon of it
+"/images/media/2/22/Printer3.png" is iconUrl of it
+"Infrastructure" is context of it
+
 #
 # TopicLinks
 #
-# Computer Harddisk 1:n
-Computer_has_Harddisks isA TopicLink
-"Computer_has_Harddisks" is name of it
+# Computer Device 1:n
+Connected_to_computer isA TopicLink
+"computer" is name of it
 "Computer" is source of it
-"Computer of this Harddisk" is sourceDocumentation of it
+"Computer to which this Device is connected" is sourceDocumentation of it
 "computer" is sourceRole of it
 false is sourceMultiple of it
-"Harddisk" is target of it
-"harddisks" is targetRole of it
-"Harddisks of a computer" is targetDocumentation of it
+"Device" is target of it
+"devices" is targetRole of it
+"Devices connected to this Computer" is targetDocumentation of it
 true is targetMultiple of it
 true is masterDetail of it

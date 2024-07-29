@@ -6,8 +6,8 @@ Created on 2022-11-23
 
 import sys
 import typing
-from typing import Tuple, Optional
 from datetime import datetime
+from typing import Optional, Tuple
 
 import urllib3
 from lodstorage.jsonable import JSONAble
@@ -238,7 +238,7 @@ class Context(MetaModelElement):
                 prop.isLink = False
                 prop.fromDict(record)
                 context.addProperty(prop)
-            else: # isA == Topic or in declared topics
+            else:  # isA == Topic or in declared topics
                 topic = Topic()
                 topic.fromDict(record)
                 if context is None:
@@ -321,7 +321,7 @@ class Context(MetaModelElement):
     @classmethod
     def fromWikiContext(
         cls, mw_context: MediaWikiContext, depth: int = None, debug: bool = False
-    ) ->  Tuple["Context", Optional[Exception], Optional[str]]:
+    ) -> Tuple["Context", Optional[Exception], Optional[str]]:
         """
         initialize me from the given MediaWiki Context
 

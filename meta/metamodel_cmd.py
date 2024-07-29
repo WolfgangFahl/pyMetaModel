@@ -41,16 +41,16 @@ class MetaModelCmd:
         """
         program_shortdesc = Version.description
         program_license = """%s
-        
+
           Created by %s on %s.
           Copyright 2022-2024 Wolfgang Fahl. All rights reserved.
-        
+
           Licensed under the Apache License 2.0
           http://www.apache.org/licenses/LICENSE-2.0
-        
+
           Distributed on an "AS IS" basis without warranties
           or conditions of any kind, either express or implied.
-        
+
         USAGE
         """ % (
             program_shortdesc,
@@ -135,9 +135,10 @@ class MetaModelCmd:
            args: the command line arguments
 
         Returns:
-            str: the uml markup
+            str: the PlantUml
         """
         self.readContext(args)
+        uml=None
         if not self.hasError():
             uml = PlantUml(
                 title=args.title,
@@ -146,7 +147,8 @@ class MetaModelCmd:
                 doc_width=args.doc_width,
             )
             uml.fromDIF(self.context.dif)
-            return str(uml)
+        return uml
+
 
     def genLinkML(self, args) -> str:
         """
@@ -163,6 +165,8 @@ class MetaModelCmd:
             sidif2LinkML = SiDIF2LinkML(self.context)
             yaml_text = sidif2LinkML.asYaml()
             return yaml_text
+        else:
+            return None
 
 
 __version__ = Version.version

@@ -7,6 +7,7 @@ Created on 2020-11-12
 import textwrap
 from typing import Dict
 
+
 class PlantUml(object):
     """
     Plant UML support
@@ -150,9 +151,9 @@ hide Circle
         return the given DataInterchange as an UML Dict
         """
         uml = {"packages": {}, "topiclinks": {}}
-        classKey=None
+        classKey = None
         classes = {}
-        for _i,triple in enumerate(dif.triples):
+        for _i, triple in enumerate(dif.triples):
             if self.debug:
                 print(triple)
             if triple.p == "isA":
@@ -175,10 +176,10 @@ hide Circle
                     properties[propKey] = {}
                     it = properties[propKey]
                 else:
-                    isA=triple.o
+                    isA = triple.o
                     classKey = itkey
                     classes = packages[packageKey]["classes"]
-                    classes[itkey] = {"isA": isA,"properties": {}}
+                    classes[itkey] = {"isA": isA, "properties": {}}
                     it = classes[itkey]
             elif triple.o == "it":
                 if triple.p == "addsTo":
@@ -236,12 +237,12 @@ hide Circle
             uml += f"package {package['name']} {{\n"
             for classKey in package["classes"]:
                 uclass = package["classes"][classKey]
-                className = uclass["name"]
-                isA=uclass["isA"]
-                if isA!="Topic":
-                    extends=f"extends {isA} "
+                className = uclass.get("name", classKey)
+                isA = uclass["isA"]
+                if isA != "Topic":
+                    extends = f"extends {isA} "
                 else:
-                    extends=""
+                    extends = ""
                 uml += f"  class {className} {extends}{{\n"
                 for propKey in uclass["properties"]:
                     prop = uclass["properties"][propKey]

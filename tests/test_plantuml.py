@@ -44,7 +44,7 @@ class TestPlantUml(Basetest):
             print(uml)
         self.assertTrue("""workshop " 1" -- "editors *" editor""" in uml.uml)
 
-    def getDif(self,url,title:str):
+    def getDif(self, url, title: str):
         sp = SiDIFParser(debug=self.debug)
         parsed, error = sp.parseUrl(url, title="Presentation")
         self.assertTrue(error is None)
@@ -54,10 +54,10 @@ class TestPlantUml(Basetest):
         dif = parsed[0]
         return dif
 
-    def getPlantUmlFromSidifUrl(self,url,title,copy_right,debug:bool=None):
+    def getPlantUmlFromSidifUrl(self, url, title, copy_right, debug: bool = None):
         if debug is None:
-            debug=self.debug
-        dif=self.getDif(url, title)
+            debug = self.debug
+        dif = self.getDif(url, title)
         uml = PlantUml(title=title, copyRight=copy_right)
         uml.fromDIF(dif)
         if debug:
@@ -71,13 +71,12 @@ class TestPlantUml(Basetest):
         """
         self.baseUrl = "https://raw.githubusercontent.com/BITPlan/org.sidif.triplestore/master/src/test/resources/sidif"
         url = f"{self.baseUrl}/presentation.sidif"
-        title="Presentation"
-        copy_right="© BITPlan GmbH 2015-2024"
-        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right)
+        title = "Presentation"
+        copy_right = "© BITPlan GmbH 2015-2024"
+        uml = self.getPlantUmlFromSidifUrl(url, title, copy_right)
         self.assertTrue("package Presentation {" in uml.uml)
         self.assertTrue("class Icon {" in uml.uml)
         self.assertTrue("author:Text" in uml.uml)
-
 
     def testIssue25(self):
         """
@@ -85,8 +84,8 @@ class TestPlantUml(Basetest):
         support inheritance of topics
 
         """
-        url="https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/examples/infrastructure/infrastructure.sidif"
-        title="Infrastructure"
-        copy_right="© BITPlan GmbH 2024"
-        uml=self.getPlantUmlFromSidifUrl(url, title, copy_right,debug=True)
+        url = "https://raw.githubusercontent.com/WolfgangFahl/pyMetaModel/main/examples/infrastructure/infrastructure.sidif"
+        title = "Infrastructure"
+        copy_right = "© BITPlan GmbH 2024"
+        uml = self.getPlantUmlFromSidifUrl(url, title, copy_right, debug=True)
         self.assertTrue("Harddisk extends Device" in uml.uml)

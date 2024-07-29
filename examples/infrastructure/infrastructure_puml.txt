@@ -2,6 +2,7 @@
 package Infrastructure {
   class Device {
     name:Text
+    type:Text
     since:Date
     until:Date
     active:boolean
@@ -9,6 +10,13 @@ package Infrastructure {
     manufacturer:Text
     model:Text
     serial:Text
+    location:Text
+    ip:Text
+    mac:Text
+    website:Text
+    driver:Text
+    support:URL
+    comment:Text
   }
 Note top of Device
 A general class for electronic devices
@@ -16,7 +24,6 @@ End note
   class Computer extends Device {
     os:Text
     osversion:Text
-    location:Text
     vm:Text
   }
 Note top of Computer
@@ -32,8 +39,19 @@ Note top of Harddisk
 A harddisk stores data on magnetic media
 or using SSD technology
 End note
+  class Monitor extends Device {
+    resolution:Text
+  }
+Note top of Monitor
+A display device for computers
+End note
+  class Printer extends Device {
+  }
+Note top of Printer
+Paper printer
+End note
 }
-Computer "computer 1" -- "harddisks *" Harddisk
+Computer "computer 1" -- "devices *" Device
 
 ' BITPlan Corporate identity skin params
 ' Copyright (c) 2015-2024 BITPlan GmbH

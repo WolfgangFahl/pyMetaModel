@@ -2,6 +2,7 @@
 erDiagram
 Device {
     string name  
+    string type  
     date since  
     date until  
     string active  
@@ -9,11 +10,17 @@ Device {
     string manufacturer  
     string model  
     string serial  
+    string location  
+    string ip  
+    string mac  
+    string website  
+    string driver  
+    uri support  
+    string comment  
 }
 Computer {
     string os  
     string osversion  
-    string location  
     string vm  
 }
 Harddisk {
@@ -21,8 +28,14 @@ Harddisk {
     string formfactor  
     string rpm  
 }
+Monitor {
+    string resolution  
+}
+Printer {
 
-Harddisk ||--|o Computer : "computer"
+}
+
+Device ||--|o Computer : "computer"
 
 ```
 
