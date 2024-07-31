@@ -7,6 +7,7 @@ migrates https://wiki.bitplan.com/index.php/MetaModel#tab=Model to python
 [![PyPI Status](https://img.shields.io/pypi/v/pyMetaModel.svg)](https://pypi.python.org/pypi/pyMetaModel/)
 [![GitHub issues](https://img.shields.io/github/issues/WolfgangFahl/pyMetaModel.svg)](https://github.com/WolfgangFahl/pyMetaModel/issues)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/WolfgangFahl/pyMetaModel.svg)](https://github.com/WolfgangFahl/pyMetaModel/issues/?q=is%3Aissue+is%3Aclosed)
+[![API Docs](https://img.shields.io/badge/API-Documentation-blue)](https://WolfgangFahl.github.io/pyMetaModel/)
 [![License](https://img.shields.io/github/license/WolfgangFahl/pyMetaModel.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Introduction

@@ -65,9 +65,11 @@ test = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = [
-  "meta",
-]
+only-include = ["meta"]
+
+[tool.hatch.build.targets.wheel.sources]
+"meta" = "meta"
+
 
 [project.scripts]
 mm_cmd = "meta.metamodel_cmd:main"
