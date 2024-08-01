@@ -62,6 +62,7 @@ class Context(MetaModelElement):
         """
         MetaModelElement.__init__(self)
         self.topics = {}
+        self.types = {}
         self.errors = []
 
     @classmethod
@@ -241,6 +242,7 @@ class Context(MetaModelElement):
             else:  # isA == Topic or in declared topics
                 topic = Topic()
                 topic.fromDict(record)
+                topic.sanitize()
                 if context is None:
                     context = Context()
                     context.name = "GeneralContext"
@@ -249,6 +251,8 @@ class Context(MetaModelElement):
                     context.error(f"topic {topic.name} has no defined context")
                 if hasattr(topic, "name"):
                     context.topics[topic.name] = topic
+                elif hasattr(topic, "type"):
+                    context.types[topic.type]=topic
                 else:
                     context.error(f"missing name for topic {topic}")
 
@@ -361,13 +365,21 @@ class Topic(MetaModelElement):
         constructor
         """
         MetaModelElement.__init__(self)
-        self._pluralName = (
-            None  # Initialize with underscore to indicate a protected attribute
-        )
+        self._pluralName = None # Initialize with underscore to indicate a protected attribute
 
         self.properties = {}
         self.sourceTopicLinks = {}
         self.targetTopicLinks = {}
+
+    def sanitize(self):
+        """
+        make sure my properties exist
+        """
+        doc=self.documentation if hasattr("self", "documentation") else "?"
+        if not hasattr(self, "wikiDocumentation"):
+            self.wikiDocumentation=doc
+        if not hasattr(self,"defaultstoremode"):
+            self.defaultstoremode="property"
 
     @classmethod
     def getSamples(cls):

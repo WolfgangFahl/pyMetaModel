@@ -10,7 +10,6 @@ import sys
 from wikibot3rd.wikiuser import WikiUser
 
 from meta.metamodel import Context
-from meta.mw import SMWAccess
 from tests.basemwtest import BaseMediawikiTest
 
 
