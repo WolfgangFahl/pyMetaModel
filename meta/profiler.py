@@ -17,8 +17,8 @@ class Profiler:
         construct me with the given msg and profile active flag
 
         Args:
-            msg(str): the message to show if profiling is active
-            profile(bool): True if messages should be shown
+            msg (str): the message to show if profiling is active
+            profile (bool): True if messages should be shown
         """
         self.msg = msg
         self.profile = profile

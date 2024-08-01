@@ -86,8 +86,8 @@ class Context(MetaModelElement):
         lookup the given topic_name in my topics for the given purpose
 
         Args:
-            topic_name(str): the name of the topic to lookup
-            purpose(str): the purpose to do the lookup for
+            topic_name (str): the name of the topic to lookup
+            purpose (str): the purpose to do the lookup for
 
         Returns:
             Topic: the topic if found else None and an error is added to my errors
@@ -107,9 +107,9 @@ class Context(MetaModelElement):
         check whether the given property or role name is already Declared
 
         Args:
-            prop_name(str): the property to check for duplicates
-            topic(Topic): the topic to check
-            purpose(str): the purpose to be displayed in error messages
+            prop_name (str): the property to check for duplicates
+            topic (Topic): the topic to check
+            purpose (str): the purpose to be displayed in error messages
 
         Returns:
             bool: True if this prop_name has already been use
@@ -128,9 +128,9 @@ class Context(MetaModelElement):
         link the source with the target via the given topicLink
 
         Args:
-            tl(TopicLink): the topicLink
-            source(Topic): the source Topic
-            target(Topic): the target Topic
+            tl (TopicLink): the topicLink
+            source (Topic): the source Topic
+            target (Topic): the target Topic
         """
         ok = True
         ok = ok and not self.propertyAlreadyDeclared(
@@ -149,8 +149,7 @@ class Context(MetaModelElement):
         link source and target of the given topicLink
 
         Args:
-            tl(TopicLink): the topicLink
-            context(Context): the context in which the link "lives"
+            tl (TopicLink): the topicLink
         """
         tl.sourceTopic = self.lookupTopic(tl.source, f"topicLink {tl.name}")
         tl.targetTopic = self.lookupTopic(tl.target, f"topicLink {tl.name}")
@@ -162,7 +161,7 @@ class Context(MetaModelElement):
         add the given property to this context
 
         Args:
-            prop(Property): the property to add
+            prop (Property): the property to add
 
         Returns:
             bool: True if the property adding was successful
@@ -186,7 +185,7 @@ class Context(MetaModelElement):
         create a property for the given topic link
 
         Args:
-            tl: TopicLink - the topiclink to create a property for
+            tl (TopicLink):  the topiclink to create a property for
         """
         # see https://wiki.bitplan.com/index.php/SiDIFTemplates#properties
         prop = Property()
@@ -208,7 +207,7 @@ class Context(MetaModelElement):
         fill me from the given dict of dicts
 
         Args:
-            did(dict): the dict of dicts
+            did (dict): the dict of dicts
 
         Returns:
             Context: the context read
@@ -266,14 +265,14 @@ class Context(MetaModelElement):
         return context
 
     @classmethod
-    def fromSiDIF_input(cls, sidif_input: str, debug: bool = False):
+    def fromSiDIF_input(cls, sidif_input: str, debug: bool = False)->Tuple['Context',str,str]:
         """
         initialize me from the given SiDIF input which might be a file path
         or url
 
         Args:
-            sidif_input: path to local file or URL
-            debug(bool): if True swith debugging on
+            sidif_input (str): path to local file or URL
+            debug (bool): if True swith debugging on
 
         Returns:
             Tuple[Context,str,str]: context, error and errorMessage
@@ -297,10 +296,10 @@ class Context(MetaModelElement):
         initialize me from the given SiDIF markup
 
         Args:
-            sidif(str): the SiDIF markup to parse
-            title(str): the title for the SiDIF
-            depth(int): the explain depth to show for the errorMessage
-            debug(bool): if True handle debugging
+            sidif (str): the SiDIF markup to parse
+            title (str): the title for the SiDIF
+            depth (int): the explain depth to show for the errorMessage
+            debug (bool): if True handle debugging
 
         Returns:
             Tuple[Context,str,str]: context, error and errorMessage
@@ -330,9 +329,9 @@ class Context(MetaModelElement):
         initialize me from the given MediaWiki Context
 
         Args:
-            mw_context(MediaWikiContext): the Mediawiki context
-            depth(int): the explain depth to show for the errorMessage
-            debug(bool): if True handle debugging
+            mw_context (MediaWikiContext): the Mediawiki context
+            depth (int): the explain depth to show for the errorMessage
+            debug (bool): if True handle debugging
 
         Return:
             tuple(Context,Exception,str): the metamodel and potential parsing errors as Exception and error Message
@@ -416,7 +415,7 @@ class Topic(MetaModelElement):
                 break
 
     @property
-    def pluralName(self):
+    def pluralName(self)->str:
         """
         Getter for pluralName.
 
@@ -520,9 +519,9 @@ class Topic(MetaModelElement):
         get the askQuery for the me topic
 
         Args:
-            mainlabel(str): the mainlabel to use - topic.name as default
-            filterShowInGrid(bool): if True include only properties with showInGrid not being false
-            listLimit(int): the list limit to use
+            mainlabel (str): the mainlabel to use - topic.name as default
+            filterShowInGrid (bool): if True include only properties with showInGrid not being false
+            listLimit (int): the list limit to use
         Returns:
             str: the markup for the query
         """

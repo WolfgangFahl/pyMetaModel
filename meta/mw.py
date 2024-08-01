@@ -35,9 +35,6 @@ class MediaWikiContext:
 
         Read the SiDIF for this Mediawiki context
 
-        Args:
-            withLogin(bool): if True login
-
         Returns:
             str: the SiDIF
         """

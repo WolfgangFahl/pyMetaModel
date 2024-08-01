@@ -30,7 +30,7 @@ class SiDIF2LinkML:
         convert my context
 
         Args:
-            common_property_slots(bool): if True reuse slots
+            common_property_slots (bool): if True reuse slots
 
         Returns:
             str: the yaml markup

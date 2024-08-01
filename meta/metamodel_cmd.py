@@ -8,7 +8,7 @@ import os
 import sys
 import traceback
 import webbrowser
-from argparse import ArgumentParser, RawDescriptionHelpFormatter
+from argparse import ArgumentParser, Namespace, RawDescriptionHelpFormatter
 
 from meta.metamodel import Context
 from meta.mw import SMWAccess
@@ -27,7 +27,7 @@ class MetaModelCmd:
         constructor
 
         Args:
-            debug(bool): if True switch debugging on
+            debug (bool): if True switch debugging on
         """
         self.debug = debug
         self.error = None
@@ -108,7 +108,7 @@ class MetaModelCmd:
         read the context from the given args
 
         Args:
-            args(Args): command line arguments
+            args (Args): command line arguments
         """
         if args.input:
             result_tuple = Context.fromSiDIF_input(args.input, debug=args.debug)
@@ -127,12 +127,12 @@ class MetaModelCmd:
             print(f"reading Context failed:\n{self.errMsg}\n{self.error}")
         return self.error
 
-    def genUml(self, args) -> str:
+    def genUml(self, args:Namespace) -> str:
         """
         generate uml for the given context with the given name from the given wiki
 
         Args:
-           args: the command line arguments
+           args (Namespace): the command line arguments
 
         Returns:
             str: the PlantUml
@@ -150,12 +150,12 @@ class MetaModelCmd:
         return uml
 
 
-    def genLinkML(self, args) -> str:
+    def genLinkML(self, args:Namespace) -> str:
         """
         generate linkML yaml for the given command line arguments
 
         Args:
-           args: the command line arguments
+           args (Namespace): the command line arguments
 
         Returns:
             str: the uml markup

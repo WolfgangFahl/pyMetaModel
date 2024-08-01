@@ -6,6 +6,7 @@ Created on 2020-11-12
 
 import textwrap
 from typing import Dict
+from sidif.sidif import DataInterchange
 
 
 class PlantUml(object):
@@ -121,7 +122,7 @@ hide Circle
     def atIt(self, markup: str):
         """
         Args:
-            markup(str): the markup
+            markup (str): the markup
         Returns:
             str: markup with @startuml and @enduml
         """
@@ -138,8 +139,8 @@ hide Circle
         Lines are broken at whitespace.
 
         Args:
-            doc(str): the documentation to wrap
-            width(int): The maximum length of each line.
+            doc (str): the documentation to wrap
+            width (int): The maximum length of each line.
         Returns:
             str: the  Multiline string.
         """
@@ -199,12 +200,12 @@ hide Circle
                     it[triple.p] = triple.s
         return uml
 
-    def fromDIF(self, dif) -> str:
+    def fromDIF(self, dif:DataInterchange) -> str:
         """
         create a UML from a Data Interchange
 
         Args:
-            dif: DataInterchange - the data interchange
+            dif (DataInterchange): - the data interchange
 
         Returns:
             str: the planuml markup
@@ -219,7 +220,7 @@ hide Circle
         convert the given umlDict Dict to a plantuml string
 
         Args:
-            umlDict(Dict): the dictionary of packages,classes and properties
+            umlDict (Dict): the dictionary of packages,classes and properties
 
         Returns:
             str: the planuml markup

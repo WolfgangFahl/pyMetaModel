@@ -23,7 +23,7 @@ class SMW_Type:
     javaType: Optional[str]  # Java mapping of this type
 
     @classmethod
-    def askQuery(cls):
+    def askQuery(cls)->str:
         """
         get the ask Query for SMW_Type
 
@@ -43,12 +43,12 @@ class SMW_Type:
         return ask
 
     @classmethod
-    def fromDict(cls, data: dict):
+    def fromDict(cls, data: dict)->'SMW_Type':
         """
         create a SMW_Type from the given dict
 
         Args:
-            data(dict): the dict to create the SMW_Type from
+            data (dict): the dict to create the SMW_Type from
 
         Returns:
             SMW_Type: the freshly created SMW_Type
