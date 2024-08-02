@@ -2106,7 +2106,8 @@ This class provides helper functions and constants to render a Context to corres
 <span class="normal">351</span>
 <span class="normal">352</span>
 <span class="normal">353</span>
-<span class="normal">354</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
+<span class="normal">354</span>
+<span class="normal">355</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Context</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A Context groups some topics like a Namespace/Package.</span>
 <span class="sd">    This class provides helper functions and constants to render a Context to corresponding wiki pages</span>
@@ -2269,7 +2270,7 @@ This class provides helper functions and constants to render a Context to corres
 <span class="sd">            Context: the context read</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">context</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="k">for</span> <span class="n">_key</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">did</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">did</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">isA</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;isA&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">isA</span> <span class="o">==</span> <span class="s2">&quot;Context&quot;</span><span class="p">:</span>
                 <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">()</span>
@@ -2309,7 +2310,8 @@ This class provides helper functions and constants to render a Context to corres
                 <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">):</span>
                     <span class="n">context</span><span class="o">.</span><span class="n">types</span><span class="p">[</span><span class="n">topic</span><span class="o">.</span><span class="n">type</span><span class="p">]</span><span class="o">=</span><span class="n">topic</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">context</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;missing name for topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="c1"># potential foreign declaration</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;missing name for topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> - foreign declaration?&quot;</span><span class="p">)</span>
 
         <span class="c1"># link topic to concepts and add topicLinks</span>
         <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">topics</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -2869,7 +2871,8 @@ This class provides helper functions and constants to render a Context to corres
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
-<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">265</span>
+<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">fromDictOfDicts</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">did</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Context&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    fill me from the given dict of dicts</span>
@@ -2881,7 +2884,7 @@ This class provides helper functions and constants to render a Context to corres
 <span class="sd">        Context: the context read</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">context</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">for</span> <span class="n">_key</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">did</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">did</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">isA</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s2">&quot;isA&quot;</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">isA</span> <span class="o">==</span> <span class="s2">&quot;Context&quot;</span><span class="p">:</span>
             <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="p">()</span>
@@ -2921,7 +2924,8 @@ This class provides helper functions and constants to render a Context to corres
             <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">):</span>
                 <span class="n">context</span><span class="o">.</span><span class="n">types</span><span class="p">[</span><span class="n">topic</span><span class="o">.</span><span class="n">type</span><span class="p">]</span><span class="o">=</span><span class="n">topic</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">context</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;missing name for topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="c1"># potential foreign declaration</span>
+                <span class="n">context</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;missing name for topic </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> - foreign declaration?&quot;</span><span class="p">)</span>
 
     <span class="c1"># link topic to concepts and add topicLinks</span>
     <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">topics</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -3050,8 +3054,7 @@ This class provides helper functions and constants to render a Context to corres
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">291</span>
-<span class="normal">292</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
 <span class="normal">295</span>
@@ -3081,7 +3084,8 @@ This class provides helper functions and constants to render a Context to corres
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
-<span class="normal">322</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">fromSiDIF</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span> <span class="n">sidif</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;Context&quot;</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
@@ -3205,8 +3209,7 @@ or url</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">267</span>
-<span class="normal">268</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">268</span>
 <span class="normal">269</span>
 <span class="normal">270</span>
 <span class="normal">271</span>
@@ -3227,7 +3230,8 @@ or url</p>
 <span class="normal">286</span>
 <span class="normal">287</span>
 <span class="normal">288</span>
-<span class="normal">289</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">289</span>
+<span class="normal">290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">fromSiDIF_input</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sidif_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Tuple</span><span class="p">[</span><span class="s1">&#39;Context&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">,</span><span class="nb">str</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    initialize me from the given SiDIF input which might be a file path</span>
@@ -3337,8 +3341,7 @@ or url</p>
 </details>
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
-<span class="normal">325</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
 <span class="normal">328</span>
@@ -3367,7 +3370,8 @@ or url</p>
 <span class="normal">351</span>
 <span class="normal">352</span>
 <span class="normal">353</span>
-<span class="normal">354</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">354</span>
+<span class="normal">355</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">fromWikiContext</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span> <span class="n">mw_context</span><span class="p">:</span> <span class="n">MediaWikiContext</span><span class="p">,</span> <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;Context&quot;</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="ne">Exception</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
@@ -4009,8 +4013,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
               <details class="quote">
                 <summary>Source code in <code>meta/metamodel.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">547</span>
-<span class="normal">548</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">548</span>
 <span class="normal">549</span>
 <span class="normal">550</span>
 <span class="normal">551</span>
@@ -4057,7 +4060,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">592</span>
 <span class="normal">593</span>
 <span class="normal">594</span>
-<span class="normal">595</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Property</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
+<span class="normal">595</span>
+<span class="normal">596</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Property</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Provides helper functions and constants for properties</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4136,11 +4140,11 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">552</span>
-<span class="normal">553</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">553</span>
 <span class="normal">554</span>
 <span class="normal">555</span>
-<span class="normal">556</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">556</span>
+<span class="normal">557</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    constructor</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4179,8 +4183,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
               <details class="quote">
                 <summary>Source code in <code>meta/metamodel.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">357</span>
-<span class="normal">358</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">358</span>
 <span class="normal">359</span>
 <span class="normal">360</span>
 <span class="normal">361</span>
@@ -4366,7 +4369,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">541</span>
 <span class="normal">542</span>
 <span class="normal">543</span>
-<span class="normal">544</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Topic</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
+<span class="normal">544</span>
+<span class="normal">545</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Topic</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A Topic is a Concept/Class/Thing/Entity</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4629,8 +4633,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">362</span>
-<span class="normal">363</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">363</span>
 <span class="normal">364</span>
 <span class="normal">365</span>
 <span class="normal">366</span>
@@ -4638,7 +4641,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">368</span>
 <span class="normal">369</span>
 <span class="normal">370</span>
-<span class="normal">371</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">371</span>
+<span class="normal">372</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    constructor</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4728,8 +4732,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">512</span>
-<span class="normal">513</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">513</span>
 <span class="normal">514</span>
 <span class="normal">515</span>
 <span class="normal">516</span>
@@ -4760,7 +4763,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">541</span>
 <span class="normal">542</span>
 <span class="normal">543</span>
-<span class="normal">544</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">askQuery</span><span class="p">(</span>
+<span class="normal">544</span>
+<span class="normal">545</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">askQuery</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">mainlabel</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">filterShowInGrid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -4837,8 +4841,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">488</span>
-<span class="normal">489</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">489</span>
 <span class="normal">490</span>
 <span class="normal">491</span>
 <span class="normal">492</span>
@@ -4859,7 +4862,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">507</span>
 <span class="normal">508</span>
 <span class="normal">509</span>
-<span class="normal">510</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">askSort</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="normal">510</span>
+<span class="normal">511</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">askSort</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    generate the sort clause for my SMW ask query</span>
 
@@ -4903,12 +4907,12 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">448</span>
-<span class="normal">449</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">449</span>
 <span class="normal">450</span>
 <span class="normal">451</span>
 <span class="normal">452</span>
-<span class="normal">453</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getListLimit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="normal">453</span>
+<span class="normal">454</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getListLimit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get the list limit for this topic</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4968,15 +4972,15 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
-<span class="normal">439</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">439</span>
 <span class="normal">440</span>
 <span class="normal">441</span>
 <span class="normal">442</span>
 <span class="normal">443</span>
 <span class="normal">444</span>
 <span class="normal">445</span>
-<span class="normal">446</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getPluralName</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="normal">446</span>
+<span class="normal">447</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getPluralName</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get the plural name for this topic</span>
 
@@ -5029,8 +5033,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">471</span>
-<span class="normal">472</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">472</span>
 <span class="normal">473</span>
 <span class="normal">474</span>
 <span class="normal">475</span>
@@ -5044,7 +5047,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">483</span>
 <span class="normal">484</span>
 <span class="normal">485</span>
-<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">propertiesByIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="normal">486</span>
+<span class="normal">487</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">propertiesByIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    return the properties by index</span>
 
@@ -5081,15 +5085,15 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">373</span>
-<span class="normal">374</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">374</span>
 <span class="normal">375</span>
 <span class="normal">376</span>
 <span class="normal">377</span>
 <span class="normal">378</span>
 <span class="normal">379</span>
 <span class="normal">380</span>
-<span class="normal">381</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">381</span>
+<span class="normal">382</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sanitize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    make sure my properties exist</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5119,8 +5123,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">401</span>
-<span class="normal">402</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">402</span>
 <span class="normal">403</span>
 <span class="normal">404</span>
 <span class="normal">405</span>
@@ -5133,7 +5136,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">412</span>
 <span class="normal">413</span>
 <span class="normal">414</span>
-<span class="normal">415</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setConceptProperty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">415</span>
+<span class="normal">416</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setConceptProperty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    set my concept property to any primary key or mandatory property</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5192,8 +5196,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
             <details class="quote">
               <summary>Source code in <code>meta/metamodel.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">455</span>
-<span class="normal">456</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
 <span class="normal">457</span>
 <span class="normal">458</span>
 <span class="normal">459</span>
@@ -5206,7 +5209,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">466</span>
 <span class="normal">467</span>
 <span class="normal">468</span>
-<span class="normal">469</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sortProperties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="normal">469</span>
+<span class="normal">470</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sortProperties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get the properties that we should sort by</span>
 
@@ -5255,8 +5259,7 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 
               <details class="quote">
                 <summary>Source code in <code>meta/metamodel.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">598</span>
-<span class="normal">599</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">599</span>
 <span class="normal">600</span>
 <span class="normal">601</span>
 <span class="normal">602</span>
@@ -5297,7 +5300,8 @@ MetaModelElements can focus on the MetaModel domain specific aspects</p>
 <span class="normal">637</span>
 <span class="normal">638</span>
 <span class="normal">639</span>
-<span class="normal">640</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TopicLink</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
+<span class="normal">640</span>
+<span class="normal">641</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">TopicLink</span><span class="p">(</span><span class="n">MetaModelElement</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A TopicLink links two Concepts/Topics</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -9352,7 +9356,7 @@ Lines are broken at whitespace.</p>
     <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;pyMetaModel: MetaModel for Knowledge Graphs&quot;</span>
     <span class="n">version</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">__version__</span>
     <span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;2022-11-30&quot;</span>
-    <span class="n">updated</span> <span class="o">=</span> <span class="s2">&quot;2024-08-01&quot;</span>
+    <span class="n">updated</span> <span class="o">=</span> <span class="s2">&quot;2024-08-02&quot;</span>
     <span class="n">authors</span> <span class="o">=</span> <span class="s2">&quot;Wolfgang Fahl&quot;</span>
     <span class="n">doc_url</span> <span class="o">=</span> <span class="s2">&quot;https://wiki.bitplan.com/index.php/pyMetaModel&quot;</span>
     <span class="n">chat_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/WolfgangFahl/pyMetaModel/discussions&quot;</span>
