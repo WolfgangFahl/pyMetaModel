@@ -4,7 +4,6 @@ Created on 2024-07-29
 @author: wf
 """
 
-import os
 import tempfile
 from pathlib import Path
 from tests.basetest import Basetest
@@ -16,7 +15,7 @@ class TestGenerators(Basetest):
     test generators
     """
 
-    def setUp(self, debug=True, profile=True):
+    def setUp(self, debug=False, profile=True):
         Basetest.setUp(self, debug=debug, profile=profile)
         self.temp_dir = tempfile.TemporaryDirectory()
         self.examples_dir = Path(__file__).parent.parent / "examples"
@@ -27,14 +26,6 @@ class TestGenerators(Basetest):
         self.temp_dir.cleanup()
         super().tearDown()
 
-    def generate_yaml(self, sidif_file):
-        """Generate YAML from SIDIF file"""
-        args = ["-i", str(sidif_file), "-l"]
-        yaml = self.mm_cmd.genLinkML(self.mm_cmd.getArgParser().parse_args(args))
-        yaml_file = self.temp_dir.name / sidif_file.with_suffix('.yaml').name
-        with open(yaml_file, 'w') as f:
-            f.write(yaml)
-        return yaml_file
 
     def generate_plantuml(self,sidif_file,withAt:bool=False):
         args = ["-i", str(sidif_file), "-u"]
@@ -57,6 +48,12 @@ class TestGenerators(Basetest):
         self.assertEqual(result.returncode, 0)
         return result.stdout
 
+    def generate_yaml(self,sidif_file)->str:
+        """Generate YAML from SIDIF file"""
+        args = ["-i", str(sidif_file), "-l"]
+        yaml = self.mm_cmd.genLinkML(self.mm_cmd.getArgParser().parse_args(args))
+        return yaml
+
     def test_plantuml_generation(self):
         """
         test plant uml generation
@@ -67,29 +64,9 @@ class TestGenerators(Basetest):
             self.assertTrue(str(uml_with_at).startswith("@startuml"))
             self.assertTrue(str(uml_with_at).endswith("@enduml"))
 
-    def xtest_linkml_generation(self):
+    def test_linkml_generation(self):
         for sidif_file in self.sidif_files:
-            yaml_file = self.generate_yaml(sidif_file)
-            self.assertTrue(os.path.exists(yaml_file))
-            with open(yaml_file, 'r') as f:
-                yaml_content = f.read()
-            self.assertTrue(len(yaml_content) > 0)
-
-    def xtest_mermaid_generation(self):
-        for sidif_file in self.sidif_files:
-            yaml_file = self.generate_yaml(sidif_file)
-            mermaid_output = self.run_command('gen-erdiagram', str(yaml_file))
-            self.assertTrue(len(mermaid_output) > 0)
-
-    def xtest_python_generation(self):
-        for sidif_file in self.sidif_files:
-            yaml_file = self.generate_yaml(sidif_file)
-            python_output = self.run_command('gen-python', str(yaml_file))
-            self.assertTrue(len(python_output) > 0)
-
-    def xtest_excel_generation(self):
-        for sidif_file in self.sidif_files:
-            yaml_file = self.generate_yaml(sidif_file)
-            excel_file = self.temp_dir.name / sidif_file.with_suffix('.xlsx').name
-            self.run_command('gen-excel', str(yaml_file), '--output', str(excel_file))
-            self.assertTrue(os.path.exists(excel_file))
+            yaml=self.generate_yaml(sidif_file)
+            if self.debug:
+                print(yaml)
+        self.assertTrue(len(yaml) > 0)

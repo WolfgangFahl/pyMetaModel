@@ -18,6 +18,9 @@ class TestPlantUml(Basetest):
     test plantuml handling
     """
 
+    def setUp(self, debug=False, profile=True):
+        Basetest.setUp(self, debug=debug, profile=profile)
+
     def testIssue4(self):
         """
         https://github.com/WolfgangFahl/py-sidif/issues/4
@@ -39,14 +42,16 @@ class TestPlantUml(Basetest):
         )
         uml.fromDIF(dif)
         debug = self.debug
-        debug = True
+        #debug = True
         if debug:
             print(uml)
         self.assertTrue("""workshop " 1" -- "editors *" editor""" in uml.uml)
 
-    def getDif(self, url, title: str):
+    def getDif(self, url, title: str="Presentation"):
+        """
+        """
         sp = SiDIFParser(debug=self.debug)
-        parsed, error = sp.parseUrl(url, title="Presentation")
+        parsed, error = sp.parseUrl(url, title=title)
         self.assertTrue(error is None)
         # self.debug=True
         if self.debug:

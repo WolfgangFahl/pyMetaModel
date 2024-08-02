@@ -8,8 +8,6 @@ from linkml.generators.linkmlgen import LinkmlGenerator
 from linkml.utils.schema_builder import SchemaBuilder
 from linkml_runtime.linkml_model import (
     ClassDefinition,
-    Prefix,
-    SchemaDefinition,
     SlotDefinition,
 )
 from linkml_runtime.utils.schemaview import SchemaView

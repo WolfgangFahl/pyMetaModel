@@ -180,8 +180,17 @@ hide Circle
                     isA = triple.o
                     classKey = itkey
                     classes = packages[packageKey]["classes"]
-                    classes[itkey] = {"isA": isA, "properties": {}}
-                    it = classes[itkey]
+                    clazz_dict={"isA": isA, "properties": {}}
+                    classes[itkey] = clazz_dict
+                    it = clazz_dict
+            elif triple.p == "extends":
+                # inheritance relation e.g. Computer extends Device
+                special_class = triple.s # Computer
+                general_class = triple.o # Device
+                clazz_dict={"extends": general_class, "properties": {}}
+                classes[special_class]= clazz_dict
+                it=clazz_dict
+                pass
             elif triple.o == "it":
                 if triple.p == "addsTo":
                     # @TODO might note be redundant but
@@ -239,9 +248,9 @@ hide Circle
             for classKey in package["classes"]:
                 uclass = package["classes"][classKey]
                 className = uclass.get("name", classKey)
-                isA = uclass["isA"]
-                if isA != "Topic":
-                    extends = f"extends {isA} "
+                extends_class = uclass.get("extends")
+                if extends_class:
+                    extends = f"extends {extends_class} "
                 else:
                     extends = ""
                 uml += f"  class {className} {extends}{{\n"

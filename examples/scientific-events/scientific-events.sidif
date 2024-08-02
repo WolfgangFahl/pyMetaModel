@@ -5,10 +5,90 @@ CrSchema isA Context
 "CrSchema" is name of it
 "http://cr.bitplan.com" is master of it
 "2020-07-22" is since of it
+"2024-08-02" is updated of it
+
+#
+# WikidataItem
+#
+WikidataItem isA Topic
+"WikidataItem" is name of it
+"WikidataItems" is pluralName of it
+"Base topic for items with a Wikidata entry" is documentation of it
+"Base topic for items that can be linked to a Wikidata entry" is wikiDocumentation of it
+"CrSchema" is context of it
+WikidataItem_wikidataid addsTo it
+WikidataItem_description addsTo it
+
+WikidataItem_wikidataid isA Property
+"wikidataid" is name of it
+"wikidataid" is label of it
+"External identifier" is type of it
+"https://www.wikidata.org/wiki/$1" is formatterURI of it
+1 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"The Wikidata Q-Identifier of the item" is documentation of it
+false is isLink of it
+"WikidataItem" is topic of it
+
+WikidataItem_description isA Property
+"description" is name of it
+"description" is label of it
+"text" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+50 is size of it
+false is uploadable of it
+"A Wikidata-compatible description of the item" is documentation of it
+false is isLink of it
+"WikidataItem" is topic of it
+
+#
+# WebWdItem
+#
+WebWdItem extends WikidataItem
+"WebWdItem" is name of it
+"WebWdItems" is pluralName of it
+"Wikidata item with a name and homepage" is documentation of it
+"Wikidata item that also has a name and homepage" is wikiDocumentation of it
+"CrSchema" is context of it
+WebWdItem_name addsTo it
+WebWdItem_homepage addsTo it
+
+WebWdItem_name isA Property
+"name" is name of it
+"name" is label of it
+"text" is type of it
+1 is index of it
+1 is sortPos of it
+true is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The name of the item" is documentation of it
+false is isLink of it
+"WebWdItem" is topic of it
+
+WebWdItem_homepage isA Property
+"homepage" is name of it
+"homepage" is label of it
+"url" is type of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+100 is size of it
+false is uploadable of it
+"The homepage of the item" is documentation of it
+false is isLink of it
+"WebWdItem" is topic of it
+
 #
 # EventSeries
 #
-EventSeries isA Topic
+EventSeries extends WebWdItem
 "EventSeries" is name of it
 "EventSeries" is pluralName of it
 "a series of Events" is documentation of it
@@ -18,12 +98,8 @@ EventSeries isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 EventSeries_acronym addsTo it
-EventSeries_description addsTo it
 EventSeries_title addsTo it
-EventSeries_homepage addsTo it
-EventSeries_wikidataid addsTo it
-# properties of Event
-# property acronym
+
 EventSeries_acronym isA Property
 "acronym" is name of it
 "acronym" is label of it
@@ -37,25 +113,12 @@ false is uploadable of it
 "The official acronym of the event series. " is documentation of it
 false is isLink of it
 "EventSeries" is topic of it
-# property description
-EventSeries_description isA Property
-"description" is name of it
-"description" is label of it
-"text" is type of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"A wikidata compatible description of the event series" is documentation of it
-false is isLink of it
-"EventSeries" is topic of it
-# property title
+
 EventSeries_title isA Property
 "title" is name of it
 "title" is label of it
 "text" is type of it
-3 is index of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 100 is size of it
@@ -63,37 +126,11 @@ false is uploadable of it
 "The title of the event series. " is documentation of it
 false is isLink of it
 "EventSeries" is topic of it
-# property wikidataid
-EventSeries_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-4 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the event series" is documentation of it
-false is isLink of it
-"EventSeries" is topic of it
-# property homepage
-EventSeries_homepage isA Property
-"homepage" is name of it
-"homepage" is label of it
-"url" is type of it
-5 is index of it
-false is primaryKey of it
-false is mandatory of it
-100 is size of it
-false is uploadable of it
-"The homepage of the event series" is documentation of it
-false is isLink of it
-"EventSeries" is topic of it
+
 #
 # Event
 #
-Event isA Topic
+Event extends WebWdItem
 "Event" is name of it
 "Events" is pluralName of it
 "a meeting of researchers at a specific time and place" is documentation of it
@@ -103,12 +140,8 @@ Event isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 Event_acronym addsTo it
-Event_description addsTo it
 Event_title addsTo it
-Event_homepage addsTo it
-Event_wikidataid addsTo it
-# properties of Event
-# property acronym
+
 Event_acronym isA Property
 "acronym" is name of it
 "acronym" is label of it
@@ -122,25 +155,12 @@ false is uploadable of it
 "The official acronym of the academic event, if it has one. " is documentation of it
 false is isLink of it
 "Event" is topic of it
-# property description
-Event_description isA Property
-"description" is name of it
-"description" is label of it
-"text" is type of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"A wikidata compatible description of the event" is documentation of it
-false is isLink of it
-"Event" is topic of it
-# property title
+
 Event_title isA Property
 "title" is name of it
 "title" is label of it
 "text" is type of it
-3 is index of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 100 is size of it
@@ -148,37 +168,11 @@ false is uploadable of it
 "The title of the event series. " is documentation of it
 false is isLink of it
 "Event" is topic of it
-# property homepage
-Event_homepage isA Property
-"homepage" is name of it
-"homepage" is label of it
-"url" is type of it
-4 is index of it
-false is primaryKey of it
-false is mandatory of it
-100 is size of it
-false is uploadable of it
-"The homepage of the event" is documentation of it
-false is isLink of it
-"Event" is topic of it
-# property wikidataid
-Event_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-3 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the event" is documentation of it
-false is isLink of it
-"Event" is topic of it
+
 #
 # City
 #
-City isA Topic
+City extends WebWdItem
 "City" is name of it
 "Cities" is pluralName of it
 "large permanent human settlement" is documentation of it
@@ -188,40 +182,12 @@ City isA Topic
 "/images/cr/9/9e/CityIcon-64px.png" is iconUrl of it
 "CrSchema" is context of it
 City_name addsTo it
-City_wikidataid addsTo it
-# properties of City
-# property name
-City_name isA Property
-"name" is name of it
-"name" is label of it
-"text" is type of it
-1 is index of it
-1 is sortPos of it
-true is primaryKey of it
-true is mandatory of it
-50 is size of it
-false is uploadable of it
-"The name of the city" is documentation of it
-false is isLink of it
-"City" is topic of it
-# property wikidataid
-City_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the city" is documentation of it
-false is isLink of it
-"City" is topic of it
+
+
 #
 # Country
 #
-Country isA Topic
+Country extends WebWdItem
 "Country" is name of it
 "Countries" is pluralName of it
 "distinct region in geography; a broad term that can include political divisions or regions associated with distinct political characteristics" is documentation of it
@@ -231,40 +197,12 @@ Country isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 Country_name addsTo it
-Country_wikidataid addsTo it
-# properties of Country
-# property name
-Country_name isA Property
-"name" is name of it
-"name" is label of it
-"text" is type of it
-1 is index of it
-1 is sortPos of it
-true is primaryKey of it
-true is mandatory of it
-50 is size of it
-false is uploadable of it
-"The name of the Country" is documentation of it
-false is isLink of it
-"Country" is topic of it
-# property wikidataid
-Country_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the Country" is documentation of it
-false is isLink of it
-"Country" is topic of it
+
+
 #
 # Region
 #
-Region isA Topic
+Region extends WikidataItem
 "Region" is name of it
 "Regions" is pluralName of it
 "first-level administrative country subdivision e.g. Region/province" is documentation of it
@@ -274,9 +212,7 @@ Region isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 Region_name addsTo it
-Region_wikidataid addsTo it
-# properties of Region
-# property name
+
 Region_name isA Property
 "name" is name of it
 "name" is label of it
@@ -290,21 +226,11 @@ false is uploadable of it
 "The name of the Region" is documentation of it
 false is isLink of it
 "Region" is topic of it
-# property wikidataid
-Region_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the Region" is documentation of it
-false is isLink of it
-"Region" is topic of it
-Proceedings isA Topic
+
+#
+# Proceedings
+#
+Proceedings extends WikiDataItem
 "Proceedings" is name of it
 "Proceedings" is pluralName of it
 "Proceedings are a collection of papers mostly documenting the results of an academic event" is documentation of it
@@ -314,42 +240,26 @@ Proceedings isA Topic
 "property" is defaultstoremode of it
 4000 is listLimit of it
 "CrSchema" is context of it
-Proceedings_wikidataid addsTo it
 Proceedings_title addsTo it
-# properties of Proceedings
-# property wikidataid
-Proceedings_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-1 is index of it
-1 is sortPos of it
-true is primaryKey of it
-true is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidata Q-Identifier of the Proceedings record" is documentation of it
-false is isLink of it
-"Proceedings" is topic of it
-# property title
+
 Proceedings_title isA Property
 "title" is name of it
 "title" is label of it
 "Text" is type of it
-"textarea" is inputType of it 
-2 is index of it
-2 is sortPos of it
+"textarea" is inputType of it
+1 is index of it
+1 is sortPos of it
 true is mandatory of it
 300 is size of it
 false is uploadable of it
 "The title of the Proceedings" is documentation of it
 false is isLink of it
 "Proceedings" is topic of it
+
 #
 # Scholar
 #
-Scholar isA Topic
+Scholar extends WebWdItem
 "Scholar" is name of it
 "Scholars" is pluralName of it
 "scholar/researcher: person who engages in research, professionally or otherwise" is documentation of it
@@ -358,55 +268,20 @@ Scholar isA Topic
 "/images/5/5b/ScholarIcon-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
 "CrSchema" is context of it
-Scholar_name addsTo it
 Scholar_firstName addsTo it
-Scholar_description addsTo it
-Scholar_homepage addsTo it
 Scholar_dblpId addsTo it
 Scholar_orcid addsTo it
-Scholar_wikiDataId addsTo it
 Scholar_googleScholarUser addsTo it
 Scholar_linkedInId addsTo it
-# https://www.wikidata.org/wiki/Property:P2038
-# ResearchGate profile ID
 Scholar_researchGate_profile_ID addsTo it
 Scholar_gndId addsTo it
 Scholar_smartCRMId addsTo it
-# properties of Scholar
-# property wikiDataId
-Scholar_wikiDataId isA Property
-"wikiDataId" is name of it
-"wikiDataId" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-1 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"wikidata id of the scholar" is documentation of it
-false is isLink of it
-"Scholar" is topic of it
-# property name
-Scholar_name isA Property
-"name" is name of it
-"name" is label of it
-"text" is type of it
-2 is index of it
-1 is sortPos of it
-false is primaryKey of it
-true is mandatory of it
-50 is size of it
-false is uploadable of it
-"The last name of the scholar" is documentation of it
-false is isLink of it
-"Scholar" is topic of it
-# property firstNname
+
 Scholar_firstName isA Property
 "firstName" is name of it
 "firstName" is label of it
 "text" is type of it
-3 is index of it
+1 is index of it
 2 is sortPos of it
 false is primaryKey of it
 false is mandatory of it
@@ -415,39 +290,13 @@ false is uploadable of it
 "The first name of the scholar" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property description
-Scholar_description isA Property
-"description" is name of it
-"description" is label of it
-"text" is type of it
-4 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"A wikidata compatible description of the scholar" is documentation of it
-false is isLink of it
-"Scholar" is topic of it
-# property homepage
-Scholar_homepage isA Property
-"homepage" is name of it
-"homepage" is label of it
-"url" is type of it
-5 is index of it
-false is primaryKey of it
-false is mandatory of it
-100 is size of it
-false is uploadable of it
-"The homepage of the scholar" is documentation of it
-false is isLink of it
-"Scholar" is topic of it
-# property orcid
+
 Scholar_orcid isA Property
 "orcid" is name of it
 "orcid" is label of it
 "External identifier" is type of it
 "https://orcid.org/$1" is formatterURI of it
-6 is index of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -455,13 +304,13 @@ false is uploadable of it
 "orcid id of the scholar it is used to provide the identifier with which an entity is indexed in http://orcid.org " is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property dblpId
+
 Scholar_dblpId isA Property
 "dblpId" is name of it
 "dblpId" is label of it
 "External identifier" is type of it
 " https://dblp.org/pid/$1" is formatterURI of it
-7 is index of it
+3 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -469,13 +318,13 @@ false is uploadable of it
 "dblp id of the scholar as index in https://dblp.org/" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property googleScholarUser
+
 Scholar_googleScholarUser isA Property
 "googleScholarUser" is name of it
 "googleScholarUser" is label of it
 "External identifier" is type of it
 "https://scholar.google.com/citations?user=$1" is formatterURI of it
-8 is index of it
+4 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -483,13 +332,13 @@ false is uploadable of it
 "googleScholarUser Author id of the scholar" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property linkedInId
+
 Scholar_linkedInId isA Property
 "linkedInId" is name of it
 "linkedInId" is label of it
 "External identifier" is type of it
 "https://www.linkedin.com/in/$1" is formatterURI of it
-9 is index of it
+5 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -497,14 +346,13 @@ false is uploadable of it
 "linkedIn id of the scholar" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# https://www.wikidata.org/wiki/Property:P2038
-# ResearchGate profile ID
+
 Scholar_researchGate_profile_ID isA Property
 "researchGate" is name of it
 "researchGate" is label of it
 "External identifier" is type of it
 "https://www.researchgate.net/profile/$1" is formatterURI of it
-10 is index of it
+6 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -512,13 +360,13 @@ false is uploadable of it
 "research gate profile id of the scholar as indexed in https://www.researchgate.net" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property gndId
+
 Scholar_gndId isA Property
 "gndId" is name of it
 "gndId" is label of it
 "External identifier" is type of it
 "https://d-nb.info/gnd/$1" is formatterURI of it
-11 is index of it
+7 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -526,13 +374,13 @@ false is uploadable of it
 "gnd id of the scholar as indexed in https://portal.dnb.de/opac.htm" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
-# property smartCRMId
+
 Scholar_smartCRMId isA Property
 "smartCRMId" is name of it
 "smartCRMId" is label of it
 "External identifier" is type of it
-"http://crm.bitplan.com/smartcrm/person/$1" is formatterURI of it 
-12 is index of it
+"http://crm.bitplan.com/smartcrm/person/$1" is formatterURI of it
+8 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -540,10 +388,11 @@ false is uploadable of it
 "smartCRM id of the scholar" is documentation of it
 false is isLink of it
 "Scholar" is topic of it
+
 #
 # Institution
 #
-Institution isA Topic
+Institution extends WebWdItem
 "Institution" is name of it
 "Institutions" is pluralName of it
 "structure or mechanism of social order and cooperation governing the behaviour of a set of individuals within a given community" is documentation of it
@@ -552,9 +401,8 @@ Institution isA Topic
 "/images/6/6a/Institution-Icon.png" is iconUrl of it
 "property" is defaultstoremode of it
 "CrSchema" is context of it
+# properties
 Institution_title addsTo it
-Institution_homepage addsTo it
-Institution_wikidataid addsTo it
 Institution_smartCRMId addsTo it
 # properties of Institution
 # property title
@@ -571,51 +419,24 @@ false is uploadable of it
 "The name/title of the Institution" is documentation of it
 false is isLink of it
 "Institution" is topic of it
-# property wikidataid
-Institution_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"wikidata id of the Institution" is documentation of it
-false is isLink of it
-"Institution" is topic of it
-# property homepage
-Institution_homepage isA Property
-"homepage" is name of it
-"homepage" is label of it
-"url" is type of it
-3 is index of it
-false is primaryKey of it
-false is mandatory of it
-100 is size of it
-false is uploadable of it
-"The homepage of the Institution" is documentation of it
-false is isLink of it
-"Institution" is topic of it
 # property smartCRMId
 Institution_smartCRMId isA Property
 "smartCRMId" is name of it
 "smartCRMId" is label of it
 "External identifier" is type of it
-"http://crm.bitplan.com/smartcrm/organisation/$1" is formatterURI of it 
-4 is index of it
+"http://crm.bitplan.com/smartcrm/organisation/$1" is formatterURI of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
 false is uploadable of it
-"smartCRM id of the scholar" is documentation of it
+"smartCRM id of the institution" is documentation of it
 false is isLink of it
 "Institution" is topic of it
 #
 # Paper
 #
-Paper isA Topic
+Paper extends WebWdItem
 "Paper" is name of it
 "Papers" is pluralName of it
 "A paper is e.g. a scholarly article" is documentation of it
@@ -625,13 +446,10 @@ Paper isA Topic
 "property" is defaultstoremode of it
 "CrSchema" is context of it
 Paper_id addsTo it
-Paper_wikidataid addsTo it
-Paper_description addsTo i
 Paper_title addsTo it
 Paper_authors addsTo it
 Paper_pdfUrl addsTo it
-# properties of Paper
-# property id
+
 Paper_id isA Property
 "id" is name of it
 "id" is label of it
@@ -645,70 +463,44 @@ false is uploadable of it
 "The id (filename) of the Paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
-# property wikidataid
-Paper_wikidataid isA Property
-"wikidataid" is name of it
-"wikidataid" is label of it
-"External identifier" is type of it
-"https://www.wikidata.org/wiki/$1" is formatterURI of it
-2 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"The wikidataid of the paper" is documentation of it
-false is isLink of it
-"Paper" is topic of it
-# property description
-Paper_description isA Property
-"description" is name of it
-"description" is label of it
-"text" is type of it
-3 is index of it
-false is primaryKey of it
-false is mandatory of it
-50 is size of it
-false is uploadable of it
-"A wikidata compatible description of the paper" is documentation of it
-false is isLink of it
-"Paper" is topic of it
-# property title
+
 Paper_title isA Property
 "title" is name of it
 "title" is label of it
 "textarea" is inputType of it
 "Text" is type of it
 true is mandatory of it
-3 is index of it
+2 is index of it
 300 is size of it
 false is uploadable of it
 "The title of the Paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
-# property authors
+
 Paper_authors isA Property
 "authors" is name of it
 "authors" is label of it
 "textarea" is inputType of it
 "Text" is type of it
 false is mandatory of it
-4 is index of it
+3 is index of it
 300 is size of it
 false is uploadable of it
 "authors of the Paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
-# property pdfUrl
+
 Paper_pdfUrl isA Property
 "pdfUrl" is name of it
 "pdf" is label of it
 "URL" is type of it
 false is mandatory of it
-5 is index of it
+4 is index of it
 false is uploadable of it
 "the url for the pdf of this paper" is documentation of it
 false is isLink of it
 "Paper" is topic of it
+
 #
 # TopicLinks
 #
@@ -720,7 +512,7 @@ false is sourceMultiple of it
 "EventSeries" is source of it
 "events" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it 
+"Event" is target of it
 # Event n : 1 City
 Event_in_City isA TopicLink
 "eventInCity" is name of it
@@ -729,7 +521,7 @@ false is sourceMultiple of it
 "City" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it 
+"Event" is target of it
 # Event n : 1 Region
 Event_in_Region isA TopicLink
 "eventInRegion" is name of it
@@ -738,7 +530,7 @@ false is sourceMultiple of it
 "Region" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it 
+"Event" is target of it
 # Event n : 1 Country
 Event_in_Country isA TopicLink
 "eventInCountry" is name of it
@@ -747,7 +539,7 @@ false is sourceMultiple of it
 "Country" is source of it
 "event" is targetRole of it
 true is targetMultiple of it
-"Event" is target of it 
+"Event" is target of it
 # Scholar 1 : n Institution
 Scholar_affiliation_Institution isA TopicLink
 "affiliation" is name of it
@@ -756,4 +548,4 @@ false is sourceMultiple of it
 "Scholar" is source of it
 "institutions" is targetRole of it
 true is targetMultiple of it
-"Institution" is target of it 
+"Institution" is target of it
