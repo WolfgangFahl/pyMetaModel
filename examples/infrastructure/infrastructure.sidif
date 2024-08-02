@@ -1,6 +1,17 @@
+#
+# This is the Inheritance example for the SiDIF based pyMetaModel
+# see https://github.com/WolfgangFahl/pyMetaModel/issues/25
+#
 Infrastructure isA Context
 "Infrastructure" is name of it
+"2024-07-27" is since of it
+"2024-08-02" is updated of it
+"© 2024 Wolfgang Fahl" is copyright of it
+"http://master.bitplan.com" is master of it
 
+#
+# a generic computer device
+#
 Device isA Topic
 "Device" is name of it
 "Devices" is pluralName of it
@@ -9,6 +20,7 @@ Device isA Topic
 "/images/4/40/Component.png" is iconUrl of it
 "property" is defaultstoremode of it
 "Infrastructure" is context of it
+# Properties of Device
 Device_name addsTo it
 Device_type addsTo it
 Device_since addsTo it
@@ -25,7 +37,6 @@ Device_website addsTo it
 Device_driver addsTo it
 Device_support addsTo it
 Device_comment addsTo it
-
 # properties of Device
 # property name
 Device_name isA Property
@@ -186,7 +197,7 @@ Device_comment isA Property
 #
 #Computer
 #
-Computer isA Device
+Computer extends Device
 "Computer" is name of it
 "Computers" is pluralName of it
 "A computer runs software to automate tasks" is documentation of it
@@ -242,7 +253,7 @@ false is isLink of it
 #
 #Harddisk
 #
-Harddisk isA Device
+Harddisk extends Device
 "Harddisk" is name of it
 "Harddisks" is pluralName of it
 "A harddisk stores data on magnetic media or using SSD technology" is documentation of it
@@ -300,7 +311,10 @@ false is showInGrid of it
 false is isLink of it
 "Harddisk" is topic of it
 
-Monitor isA Device
+#
+# Monitor
+#
+Monitor extends Device
 "Monitor" is name of it
 "Monitors" is pluralName of it
 "A display device for computers" is documentation of it
@@ -322,7 +336,10 @@ true is showInGrid of it
 false is isLink of it
 "Monitor" is topic of it
 
-Printer isA Device
+#
+# Printer
+#
+Printer extends Device
 "Printer" is name of it
 "Printers" is pluralName of it
 "Paper printer" is documentation of it

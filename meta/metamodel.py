@@ -213,7 +213,7 @@ class Context(MetaModelElement):
             Context: the context read
         """
         context = None
-        for _key, record in did.items():
+        for key, record in did.items():
             isA = record["isA"]
             if isA == "Context":
                 context = Context()
@@ -253,7 +253,8 @@ class Context(MetaModelElement):
                 elif hasattr(topic, "type"):
                     context.types[topic.type]=topic
                 else:
-                    context.error(f"missing name for topic {topic}")
+                    # potential foreign declaration
+                    context.error(f"missing name for topic {topic} {key} - foreign declaration?")
 
         # link topic to concepts and add topicLinks
         for topic in context.topics.values():
