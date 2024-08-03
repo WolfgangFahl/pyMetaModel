@@ -1,11 +1,11 @@
 #
-# Context:CrSchema
+# Context:CrSchema2408
 #
-CrSchema isA Context
-"CrSchema" is name of it
+CrSchema2408 isA Context
+"CrSchema2408" is name of it
 "http://cr.bitplan.com" is master of it
 "2020-07-22" is since of it
-"2024-08-02" is updated of it
+"202408-02" is updated of it
 
 #
 # WikidataItem
@@ -15,7 +15,7 @@ WikidataItem isA Topic
 "WikidataItems" is pluralName of it
 "Base topic for items with a Wikidata entry" is documentation of it
 "Base topic for items that can be linked to a Wikidata entry" is wikiDocumentation of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 WikidataItem_wikidataid addsTo it
 WikidataItem_description addsTo it
 
@@ -54,7 +54,7 @@ WebWdItem extends WikidataItem
 "WebWdItems" is pluralName of it
 "Wikidata item with a name and homepage" is documentation of it
 "Wikidata item that also has a name and homepage" is wikiDocumentation of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 WebWdItem_name addsTo it
 WebWdItem_homepage addsTo it
 
@@ -96,7 +96,7 @@ EventSeries extends WebWdItem
 "File:EventSeriesLogo-64px.png" is icon of it
 "/images/cr/d/d1/EventSeriesLogo-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 EventSeries_acronym addsTo it
 EventSeries_title addsTo it
 
@@ -138,7 +138,7 @@ Event extends WebWdItem
 "File:EventLogo-64px.png" is icon of it
 "/images/cr/e/e0/EventLogo-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Event_acronym addsTo it
 Event_title addsTo it
 
@@ -180,7 +180,7 @@ City extends WebWdItem
 "property" is defaultstoremode of it
 "File:CityIcon-64px.png" is icon of it
 "/images/cr/9/9e/CityIcon-64px.png" is iconUrl of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 City_name addsTo it
 
 
@@ -195,7 +195,7 @@ Country extends WebWdItem
 "File:CountryIcon-64px.png" is icon of it
 "/images/cr/4/4c/CountryIcon-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Country_name addsTo it
 
 
@@ -210,7 +210,7 @@ Region extends WikidataItem
 "File:RegionIcon-64px.png" is icon of it
 "/images/thumb/d/d2/RegionIcon.png/48px-RegionIcon.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Region_name addsTo it
 
 Region_name isA Property
@@ -239,7 +239,7 @@ Proceedings extends WikiDataItem
 "/images/cr/c/c7/Proceedings-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
 4000 is listLimit of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Proceedings_title addsTo it
 
 Proceedings_title isA Property
@@ -267,7 +267,7 @@ Scholar extends WebWdItem
 "File:ScholarIcon-64px.png" is icon of it
 "/images/5/5b/ScholarIcon-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Scholar_firstName addsTo it
 Scholar_dblpId addsTo it
 Scholar_orcid addsTo it
@@ -400,7 +400,7 @@ Institution extends WebWdItem
 "File:Institution-Icon.png" is icon of it
 "/images/6/6a/Institution-Icon.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 # properties
 Institution_title addsTo it
 Institution_smartCRMId addsTo it
@@ -444,7 +444,7 @@ Paper extends WebWdItem
 "File:Paper-logo-64px.png" is icon of it
 "/images/e/e7/Paper-logo-64px.png" is iconUrl of it
 "property" is defaultstoremode of it
-"CrSchema" is context of it
+"CrSchema2408" is context of it
 Paper_id addsTo it
 Paper_title addsTo it
 Paper_authors addsTo it
