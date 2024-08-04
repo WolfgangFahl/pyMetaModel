@@ -7,7 +7,7 @@ Created on 2022-11-23
 import sys
 import typing
 from datetime import datetime
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 import urllib3
 from lodstorage.jsonable import JSONAble
@@ -250,6 +250,7 @@ class Context(MetaModelElement):
                     context.error(f"topic {topic.name} has no defined context")
                 if hasattr(topic, "name"):
                     context.topics[topic.name] = topic
+                    topic.context_obj=context
                 elif hasattr(topic, "type"):
                     context.types[topic.type]=topic
                 else:
@@ -370,6 +371,32 @@ class Topic(MetaModelElement):
         self.properties = {}
         self.sourceTopicLinks = {}
         self.targetTopicLinks = {}
+
+
+    def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
+        """
+        Get the topics this topic is extending.
+
+        Args:
+        l (List['Topic']): an optional list to extend. If None, a new list is created.
+
+        Returns:
+        List['Topic']: A list of topics that this topic extends.
+        """
+        if l is None:
+            l = []
+
+        extends = getattr(self, "extends", None)
+
+        # recursive inheritance
+        if extends:
+            extends_topic = self.context_obj.lookupTopic(extends, purpose=f"extends")
+            if extends_topic and extends_topic not in l:
+                l.append(extends_topic)
+                extends_topic.get_extends_topics(l)
+
+        return l
+
 
     def sanitize(self):
         """

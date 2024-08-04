@@ -56,19 +56,38 @@ class TestSiDIF(Basetest):
                         self.check_sidif(sidif_path,file)
 
     def testInheritance(self):
+        """
+        test inheritance
+        """
         for sidif_file,topics in {
-            "infrastructure/infrastructure.sidif": ["Computer","Monitor","Printer"],
-            "scientific-events/scientific-events.sidif": ["Country","Region","Scholar"],
+            "infrastructure/infrastructure.sidif": [
+                ("Computer",["Device"]),
+                ("Monitor",["Device"]),
+                ("Printer",["Device"])
+            ],
+            "scientific-events/scientific-events.sidif":
+                [("Event",  ["WebWdItem","WikidataItem"]),
+                 ("Country",["WebWdItem","WikidataItem"]),
+                 ("Region" ,["WikidataItem"]),
+                 ("Scholar",["WebWdItem","WikidataItem"]),
+                ],
         }.items():
             sidif_path = os.path.join(self.examples_dir, sidif_file)
             context = self.check_sidif(sidif_path, sidif_file)
-
-            for topic_name in topics:
+            debug=self.debug
+            for topic_name,extends_list in topics:
                 self.assertIn(topic_name, context.topics, f"Topic {topic_name} not found in {sidif_file}")
                 topic = context.topics[topic_name]
                 self.assertTrue(hasattr(topic, 'extends'), f"Topic {topic_name} in {sidif_file} does not have 'extends' attribute")
-                if self.debug:
+                if debug:
                     print(f"{topic_name} extends {topic.extends}")
+                extends_topics=topic.get_extends_topics()
+                self.assertEqual(len(extends_topics),len(extends_list),topic_name)
+                for i,extends_topic in enumerate(extends_topics):
+                    expected=extends_list[i]
+                    if debug:
+                        print(f"{i+1}:{extends_topic.name}={expected}?")
+                    self.assertEqual(extends_topic.name,expected)
 
             pass
 
