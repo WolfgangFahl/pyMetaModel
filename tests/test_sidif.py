@@ -3,6 +3,7 @@ Created on 2023-02-25
 
 @author: wf
 """
+import json
 import os
 from meta.metamodel import Context
 from tests.basetest import Basetest
@@ -12,7 +13,7 @@ class TestSiDIF(Basetest):
     """
     test SiDIF handling
     """
-    def setUp(self, debug=True, profile=True):
+    def setUp(self, debug=False, profile=True):
         Basetest.setUp(self, debug=debug, profile=profile)
         self.examples_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "examples")
 
@@ -55,27 +56,48 @@ class TestSiDIF(Basetest):
                     with self.subTest(file=file):
                         self.check_sidif(sidif_path,file)
 
+
+    def test_properties_by_index(self):
+        """
+        test the properties by index handling
+        """
+        sidif_file="infrastructure/infrastructure.sidif"
+        sidif_path = os.path.join(self.examples_dir, sidif_file)
+        context = self.check_sidif(sidif_path, sidif_file)
+        debug=self.debug
+        debug=True
+        for topic_name,topic in context.topics.items():
+            props_dict=topic.propertiesDict()
+            if debug:
+                print(f"Properties Dict for {topic_name}:")
+                for topic_name,(topic_name,props) in enumerate(props_dict.items()):
+                    print(f"{topic_name}:")
+                    for j,prop in enumerate(props):
+                        print(f"  {j:3}:{prop.name} ({getattr(prop,'index','?')})")
+
+
     def testInheritance(self):
         """
         test inheritance
         """
         for sidif_file,topics in {
             "infrastructure/infrastructure.sidif": [
-                ("Computer",["Device"]),
-                ("Monitor",["Device"]),
-                ("Printer",["Device"])
+                ("Computer","name",["Device"]),
+                ("Monitor","name",["Device"]),
+                ("Printer","name",["Device"])
             ],
             "scientific-events/scientific-events.sidif":
-                [("Event",  ["WebWdItem","WikidataItem"]),
-                 ("Country",["WebWdItem","WikidataItem"]),
-                 ("Region" ,["WikidataItem"]),
-                 ("Scholar",["WebWdItem","WikidataItem"]),
+                [("Event",  "name",["WebWdItem","WikidataItem"]),
+                 ("Country","name",["WebWdItem","WikidataItem"]),
+                 ("Region" ,"name",["WikidataItem"]),
+                 ("Scholar","name",["WebWdItem","WikidataItem"]),
                 ],
         }.items():
             sidif_path = os.path.join(self.examples_dir, sidif_file)
             context = self.check_sidif(sidif_path, sidif_file)
             debug=self.debug
-            for topic_name,extends_list in topics:
+            #debug=True
+            for topic_name,concept_property_name,extends_list in topics:
                 self.assertIn(topic_name, context.topics, f"Topic {topic_name} not found in {sidif_file}")
                 topic = context.topics[topic_name]
                 self.assertTrue(hasattr(topic, 'extends'), f"Topic {topic_name} in {sidif_file} does not have 'extends' attribute")
@@ -88,7 +110,16 @@ class TestSiDIF(Basetest):
                     if debug:
                         print(f"{i+1}:{extends_topic.name}={expected}?")
                     self.assertEqual(extends_topic.name,expected)
+                props_by_index=topic.propertiesByIndex(to_root=True)
+                if debug:
+                    for i,prop in enumerate(props_by_index):
+                        print(f"{i:3}:{prop.name} ({getattr(prop,'index','?')})")
+                self.assertTrue(topic.conceptProperty is not None,topic.name)
+                if self.debug:
+                    print(f"{topic_name}.{topic.conceptProperty.name} is concept property")
+                self.assertEqual(concept_property_name,topic.conceptProperty.name,topic.name)
 
+                pass
             pass
 
 

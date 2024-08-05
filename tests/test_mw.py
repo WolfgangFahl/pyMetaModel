@@ -58,7 +58,7 @@ class TestMediawiki(BaseMediawikiTest):
         """
         mw_contexts = self.check_contexts(wikiId)
         mw_context = mw_contexts[context_name]
-        context, error, errMsg = Context.fromWikiContext(mw_context, debug=debug)
+        context, error, _errMsg = Context.fromWikiContext(mw_context, debug=debug)
         self.assertIsNone(error)
         return context
 
@@ -98,12 +98,13 @@ class TestMediawiki(BaseMediawikiTest):
         test the properties by Index access
         """
         debug = self.debug
+        #debug=True
         context = self.getContext(debug=debug)
         topic = context.topics["Topic"]
         props = topic.propertiesByIndex()
         if debug:
             for prop in props:
-                print(f"{prop.index}:{prop.name}")
+                print(f"{getattr(prop,'index','?')}:{prop.name}")
         self.assertEqual(11, len(props))
         self.assertTrue("pluralName", props[1].name)
 
@@ -112,7 +113,7 @@ class TestMediawiki(BaseMediawikiTest):
         test creating the ask query for a topic
         """
         debug = self.debug
-        debug = True
+        #debug = True
         context = self.getContext(debug=debug)
         topic = context.topics["Property"]
         ask_query = topic.askQuery()

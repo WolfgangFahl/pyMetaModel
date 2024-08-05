@@ -372,7 +372,6 @@ class Topic(MetaModelElement):
         self.sourceTopicLinks = {}
         self.targetTopicLinks = {}
 
-
     def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
         """
         Get the topics this topic is extending.
@@ -396,6 +395,26 @@ class Topic(MetaModelElement):
                 extends_topic.get_extends_topics(l)
 
         return l
+
+    def get_all_properties(self) -> List['Property']:
+        """
+        Get all properties of the topic, including those inherited from extended topics.
+
+        Returns:
+            List[Property]: A list of all properties, including inherited ones.
+        """
+        all_properties = list(self.properties.values())
+
+        # Get extended topics
+        extended_topics = self.get_extends_topics()
+
+        # Add properties from extended topics
+        for extended_topic in extended_topics:
+            for prop in extended_topic.properties.values():
+                if prop.name not in [p.name for p in all_properties]:
+                    all_properties.append(prop)
+
+        return all_properties
 
 
     def sanitize(self):
@@ -431,7 +450,8 @@ class Topic(MetaModelElement):
         set my concept property to any primary key or mandatory property
         """
         self.conceptProperty = None
-        for prop in self.properties.values():
+        all_properties=self.propertiesByIndex(to_root=True)
+        for prop in all_properties:
             mandatory = False
             primaryKey = False
             if hasattr(prop, "mandatory"):
@@ -488,7 +508,8 @@ class Topic(MetaModelElement):
             list: a list of properties in sort order
         """
         prop_list = []
-        for prop in self.properties.values():
+        all_properties=self.get_all_properties()
+        for prop in all_properties:
             if hasattr(prop, "sortPos"):
                 sortPos = prop.sortPos
                 if sortPos:
@@ -496,22 +517,48 @@ class Topic(MetaModelElement):
         prop_list = sorted(prop_list, key=lambda prop: prop.sortPos)
         return prop_list
 
-    def propertiesByIndex(self) -> list:
+    def propertiesDict(self) -> dict:
         """
-        return the properties by index
+        Return a dictionary mapping topic names to lists of properties,
+        considering the inheritance chain and sorting properties locally by index.
 
         Returns:
-            list: the list of properties sorted by index
+            dict: A dictionary with topic names as keys and sorted lists of properties as values.
         """
+        properties_dict = {}
+        inheritance_chain = self.get_extends_topics()
+        inheritance_chain.append(self)
+        for topic in inheritance_chain:
+            sorted_props=topic.propertiesByIndex(to_root=False)
+            properties_dict[topic.name] = sorted_props
 
-        def index(prop: "Property") -> int:
-            if hasattr(prop, "index"):
-                return int(prop.index)
-            else:
-                return sys.maxsize
+        return properties_dict
 
-        prop_list = sorted(self.properties.values(), key=lambda prop: index(prop))
-        return prop_list
+
+    def propertiesByIndex(self,to_root:bool=False) -> list:
+        """
+        Return the properties by index, considering inheritance chain.
+
+        Args:
+            to_root(bool): if True follow the inheritance chain to the root
+
+        Returns:
+            list: The list of properties sorted by index,
+            with inheritance considered.
+        """
+        if to_root:
+            sorted_props = []
+            for _topic_name, props in self.propertiesDict().items():
+                sorted_props.extend(props)
+        else:
+            props = list(self.properties.values())
+            props_count = len(props)
+
+            # Sort properties locally by index
+            sorted_props = sorted(props, key=lambda p: getattr(p, 'index', props_count))
+
+        return sorted_props
+
 
     def askSort(self) -> str:
         """
@@ -560,7 +607,8 @@ class Topic(MetaModelElement):
         markup = f"""{{{{#ask: [[Concept:{self.name}]]
 |mainlabel={mainlabel}
 """
-        for prop in self.properties.values():
+        all_properties=self.get_all_properties()
+        for prop in all_properties:
             if filterShowInGrid and hasattr(prop, "showInGrid"):
                 show = prop.showInGrid
             else:

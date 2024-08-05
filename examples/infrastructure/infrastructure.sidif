@@ -215,7 +215,7 @@ Computer_os isA Property
 "os" is name of it
 "os" is label of it
 "Text" is type of it
-9 is index of it
+1 is index of it
 "The operating system of the computer" is documentation of it
 false is isLink of it
 "Computer" is topic of it
@@ -225,7 +225,7 @@ Computer_osversion isA Property
 "osversion" is name of it
 "osversion" is label of it
 "Text" is type of it
-10 is index of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -239,7 +239,7 @@ Computer_vm isA Property
 "vm" is name of it
 "vm" is label of it
 "Text" is type of it
-12 is index of it
+3 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -270,7 +270,7 @@ Harddisk_size isA Property
 "size" is name of it
 "size" is label of it
 "Number" is type of it
-9 is index of it
+1 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -284,7 +284,7 @@ Harddisk_formfactor isA Property
 "formfactor" is name of it
 "formfactor" is label of it
 "Text" is type of it
-10 is index of it
+2 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -300,7 +300,7 @@ Harddisk_rpm isA Property
 "rpm" is name of it
 "rpm" is label of it
 "Text" is type of it
-11 is index of it
+3 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -329,7 +329,7 @@ Monitor_resolution isA Property
 "resolution" is name of it
 "resolution" is label of it
 "Text" is type of it
-16 is index of it
+1 is index of it
 true is mandatory of it
 "The display resolution of the monitor (e.g., 1920x1080)" is documentation of it
 true is showInGrid of it
