@@ -120,9 +120,11 @@ class TestMediawiki(BaseSemanticMediawikiTest):
         """
         cc=self.getContextContext(context_name="Infrastructure")
         topic=cc.context.topics["Harddisk"]
+        debug=self.debug
+        #debug=True
         for filterShowInGrid in [False,True]:
             ask_query = topic.askQuery(filterShowInGrid=filterShowInGrid)
-            debug=True
+
             if debug:
                 print(f"showInGrid: {filterShowInGrid}")
                 print(ask_query)

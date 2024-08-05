@@ -3,7 +3,6 @@ Created on 2023-02-25
 
 @author: wf
 """
-import json
 import os
 from meta.metamodel import Context
 from tests.basetest import Basetest
@@ -65,7 +64,7 @@ class TestSiDIF(Basetest):
         sidif_path = os.path.join(self.examples_dir, sidif_file)
         context = self.check_sidif(sidif_path, sidif_file)
         debug=self.debug
-        debug=True
+        #debug=True
         for topic_name,topic in context.topics.items():
             props_dict=topic.propertiesDict()
             if debug:
