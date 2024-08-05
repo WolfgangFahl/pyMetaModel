@@ -5,15 +5,14 @@ Created on 2022-11-23
 """
 
 import json
-import sys
 
 from wikibot3rd.wikiuser import WikiUser
 
 from meta.metamodel import Context
-from tests.basemwtest import BaseMediawikiTest
+from tests.basesmwtest import BaseSemanticMediawikiTest
 
 
-class TestMediawiki(BaseMediawikiTest):
+class TestMediawiki(BaseSemanticMediawikiTest):
     """
     test reading SiDIF from Mediawiki pages
     """
@@ -22,60 +21,24 @@ class TestMediawiki(BaseMediawikiTest):
         """
         setUp
         """
-        BaseMediawikiTest.setUp(self, debug=debug, profile=profile)
+        BaseSemanticMediawikiTest.setUp(self, debug=debug, profile=profile)
         for wikiId in ["wiki", "royals", "cr"]:
             self.getSMWAccess(wikiId, save=True)
-
-    def check_contexts(self, wikiId: str, ignoreExceptions: bool = True):
-        """
-        check the mediawiki contexts  for the given wikiId
-
-        Args:
-            wikiId(str): the wikiId to check
-            ignoreExceptions(bool): if True only print out a warning other wise raise exception
-        """
-        mw_contexts = {}
-        try:
-            smwAccess = self.smwAccessMap[wikiId]
-            mw_contexts = smwAccess.getMwContexts()
-            for name, mw_context in mw_contexts.items():
-                print(f"{name}: {mw_context.sidif_url()}")
-            print(f"found {len(mw_contexts)} Contexts")
-        except Exception as ex:
-            print(
-                f"warning Mediawiki context for {wikiId} fetching failed due to {str(ex)}",
-                file=sys.stderr,
-            )
-            if not ignoreExceptions:
-                raise ex
-        return mw_contexts
-
-    def getContext(
-        self, wikiId: str = "wiki", context_name: str = "MetaModel", debug: bool = False
-    ):
-        """
-        get the default meta model context
-        """
-        mw_contexts = self.check_contexts(wikiId)
-        mw_context = mw_contexts[context_name]
-        context, error, _errMsg = Context.fromWikiContext(mw_context, debug=debug)
-        self.assertIsNone(error)
-        return context
 
     def test_contexts(self):
         """
         test getting the list of mediawiki contexts
         """
-        mw_contexts = self.check_contexts("wiki")
+        _smwAccess, mw_contexts = self.check_contexts("wiki")
         self.assertTrue(len(mw_contexts) >= 15)
 
     def test_conceptProperty(self):
         """
         test the conceptProperty handling
         """
-        debug = self.debug
-        context = self.getContext(debug=debug)
-        topic = context.topics["Property"]
+        debug=self.debug
+        cc = self.getContextContext()
+        topic = cc.context.topics["Property"]
         self.assertIsNotNone(topic.conceptProperty)
         if debug:
             print(topic.conceptProperty)
@@ -85,9 +48,8 @@ class TestMediawiki(BaseMediawikiTest):
         """
         test the access to the list of sort properties
         """
-        debug = self.debug
-        context = self.getContext(debug=debug)
-        topic = context.topics["Property"]
+        cc = self.getContextContext()
+        topic = cc.context.topics["Property"]
         sorted_props = topic.sortProperties()
         self.assertEqual(1, len(sorted_props))
         sort_prop = sorted_props[0]
@@ -97,10 +59,9 @@ class TestMediawiki(BaseMediawikiTest):
         """
         test the properties by Index access
         """
-        debug = self.debug
-        #debug=True
-        context = self.getContext(debug=debug)
-        topic = context.topics["Topic"]
+        debug=self.debug
+        cc = self.getContextContext()
+        topic = cc.context.topics["Topic"]
         props = topic.propertiesByIndex()
         if debug:
             for prop in props:
@@ -114,8 +75,8 @@ class TestMediawiki(BaseMediawikiTest):
         """
         debug = self.debug
         #debug = True
-        context = self.getContext(debug=debug)
-        topic = context.topics["Property"]
+        cc = self.getContextContext()
+        topic = cc.context.topics["Property"]
         ask_query = topic.askQuery()
         if debug:
             print(ask_query)
@@ -124,36 +85,17 @@ class TestMediawiki(BaseMediawikiTest):
         """
         test topic links
         """
-        debug = False
-        context = self.getContext(wikiId="cr", context_name="CrSchema", debug=debug)
-        city_topic = context.topics["City"]
+        cc = self.getContextContext(wikiId="cr", context_name="CrSchema")
+        city_topic = cc.context.topics["City"]
         stl = city_topic.sourceTopicLinks
         ttl = city_topic.targetTopicLinks
-        debug = True
+        debug = self.debug
         if debug:
             print(json.dumps(stl, indent=2, default=str))
             print(json.dumps(ttl, indent=2, default=str))
         self.assertEqual(1, len(stl))
         self.assertEqual(1, len(ttl))
 
-    def test_Issue3(self):
-        """
-        https://github.com/WolfgangFahl/pyMetaModel/issues/3
-        """
-        return
-        debug = True
-        wikiUsers = WikiUser.getWikiUsers(lenient=True)
-        if "test" in wikiUsers:
-            mw_contexts = self.check_contexts("test")
-            tc = mw_contexts["Training"]
-            context, error, errMsg = Context.fromWikiContext(tc, debug=self.debug)
-            self.assertIsNotNone(context)
-            self.assertIsNone(error)
-            # changed 2022-12-04 since error doesn't happen any more
-        #    errorMessage=SiDIFParser.errorMessage("Training context parsing error",error)
-        #    if debug:
-        #        print(errorMessage)
-        #    self.assertTrue("property Qualität" in errorMessage)
 
     def test_Issue8(self):
         """
@@ -163,7 +105,7 @@ class TestMediawiki(BaseMediawikiTest):
         debug = True
         wikiUsers = WikiUser.getWikiUsers(lenient=True)
         if "wiki" in wikiUsers:
-            mw_contexts = self.check_contexts("wiki")
+            _smwAccess, mw_contexts = self.check_contexts("wiki")
             mw_context = mw_contexts["OpenSourceProjectsContext"]
             context, error, errMsg = Context.fromWikiContext(mw_context, debug=debug)
             self.assertIsNone(error)
@@ -176,39 +118,47 @@ class TestMediawiki(BaseMediawikiTest):
         https://github.com/WolfgangFahl/pyMetaModel/issues/23
         handle "showInGrid"
         """
+        cc=self.getContextContext(context_name="Infrastructure")
+        topic=cc.context.topics["Harddisk"]
+        for filterShowInGrid in [False,True]:
+            ask_query = topic.askQuery(filterShowInGrid=filterShowInGrid)
+            debug=True
+            if debug:
+                print(f"showInGrid: {filterShowInGrid}")
+                print(ask_query)
+            self.assertTrue("|?Device name = name" in ask_query)
+            if filterShowInGrid:
+                self.assertFalse("purpose" in ask_query)
+
 
     def test_metamodel_from_wikis(self):
         """
         test reading meta models from wikis
         """
-        debug = False
+        debug = True
         lenient = True
         for wikiId in WikiUser.getWikiUsers(lenient=True):
-            mw_contexts = self.check_contexts(wikiId)
-            for name, mw_context in mw_contexts.items():
+            _smwAccess, mw_contexts = self.check_contexts(wikiId)
+            for context_name in mw_contexts:
                 if debug:
-                    print(f"reading context {name} from wiki {wikiId}")
-                context, error, errMsg = Context.fromWikiContext(
-                    mw_context, debug=debug
-                )
+                    print(f"reading context {context_name} from wiki {wikiId}")
+                cc = self.getContextContext(wikiId=wikiId, context_name=context_name)
+                context = cc.context
                 if not lenient:
                     self.assertIsNotNone(context)
                 else:
                     if context is None:
                         continue
                 if debug:
-                    print(f"{mw_context.context} has context {context.name}")
+                    print(f"{context_name} has context {context.name}")
                     print(context)
                     for _name, topic in context.topics.items():
                         print(topic)
                         for _name, property in topic.properties.items():
                             print(property)
-                if error is not None:
-                    print(error)
                 if len(context.errors) > 0:
                     for error in context.errors:
                         print(error)
                 if not lenient:
-                    self.assertIsNone(error)
                     self.assertEqual(0, len(context.errors))
-                    self.assertEqual(mw_context.context, context.name, wikiId)
+                    self.assertEqual(context_name, context.name, wikiId)

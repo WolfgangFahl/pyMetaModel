@@ -591,7 +591,7 @@ class Topic(MetaModelElement):
         listLimit: int = None,
     ) -> str:
         """
-        get the askQuery for the me topic
+        Get the askQuery for the topic, considering inheritance.
 
         Args:
             mainlabel (str): the mainlabel to use - topic.name as default
@@ -607,18 +607,19 @@ class Topic(MetaModelElement):
         markup = f"""{{{{#ask: [[Concept:{self.name}]]
 |mainlabel={mainlabel}
 """
-        all_properties=self.get_all_properties()
-        for prop in all_properties:
-            if filterShowInGrid and hasattr(prop, "showInGrid"):
-                show = prop.showInGrid
-            else:
-                show = True
-            if show:
-                markup += f"|?{self.name} {prop.name} = {prop.name}\n"
+        properties_dict = self.propertiesDict()
+        for topic_name, properties in properties_dict.items():
+            for prop in properties:
+                if filterShowInGrid:
+                    show=getattr(prop, "showInGrid",False)
+                else:
+                    show = True
+                if show:
+                    # Use the topic_name as prefix, which will be correct for inherited properties
+                    markup += f"|?{topic_name} {prop.name} = {prop.name}\n"
         markup += f"|limit={listLimit}\n"
         markup += f"""{self.askSort()}}}}}"""
         return markup
-
 
 class Property(MetaModelElement):
     """
