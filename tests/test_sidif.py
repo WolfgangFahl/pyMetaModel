@@ -69,7 +69,7 @@ class TestSiDIF(Basetest):
         for topic_name,topic in context.topics.items():
             props_dict=topic.propertiesDict()
             if debug:
-                print(f"Properties Dict for {topic_name}:")
+                print(f"Properties Dict for {topic_name}:{topic.documentation}/{topic.wikiDocumentation}")
                 for topic_name,(topic_name,props) in enumerate(props_dict.items()):
                     print(f"{topic_name}:")
                     for j,prop in enumerate(props):

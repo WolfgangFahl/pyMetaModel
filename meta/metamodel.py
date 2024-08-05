@@ -421,8 +421,8 @@ class Topic(MetaModelElement):
         """
         make sure my properties exist
         """
-        doc=self.documentation if hasattr("self", "documentation") else "?"
-        if not hasattr(self, "wikiDocumentation"):
+        doc=self.documentation if hasattr(self, "documentation") else "?"
+        if not hasattr(self, "wikiDocumentation") or not self.wikiDocumentation:
             self.wikiDocumentation=doc
         if not hasattr(self,"defaultstoremode"):
             self.defaultstoremode="property"
