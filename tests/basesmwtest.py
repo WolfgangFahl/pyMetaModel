@@ -12,15 +12,6 @@ from meta.metamodel import Context
 from meta.mw import SMWAccess
 
 from tests.basemwtest import BaseMediawikiTest
-from yprinciple.smw_targets import SMWTarget
-
-
-@dataclass
-class GenResult:
-    topicname: str
-    target_key: str
-    smwTarget: SMWTarget
-    markup: str
 
 
 class ContextContext:
@@ -31,33 +22,6 @@ class ContextContext:
         self.debug = debug
 
     debug: bool = False
-
-    def get_markup(
-        self,
-        topic_names: List[str] = None,
-        target_keys: List[str] = [
-            "category",
-            "concept",
-            "form",
-            "help",
-            "listOf",
-            "template",
-        ],
-        show: bool = False,
-    ):
-        """
-        get the markups for a given context, topicNames and target keys
-        """
-        if topic_names is None:
-            topic_names = list(self.context.topics.keys())
-        for topicname in topic_names:
-            topic = self.context.topics[topicname]
-            for target_key in target_keys:
-                smwTarget = SMWTarget.getSMWTargets()[target_key]
-                markup = smwTarget.generate(topic)
-                if show:
-                    print(f"{topicname}:{target_key}:\n{markup}")
-                yield GenResult(topicname, target_key, smwTarget, markup)
 
 
 class BaseSemanticMediawikiTest(BaseMediawikiTest):
