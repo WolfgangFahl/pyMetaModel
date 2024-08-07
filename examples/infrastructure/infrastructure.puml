@@ -16,6 +16,13 @@ package Infrastructure {
     driver:Text
     support:URL
     comment:Text
+    os:Text
+    osversion:Text
+    vm:Text
+    size:Number
+    formfactor:Text
+    rpm:Text
+    resolution:Text
   }
 Note top of Device
 A general class for electronic devices

@@ -99,66 +99,66 @@ End note
 Note top of TopicLink
 A TopicLink links two Concepts
 End note
-  class Annotation_URI extends SMW_Type {
+  class Annotation_URI {
   }
 Note top of Annotation_URI
 Holds URIs, but has some technical
 differences during export compared to
 the 'URL' type
 End note
-  class Boolean extends SMW_Type {
+  class Boolean {
   }
 Note top of Boolean
 Holds boolean (true/false) values
 End note
-  class Code extends SMW_Type {
+  class Code {
   }
 Note top of Code
 Holds technical, pre-formatted texts
 (similar to type Text)
 End note
-  class Date extends SMW_Type {
+  class Date {
   }
 Note top of Date
 Holds particular points in time
 End note
-  class Email extends SMW_Type {
+  class Email {
   }
 Note top of Email
 Holds e-mail addresses
 End note
-  class Geographic_coordinate extends SMW_Type {
+  class Geographic_coordinate {
   }
 Note top of Geographic_coordinate
 Holds coordinates describing geographic
 locations
 End note
-  class Number extends SMW_Type {
+  class Number {
   }
 Note top of Number
 Holds integer and decimal numbers, with
 an optional exponent
 End note
-  class Page extends SMW_Type {
+  class Page {
   }
 Note top of Page
 Holds names of wiki pages, and displays
 them as a link
 End note
-  class Quantity extends SMW_Type {
+  class Quantity {
   }
 Note top of Quantity
 Holds values that describe quantities,
 containing both a number and a unit
 End note
-  class Record extends SMW_Type {
+  class Record {
   }
 Note top of Record
 Allows saving compound property values
 that consist of a short list of values
 with fixed type and order
 End note
-  class Telephone_number extends SMW_Type {
+  class Telephone_number {
   }
 Note top of Telephone_number
 Holds international telephone numbers
@@ -166,18 +166,18 @@ based on the
 [https://tools.ietf.org/html/rfc3966 RFC
 3966 standard]
 End note
-  class Temperature extends SMW_Type {
+  class Temperature {
   }
 Note top of Temperature
 Holds temperature values (similar to
 type Quantity)
 End note
-  class Text extends SMW_Type {
+  class Text {
   }
 Note top of Text
 Holds text of arbitrary length
 End note
-  class URL extends SMW_Type {
+  class URL {
   }
 Note top of URL
 Holds URIs, URNs and URLs

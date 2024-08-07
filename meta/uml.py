@@ -244,7 +244,8 @@ hide Circle
         packages = umlDict["packages"]
         for packageKey in packages.keys():
             package = packages[packageKey]
-            uml += f"package {package['name']} {{\n"
+            package_name=package.get('name',packageKey)
+            uml += f"package {package_name} {{\n"
             for classKey in package["classes"]:
                 uclass = package["classes"][classKey]
                 className = uclass.get("name", classKey)

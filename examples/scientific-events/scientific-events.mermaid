@@ -1,41 +1,35 @@
 ```mermaid
 erDiagram
+WikidataItem {
+    string wikidataid  
+    string description  
+}
+WebWdItem {
+    string name  
+    string homepage  
+}
 EventSeries {
     string acronym  
-    string description  
     string title  
-    string wikidataid  
-    string homepage  
 }
 Event {
     string acronym  
-    string description  
     string title  
-    string homepage  
-    string wikidataid  
 }
 City {
-    string name  
-    string wikidataid  
+
 }
 Country {
-    string name  
-    string wikidataid  
+
 }
 Region {
     string name  
-    string wikidataid  
 }
 Proceedings {
-    string wikidataid  
     string title  
 }
 Scholar {
-    string wikiDataId  
-    string name  
     string firstName  
-    string description  
-    string homepage  
     string orcid  
     string dblpId  
     string googleScholarUser  
@@ -46,14 +40,10 @@ Scholar {
 }
 Institution {
     string title  
-    string wikidataid  
-    string homepage  
     string smartCRMId  
 }
 Paper {
-    string description  
     string id  
-    string wikidataid  
     string title  
     string authors  
     uri pdfUrl  

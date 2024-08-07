@@ -1,12 +1,12 @@
-name: CrSchema
-id: CrSchema
+name: CrSchema2408
+id: CrSchema2408
 prefixes:
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
-  CrSchema:
-    prefix_prefix: CrSchema
-    prefix_reference: CrSchema/
+  CrSchema2408:
+    prefix_prefix: CrSchema2408
+    prefix_reference: CrSchema2408/
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
@@ -16,7 +16,7 @@ prefixes:
   schema:
     prefix_prefix: schema
     prefix_reference: http://schema.org/
-default_prefix: CrSchema
+default_prefix: CrSchema2408
 default_range: string
 types:
   string:
@@ -250,458 +250,334 @@ types:
     uri: xsd:string
     repr: str
 slots:
+  wikidataid:
+    name: wikidataid
+    description: The Wikidata Q-Identifier of the item
+    from_schema: CrSchema2408
+    range: string
+  description:
+    name: description
+    description: A Wikidata-compatible description of the item
+    from_schema: CrSchema2408
+    range: string
+  name:
+    name: name
+    description: The name of the item,The name of the Region
+    from_schema: CrSchema2408
+    range: string
+  homepage:
+    name: homepage
+    description: The homepage of the item
+    from_schema: CrSchema2408
+    range: string
   acronym:
     name: acronym
     description: 'The official acronym of the event series. ,The official acronym
       of the academic event, if it has one. '
-    from_schema: CrSchema
-    range: string
-  description:
-    name: description
-    description: A wikidata compatible description of the event series,A wikidata
-      compatible description of the event,A wikidata compatible description of the
-      scholar,A wikidata compatible description of the paper
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   title:
     name: title
     description: The title of the event series. ,The title of the event series. ,The
       title of the Proceedings,The name/title of the Institution,The title of the
       Paper
-    from_schema: CrSchema
-    range: string
-  wikidataid:
-    name: wikidataid
-    description: The wikidataid of the event series,The wikidataid of the event,The
-      wikidataid of the city,The wikidataid of the Country,The wikidataid of the Region,The
-      wikidata Q-Identifier of the Proceedings record,wikidata id of the Institution,The
-      wikidataid of the paper
-    from_schema: CrSchema
-    range: string
-  homepage:
-    name: homepage
-    description: The homepage of the event series,The homepage of the event,The homepage
-      of the scholar,The homepage of the Institution
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   series:
     name: series
     description: series
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: EventSeries
   city:
     name: city
     description: city
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: City
   country:
     name: country
     description: country
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: Country
   region:
     name: region
     description: region
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: Region
-  name:
-    name: name
-    description: The name of the city,The name of the Country,The name of the Region,The
-      last name of the scholar
-    from_schema: CrSchema
-    range: string
-  wikiDataId:
-    name: wikiDataId
-    description: wikidata id of the scholar
-    from_schema: CrSchema
-    range: string
   firstName:
     name: firstName
     description: The first name of the scholar
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   orcid:
     name: orcid
     description: 'orcid id of the scholar it is used to provide the identifier with
       which an entity is indexed in http://orcid.org '
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   dblpId:
     name: dblpId
     description: dblp id of the scholar as index in https://dblp.org/
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   googleScholarUser:
     name: googleScholarUser
     description: googleScholarUser Author id of the scholar
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   linkedInId:
     name: linkedInId
     description: linkedIn id of the scholar
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   researchGate:
     name: researchGate
     description: research gate profile id of the scholar as indexed in https://www.researchgate.net
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   gndId:
     name: gndId
     description: gnd id of the scholar as indexed in https://portal.dnb.de/opac.htm
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   smartCRMId:
     name: smartCRMId
-    description: smartCRM id of the scholar,smartCRM id of the scholar
-    from_schema: CrSchema
+    description: smartCRM id of the scholar,smartCRM id of the institution
+    from_schema: CrSchema2408
     range: string
   scholar:
     name: scholar
     description: scholar
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: Scholar
   id:
     name: id
     description: The id (filename) of the Paper
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   authors:
     name: authors
     description: authors of the Paper
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: string
   pdfUrl:
     name: pdfUrl
     description: the url for the pdf of this paper
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     range: uri
 classes:
+  WikidataItem:
+    name: WikidataItem
+    description: Base topic for items with a Wikidata entry
+    from_schema: CrSchema2408
+    attributes:
+      wikidataid:
+        name: wikidataid
+        description: The Wikidata Q-Identifier of the item
+        from_schema: CrSchema2408
+        range: string
+      description:
+        name: description
+        description: A Wikidata-compatible description of the item
+        from_schema: CrSchema2408
+        range: string
+  WebWdItem:
+    name: WebWdItem
+    description: Wikidata item with a name and homepage
+    from_schema: CrSchema2408
+    attributes:
+      name:
+        name: name
+        description: The name of the item,The name of the Region
+        from_schema: CrSchema2408
+        range: string
+      homepage:
+        name: homepage
+        description: The homepage of the item
+        from_schema: CrSchema2408
+        range: string
   EventSeries:
     name: EventSeries
     description: a series of Events
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
       acronym:
         name: acronym
         description: 'The official acronym of the event series. ,The official acronym
           of the academic event, if it has one. '
-        from_schema: CrSchema
-        range: string
-      description:
-        name: description
-        description: A wikidata compatible description of the event series,A wikidata
-          compatible description of the event,A wikidata compatible description of
-          the scholar,A wikidata compatible description of the paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
           ,The title of the Proceedings,The name/title of the Institution,The title
           of the Paper
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
-        range: string
-      homepage:
-        name: homepage
-        description: The homepage of the event series,The homepage of the event,The
-          homepage of the scholar,The homepage of the Institution
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
   Event:
     name: Event
     description: a meeting of researchers at a specific time and place
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
       acronym:
         name: acronym
         description: 'The official acronym of the event series. ,The official acronym
           of the academic event, if it has one. '
-        from_schema: CrSchema
-        range: string
-      description:
-        name: description
-        description: A wikidata compatible description of the event series,A wikidata
-          compatible description of the event,A wikidata compatible description of
-          the scholar,A wikidata compatible description of the paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
           ,The title of the Proceedings,The name/title of the Institution,The title
           of the Paper
-        from_schema: CrSchema
-        range: string
-      homepage:
-        name: homepage
-        description: The homepage of the event series,The homepage of the event,The
-          homepage of the scholar,The homepage of the Institution
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       series:
         name: series
         description: series
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: EventSeries
       city:
         name: city
         description: city
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: City
       country:
         name: country
         description: country
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: Country
       region:
         name: region
         description: region
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: Region
   City:
     name: City
     description: large permanent human settlement
-    from_schema: CrSchema
-    attributes:
-      name:
-        name: name
-        description: The name of the city,The name of the Country,The name of the
-          Region,The last name of the scholar
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
-        range: string
+    from_schema: CrSchema2408
   Country:
     name: Country
     description: distinct region in geography; a broad term that can include political
       divisions or regions associated with distinct political characteristics
-    from_schema: CrSchema
-    attributes:
-      name:
-        name: name
-        description: The name of the city,The name of the Country,The name of the
-          Region,The last name of the scholar
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
-        range: string
+    from_schema: CrSchema2408
   Region:
     name: Region
     description: first-level administrative country subdivision e.g. Region/province
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
       name:
         name: name
-        description: The name of the city,The name of the Country,The name of the
-          Region,The last name of the scholar
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
+        description: The name of the item,The name of the Region
+        from_schema: CrSchema2408
         range: string
   Proceedings:
     name: Proceedings
     description: Proceedings are a collection of papers mostly documenting the results
       of an academic event
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
-        range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
           ,The title of the Proceedings,The name/title of the Institution,The title
           of the Paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
   Scholar:
     name: Scholar
     description: 'scholar/researcher: person who engages in research, professionally
       or otherwise'
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
-      wikiDataId:
-        name: wikiDataId
-        description: wikidata id of the scholar
-        from_schema: CrSchema
-        range: string
-      name:
-        name: name
-        description: The name of the city,The name of the Country,The name of the
-          Region,The last name of the scholar
-        from_schema: CrSchema
-        range: string
       firstName:
         name: firstName
         description: The first name of the scholar
-        from_schema: CrSchema
-        range: string
-      description:
-        name: description
-        description: A wikidata compatible description of the event series,A wikidata
-          compatible description of the event,A wikidata compatible description of
-          the scholar,A wikidata compatible description of the paper
-        from_schema: CrSchema
-        range: string
-      homepage:
-        name: homepage
-        description: The homepage of the event series,The homepage of the event,The
-          homepage of the scholar,The homepage of the Institution
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       orcid:
         name: orcid
         description: 'orcid id of the scholar it is used to provide the identifier
           with which an entity is indexed in http://orcid.org '
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       dblpId:
         name: dblpId
         description: dblp id of the scholar as index in https://dblp.org/
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       googleScholarUser:
         name: googleScholarUser
         description: googleScholarUser Author id of the scholar
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       linkedInId:
         name: linkedInId
         description: linkedIn id of the scholar
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       researchGate:
         name: researchGate
         description: research gate profile id of the scholar as indexed in https://www.researchgate.net
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       gndId:
         name: gndId
         description: gnd id of the scholar as indexed in https://portal.dnb.de/opac.htm
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       smartCRMId:
         name: smartCRMId
-        description: smartCRM id of the scholar,smartCRM id of the scholar
-        from_schema: CrSchema
+        description: smartCRM id of the scholar,smartCRM id of the institution
+        from_schema: CrSchema2408
         range: string
   Institution:
     name: Institution
     description: structure or mechanism of social order and cooperation governing
       the behaviour of a set of individuals within a given community
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
           ,The title of the Proceedings,The name/title of the Institution,The title
           of the Paper
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
-        range: string
-      homepage:
-        name: homepage
-        description: The homepage of the event series,The homepage of the event,The
-          homepage of the scholar,The homepage of the Institution
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       smartCRMId:
         name: smartCRMId
-        description: smartCRM id of the scholar,smartCRM id of the scholar
-        from_schema: CrSchema
+        description: smartCRM id of the scholar,smartCRM id of the institution
+        from_schema: CrSchema2408
         range: string
       scholar:
         name: scholar
         description: scholar
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: Scholar
   Paper:
     name: Paper
     description: A paper is e.g. a scholarly article
-    from_schema: CrSchema
+    from_schema: CrSchema2408
     attributes:
-      description:
-        name: description
-        description: A wikidata compatible description of the event series,A wikidata
-          compatible description of the event,A wikidata compatible description of
-          the scholar,A wikidata compatible description of the paper
-        from_schema: CrSchema
-        range: string
       id:
         name: id
         description: The id (filename) of the Paper
-        from_schema: CrSchema
-        range: string
-      wikidataid:
-        name: wikidataid
-        description: The wikidataid of the event series,The wikidataid of the event,The
-          wikidataid of the city,The wikidataid of the Country,The wikidataid of the
-          Region,The wikidata Q-Identifier of the Proceedings record,wikidata id of
-          the Institution,The wikidataid of the paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       title:
         name: title
         description: The title of the event series. ,The title of the event series.
           ,The title of the Proceedings,The name/title of the Institution,The title
           of the Paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       authors:
         name: authors
         description: authors of the Paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: string
       pdfUrl:
         name: pdfUrl
         description: the url for the pdf of this paper
-        from_schema: CrSchema
+        from_schema: CrSchema2408
         range: uri
 

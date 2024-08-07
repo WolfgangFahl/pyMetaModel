@@ -1,36 +1,63 @@
 @startuml
-package CrSchema {
-  class EventSeries {
-    acronym:text
-    description:text
-    title:text
+package CrSchema2408 {
+  class WikidataItem {
     wikidataid:External identifier
+    description:text
+    name:text
     homepage:url
+    acronym:text
+    title:text
+    acronym:text
+    title:text
+    name:text
+    title:Text
+    firstName:text
+    orcid:External identifier
+    dblpId:External identifier
+    googleScholarUser:External identifier
+    linkedInId:External identifier
+    researchGate:External identifier
+    gndId:External identifier
+    smartCRMId:External identifier
+    title:text
+    smartCRMId:External identifier
+    id:Text
+    title:Text
+    authors:Text
+    pdfUrl:URL
+  }
+Note top of WikidataItem
+Base topic for items with a Wikidata
+entry
+End note
+  class WebWdItem extends WikidataItem {
+    name:text
+    homepage:url
+  }
+Note top of WebWdItem
+Wikidata item with a name and homepage
+End note
+  class EventSeries extends WebWdItem {
+    acronym:text
+    title:text
   }
 Note top of EventSeries
 a series of Events
 End note
-  class Event {
+  class Event extends WebWdItem {
     acronym:text
-    description:text
     title:text
-    homepage:url
-    wikidataid:External identifier
   }
 Note top of Event
 a meeting of researchers at a specific
 time and place
 End note
-  class City {
-    name:text
-    wikidataid:External identifier
+  class City extends WebWdItem {
   }
 Note top of City
 large permanent human settlement
 End note
-  class Country {
-    name:text
-    wikidataid:External identifier
+  class Country extends WebWdItem {
   }
 Note top of Country
 distinct region in geography; a broad
@@ -38,16 +65,14 @@ term that can include political
 divisions or regions associated with
 distinct political characteristics
 End note
-  class Region {
+  class Region extends WikidataItem {
     name:text
-    wikidataid:External identifier
   }
 Note top of Region
 first-level administrative country
 subdivision e.g. Region/province
 End note
-  class Proceedings {
-    wikidataid:External identifier
+  class Proceedings extends WikiDataItem {
     title:Text
   }
 Note top of Proceedings
@@ -55,12 +80,8 @@ Proceedings are a collection of papers
 mostly documenting the results of an
 academic event
 End note
-  class Scholar {
-    wikiDataId:External identifier
-    name:text
+  class Scholar extends WebWdItem {
     firstName:text
-    description:text
-    homepage:url
     orcid:External identifier
     dblpId:External identifier
     googleScholarUser:External identifier
@@ -73,10 +94,8 @@ Note top of Scholar
 scholar/researcher: person who engages
 in research, professionally or otherwise
 End note
-  class Institution {
+  class Institution extends WebWdItem {
     title:text
-    wikidataid:External identifier
-    homepage:url
     smartCRMId:External identifier
   }
 Note top of Institution
@@ -85,10 +104,8 @@ and cooperation governing the behaviour
 of a set of individuals within a given
 community
 End note
-  class Paper {
+  class Paper extends WebWdItem {
     id:Text
-    wikidataid:External identifier
-    description:text
     title:Text
     authors:Text
     pdfUrl:URL
