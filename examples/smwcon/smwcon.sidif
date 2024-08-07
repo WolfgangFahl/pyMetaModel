@@ -1,0 +1,549 @@
+#
+# SMWCon Context
+# see
+#   https://www.semantic-mediawiki.org/wiki/List_of_Attendees
+#   https://wiki.bitplan.com/index.php/Attendee
+#   Example Properties
+#      https://www.semantic-mediawiki.org/wiki/Property:Talk_status
+#
+SMWCon isA Context
+"SMWCon" is name of it
+"2015-10-30" is since of it
+"2024-08-07" is updated of it
+"https://contexts.bitplan.com" is master of it
+"©2015-2024 Wolfgang Fahl" is copyright of it
+"property" is storemode of it
+#
+# Attendee
+#
+Attendee isA Topic
+"Attendee" is name of it
+"Attendees" is pluralName of it
+"A participant of an event" is documentation of it
+"File:Badgeicon48x48.png" is icon of it
+"/images/partner/0/05/Badgeicon.png" is iconUrl of it
+"property" is defaultstoremode of it
+"SMWCon" is context of it
+false is cargo of it
+
+# Properties of Attendee
+Attendee_name addsTo it
+Attendee_firstName addsTo it
+Attendee_jobTitle addsTo it
+Attendee_email addsTo it
+Attendee_crm addsTo it
+Attendee_picture addsTo it
+Attendee_socialLinks addsTo it
+Attendee_introduction addsTo it
+Attendee_publish addsTo it
+Attendee_events addsTo it
+
+# property name
+Attendee_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+true is mandatory of it
+"The name of the attendee" is documentation of it
+true is showInGrid of it
+"Attendee" is topic of it
+
+# property firstName
+Attendee_firstName isA Property
+"firstName" is name of it
+"firstName" is label of it
+"Text" is type of it
+2 is index of it
+true is mandatory of it
+"The first name of the attendee" is documentation of it
+true is showInGrid of it
+"Attendee" is topic of it
+
+# property jobTitle
+Attendee_jobTitle isA Property
+"jobTitle" is name of it
+"jobTitle" is label of it
+"Text" is type of it
+3 is index of it
+"The job title of the attendee" is documentation of it
+"Attendee" is topic of it
+
+# property email
+Attendee_email isA Property
+"email" is name of it
+"email" is label of it
+"EMail" is type of it
+4 is index of it
+"The email address of the attendee" is documentation of it
+true is showInGrid of it
+"Attendee" is topic of it
+
+# property crm
+Attendee_crm isA Property
+"crm" is name of it
+"crm" is label of it
+"Text" is type of it
+5 is index of it
+"The CRM identifier of the attendee" is documentation of it
+"Attendee" is topic of it
+
+# property picture
+Attendee_picture isA Property
+"picture" is name of it
+"picture" is label of it
+"Text" is type of it
+6 is index of it
+"The picture of the attendee" is documentation of it
+"Attendee" is topic of it
+
+# property socialLinks
+Attendee_socialLinks isA Property
+"socialLinks" is name of it
+"socialLinks" is label of it
+"Text" is type of it
+7 is index of it
+"The social media links of the attendee" is documentation of it
+"Attendee" is topic of it
+
+# property introduction
+Attendee_introduction isA Property
+"introduction" is name of it
+"introduction" is label of it
+"Text" is type of it
+8 is index of it
+"textarea" is inputType of it
+"A brief introduction of the attendee" is documentation of it
+"Attendee" is topic of it
+
+# property publish
+Attendee_publish isA Property
+"publish" is name of it
+"publish" is label of it
+"Boolean" is type of it
+9 is index of it
+"Whether to publish the attendee's information" is documentation of it
+"Attendee" is topic of it
+
+# property events
+Attendee_events isA Property
+"events" is name of it
+"events" is label of it
+"Text" is type of it
+10 is index of it
+"The events attended by the attendee" is documentation of it
+"Attendee" is topic of it
+
+#
+# Talk
+#
+Talk isA Topic
+"Talk" is name of it
+"Talks" is pluralName of it
+"A presentation or speech given at an event" is documentation of it
+"File:Talk.png" is icon of it
+"/images/8/8b/Talk.png" is iconUrl of it
+"property" is defaultstoremode of it
+"SMWCon" is context of it
+
+# Properties of Talk
+Talk_status addsTo it
+Talk_title addsTo it
+Talk_description addsTo it
+Talk_duration addsTo it
+Talk_audience addsTo it
+Talk_type addsTo it
+Talk_start addsTo it
+Talk_stop addsTo it
+Talk_video addsTo it
+Talk_keywords addsTo it
+
+# property status
+Talk_status isA Property
+"status" is name of it
+"status" is label of it
+"Text" is type of it
+1 is index of it
+"The status of the talk" is documentation of it
+true is showInGrid of it
+"Talk" is topic of it
+
+# property title
+Talk_title isA Property
+"title" is name of it
+"title" is label of it
+"Text" is type of it
+2 is index of it
+true is mandatory of it
+"The title of the talk" is documentation of it
+true is showInGrid of it
+"Talk" is topic of it
+
+# property description
+Talk_description isA Property
+"description" is name of it
+"description" is label of it
+"Text" is type of it
+3 is index of it
+"textarea" is inputType of it
+"The description of the talk" is documentation of it
+"Talk" is topic of it
+
+# property duration
+Talk_duration isA Property
+"duration" is name of it
+"duration" is label of it
+"Number" is type of it
+4 is index of it
+"The duration of the talk in minutes" is documentation of it
+true is showInGrid of it
+"Talk" is topic of it
+
+# property audience
+Talk_audience isA Property
+"audience" is name of it
+"audience" is label of it
+"Text" is type of it
+5 is index of it
+"The target audience of the talk" is documentation of it
+"Talk" is topic of it
+
+# property type
+Talk_type isA Property
+"type" is name of it
+"type" is label of it
+"Text" is type of it
+6 is index of it
+"The type of the talk" is documentation of it
+true is showInGrid of it
+"Talk" is topic of it
+
+# property start
+Talk_start isA Property
+"start" is name of it
+"start" is label of it
+"Date" is type of it
+7 is index of it
+"datepicker" is inputType of it
+"The planned start time of the talk" is documentation of it
+true is showInGrid of it
+"Talk" is topic of it
+
+# property stop
+Talk_stop isA Property
+"stop" is name of it
+"stop" is label of it
+"Date" is type of it
+8 is index of it
+"datepicker" is inputType of it
+"The planned finish time of the talk" is documentation of it
+"Talk" is topic of it
+
+# property video
+Talk_video isA Property
+"video" is name of it
+"video" is label of it
+"URL" is type of it
+9 is index of it
+"The video link of the talk" is documentation of it
+"Talk" is topic of it
+
+# property keywords
+Talk_keywords isA Property
+"keywords" is name of it
+"keywords" is label of it
+"Text" is type of it
+10 is index of it
+"The keywords associated with the talk" is documentation of it
+"Talk" is topic of it
+
+#
+# Event
+#
+Event isA Topic
+"Event" is name of it
+"Events" is pluralName of it
+"A conference or gathering" is documentation of it
+"File:Event.png" is icon of it
+"/images/3/35/Event.png" is iconUrl of it
+"property" is defaultstoremode of it
+"SMWCon" is context of it
+
+# Properties of Event
+Event_conference addsTo it
+Event_description addsTo it
+Event_address addsTo it
+Event_start addsTo it
+Event_finish addsTo it
+Event_calendar addsTo it
+Event_Type addsTo it
+Event_GeneralChair addsTo it
+Event_LocalChair addsTo it
+Event_ProgramChair addsTo it
+Event_SponsorshipChair addsTo it
+Event_Audience addsTo it
+Event_Collection addsTo it
+Event_Wikidata addsTo it
+
+# property conference
+Event_conference isA Property
+"conference" is name of it
+"conference" is label of it
+"Text" is type of it
+1 is index of it
+"The name of the conference" is documentation of it
+true is showInGrid of it
+"Event" is topic of it
+
+# property description
+Event_description isA Property
+"description" is name of it
+"description" is label of it
+"Text" is type of it
+2 is index of it
+"textarea" is inputType of it
+"The description of the event" is documentation of it
+"Event" is topic of it
+
+# property address
+Event_address isA Property
+"address" is name of it
+"address" is label of it
+"Text" is type of it
+3 is index of it
+"The address of the event" is documentation of it
+"Event" is topic of it
+
+# property start
+Event_start isA Property
+"start" is name of it
+"start" is label of it
+"Date" is type of it
+4 is index of it
+"datepicker" is inputType of it
+"The start date of the event" is documentation of it
+true is showInGrid of it
+"Event" is topic of it
+
+# property finish
+Event_finish isA Property
+"finish" is name of it
+"finish" is label of it
+"Date" is type of it
+5 is index of it
+"datepicker" is inputType of it
+"The end date of the event" is documentation of it
+true is showInGrid of it
+"Event" is topic of it
+
+# property calendar
+Event_calendar isA Property
+"calendar" is name of it
+"calendar" is label of it
+"Text" is type of it
+6 is index of it
+"The calendar link for the event" is documentation of it
+"Event" is topic of it
+
+# property Type
+Event_Type isA Property
+"Type" is name of it
+"Type" is label of it
+"Text" is type of it
+7 is index of it
+"The type of the event" is documentation of it
+true is showInGrid of it
+"Event" is topic of it
+
+# property GeneralChair
+Event_GeneralChair isA Property
+"GeneralChair" is name of it
+"GeneralChair" is label of it
+"Text" is type of it
+8 is index of it
+"The general chair of the event" is documentation of it
+"Event" is topic of it
+
+# property LocalChair
+Event_LocalChair isA Property
+"LocalChair" is name of it
+"LocalChair" is label of it
+"Text" is type of it
+9 is index of it
+"The local chair of the event" is documentation of it
+"Event" is topic of it
+
+# property ProgramChair
+Event_ProgramChair isA Property
+"ProgramChair" is name of it
+"ProgramChair" is label of it
+"Text" is type of it
+10 is index of it
+"The program chair of the event" is documentation of it
+"Event" is topic of it
+
+# property SponsorshipChair
+Event_SponsorshipChair isA Property
+"SponsorshipChair" is name of it
+"SponsorshipChair" is label of it
+"Text" is type of it
+11 is index of it
+"The sponsorship chair of the event" is documentation of it
+"Event" is topic of it
+
+# property Audience
+Event_Audience isA Property
+"Audience" is name of it
+"Audience" is label of it
+"Text" is type of it
+12 is index of it
+"The target audience of the event" is documentation of it
+"Event" is topic of it
+
+# property Collection
+Event_Collection isA Property
+"Collection" is name of it
+"Collection" is label of it
+"Text" is type of it
+13 is index of it
+"The collection the event belongs to" is documentation of it
+"Event" is topic of it
+
+# property Wikidata
+Event_Wikidata isA Property
+"Wikidata" is name of it
+"Wikidata" is label of it
+"Text" is type of it
+14 is index of it
+"The Wikidata identifier for the event" is documentation of it
+"Event" is topic of it
+
+#
+# Location
+#
+Location isA Topic
+"Location" is name of it
+"Locations" is pluralName of it
+"A place where an event is held" is documentation of it
+"File:Location.png" is icon of it
+"/images/3/3a/Location.png" is iconUrl of it
+"property" is defaultstoremode of it
+"SMWCon" is context of it
+
+# Properties of Location
+Location_name addsTo it
+Location_address addsTo it
+Location_city addsTo it
+Location_country addsTo it
+Location_capacity addsTo it
+Location_facilities addsTo it
+
+# property name
+Location_name isA Property
+"name" is name of it
+"name" is label of it
+"Text" is type of it
+1 is index of it
+true is mandatory of it
+"The name of the location" is documentation of it
+true is showInGrid of it
+"Location" is topic of it
+
+# property address
+Location_address isA Property
+"address" is name of it
+"address" is label of it
+"Text" is type of it
+2 is index of it
+"The address of the location" is documentation of it
+true is showInGrid of it
+"Location" is topic of it
+
+# property city
+Location_city isA Property
+"city" is name of it
+"city" is label of it
+"Text" is type of it
+3 is index of it
+"The city of the location" is documentation of it
+true is showInGrid of it
+"Location" is topic of it
+
+# property country
+Location_country isA Property
+"country" is name of it
+"country" is label of it
+"Text" is type of it
+4 is index of it
+"The country of the location" is documentation of it
+true is showInGrid of it
+"Location" is topic of it
+
+# property capacity
+Location_capacity isA Property
+"capacity" is name of it
+"capacity" is label of it
+"Number" is type of it
+5 is index of it
+"The capacity of the location" is documentation of it
+"Location" is topic of it
+
+# property facilities
+Location_facilities isA Property
+"facilities" is name of it
+"facilities" is label of it
+"Text" is type of it
+6 is index of it
+"textarea" is inputType of it
+"The facilities available at the location" is documentation of it
+"Location" is topic of it
+#
+# Topic Links
+#
+Connected_to_event isA TopicLink
+"event" is name of it
+"Event" is source of it
+"Event to which this Attendee is connected" is sourceDocumentation of it
+"event" is sourceRole of it
+false is sourceMultiple of it
+"Attendee" is target of it
+"attendees" is targetRole of it
+"Attendees connected to this Event" is targetDocumentation of it
+true is targetMultiple of it
+true is masterDetail of it
+
+Connected_to_talk isA TopicLink
+"talk" is name of it
+"Talk" is source of it
+"Talk to which this Attendee is connected" is sourceDocumentation of it
+"talk" is sourceRole of it
+false is sourceMultiple of it
+"Attendee" is target of it
+"speakers" is targetRole of it
+"Speakers connected to this Talk" is targetDocumentation of it
+true is targetMultiple of it
+true is masterDetail of it
+
+Talk_at_event isA TopicLink
+"event" is name of it
+"Event" is source of it
+"Event at which this Talk is presented" is sourceDocumentation of it
+"event" is sourceRole of it
+false is sourceMultiple of it
+"Talk" is target of it
+"talks" is targetRole of it
+"Talks presented at this Event" is targetDocumentation of it
+true is targetMultiple of it
+true is masterDetail of it
+
+Event_at_location isA TopicLink
+"location" is name of it
+"Location" is source of it
+"Location where this Event is held" is sourceDocumentation of it
+"location" is sourceRole of it
+false is sourceMultiple of it
+"Event" is target of it
+"events" is targetRole of it
+"Events held at this Location" is targetDocumentation of it
+true is targetMultiple of it
+true is masterDetail of it

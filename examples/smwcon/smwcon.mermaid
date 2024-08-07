@@ -1,0 +1,58 @@
+```mermaid
+erDiagram
+Attendee {
+    string name  
+    string firstName  
+    string jobTitle  
+    string email  
+    string crm  
+    string picture  
+    string socialLinks  
+    string introduction  
+    boolean publish  
+    string events  
+}
+Talk {
+    string status  
+    string title  
+    string description  
+    double duration  
+    string audience  
+    string type  
+    date start  
+    date stop  
+    uri video  
+    string keywords  
+}
+Event {
+    string conference  
+    string description  
+    string address  
+    date start  
+    date finish  
+    string calendar  
+    string Type  
+    string GeneralChair  
+    string LocalChair  
+    string ProgramChair  
+    string SponsorshipChair  
+    string Audience  
+    string Collection  
+    string Wikidata  
+}
+Location {
+    string name  
+    string address  
+    string city  
+    string country  
+    double capacity  
+    string facilities  
+}
+
+Attendee ||--|o Talk : "talk"
+Attendee ||--|o Event : "event"
+Talk ||--|o Event : "event"
+Event ||--|o Location : "location"
+
+```
+

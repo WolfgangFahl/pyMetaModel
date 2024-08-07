@@ -1,0 +1,781 @@
+SmartRQM isA Context
+#
+# RQProfile
+#
+RQProfile isA Topic
+"
+An RQProfile is a set of Requirements (RQ) that is the goal for a specific solution to be realized.
+
+" is documentation of it
+"RQProfile" is name of it
+"File:rqprofile.png" is icon of it
+"property" is defaultstoremode of it
+"SmartRQM" is context of it
+RQProfile_RQProfileNumber addsTo it
+RQProfile_projectNo addsTo it
+RQProfile_longname addsTo it
+RQProfile_comment addsTo it
+RQProfile_startdate addsTo it
+RQProfile_RQProfilename addsTo it
+RQProfile_customer addsTo it
+#
+#RQProfile Properties
+#
+# Property RQProfileNumber
+RQProfile_RQProfileNumber isA Property
+"RQProfileNumber" is name of it
+"RQProfileNumber" is label of it
+"hierarchical number of this RQProfile, understandable key" is documentation of it
+1 is index of it
+# java type string
+"Text" is type of it
+"RQProfile" is topic of it
+# Property projectNo
+RQProfile_projectNo isA Property
+"projectNo" is name of it
+"projectNo" is label of it
+"e.g. the customer's official project number" is documentation of it
+2 is index of it
+# java type string
+"Text" is type of it
+"RQProfile" is topic of it
+# Property longname
+RQProfile_longname isA Property
+"longname" is name of it
+"longname" is label of it
+"a long name for this requirement profile" is documentation of it
+3 is index of it
+# java type string
+"Text" is type of it
+"RQProfile" is topic of it
+# Property comment
+RQProfile_comment isA Property
+"comment" is name of it
+"comment" is label of it
+"Purpose of the system, any comments about this profile." is documentation of it
+4 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQProfile" is topic of it
+# Property startdate
+RQProfile_startdate isA Property
+"startdate" is name of it
+"startdate" is label of it
+"the date that the requirements gathering for this profile was started" is documentation of it
+5 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"RQProfile" is topic of it
+# Property RQProfilename
+RQProfile_RQProfilename isA Property
+"RQProfilename" is name of it
+"RQProfilename" is label of it
+"name of this profile of requirements" is documentation of it
+6 is index of it
+true is primaryKey of it
+1 is sortPos of it
+# java type string
+"Text" is type of it
+"RQProfile" is topic of it
+# Property customer
+RQProfile_customer isA Property
+"customer" is name of it
+"customer" is label of it
+"the customer of this RQProfile" is documentation of it
+7 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQProfile" is topic of it
+#
+# RQ
+#
+RQ isA Topic
+"RQ" is name of it
+"a Requirement describes the expected behaviour of a system" is documentation of it
+"File:rq.png" is icon of it
+"property" is defaultstoremode of it
+"SmartRQM" is context of it
+RQ_description addsTo it
+RQ_what addsTo it
+RQ_basedOn addsTo it
+RQ_owner addsTo it
+RQ_kind addsTo it
+RQ_name addsTo it
+RQ_enteredOn addsTo it
+RQ_negative addsTo it
+RQ_weight addsTo it
+RQ_RQnumber addsTo it
+RQ_RQid addsTo it
+RQ_enteredBy addsTo it
+RQ_RQProfilename addsTo it
+RQ_priority addsTo it
+RQ_comment addsTo it
+RQ_state addsTo it
+RQ_qualityAcceptance addsTo it
+RQ_why addsTo it
+RQ_design addsTo it
+#
+#RQ Properties
+#
+# Property description
+RQ_description isA Property
+"description" is name of it
+"description" is label of it
+"description of this requirement/ document" is documentation of it
+1 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property what
+RQ_what isA Property
+"what" is name of it
+"what" is label of it
+"the content of this requirement. What is expected?" is documentation of it
+2 is index of it
+true is mandatory of it
+# java type html
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property basedOn
+RQ_basedOn isA Property
+"basedOn" is name of it
+"basedOn" is label of it
+"description of the source of this requirement, e.g. interview or document" is documentation of it
+3 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property owner
+RQ_owner isA Property
+"owner" is name of it
+"owner" is label of it
+"who is in charge of this requirement and owns it - meaning that this person is willing to accept the implications of realizing this requirements in terms of cost, time and other follow-up results" is documentation of it
+4 is index of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property kind
+RQ_kind isA Property
+"kind" is name of it
+"kind" is label of it
+"the kind of this requirement, can be functional, non funcional, organisational, usecase" is documentation of it
+"radiobutton" is inputType of it
+5 is index of it
+# java type enum{functional, non functional, organisational }
+"Text" is type of it
+"functional, non functional, organisational, usecase" is allowedValues of it
+"RQ" is topic of it
+# Property name
+RQ_name isA Property
+"name" is name of it
+"name" is label of it
+"name of the requirement" is documentation of it
+6 is index of it
+true is mandatory of it
+3 is sortPos of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property enteredOn
+RQ_enteredOn isA Property
+"enteredOn" is name of it
+"enteredOn" is label of it
+"when was this requirement first entered" is documentation of it
+7 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"RQ" is topic of it
+# Property negative
+RQ_negative isA Property
+"negative" is name of it
+"negative" is label of it
+"A non-requirement - what is explicitely NOT required. It doesn`t have any AKs." is documentation of it
+8 is index of it
+# java type boolean
+"Boolean" is type of it
+"RQ" is topic of it
+# Property weight
+RQ_weight isA Property
+"weight" is name of it
+"weight" is label of it
+"Effect that this requirement has on the realisation (e.g. values 1..9). May change during the project." is documentation of it
+9 is index of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property RQnumber
+RQ_RQnumber isA Property
+"RQnumber" is name of it
+"RQnumber" is label of it
+"hierarchical number of this requirement, understandable key" is documentation of it
+10 is index of it
+2 is sortPos of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property RQid
+RQ_RQid isA Property
+"RQid" is name of it
+"RQid" is label of it
+"unique id for this requirement, technical key" is documentation of it
+11 is index of it
+true is primaryKey of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property enteredBy
+RQ_enteredBy isA Property
+"enteredBy" is name of it
+"enteredBy" is label of it
+"who has entered this requirement" is documentation of it
+12 is index of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property RQProfilename
+RQ_RQProfilename isA Property
+"RQProfilename" is name of it
+"RQProfilename" is label of it
+"name of this profile of requirements" is documentation of it
+13 is index of it
+false is primaryKey of it
+1 is sortPos of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property priority
+RQ_priority isA Property
+"priority" is name of it
+"priority" is label of it
+"priority of this Requirement (e.g. values 1..9 or A,B,C)  - may change during a project" is documentation of it
+14 is index of it
+# java type string
+"Text" is type of it
+"RQ" is topic of it
+# Property comment
+RQ_comment isA Property
+"comment" is name of it
+"comment" is label of it
+"any comments about this requirement" is documentation of it
+15 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property state
+RQ_state isA Property
+"state" is name of it
+"state" is label of it
+"lifecycle state of this requirement" is documentation of it
+16 is index of it
+# java type enum {new, verifyable, accepted, integrated, validated }
+"Text" is type of it
+"new, verifyable, accepted, integrated, validated " is allowedValues of it
+"RQ" is topic of it
+# Property qualityAcceptance
+RQ_qualityAcceptance isA Property
+"qualityAcceptance" is name of it
+"qualityAcceptance" is label of it
+"quality acceptance - date/ name/ comment" is documentation of it
+17 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property why
+RQ_why isA Property
+"why" is name of it
+"why" is label of it
+"why is the content of this requirement expected? What is it good for?" is documentation of it
+18 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"RQ" is topic of it
+# Property design
+RQ_design isA Property
+"design" is name of it
+"design" is label of it
+"design / technical requirement which is not simulated" is documentation of it
+19 is index of it
+# java type boolean
+"Boolean" is type of it
+"RQ" is topic of it
+#
+# AC
+#
+AC isA Topic
+"AC" is name of it
+"an acceptance criterion" is documentation of it
+"File:AC.png" is icon of it
+"property" is defaultstoremode of it
+"SmartRQM" is context of it
+AC_qualityAcceptance addsTo it
+AC_RQname addsTo it
+AC_state addsTo it
+AC_situation addsTo it
+AC_responsible addsTo it
+AC_rejection addsTo it
+AC_disabled addsTo it
+AC_action addsTo it
+AC_done addsTo it
+AC_ACnumber addsTo it
+AC_ACid addsTo it
+AC_expected_result addsTo it
+AC_doneDate addsTo it
+AC_comment addsTo it
+AC_difficulty addsTo it
+AC_project addsTo it
+AC_enteredBy addsTo it
+AC_RQProfilename addsTo it
+AC_name addsTo it
+AC_enteredOn addsTo it
+AC_acceptance addsTo it
+AC_description addsTo it
+AC_accDate addsTo it
+AC_RQnumber addsTo it
+AC_manualOnly addsTo it
+AC_owner addsTo it
+#
+#AC Properties
+#
+# Property qualityAcceptance
+AC_qualityAcceptance isA Property
+"qualityAcceptance" is name of it
+"qualityAcceptance" is label of it
+"quality acceptance - date/ name/ comment" is documentation of it
+1 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"AC" is topic of it
+# Property RQname
+AC_RQname isA Property
+"RQname" is name of it
+"RQname" is label of it
+"Name der Anforderungen" is documentation of it
+2 is index of it
+false is mandatory of it
+3 is sortPos of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property state
+AC_state isA Property
+"state" is name of it
+"state" is label of it
+"the state of this AK, it can be new, verifyable, accepted or simulated" is documentation of it
+3 is index of it
+# java type enum {new, verifyable, accepted, simulated}
+"Text" is type of it
+"new, verifyable, accepted, simulated" is allowedValues of it
+"AC" is topic of it
+# Property situation
+AC_situation isA Property
+"situation" is name of it
+"situation" is label of it
+"situation before the acceptance test starts" is documentation of it
+4 is index of it
+true is mandatory of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"AC" is topic of it
+# Property responsible
+AC_responsible isA Property
+"responsible" is name of it
+"responsible" is label of it
+"who is responsible for this ac?" is documentation of it
+5 is index of it
+false is mandatory of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property rejection
+AC_rejection isA Property
+"rejection" is name of it
+"rejection" is label of it
+"marker that this Ak causes a rejection by the system or an errormessage" is documentation of it
+6 is index of it
+# java type boolean
+"Boolean" is type of it
+"AC" is topic of it
+# Property disabled
+AC_disabled isA Property
+"disabled" is name of it
+"disabled" is label of it
+"this AK shall be realized later" is documentation of it
+7 is index of it
+# java type boolean
+"Boolean" is type of it
+"AC" is topic of it
+# Property action
+AC_action isA Property
+"action" is name of it
+"action" is label of it
+"action that is triggered to check this acceptance test" is documentation of it
+8 is index of it
+true is mandatory of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"AC" is topic of it
+# Property done
+AC_done isA Property
+"done" is name of it
+"done" is label of it
+"finished" is documentation of it
+9 is index of it
+# java type boolean
+"Boolean" is type of it
+"AC" is topic of it
+# Property ACnumber
+AC_ACnumber isA Property
+"ACnumber" is name of it
+"ACnumber" is label of it
+"hierarchical number of this AC, understandable key" is documentation of it
+10 is index of it
+false is primaryKey of it
+4 is sortPos of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property ACid
+AC_ACid isA Property
+"ACid" is name of it
+"ACid" is label of it
+"unique id for this AC, technical key" is documentation of it
+11 is index of it
+true is primaryKey of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property expected result
+AC_expected_result isA Property
+"expected_result" is name of it
+"expected result" is label of it
+"the result that is expected to consider this acceptance test passed" is documentation of it
+12 is index of it
+true is mandatory of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"AC" is topic of it
+# Property doneDate
+AC_doneDate isA Property
+"doneDate" is name of it
+"doneDate" is label of it
+"date when this was done" is documentation of it
+13 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"AC" is topic of it
+# Property comment
+AC_comment isA Property
+"comment" is name of it
+"comment" is label of it
+"a comment for this acceptance criterion" is documentation of it
+14 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"AC" is topic of it
+# Property difficulty
+AC_difficulty isA Property
+"difficulty" is name of it
+"difficulty" is label of it
+"how much effort is necessary for realizing this ac - A:much effort  B:middle  C:not very difficult" is documentation of it
+15 is index of it
+false is mandatory of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property project
+AC_project isA Property
+"project" is name of it
+"project" is label of it
+"the name of the project which is responsible for the implementation of this" is documentation of it
+16 is index of it
+false is mandatory of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property enteredBy
+AC_enteredBy isA Property
+"enteredBy" is name of it
+"enteredBy" is label of it
+"who entered this acceptance criteria" is documentation of it
+17 is index of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property RQProfilename
+AC_RQProfilename isA Property
+"RQProfilename" is name of it
+"RQProfilename" is label of it
+"name of this profile of requirements" is documentation of it
+18 is index of it
+1 is sortPos of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property name
+AC_name isA Property
+"name" is name of it
+"name" is label of it
+"short name  for this AK" is documentation of it
+19 is index of it
+true is mandatory of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property enteredOn
+AC_enteredOn isA Property
+"enteredOn" is name of it
+"enteredOn" is label of it
+"when was this acceptance test entered?" is documentation of it
+20 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"AC" is topic of it
+# Property acceptance
+AC_acceptance isA Property
+"acceptance" is name of it
+"acceptance" is label of it
+"Is the responsible person willing to do this ac or not, are there questions? (new, accepted, rejected, question)" is documentation of it
+21 is index of it
+false is mandatory of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property description
+AC_description isA Property
+"description" is name of it
+"description" is label of it
+"the description of this AK/document" is documentation of it
+22 is index of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property accDate
+AC_accDate isA Property
+"accDate" is name of it
+"accDate" is label of it
+"date when the ac was accepted by the responsible person" is documentation of it
+23 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"AC" is topic of it
+# Property RQnumber
+AC_RQnumber isA Property
+"RQnumber" is name of it
+"RQnumber" is label of it
+"hierarchical number of this requirement, understandable key" is documentation of it
+24 is index of it
+2 is sortPos of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+# Property manualOnly
+AC_manualOnly isA Property
+"manualOnly" is name of it
+"manualOnly" is label of it
+"it frue this test can not be automated effectively - it has to be done manually" is documentation of it
+25 is index of it
+# java type boolean
+"Boolean" is type of it
+"AC" is topic of it
+# Property owner
+AC_owner isA Property
+"owner" is name of it
+"owner" is label of it
+"who is in charge of this requirement and owns it - meaning that this person is willing to accept the implications of realizing this requirements in terms of cost, time and other follow-up results" is documentation of it
+26 is index of it
+# java type string
+"Text" is type of it
+"AC" is topic of it
+#
+# OQ
+#
+OQ isA Topic
+"OQ" is name of it
+"
+an open question
+
+" is documentation of it
+"File:oq.png" is icon of it
+"property" is defaultstoremode of it
+"SmartRQM" is context of it
+OQ_description addsTo it
+OQ_answeredAt addsTo it
+OQ_state addsTo it
+OQ_question addsTo it
+OQ_OQnumber addsTo it
+OQ_name addsTo it
+OQ_assumedAnswer addsTo it
+OQ_OQid addsTo it
+OQ_placedAt addsTo it
+OQ_answer addsTo it
+#
+#OQ Properties
+#
+# Property description
+OQ_description isA Property
+"description" is name of it
+"description" is label of it
+"description of this feature/ document" is documentation of it
+1 is index of it
+# java type string
+"Text" is type of it
+"OQ" is topic of it
+# Property answeredAt
+OQ_answeredAt isA Property
+"answeredAt" is name of it
+"answeredAt" is label of it
+"date when the question was answered completely" is documentation of it
+2 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"OQ" is topic of it
+# Property state
+OQ_state isA Property
+"state" is name of it
+"state" is label of it
+"the state of this question: new, asked, answered, integrated" is documentation of it
+3 is index of it
+# java type enum {new, placed, answered, integrated}
+"Text" is type of it
+"new, placed, answered, integrated" is allowedValues of it
+"OQ" is topic of it
+# Property question
+OQ_question isA Property
+"question" is name of it
+"question" is label of it
+"the open question" is documentation of it
+4 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"OQ" is topic of it
+# Property OQnumber
+OQ_OQnumber isA Property
+"OQnumber" is name of it
+"OQnumber" is label of it
+"hierarchical number of this open question, understandable key" is documentation of it
+5 is index of it
+1 is sortPos of it
+# java type string
+"Text" is type of it
+"OQ" is topic of it
+# Property name
+OQ_name isA Property
+"name" is name of it
+"name" is label of it
+"the name of this open question" is documentation of it
+6 is index of it
+# java type string
+"Text" is type of it
+"OQ" is topic of it
+# Property assumedAnswer
+OQ_assumedAnswer isA Property
+"assumedAnswer" is name of it
+"assumedAnswer" is label of it
+"the assumed answer which is used as basis for going on " is documentation of it
+7 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"OQ" is topic of it
+# Property OQid
+OQ_OQid isA Property
+"OQid" is name of it
+"OQid" is label of it
+"unique id for this open question, technical key" is documentation of it
+8 is index of it
+true is primaryKey of it
+# java type string
+"Text" is type of it
+"OQ" is topic of it
+# Property placedAt
+OQ_placedAt isA Property
+"placedAt" is name of it
+"placedAt" is label of it
+"date when the question was asked" is documentation of it
+9 is index of it
+# java type date
+"Date" is type of it
+"datepicker" is inputType of it
+"OQ" is topic of it
+# Property answer
+OQ_answer isA Property
+"answer" is name of it
+"answer" is label of it
+"the given answer" is documentation of it
+10 is index of it
+# java type memo
+"Text" is type of it
+"textarea" is inputType of it
+500 is size of it
+"OQ" is topic of it
+TopicLink39F7D53102D4 isA TopicLink
+"RQProfile_has_RQs" is name of it
+"myRQs" is targetRole of it
+# cardinality 0..n
+true is targetMultiple of it
+# supplier Logical View::com::bitplan::rq::RQ = RQ
+"RQ" is target of it
+"myRQProfile" is sourceRole of it
+# cardinality 1
+false is sourceMultiple of it
+# supplier Logical View::com::bitplan::rq::RQProfile = RQProfile
+"RQProfile" is source of it
+TopicLink39F7D534027E isA TopicLink
+"RQ_has_ACs" is name of it
+"myACs" is targetRole of it
+# cardinality 0..n
+true is targetMultiple of it
+# supplier Logical View::com::bitplan::rq::AC = AC
+"AC" is target of it
+"myRQ" is sourceRole of it
+# cardinality 1
+false is sourceMultiple of it
+# supplier Logical View::com::bitplan::rq::RQ = RQ
+"RQ" is source of it
+TopicLink3F5855BF0101 isA TopicLink
+"RQ_has_OQs" is name of it
+"myRQ" is sourceRole of it
+# cardinality 0..1
+false is sourceMultiple of it
+# supplier Logical View::com::bitplan::rq::RQ = RQ
+"RQ" is source of it
+"myOQs" is targetRole of it
+# cardinality 0..*
+true is targetMultiple of it
+# supplier Logical View::com::bitplan::rq::OQ = OQ
+"OQ" is target of it

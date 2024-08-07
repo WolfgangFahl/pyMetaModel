@@ -1,0 +1,249 @@
+#Context
+WikiContext isA Context
+"WikiContext" is name of it
+# Model
+Wiki isA Topic
+Wiki_id addsTo it
+siteurl addsTo it
+scriptPath addsTo it
+Wiki_purpose addsTo it
+Wiki_language addsTo it
+Wiki_since addsTo it
+Wiki_until addsTo it
+Wiki_backup addsTo it
+Wiki_server addsTo it
+Wiki_safes addsTo it
+Wiki_owner addsTo it
+Wiki_project addsTo it
+"see http://en.wikipedia.org/wiki/Wiki" is wikiDocumentation of it
+"A wiki is an application, typically a web application, which allows collaborative modification, extension, or deletion of its content and structure. In a typical wiki, text is written using a simplified markup language (known as 'wiki markup') or a rich-text editor. While a wiki is a type of content management system, it differs from a blog or most other such systems in that the content is created without any defined owner or leader, and wikis have little implicit structure, allowing structure to emerge according to the needs of the users." is documentation of it
+"File:48px-Mediawiki logo reworked.png" is icon of it
+"/images/master/9/95/48px-Mediawiki_logo_reworked.png" is iconUrl of it
+"property" is defaultstoremode of it
+"WikiContext" is context of it
+#
+# Properties
+#
+# Property id
+Wiki_id isA Property
+"Text" is type of it
+"id" is name of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+"Wiki" is topic of it
+# Property purpose
+Wiki_purpose isA Property
+"The purpose of the wiki" is documentation of it
+"Text" is type of it
+"purpose" is name of it
+"purpose" is label of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Wiki" is topic of it
+# Property language
+Wiki_language isA Property
+"The language of the wiki" is documentation of it
+"Text" is type of it
+"language" is name of it
+"language" is label of it
+false is primaryKey of it
+true is mandatory of it
+false is uploadable of it
+"en" is defaultValue of it
+"radiobutton" is inputType of it
+"de,en" is allowedValues of it
+"Wiki" is topic of it
+#Property since
+Wiki_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"when was the wiki or its predecessor initialized?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property until
+Wiki_until isA Property
+"until" is name of it
+"until" is label of it
+"Date" is type of it
+6 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"when was the wiki terminated" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property backup
+Wiki_backup isA Property
+"backup" is name of it
+"backup" is label of it
+"Date" is type of it
+7 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"when was the the most recent backup of the wiki?" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property server
+Wiki_server isA Property
+"server" is name of it
+"server" is label of it
+"Page" is type of it
+8 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The server/computer where the wiki runs" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property safes
+Wiki_safes isA Property
+"safes" is name of it
+"safes" is label of it
+"Text" is type of it
+9 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"backup servers - multiple ; separated possible" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property owner
+Wiki_owner isA Property
+"owner" is name of it
+"owner" is label of it
+"Page" is type of it
+10 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"The organization or person owning the data in the wiki" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#Property project
+Wiki_project isA Property
+"project" is name of it
+"project" is label of it
+"Page" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"project the wiki is motivated by" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Wiki" is topic of it
+#
+# TransferPage
+#
+TransferPage isA Topic
+page addsTo it
+"a Wiki page which might be bulk-transferred to another Wiki" is documentation of it
+"subobject" is defaultstoremode of it
+"WikiContext" is context of it
+"File:Document_up.png" is icon of it
+"/images/4/47/Document_up.png" is iconUrl of it
+"WikiContext" is context of it
+#
+# Extension
+#
+Extension isA Topic
+"A MediaWiki extension" is documentation of it
+"File:Extension-Icon-64px.png" is icon of it
+"/images/master/a/a5/Extension-Icon-64px.png" is iconUrl of it
+"property" is defaultstoremode of it
+"WikiContext" is context of it
+Extension_name addsTo it
+Extension_url addsTo it
+Extension_purpose addsTo it
+Extension_since addsTo it
+# Property name
+Extension_name isA Property
+"Text" is type of it
+"name" is name of it
+1 is index of it
+true is primaryKey of it
+true is mandatory of it
+"Extension" is topic of it
+# Property url
+Extension_url isA Property
+"Url" is type of it
+"url" is name of it
+2 is index of it
+false is primaryKey of it
+false is mandatory of it
+"Extension" is topic of it
+# Property purpose
+Extension_purpose isA Property
+"The purpose of the extension" is documentation of it
+"Text" is type of it
+"purpose" is name of it
+3 is index of it
+"purpose" is label of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"Extension" is topic of it
+#Property since
+Extension_since isA Property
+"since" is name of it
+"since" is label of it
+"Date" is type of it
+4 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"when was the extension first installed" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Extension" is topic of it
+#Property until
+Extension_until isA Property
+"until" is name of it
+"until" is label of it
+"Date" is type of it
+5 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
+"datepicker" is inputType of it
+"when was the extension uninstall / unuseable" is documentation of it
+true is showInGrid of it
+false is isLink of it
+"Extension" is topic of it
+#
+# TopicLinks
+#
+TopicLinks_pagesToTransfer isA TopicLink
+"pagesToTransfer" is name of it
+"wiki" is sourceRole of it
+false is sourceMultiple of it
+"Wiki" is source of it
+"transferPage" is targetRole of it
+true is targetMultiple of it
+"TransferPage" is target of it
+TopicLinks_installedExtensions isA TopicLink
+"installedExtensions" is name of it
+"wiki" is sourceRole of it
+true is sourceMultiple of it
+"Wiki" is source of it
+"extensions" is targetRole of it
+true is targetMultiple of it
+"Extension" is target of it
