@@ -4,8 +4,8 @@
 MetaModel isA Context
 "MetaModel" is name of it
 "2015-01-23" is since of it
-"2022-11-24" is updated of it
-"2015-2022 BITPlan GmbH" is copyright of it
+"2024-08-01" is updated of it
+"2015-2024 BITPlan GmbH" is copyright of it
 "http://master.bitplan.com" is master of it
 #
 #Context
@@ -112,6 +112,7 @@ Property isA Topic
 Property_name addsTo it
 Property_label addsTo it
 Property_type addsTo it
+Property_scope addsTo it
 Property_index addsTo it
 Property_sortPos addsTo it
 Property_primaryKey addsTo it
@@ -172,12 +173,27 @@ false is uploadable of it
 true is showInGrid of it
 false is isLink of it
 "Property" is topic of it
+# property scope
+Property_scope isA Property
+"scope" is name of it
+"scope" is label of it
+"Text" is type of it
+"Root,Override,Global" is allowedValues of it
+"dropdown" is inputType of it
+4 is index of it
+false is primaryKey of it
+true is mandatory of it
+50 is size of it
+false is uploadable of it
+"The scope of the property" is documentation of it
+false is isLink of it
+"Property" is topic of it
 # property index
 Property_index isA Property
 "index" is name of it
 "index" is label of it
 "Number" is type of it
-4 is index of it
+5 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -190,12 +206,12 @@ Property_sortPos isA Property
 "sortPos" is name of it
 "sortPos" is label of it
 "Number" is type of it
-5 is index of it
+6 is index of it
 false is primaryKey of it
 false is mandatory of it
 3 is size of it
 false is uploadable of it
-"If none empty >0 this is the position in the sort clause of this 
+"If none empty >0 this is the position in the sort clause of this
 property. This is used when displaying list of the topic as the default sort order
 and it is used for selecting topics .
 
@@ -208,7 +224,7 @@ Property_primaryKey isA Property
 "primaryKey" is name of it
 "primary key" is label of it
 "Boolean" is type of it
-6 is index of it
+7 is index of it
 false is primaryKey of it
 false is mandatory of it
 4 is size of it
@@ -221,7 +237,7 @@ Property_mandatory isA Property
 "mandatory" is name of it
 "mandatory" is label of it
 "Boolean" is type of it
-7 is index of it
+8 is index of it
 false is primaryKey of it
 false is mandatory of it
 4 is size of it
@@ -236,7 +252,7 @@ Property_namespace isA Property
 "namespace" is name of it
 "namespace" is label of it
 "Text" is type of it
-8 is index of it
+9 is index of it
 false is primaryKey of it
 false is mandatory of it
 20 is size of it
@@ -249,7 +265,7 @@ Property_size isA Property
 "size" is name of it
 "size" is label of it
 "Number" is type of it
-9 is index of it
+10 is index of it
 false is primaryKey of it
 false is mandatory of it
 3 is size of it
@@ -262,7 +278,7 @@ Property_uploadable isA Property
 "uploadable" is name of it
 "uploadable" is label of it
 "Boolean" is type of it
-10 is index of it
+11 is index of it
 false is primaryKey of it
 false is mandatory of it
 4 is size of it
@@ -279,7 +295,7 @@ Property_defaultValue isA Property
 "defaultValue" is name of it
 "default" is label of it
 "Code" is type of it
-11 is index of it
+12 is index of it
 false is primaryKey of it
 false is mandatory of it
 80 is size of it
@@ -294,7 +310,7 @@ Property_inputType isA Property
 "inputType" is name of it
 "inputType" is label of it
 "Text" is type of it
-12 is index of it
+13 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -312,7 +328,7 @@ Property_allowedValues isA Property
 "allowedValues" is name of it
 "allowedValues" is label of it
 "Text" is type of it
-13 is index of it
+14 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -329,7 +345,7 @@ Property_documentation isA Property
 "documentation" is name of it
 "documentation" is label of it
 "Text" is type of it
-14 is index of it
+15 is index of it
 false is primaryKey of it
 false is mandatory of it
 500 is size of it
@@ -343,7 +359,7 @@ Property_values_from isA Property
 "values_from" is name of it
 "values from" is label of it
 "Code" is type of it
-15 is index of it
+16 is index of it
 false is primaryKey of it
 false is mandatory of it
 200 is size of it
@@ -365,7 +381,7 @@ Property_externalFormatterURI isA Property
 "externalFormatterURI" is name of it
 "external formatter URI" is label of it
 "Text" is type of it
-15 is index of it
+17 is index of it
 false is primaryKey of it
 false is mandatory of it
 200 is size of it
@@ -377,12 +393,12 @@ Property_showInGrid isA Property
 "showInGrid" is name of it
 "showInGrid" is label of it
 "Boolean" is type of it
-16 is index of it
+18 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
 "true" is defaultValue of it
-"I am true if this property is displayed in the default list of properties for my topic as 
+"I am true if this property is displayed in the default list of properties for my topic as
 a column" is documentation of it
 true is showInGrid of it
 false is isLink of it
@@ -392,7 +408,7 @@ Property_isLink isA Property
 "isLink" is name of it
 "isLink" is label of it
 "Boolean" is type of it
-17 is index of it
+19 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -405,7 +421,7 @@ Property_nullable isA Property
 "nullable" is name of it
 "allow nulls?" is label of it
 "Boolean" is type of it
-18 is index of it
+20 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -421,8 +437,8 @@ SMW_Type isA Topic
 "SMW_Type" is name of it
 "SMW_Types" is pluralName of it
 "an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes" is documentation of it
-"see 
-* https://semantic-mediawiki.org/wiki/Special:Types 
+"see
+* https://semantic-mediawiki.org/wiki/Special:Types
 * https://semantic-mediawiki.org/wiki/Help:List_of_datatypes" is wikiDocumentation of it
 "File:Component.png" is icon of it
 "/images/4/40/Component.png" is iconUrl of it
@@ -522,6 +538,8 @@ false is cargo of it
 "MetaModel" is context of it
 Topic_name addsTo it
 Topic_pluralName addsTo it
+Topic_isA addsTo it
+Topic_extends addsTo it
 Topic_icon addsTo it
 Topic_iconUrl addsTo it
 Topic_documentation addsTo it
@@ -558,12 +576,33 @@ false is uploadable of it
 "The plural of a topic name. E.g. for the topic 'City' the pluralName is 'Cities'. If no pluralName is specified an 's' is appended. E.g. for the topic 'Book' the default pluralName is 'Books'" is documentation of it
 false is isLink of it
 "Topic" is topic of it
+# property isA
+Topic_isA isA Property
+"isA" is name of it
+"isA" is label of it
+"Text" is type of it
+"Global" is scope of it
+3 is index of it
+false is uploadable of it
+"The metamodel kind of the topic" is documentation of it
+false is isLink of it
+"Topic" is topic of it
+Topic_extends isA Property
+"extends" is name of it
+"extends" is label of it
+"concept=Topic" is values_from of it
+"Text" is type of it
+4 is index of it
+false is uploadable of it
+"this topic specializes the topic it extends (if any)" is documentation of it
+false is isLink of it
+"Topic" is topic of it
 # property icon
 Topic_icon isA Property
 "icon" is name of it
 "icon" is label of it
 "Page" is type of it
-3 is index of it
+5 is index of it
 false is primaryKey of it
 false is mandatory of it
 "File" is namespace of it
@@ -578,7 +617,7 @@ Topic_iconUrl isA Property
 "iconUrl" is name of it
 "icon Url" is label of it
 "Code" is type of it
-4 is index of it
+6 is index of it
 false is primaryKey of it
 false is mandatory of it
 80 is size of it
@@ -593,7 +632,7 @@ Topic_documentation isA Property
 "documentation" is name of it
 "documentation" is label of it
 "Text" is type of it
-5 is index of it
+7 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -606,7 +645,7 @@ Topic_wikiDocumentation isA Property
 "wikiDocumentation" is name of it
 "wikiDocumentation" is label of it
 "Text" is type of it
-6 is index of it
+8 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -619,7 +658,7 @@ Topic_defaultstoremode isA Property
 "defaultstoremode" is name of it
 "default storemode" is label of it
 "Text" is type of it
-7 is index of it
+9 is index of it
 false is primaryKey of it
 false is mandatory of it
 50 is size of it
@@ -634,7 +673,7 @@ Topic_listLimit isA Property
 "listLimit" is name of it
 "list Limit" is label of it
 "Number" is type of it
-8 is index of it
+10 is index of it
 false is primaryKey of it
 false is mandatory of it
 4 is size of it
@@ -649,7 +688,7 @@ Topic_cargo isA Property
 "cargo" is name of it
 "use cargo" is label of it
 "Boolean" is type of it
-9 is index of it
+11 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -662,7 +701,7 @@ Topic_headerTabs isA Property
 "headerTabs" is name of it
 "headerTabs" is label of it
 "Boolean" is type of it
-10 is index of it
+12 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
@@ -868,7 +907,12 @@ TopicLink_target addsTo it
 TopicLink_targetRole addsTo it
 TopicLink_targetMultiple addsTo it
 TopicLink_targetDocumentation addsTo it
+TopicLink_separator addsTo it
 TopicLink_masterDetail addsTo it
+#
+# properties of TopicLink
+#
+# property name
 TopicLink_name isA Property
 "name" is name of it
 "name" is label of it
@@ -881,6 +925,7 @@ false is uploadable of it
 "The name of the topic link" is documentation of it
 false is isLink of it
 "TopicLink" is topic of it
+# property source
 TopicLink_source isA Property
 "source" is name of it
 "source" is label of it
@@ -895,6 +940,7 @@ false is uploadable of it
 "concept=Topic" is values_from of it
 false is isLink of it
 "TopicLink" is topic of it
+# property sourceRole
 TopicLink_sourceRole isA Property
 "sourceRole" is name of it
 "sourceRole" is label of it
@@ -906,6 +952,7 @@ false is mandatory of it
 false is uploadable of it
 false is isLink of it
 "TopicLink" is topic of it
+# property sourceMultiple
 TopicLink_sourceMultiple isA Property
 "sourceMultiple" is name of it
 "sourceMultiple" is label of it
@@ -917,6 +964,7 @@ false is mandatory of it
 false is uploadable of it
 false is isLink of it
 "TopicLink" is topic of it
+# property sourceDocumentation
 TopicLink_sourceDocumentation isA Property
 "sourceDocumentation" is name of it
 "source Doc" is label of it
@@ -930,6 +978,7 @@ false is uploadable of it
 "Documentation for the source Role" is documentation of it
 false is isLink of it
 "TopicLink" is topic of it
+# property target
 TopicLink_target isA Property
 "target" is name of it
 "target" is label of it
@@ -941,6 +990,7 @@ false is mandatory of it
 false is uploadable of it
 false is isLink of it
 "TopicLink" is topic of it
+# property targetRole
 TopicLink_targetRole isA Property
 "targetRole" is name of it
 "targetRole" is label of it
@@ -952,6 +1002,7 @@ false is mandatory of it
 false is uploadable of it
 false is isLink of it
 "TopicLink" is topic of it
+# property targetMultiple
 TopicLink_targetMultiple isA Property
 "targetMultiple" is name of it
 "sourceMultiple" is label of it
@@ -963,6 +1014,7 @@ false is mandatory of it
 false is uploadable of it
 false is isLink of it
 "TopicLink" is topic of it
+# property targetDocumentation
 TopicLink_targetDocumentation isA Property
 "targetDocumentation" is name of it
 "target Doc" is label of it
@@ -976,17 +1028,30 @@ false is uploadable of it
 "Documentation for the target Role" is documentation of it
 false is isLink of it
 "TopicLink" is topic of it
-TopicLink_masterDetail isA Property
-"masterDetail" is name of it
-"masterDetail" is label of it
-"Boolean" is type of it
+# property separator
+TopicLink_separator isA Property
+"separator" is name of it
+"separator" is label of it
+"Text" is type of it
 10 is index of it
 false is primaryKey of it
 false is mandatory of it
 false is uploadable of it
+"[https://www.semantic-mediawiki.org/wiki/Help:Setting_values/Working_with_the_separator_parameter separator parameter] to be used in [https://www.semantic-mediawiki.org/wiki/Help:Setting_values/Working_with_the_separator_parameter SMW #set] - no separator is given subobjects are assumed" is documentation of it
+false is isLink of it
+"TopicLink" is topic of it
+# property masterDetail
+TopicLink_masterDetail isA Property
+"masterDetail" is name of it
+"masterDetail" is label of it
+"Boolean" is type of it
+11 is index of it
+false is primaryKey of it
+false is mandatory of it
+false is uploadable of it
 "should the details be displayed in the same form and template?
-If no 
-* for a 1:1 link there will be a linking attribute used and that can be selected. 
+If no
+* for a 1:1 link there will be a linking attribute used and that can be selected.
 * for a 1:n link a link to the list of neighbours will be displayed
 if yes
 * for a 1:1 link the details
@@ -1003,15 +1068,17 @@ false is sourceMultiple of it
 "Topic" is source of it
 "properties" is targetRole of it
 true is targetMultiple of it
-"Property" is target of it 
+"Property" is target of it
 TopicLinks_containedTopics isA TopicLink
 "containedTopics" is name of it
 "context" is sourceRole of it
+"the context this topic belongs to" is sourceDocumentation of it
 false is sourceMultiple of it
 "Context" is source of it
 "topics" is targetRole of it
+"the topic of this context" is targetDocumentation of it
 true is targetMultiple of it
-"Topic" is target of it 
+"Topic" is target of it
 TopicLinks_typeOfProperty isA TopicLink
 "typeOfProperty" is name of it
 "usedByProperties" is sourceRole of it
@@ -1022,7 +1089,7 @@ true is sourceMultiple of it
 false is targetMultiple of it
 "SMW_Type" is target of it
 false is masterDetail of it
-"the smw_type being used by this property" is targetDocumentation of it 
+"the smw_type being used by this property" is targetDocumentation of it
 # data
 Annotation_URI isA SMW_Type
 "Annotation URI" is type of it
