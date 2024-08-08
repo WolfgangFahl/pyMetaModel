@@ -66,7 +66,7 @@ class TestMediawiki(BaseSemanticMediawikiTest):
         if debug:
             for prop in props:
                 print(f"{getattr(prop,'index','?')}:{prop.name}")
-        self.assertEqual(11, len(props))
+        self.assertEqual(13, len(props))
         self.assertTrue("pluralName", props[1].name)
 
     def testAskQuery4Topic(self):

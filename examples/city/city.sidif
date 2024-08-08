@@ -1,10 +1,11 @@
 #
 # Context:City
 #
-City isA Context
-"City" is name of it
+CityContext isA Context
+"CityContext" is name of it
 "2015-08-22" is since of it
-"2015 Wolfgang Fahl" is copyright of it
+"2024-08-08" is updated of it
+"Wolfgang Fahl" is copyright of it
 "https://wiki.bitplan.com/City" is master of it
 #
 #City
@@ -14,7 +15,7 @@ City isA Topic
 "Cities" is pluralName of it
 "I represent a City like Berlin, New York or Tokyo" is documentation of it
 "property" is defaultstoremode of it
-"City" is context of it
+"CityContext" is context of it
 City_name addsTo it
 City_webpage addsTo it
 City_wikipedia_url addsTo it
@@ -61,4 +62,4 @@ City_Population isA Property
 3 is index of it
 false is isLink of it
 "City" is topic of it
-Country isA Topic
+

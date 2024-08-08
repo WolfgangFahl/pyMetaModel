@@ -5,7 +5,7 @@ CrSchema2408 isA Context
 "CrSchema2408" is name of it
 "http://cr.bitplan.com" is master of it
 "2020-07-22" is since of it
-"202408-02" is updated of it
+"2024-08-02" is updated of it
 
 #
 # WikidataItem
@@ -230,7 +230,7 @@ false is isLink of it
 #
 # Proceedings
 #
-Proceedings extends WikiDataItem
+Proceedings extends WikidataItem
 "Proceedings" is name of it
 "Proceedings" is pluralName of it
 "Proceedings are a collection of papers mostly documenting the results of an academic event" is documentation of it

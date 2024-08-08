@@ -71,11 +71,22 @@ class Context(MetaModelElement):
             {
                 "name": "MetaModel",
                 "since": datetime.strptime("2015-01-23", "%Y-%m-%d"),
+                "updated": datetime.strptime("2024-08-07", "%Y-%m-%d"),
                 "copyright": "2015-2024 BITPlan GmbH",
-                "master": "http://smw-meta.bitplan.com",
+                "master": "https://contexts.bitplan.com",
+                "demo": "https://wiki.bitplan.com/index.php/List_of_Contexts"
             }
         ]
         return samples
+
+    def sanitize(self,key:str):
+        """
+        make sure my needed properties exist
+        """
+        if not hasattr(self,"name"):
+            self.name=key
+            pass
+        pass
 
     def error(self, msg):
         print(msg, file=sys.stderr)
@@ -218,6 +229,7 @@ class Context(MetaModelElement):
             if isA == "Context":
                 context = Context()
                 context.fromDict(record)
+                context.sanitize(key)
             elif isA == "TopicLink":
                 """
                 # Event n : 1 City
@@ -244,9 +256,9 @@ class Context(MetaModelElement):
                 topic.sanitize()
                 if context is None:
                     context = Context()
-                    context.name = "GeneralContext"
+                    context.name = "GlobalContext"
                     context.since = "2022-11-26"
-                    context.master = "http://master.bitplan.com"
+                    context.master = "http://contexts.bitplan.com"
                     context.error(f"topic {topic.name} has no defined context")
                 if hasattr(topic, "name"):
                     context.topics[topic.name] = topic
@@ -419,7 +431,8 @@ class Topic(MetaModelElement):
 
     def sanitize(self):
         """
-        make sure my properties exist
+        make sure my properties exist note that name is not handled here
+        on purpose since it needs special treatment
         """
         doc=self.documentation if hasattr(self, "documentation") else "?"
         if not hasattr(self, "wikiDocumentation") or not self.wikiDocumentation:

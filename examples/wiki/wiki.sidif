@@ -1,8 +1,9 @@
-#Context
+# Context
 WikiContext isA Context
 "WikiContext" is name of it
 # Model
 Wiki isA Topic
+"Wiki" is name of it
 Wiki_id addsTo it
 siteurl addsTo it
 scriptPath addsTo it
@@ -153,6 +154,7 @@ false is isLink of it
 # TransferPage
 #
 TransferPage isA Topic
+"TransferPage" is name of it
 page addsTo it
 "a Wiki page which might be bulk-transferred to another Wiki" is documentation of it
 "subobject" is defaultstoremode of it
@@ -164,6 +166,7 @@ page addsTo it
 # Extension
 #
 Extension isA Topic
+"Extension" is name of it
 "A MediaWiki extension" is documentation of it
 "File:Extension-Icon-64px.png" is icon of it
 "/images/master/a/a5/Extension-Icon-64px.png" is iconUrl of it

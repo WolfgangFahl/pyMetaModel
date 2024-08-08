@@ -53,7 +53,7 @@ class MediaWikiContext:
                 sidif_sections = mw_code.get_sections(matches="sidif")
                 if len(sidif_sections) != 1:
                     raise Exception(
-                        f"found {len(sidif_sections)} sidif sections but expected exactly 1"
+                        f"found {len(sidif_sections)} sidif sections in {self.context}@{wikiUser.wikiId} but expected exactly 1"
                     )
                 for node in sidif_sections[0].filter_tags(matches="source"):
                     sidif = str(node.contents)
