@@ -249,6 +249,7 @@ class Context(MetaModelElement):
                 prop = Property()
                 prop.isLink = False
                 prop.fromDict(record)
+                prop.sanitize()
                 context.addProperty(prop)
             else:  # isA == Topic or in declared topics
                 topic = Topic()
@@ -656,7 +657,8 @@ class Property(MetaModelElement):
                 "sortPos": 2,
                 "primaryKey": False,
                 "mandatory": True,
-                "namespace": "Test",
+                "namespace": "Main",
+                "scope": "Global",
                 "size": 25,
                 "uploadable": False,
                 "defaultValue": "Some Title",
@@ -684,6 +686,15 @@ class Property(MetaModelElement):
         ]
         return samples
 
+
+    def sanitize(self):
+        """
+        make sure attributes such as namespace are set properly
+        """
+        self.namespace="Property"
+        if hasattr(self, "scope"):
+            pass
+        pass
 
 class TopicLink(MetaModelElement):
     """
