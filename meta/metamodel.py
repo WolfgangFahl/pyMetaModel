@@ -692,6 +692,7 @@ class Property(MetaModelElement):
         make sure attributes such as namespace are set properly
         """
         self.namespace="Property"
+        self.topicLink=None
         if hasattr(self, "scope"):
             pass
         pass
