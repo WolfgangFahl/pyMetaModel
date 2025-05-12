@@ -18,6 +18,9 @@ class TestSiDIF(Basetest):
 
 
     def check_sidif(self,sidif_path,file)->Context:
+        """
+        check the given SiDIF input
+        """
         debug=self.debug
         context, error, errMsg = Context.fromSiDIF_input(sidif_path, debug=debug)
         self.assertFalse(error, f"Error in {file}: {errMsg}")
@@ -38,9 +41,12 @@ class TestSiDIF(Basetest):
 
         # Check if all properties have names and types
         for topic in context.topics.values():
-            for prop in topic.properties.values():
-                self.assertTrue(hasattr(prop, 'name'), f"Property without name in {file}")
-                self.assertTrue(hasattr(prop, 'type'), f"Property without type in {file}")
+            for key, prop in topic.properties.items():
+                for needed_prop in ["name", "type", "showInGrid"]:
+                    self.assertTrue(
+                        hasattr(prop, needed_prop),
+                        f"Property '{key}' missing attribute '{needed_prop}' in {file}"
+                    )
         return context
 
 

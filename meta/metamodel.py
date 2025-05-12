@@ -210,6 +210,7 @@ class Context(MetaModelElement):
         prop.type = "Page"
         prop.topicLink = tl
         prop.isLink = True
+        prop.showInGrid = False
         return prop
 
     @classmethod
@@ -697,6 +698,8 @@ class Property(MetaModelElement):
         self.topicLink=None
         if hasattr(self, "scope"):
             pass
+        if not hasattr(self, "showInGrid"):
+            self.showInGrid=True
         pass
 
 class TopicLink(MetaModelElement):
