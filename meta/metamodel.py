@@ -603,6 +603,7 @@ class Topic(MetaModelElement):
         mainlabel: str = None,
         filterShowInGrid: bool = True,
         listLimit: int = None,
+        result_format: str="table"
     ) -> str:
         """
         Get the askQuery for the topic, considering inheritance.
@@ -632,6 +633,7 @@ class Topic(MetaModelElement):
                     # Use the topic_name as prefix, which will be correct for inherited properties
                     markup += f"|?{topic_name} {prop.name} = {prop.name}\n"
         markup += f"|limit={listLimit}\n"
+        markup += f"|format={result_format}\n"
         markup += f"""{self.askSort()}}}}}"""
         return markup
 
