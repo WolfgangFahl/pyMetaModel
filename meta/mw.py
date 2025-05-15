@@ -1,5 +1,5 @@
 """
-Created on 23.11.2022
+Created on 2022-11-23
 
 @author: wf
 """
@@ -40,7 +40,9 @@ class MediaWikiContext:
         """
         sidif = None
         wikiusers = WikiUser.getWikiUsers(lenient=True)
-        if self.wikiId in wikiusers:
+        if not self.wikiId in wikiusers:
+            raise ValueError(f"unknown wiki {self.wikiId}")
+        else:
             wikiUser = wikiusers[self.wikiId]
             self.wikiClient = WikiClient.ofWikiId(wikiUser.wikiId)
             if self.wikiClient.needsLogin():

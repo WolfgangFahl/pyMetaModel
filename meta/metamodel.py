@@ -356,8 +356,9 @@ class Context(MetaModelElement):
         error = None
         errMsg = None
         sidif = None
+        msg=f"reading sidif for {mw_context.context} from {mw_context.wikiId}"
         if debug:
-            print(f"reading sidif for {mw_context.context} from {mw_context.wikiId}")
+            print(msg)
         try:
             sidif = mw_context.read_sidif()
         except BaseException as ex:
@@ -367,6 +368,9 @@ class Context(MetaModelElement):
             context, error, errMsg = cls.fromSiDIF(
                 sidif=sidif, title=mw_context.wikiId, depth=depth, debug=debug
             )
+        else:
+            errMsg=f"{msg} failed"
+            error=ValueError(msg)
         return context, error, errMsg
 
 
