@@ -7,7 +7,7 @@ Created on 2022-11-23
 import json
 
 from wikibot3rd.wikiuser import WikiUser
-
+from tqdm import tqdm
 from meta.metamodel import Context
 from tests.basesmwtest import BaseSemanticMediawikiTest
 
@@ -137,13 +137,17 @@ class TestMediawiki(BaseSemanticMediawikiTest):
         """
         test reading meta models from wikis
         """
-        debug = True
+        debug = False
         lenient = True
-        for wikiId in WikiUser.getWikiUsers(lenient=True):
+        with_progress=False
+        wiki_users = WikiUser.getWikiUsers(lenient=True)
+        wiki_iter = tqdm(wiki_users, desc="Wikis") if with_progress else wiki_users
+        for wikiId in wiki_iter:
             _smwAccess, mw_contexts = self.check_contexts(wikiId)
             for context_name in mw_contexts:
+                context_info=f"{context_name}@{wikiId}"
                 if debug:
-                    print(f"reading context {context_name} from wiki {wikiId}")
+                    print(f"reading context {context_info}")
                 cc = self.getContextContext(wikiId=wikiId, context_name=context_name)
                 context = cc.context
                 if not lenient:
@@ -156,8 +160,8 @@ class TestMediawiki(BaseSemanticMediawikiTest):
                     print(context)
                     for _name, topic in context.topics.items():
                         print(topic)
-                        for _name, property in topic.properties.items():
-                            print(property)
+                        for _name, prop in topic.properties.items():
+                            print(prop)
                 if len(context.errors) > 0:
                     for error in context.errors:
                         print(error)
