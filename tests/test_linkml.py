@@ -29,7 +29,7 @@ class TestLinkML(BaseMediawikiTest):
         test conversion from SiDIF to LinkML
         """
         debug = self.debug
-        debug = True
+        #debug = True
         parser = MetaModelCmd.getArgParser()
         mm_cmd = MetaModelCmd(debug=debug)
         for wikiId, context_name in [("wiki", "MetaModel"), ("cr", "CrSchema")]:

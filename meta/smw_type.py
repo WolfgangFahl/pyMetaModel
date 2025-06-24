@@ -1,10 +1,8 @@
-from dataclasses import dataclass
 from typing import Optional
 
-import dacite
+from basemkit.yamlable import lod_storable
 
-
-@dataclass
+@lod_storable
 class SMW_Type:
     """
     an SMW_Type is a data type which determines the possible values for that type e.g. a Boolean can hold true/false values while a Number can hold 3.1459 or 20. A Page can hold the name of a Wiki page see https://semantic-mediawiki.org/wiki/Help:List_of_datatypes
@@ -41,17 +39,3 @@ class SMW_Type:
 | limit=200
 }}"""
         return ask
-
-    @classmethod
-    def fromDict(cls, data: dict)->'SMW_Type':
-        """
-        create a SMW_Type from the given dict
-
-        Args:
-            data (dict): the dict to create the SMW_Type from
-
-        Returns:
-            SMW_Type: the freshly created SMW_Type
-        """
-        smw_type = dacite.from_dict(data_class=cls, data=data)
-        return smw_type

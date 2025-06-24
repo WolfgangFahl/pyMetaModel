@@ -50,6 +50,8 @@ class SiDIF2LinkML:
             master = "http://example.com"
         uri = f"{master}/{context.name}"
         for topic in self.context.topics.values():
+            if not topic.name:
+                continue
             cd = ClassDefinition(name=topic.name)
             cd.description = topic.documentation
             sv.add_class(cd)

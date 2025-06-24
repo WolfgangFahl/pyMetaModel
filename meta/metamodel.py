@@ -10,11 +10,14 @@ import sys
 from typing import List, Optional, Tuple, Dict
 import typing
 
+from basemkit.persistent_log import Log
+from basemkit.yamlable import lod_storable
 from meta.mw import MediaWikiContext
+from meta.smw_type import SMW_Type
 from sidif.sidif import SiDIFParser
 import urllib3
-from basemkit.yamlable import lod_storable
-from basemkit.persistent_log import Log
+
+
 
 @lod_storable
 class Context:
@@ -220,6 +223,9 @@ class Context:
                     prop = Property.from_dict2(record)
                     prop.sanitize()
                     context.addProperty(prop)
+                elif isA == "SMW_Type":
+                    smw_type=SMW_Type.from_dict2(record) # @UndefinedVariable
+                    context.types[smw_type.type]=smw_type
                 else:  # isA == Topic or in declared topics
                     topic = Topic.from_dict2(record)
                     topic.sanitize()
@@ -229,11 +235,9 @@ class Context:
                         context.since = "2022-11-26"
                         context.master = "http://contexts.bitplan.com"
                         context.error(f"topic {topic.name} has no defined context")
-                    if hasattr(topic, "name"):
+                    if hasattr(topic, "name") and topic.name:
                         context.topics[topic.name] = topic
                         topic.context_obj=context
-                    elif hasattr(topic, "type"):
-                        context.types[topic.type]=topic
                     else:
                         # potential foreign or extends declaration
                         context.error(f"missing name for topic {topic} {key} - foreign declaration?")
@@ -362,7 +366,6 @@ class Topic:
     properties: Dict[str, 'Property'] = field(default_factory=dict)
     sourceTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
     targetTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
-
 
 
     def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
