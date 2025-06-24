@@ -4,66 +4,37 @@ Created on 2022-11-23
 @author: wf
 """
 
-import sys
-import typing
+from dataclasses import field
 from datetime import datetime
-from typing import List, Optional, Tuple
-
-import urllib3
-from lodstorage.jsonable import JSONAble
-from sidif.sidif import SiDIFParser
+import sys
+from typing import List, Optional, Tuple, Dict
+import typing
 
 from meta.mw import MediaWikiContext
+from sidif.sidif import SiDIFParser
+import urllib3
+from basemkit.yamlable import lod_storable
+from basemkit.persistent_log import Log
 
-
-class MetaModelElement(JSONAble):
-    """
-    a generic MetaModelElement
-
-    to handle the technicalities of being a MetaModelElement so that derived
-    MetaModelElements can focus on the MetaModel domain specific aspects
-    """
-
-    def __init__(self):
-        """
-        construct me
-        """
-        self.__metamodel_props = {}
-        cls = self.__class__
-        if hasattr(cls, "getSamples"):
-            for sample in cls.getSamples():
-                for key in sample.keys():
-                    if not key in self.__metamodel_props:
-                        self.__metamodel_props[key] = key  # Property(self,key)
-
-    def __str__(self):
-        """
-        get a string representation of me
-        """
-        text = self.__class__.__name__
-        for prop_name in self.__metamodel_props.keys():
-            if not isinstance(prop_name, str):
-                pass
-            elif hasattr(self, prop_name):
-                value = getattr(self, prop_name)
-                text += f"\n  {prop_name}={str(value)}"
-        return text
-
-
-class Context(MetaModelElement):
+@lod_storable
+class Context:
     """
     A Context groups some topics like a Namespace/Package.
     This class provides helper functions and constants to render a Context to corresponding wiki pages
     """
+    name: Optional[str] = None
+    since: Optional[str] = None # isodate string
+    updated: Optional[str] = None # isodate string
+    copyright: Optional[str] = None
+    master: Optional[str] = None
+    demo: Optional[str] = None
+    topics: Dict[str, 'Topic'] = field(default_factory=dict)
+    types: Dict[str, 'Topic'] = field(default_factory=dict)
+    errors: List[str] = field(default_factory=list)
 
-    def __init__(self):
-        """
-        constructor
-        """
-        MetaModelElement.__init__(self)
-        self.topics = {}
-        self.types = {}
-        self.errors = []
+    def __post_init__(self):
+        self.log=Log()
+        pass
 
     @classmethod
     def getSamples(cls):
@@ -72,7 +43,7 @@ class Context(MetaModelElement):
                 "name": "MetaModel",
                 "since": datetime.strptime("2015-01-23", "%Y-%m-%d"),
                 "updated": datetime.strptime("2024-08-07", "%Y-%m-%d"),
-                "copyright": "2015-2024 BITPlan GmbH",
+                "copyright": "2015-2025 BITPlan GmbH",
                 "master": "https://contexts.bitplan.com",
                 "demo": "https://wiki.bitplan.com/index.php/List_of_Contexts"
             }
@@ -226,51 +197,52 @@ class Context(MetaModelElement):
         """
         context = None
         for key, record in did.items():
-            isA = record.get("isA")
-            if isA == "Context":
-                context = Context()
-                context.fromDict(record)
-                context.sanitize(key)
-            elif isA == "TopicLink":
-                """
-                # Event n : 1 City
-                Event_in_City isA TopicLink
-                "eventInCity" is name of it
-                "city" is sourceRole of it
-                false is sourceMultiple of it
-                "City" is source of it
-                "event" is targetRole of it
-                true is targetMultiple of it
-                "Event" is target of it
-                """
-                tl = TopicLink()
-                tl.fromDict(record)
-                context.addLink(tl)
-            elif isA == "Property":
-                prop = Property()
-                prop.isLink = False
-                prop.fromDict(record)
-                prop.sanitize()
-                context.addProperty(prop)
-            else:  # isA == Topic or in declared topics
-                topic = Topic()
-                topic.fromDict(record)
-                topic.sanitize()
-                if context is None:
-                    context = Context()
-                    context.name = "GlobalContext"
-                    context.since = "2022-11-26"
-                    context.master = "http://contexts.bitplan.com"
-                    context.error(f"topic {topic.name} has no defined context")
-                if hasattr(topic, "name"):
-                    context.topics[topic.name] = topic
-                    topic.context_obj=context
-                elif hasattr(topic, "type"):
-                    context.types[topic.type]=topic
+            try:
+                isA = record.get("isA")
+                if isA == "Context":
+                    context = Context.from_dict2(record)
+                    context.sanitize(key)
+                elif isA == "TopicLink":
+                    """
+                    # Event n : 1 City
+                    Event_in_City isA TopicLink
+                    "eventInCity" is name of it
+                    "city" is sourceRole of it
+                    false is sourceMultiple of it
+                    "City" is source of it
+                    "event" is targetRole of it
+                    true is targetMultiple of it
+                    "Event" is target of it
+                    """
+                    tl = TopicLink.from_dict2(record)
+                    context.addLink(tl)
+                elif isA == "Property":
+                    prop = Property.from_dict2(record)
+                    prop.sanitize()
+                    context.addProperty(prop)
+                else:  # isA == Topic or in declared topics
+                    topic = Topic.from_dict2(record)
+                    topic.sanitize()
+                    if context is None:
+                        context = Context()
+                        context.name = "GlobalContext"
+                        context.since = "2022-11-26"
+                        context.master = "http://contexts.bitplan.com"
+                        context.error(f"topic {topic.name} has no defined context")
+                    if hasattr(topic, "name"):
+                        context.topics[topic.name] = topic
+                        topic.context_obj=context
+                    elif hasattr(topic, "type"):
+                        context.types[topic.type]=topic
+                    else:
+                        # potential foreign or extends declaration
+                        context.error(f"missing name for topic {topic} {key} - foreign declaration?")
+            except Exception as ex:
+                if context:
+                    msg=f"invalid dict {record}: {str(ex)}"
+                    context.log.log("❌","dict",msg)
                 else:
-                    # potential foreign or extends declaration
-                    context.error(f"missing name for topic {topic} {key} - foreign declaration?")
-
+                    raise ex
         # link topic to concepts and add topicLinks
         for topic in context.topics.values():
             topic.setConceptProperty()
@@ -373,22 +345,25 @@ class Context(MetaModelElement):
             error=ValueError(msg)
         return context, error, errMsg
 
-
-class Topic(MetaModelElement):
+@lod_storable
+class Topic:
     """
     A Topic is a Concept/Class/Thing/Entity
     """
+    name: Optional[str] = None
+    _pluralName: Optional[str] = None
+    documentation: Optional[str] = None
+    wikiDocumentation: Optional[str] = None
+    defaultstoremode: str = "property"
+    extends: Optional[str] = None
+    context_obj: Optional[Context] = None
+    conceptProperty: Optional['Property'] = None
+    listLimit: int = 200
+    properties: Dict[str, 'Property'] = field(default_factory=dict)
+    sourceTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
+    targetTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
 
-    def __init__(self):
-        """
-        constructor
-        """
-        MetaModelElement.__init__(self)
-        self._pluralName = None # Initialize with underscore to indicate a protected attribute
 
-        self.properties = {}
-        self.sourceTopicLinks = {}
-        self.targetTopicLinks = {}
 
     def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
         """
@@ -574,7 +549,7 @@ class Topic(MetaModelElement):
             props_count = len(props)
 
             # Sort properties locally by index
-            sorted_props = sorted(props, key=lambda p: getattr(p, 'index', props_count))
+            sorted_props = sorted(props, key=lambda p: p.index or props_count)
 
         return sorted_props
 
@@ -642,16 +617,26 @@ class Topic(MetaModelElement):
         markup += f"""{self.askSort()}}}}}"""
         return markup
 
-class Property(MetaModelElement):
+@lod_storable
+class Property:
     """
     Provides helper functions and constants for properties
     """
+    name: Optional[str] = None
+    label: Optional[str] = None
+    type: Optional[str] = None
+    topic: Optional[str] = None
+    documentation: Optional[str] = None
+    namespace: str = "Property"
+    showInGrid: bool = True
+    isLink: bool = False
+    topicLink: Optional['TopicLink'] = None
+    index: Optional[int] = None
+    sortPos: Optional[int] = None
+    primaryKey: bool = False
+    mandatory: bool = False
+    sortAscending: bool = True
 
-    def __init__(self):
-        """
-        constructor
-        """
-        MetaModelElement.__init__(self)
 
     @classmethod
     def getSamples(cls):
@@ -706,10 +691,23 @@ class Property(MetaModelElement):
             self.showInGrid=True
         pass
 
-class TopicLink(MetaModelElement):
+@lod_storable
+class TopicLink:
     """
     A TopicLink links two Concepts/Topics
     """
+
+    name: Optional[str] = None
+    source: Optional[str] = None
+    target: Optional[str] = None
+    sourceRole: Optional[str] = None
+    targetRole: Optional[str] = None
+    sourceMultiple: bool = False
+    targetMultiple: bool = False
+    sourceDocumentation: Optional[str] = None
+    targetDocumentation: Optional[str] = None
+    sourceTopic: Optional[Topic] = None
+    targetTopic: Optional[Topic] = None
 
     @classmethod
     def getSamples(cls):

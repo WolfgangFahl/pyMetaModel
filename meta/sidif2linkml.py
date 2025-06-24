@@ -59,7 +59,8 @@ class SiDIF2LinkML:
                     qname = prop.name
                     if prop.name in sd.slots:
                         slot = sd.slots[prop.name]
-                        slot.description += "," + prop.documentation
+                        if prop.documentation:
+                            slot.description += "," + prop.documentation
                 else:
                     qname = f"{topic.name}{delim}{prop.name}"
                 if slot is None:

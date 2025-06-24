@@ -17,23 +17,25 @@ readme = "README.md"
 # flit_core.config.ConfigError: license field should be <class 'dict'>, not <class 'str'>
 license = { file="LICENSE" }
 dependencies = [
-		# https://pypi.org/project/py-sidif/
-        'py-sidif>=0.2.0',
-        # https://github.com/urllib3/urllib3
-        'urllib3',
-  		# https://github.com/konradhalas/dacite
-		'dacite>=1.8.1',
-     ]
+	# https://pypi.org/project/pybasemkit/
+	# https://github.com/WolfgangFahl/pybasemkit
+	# Python base module kit: YAML/JSON I/O, structured logging, CLI tooling, shell execution, and remote pydevd debug support.
+	"pybasemkit>=0.0.4",
+	# https://pypi.org/project/py-sidif/
+	'py-sidif>=0.2.0',
+	# https://github.com/urllib3/urllib3
+	'urllib3',
+]
 
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 classifiers=[
     "Development Status :: 4 - Beta",
     "Environment :: Web Environment",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
     "Topic :: Software Development",
     "Intended Audience :: Developers",
@@ -52,11 +54,6 @@ Source = "https://github.com/WolfgangFahl/pyMetaModel"
 [project.optional-dependencies]
 test = [
 	"green",
-]
-# python List of Dict (Table) Storage library
-lodstorage = [
-	# https://pypi.org/project/pylodstorage/
-	'pyLodStorage>=0.13.3',
 ]
 # LinkML support
 # https://linkml.io/
