@@ -25,12 +25,12 @@ class TestMetaModel(BaseMediawikiTest):
         """
         test SMW_Type handling
         """
-        debug = True
+        debug = self.debug
         smwAccess = self.smwAccessMap["wiki"]
         ask_query = SMW_Type.askQuery()
         did = smwAccess.smw.query(ask_query)
         for record in did.values():
-            smw_Type = SMW_Type.fromDict(record)
+            smw_type = SMW_Type.from_dict(record) # @UndefinedVariable
             if debug:
-                print(smw_Type)
-            pass
+                print(smw_type)
+            self.assertIsInstance(smw_type, SMW_Type)
