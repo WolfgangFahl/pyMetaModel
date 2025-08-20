@@ -17,6 +17,7 @@ from meta.smw_type import SMW_Type
 from sidif.sidif import SiDIFParser
 import urllib3
 
+# see also https://wiki.bitplan.com/index.php/PyMetaModel
 
 
 @lod_storable
@@ -355,14 +356,17 @@ class Topic:
     A Topic is a Concept/Class/Thing/Entity
     """
     name: Optional[str] = None
-    icon: Optional[str] = None
-    context: Optional[str] = None
     _pluralName: Optional[str] = None
+    icon: Optional[str] = None
+    iconUrl: Optional[str] = None
     documentation: Optional[str] = None
     wikiDocumentation: Optional[str] = None
     defaultstoremode: str = "property"
     extends: Optional[str] = None
     listLimit: int = 200
+    cargo:bool=False
+    headerTabs:bool=False
+    context: Optional[str] = None
     properties: Dict[str, 'Property'] = field(default_factory=dict)
     sourceTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
     targetTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
@@ -632,17 +636,26 @@ class Property:
     name: Optional[str] = None
     label: Optional[str] = None
     type: Optional[str] = None
-    topic: Optional[str] = None
-    documentation: Optional[str] = None
-    namespace: str = "Property"
-    showInGrid: bool = True
-    isLink: bool = False
-    topicLink: Optional['TopicLink'] = None
     index: Optional[int] = None
     sortPos: Optional[int] = None
     primaryKey: bool = False
     mandatory: bool = False
+    namespace: str = "Property"
+    size: Optional[int] = None
+    uploadable: bool = False
+    defaultValue: Optional[str] = None
+    inputType: Optional[str] = None
+    allowedValues: Optional[str]=None
+    documentation: Optional[str] = None
+    values_from: Optional[str]=None
+    formatterURI: Optional[str] = None # externalFormatterURI
+    showInGrid: bool = True
+    isLink: bool = False
+    nullable: bool = False
     sortAscending: bool = True
+    # Links
+    topic: Optional[str] = None
+    topicLink: Optional['TopicLink'] = None
 
 
     @classmethod
@@ -706,14 +719,16 @@ class TopicLink:
 
     name: Optional[str] = None
     source: Optional[str] = None
-    target: Optional[str] = None
-    separator: Optional[str] = None
     sourceRole: Optional[str] = None
-    targetRole: Optional[str] = None
     sourceMultiple: bool = False
-    targetMultiple: bool = False
     sourceDocumentation: Optional[str] = None
+    target: Optional[str] = None
+    targetRole: Optional[str] = None
+    targetMultiple: bool = False
     targetDocumentation: Optional[str] = None
+    separator: Optional[str] = None
+
+    # calculate objects
     sourceTopic: Optional[Topic] = None
     targetTopic: Optional[Topic] = None
 
