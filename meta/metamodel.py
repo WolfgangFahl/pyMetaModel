@@ -707,6 +707,7 @@ class TopicLink:
     name: Optional[str] = None
     source: Optional[str] = None
     target: Optional[str] = None
+    separator: Optional[str] = None
     sourceRole: Optional[str] = None
     targetRole: Optional[str] = None
     sourceMultiple: bool = False
