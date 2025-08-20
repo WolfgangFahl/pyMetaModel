@@ -355,17 +355,20 @@ class Topic:
     A Topic is a Concept/Class/Thing/Entity
     """
     name: Optional[str] = None
+    icon: Optional[str] = None
+    context: Optional[str] = None
     _pluralName: Optional[str] = None
     documentation: Optional[str] = None
     wikiDocumentation: Optional[str] = None
     defaultstoremode: str = "property"
     extends: Optional[str] = None
-    context_obj: Optional[Context] = None
-    conceptProperty: Optional['Property'] = None
     listLimit: int = 200
     properties: Dict[str, 'Property'] = field(default_factory=dict)
     sourceTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
     targetTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
+    # object references
+    context_obj: Optional[Context] = None
+    conceptProperty: Optional['Property'] = None
 
 
     def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
@@ -423,6 +426,7 @@ class Topic:
             self.wikiDocumentation=doc
         if not hasattr(self,"defaultstoremode"):
             self.defaultstoremode="property"
+        pass
 
     @classmethod
     def getSamples(cls):
