@@ -709,6 +709,8 @@ class Property:
             pass
         if not hasattr(self, "showInGrid"):
             self.showInGrid=True
+        if not hasattr(self, "label"):
+            self.label=getattr(self,"name")
         pass
 
 @lod_storable
