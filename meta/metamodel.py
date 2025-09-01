@@ -711,6 +711,8 @@ class Property:
             self.showInGrid=True
         if not hasattr(self, "label"):
             self.label=getattr(self,"name")
+        if not hasattr(self, "type"):
+            self.type="Text"
         pass
 
 @lod_storable
