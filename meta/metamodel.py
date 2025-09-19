@@ -711,7 +711,7 @@ class Property:
             self.showInGrid=True
         if not hasattr(self, "label"):
             self.label=getattr(self,"name")
-        if not hasattr(self, "type"):
+        if not hasattr(self, "type") or not self.type:
             self.type="Text"
         pass
 
