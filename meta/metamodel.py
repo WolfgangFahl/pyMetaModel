@@ -375,6 +375,13 @@ class Topic:
     conceptProperty: Optional['Property'] = None
 
 
+    def get_primary_key_property(self) -> Optional['Property']:
+        """Return the first property marked as primaryKey, or None."""
+        return next(
+            (p for p in self.properties.values() if getattr(p, "primaryKey", False)),
+            None,
+        )
+
     def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
         """
         Get the topics this topic is extending.
