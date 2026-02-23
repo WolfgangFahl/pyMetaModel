@@ -6,6 +6,8 @@ Created on 2023-02-25
 
 from meta.smw_type import SMW_Type
 from tests.basemwtest import BaseMediawikiTest
+from meta.metamodel import Property, Topic
+from tests.basetest import Basetest
 
 
 class TestMetaModel(BaseMediawikiTest):
@@ -30,14 +32,10 @@ class TestMetaModel(BaseMediawikiTest):
         ask_query = SMW_Type.askQuery()
         did = smwAccess.smw.query(ask_query)
         for record in did.values():
-            smw_type = SMW_Type.from_dict(record) # @UndefinedVariable
+            smw_type = SMW_Type.from_dict(record)  # @UndefinedVariable
             if debug:
                 print(smw_type)
             self.assertIsInstance(smw_type, SMW_Type)
-
-
-from meta.metamodel import Property, Topic
-from tests.basetest import Basetest
 
 
 class TestTopic(Basetest):
@@ -61,3 +59,23 @@ class TestTopic(Basetest):
         topic = Topic()
         topic.properties = {"at": Property(name="at")}
         self.assertIsNone(topic.get_primary_key_property())
+
+    def test_pluralName_from_wiki(self):
+        """test that pluralName loaded from SiDIF is used, not the default fallback
+        see https://github.com/WolfgangFahl/pyMetaModel/issues/37
+        """
+        topic = Topic()
+        topic.name = "Property"
+        topic.pluralName = "Properties"
+        pluralName = topic.getPluralName()
+        self.assertEqual(pluralName, "Properties")
+
+    def test_pluralName_default_fallback(self):
+        """test that getPluralName falls back to name+s when pluralName not set
+        see https://github.com/WolfgangFahl/pyMetaModel/issues/37
+        """
+        topic = Topic()
+        topic.name = "Topic"
+        topic.sanitize()
+        pluralName = topic.getPluralName()
+        self.assertEqual(pluralName, "Topics")

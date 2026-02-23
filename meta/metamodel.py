@@ -26,18 +26,19 @@ class Context:
     A Context groups some topics like a Namespace/Package.
     This class provides helper functions and constants to render a Context to corresponding wiki pages
     """
+
     name: Optional[str] = None
-    since: Optional[str] = None # isodate string
-    updated: Optional[str] = None # isodate string
+    since: Optional[str] = None  # isodate string
+    updated: Optional[str] = None  # isodate string
     copyright: Optional[str] = None
     master: Optional[str] = None
     demo: Optional[str] = None
-    topics: Dict[str, 'Topic'] = field(default_factory=dict)
-    types: Dict[str, 'Topic'] = field(default_factory=dict)
+    topics: Dict[str, "Topic"] = field(default_factory=dict)
+    types: Dict[str, "Topic"] = field(default_factory=dict)
     errors: List[str] = field(default_factory=list)
 
     def __post_init__(self):
-        self.log=Log()
+        self.log = Log()
         pass
 
     @classmethod
@@ -49,17 +50,17 @@ class Context:
                 "updated": datetime.strptime("2024-08-07", "%Y-%m-%d"),
                 "copyright": "2015-2025 BITPlan GmbH",
                 "master": "https://contexts.bitplan.com",
-                "demo": "https://wiki.bitplan.com/index.php/List_of_Contexts"
+                "demo": "https://wiki.bitplan.com/index.php/List_of_Contexts",
             }
         ]
         return samples
 
-    def sanitize(self,key:str):
+    def sanitize(self, key: str):
         """
         make sure my needed properties exist
         """
-        if not hasattr(self,"name"):
-            self.name=key
+        if not hasattr(self, "name"):
+            self.name = key
             pass
         pass
 
@@ -82,7 +83,7 @@ class Context:
             return self.topics[topic_name]
         else:
             self.error(
-                f"""topic {topic_name} not found in context {getattr(self,"name","?")} for {purpose}"""
+                f"""topic {topic_name} not found in context {getattr(self, "name", "?")} for {purpose}"""
             )
             return None
 
@@ -225,8 +226,8 @@ class Context:
                     prop.sanitize()
                     context.addProperty(prop)
                 elif isA == "SMW_Type":
-                    smw_type=SMW_Type.from_dict2(record) # @UndefinedVariable
-                    context.types[smw_type.type]=smw_type
+                    smw_type = SMW_Type.from_dict2(record)  # @UndefinedVariable
+                    context.types[smw_type.type] = smw_type
                 else:  # isA == Topic or in declared topics
                     topic = Topic.from_dict2(record)
                     topic.sanitize()
@@ -238,14 +239,16 @@ class Context:
                         context.error(f"topic {topic.name} has no defined context")
                     if hasattr(topic, "name") and topic.name:
                         context.topics[topic.name] = topic
-                        topic.context_obj=context
+                        topic.context_obj = context
                     else:
                         # potential foreign or extends declaration
-                        context.error(f"missing name for topic {topic} {key} - foreign declaration?")
+                        context.error(
+                            f"missing name for topic {topic} {key} - foreign declaration?"
+                        )
             except Exception as ex:
                 if context:
-                    msg=f"invalid dict {record}: {str(ex)}"
-                    context.log.log("❌","dict",msg)
+                    msg = f"invalid dict {record}: {str(ex)}"
+                    context.log.log("❌", "dict", msg)
                 else:
                     raise ex
         # link topic to concepts and add topicLinks
@@ -258,7 +261,9 @@ class Context:
         return context
 
     @classmethod
-    def fromSiDIF_input(cls, sidif_input: str, debug: bool = False)->Tuple['Context',str,str]:
+    def fromSiDIF_input(
+        cls, sidif_input: str, debug: bool = False
+    ) -> Tuple["Context", str, str]:
         """
         initialize me from the given SiDIF input which might be a file path
         or url
@@ -333,7 +338,7 @@ class Context:
         error = None
         errMsg = None
         sidif = None
-        msg=f"reading sidif for {mw_context.context} from {mw_context.wikiId}"
+        msg = f"reading sidif for {mw_context.context} from {mw_context.wikiId}"
         if debug:
             print(msg)
         try:
@@ -346,17 +351,19 @@ class Context:
                 sidif=sidif, title=mw_context.wikiId, depth=depth, debug=debug
             )
         else:
-            errMsg=f"{msg} failed"
-            error=ValueError(msg)
+            errMsg = f"{msg} failed"
+            error = ValueError(msg)
         return context, error, errMsg
+
 
 @lod_storable
 class Topic:
     """
     A Topic is a Concept/Class/Thing/Entity
     """
+
     name: Optional[str] = None
-    _pluralName: Optional[str] = None
+    pluralName: Optional[str] = None
     icon: Optional[str] = None
     iconUrl: Optional[str] = None
     documentation: Optional[str] = None
@@ -364,25 +371,24 @@ class Topic:
     defaultstoremode: str = "property"
     extends: Optional[str] = None
     listLimit: int = 200
-    cargo:bool=False
-    headerTabs:bool=False
+    cargo: bool = False
+    headerTabs: bool = False
     context: Optional[str] = None
-    properties: Dict[str, 'Property'] = field(default_factory=dict)
-    sourceTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
-    targetTopicLinks: Dict[str, 'TopicLink'] = field(default_factory=dict)
+    properties: Dict[str, "Property"] = field(default_factory=dict)
+    sourceTopicLinks: Dict[str, "TopicLink"] = field(default_factory=dict)
+    targetTopicLinks: Dict[str, "TopicLink"] = field(default_factory=dict)
     # object references
     context_obj: Optional[Context] = None
-    conceptProperty: Optional['Property'] = None
+    conceptProperty: Optional["Property"] = None
 
-
-    def get_primary_key_property(self) -> Optional['Property']:
+    def get_primary_key_property(self) -> Optional["Property"]:
         """Return the first property marked as primaryKey, or None."""
         return next(
             (p for p in self.properties.values() if getattr(p, "primaryKey", False)),
             None,
         )
 
-    def get_extends_topics(self, l: List['Topic'] = None) -> List['Topic']:
+    def get_extends_topics(self, l: List["Topic"] = None) -> List["Topic"]:
         """
         Get the topics this topic is extending.
 
@@ -406,7 +412,7 @@ class Topic:
 
         return l
 
-    def get_all_properties(self) -> List['Property']:
+    def get_all_properties(self) -> List["Property"]:
         """
         Get all properties of the topic, including those inherited from extended topics.
 
@@ -426,18 +432,18 @@ class Topic:
 
         return all_properties
 
-
     def sanitize(self):
         """
         make sure my properties exist note that name is not handled here
         on purpose since it needs special treatment
         """
-        doc=self.documentation if hasattr(self, "documentation") else "?"
+        doc = self.documentation if hasattr(self, "documentation") else "?"
         if not hasattr(self, "wikiDocumentation") or not self.wikiDocumentation:
-            self.wikiDocumentation=doc
-        if not hasattr(self,"defaultstoremode"):
-            self.defaultstoremode="property"
-        pass
+            self.wikiDocumentation = doc
+        if not hasattr(self, "defaultstoremode"):
+            self.defaultstoremode = "property"
+        if not self.pluralName:
+            self.pluralName = f"{self.name}s"
 
     @classmethod
     def getSamples(cls):
@@ -462,7 +468,7 @@ class Topic:
         set my concept property to any primary key or mandatory property
         """
         self.conceptProperty = None
-        all_properties=self.propertiesByIndex(to_root=True)
+        all_properties = self.propertiesByIndex(to_root=True)
         for prop in all_properties:
             mandatory = False
             primaryKey = False
@@ -473,27 +479,6 @@ class Topic:
             if mandatory or primaryKey:
                 self.conceptProperty = prop
                 break
-
-    @property
-    def pluralName(self)->str:
-        """
-        Getter for pluralName.
-
-        Returns:
-            str: The plural name of the topic.
-        """
-        # Default behavior if _pluralName is not explicitly set
-        return self._pluralName if self._pluralName is not None else f"{self.name}s"
-
-    @pluralName.setter
-    def pluralName(self, value):
-        """
-        Setter for pluralName.
-
-        Args:
-            value (str): The plural name to be set for the topic.
-        """
-        self._pluralName = value
 
     def getPluralName(self) -> str:
         """
@@ -520,7 +505,7 @@ class Topic:
             list: a list of properties in sort order
         """
         prop_list = []
-        all_properties=self.get_all_properties()
+        all_properties = self.get_all_properties()
         for prop in all_properties:
             if hasattr(prop, "sortPos"):
                 sortPos = prop.sortPos
@@ -541,13 +526,12 @@ class Topic:
         inheritance_chain = self.get_extends_topics()
         inheritance_chain.append(self)
         for topic in inheritance_chain:
-            sorted_props=topic.propertiesByIndex(to_root=False)
+            sorted_props = topic.propertiesByIndex(to_root=False)
             properties_dict[topic.name] = sorted_props
 
         return properties_dict
 
-
-    def propertiesByIndex(self,to_root:bool=False) -> list:
+    def propertiesByIndex(self, to_root: bool = False) -> list:
         """
         Return the properties by index, considering inheritance chain.
 
@@ -570,7 +554,6 @@ class Topic:
             sorted_props = sorted(props, key=lambda p: p.index or props_count)
 
         return sorted_props
-
 
     def askSort(self) -> str:
         """
@@ -601,7 +584,7 @@ class Topic:
         mainlabel: str = None,
         filterShowInGrid: bool = True,
         listLimit: int = None,
-        result_format: str="table"
+        result_format: str = "table",
     ) -> str:
         """
         Get the askQuery for the topic, considering inheritance.
@@ -624,7 +607,7 @@ class Topic:
         for topic_name, properties in properties_dict.items():
             for prop in properties:
                 if filterShowInGrid:
-                    show=getattr(prop, "showInGrid",False)
+                    show = getattr(prop, "showInGrid", False)
                 else:
                     show = True
                 if show:
@@ -635,11 +618,13 @@ class Topic:
         markup += f"""{self.askSort()}}}}}"""
         return markup
 
+
 @lod_storable
 class Property:
     """
     Provides helper functions and constants for properties
     """
+
     name: Optional[str] = None
     label: Optional[str] = None
     type: Optional[str] = None
@@ -652,18 +637,17 @@ class Property:
     uploadable: bool = False
     defaultValue: Optional[str] = None
     inputType: Optional[str] = None
-    allowedValues: Optional[str]=None
+    allowedValues: Optional[str] = None
     documentation: Optional[str] = None
-    values_from: Optional[str]=None
-    formatterURI: Optional[str] = None # externalFormatterURI
+    values_from: Optional[str] = None
+    formatterURI: Optional[str] = None  # externalFormatterURI
     showInGrid: bool = True
     isLink: bool = False
     nullable: bool = False
     sortAscending: bool = True
     # Links
     topic: Optional[str] = None
-    topicLink: Optional['TopicLink'] = None
-
+    topicLink: Optional["TopicLink"] = None
 
     @classmethod
     def getSamples(cls):
@@ -705,22 +689,22 @@ class Property:
         ]
         return samples
 
-
     def sanitize(self):
         """
         make sure attributes such as namespace are set properly
         """
-        self.namespace="Property"
-        self.topicLink=None
+        self.namespace = "Property"
+        self.topicLink = None
         if hasattr(self, "scope"):
             pass
         if not hasattr(self, "showInGrid"):
-            self.showInGrid=True
+            self.showInGrid = True
         if not hasattr(self, "label"):
-            self.label=getattr(self,"name")
+            self.label = getattr(self, "name")
         if not hasattr(self, "type") or not self.type:
-            self.type="Text"
+            self.type = "Text"
         pass
+
 
 @lod_storable
 class TopicLink:
