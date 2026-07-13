@@ -187,6 +187,7 @@ class Context:
         prop.topicLink = tl
         prop.isLink = True
         prop.showInGrid = False
+        prop.separator = tl.separator
         return prop
 
     @classmethod
@@ -645,6 +646,7 @@ class Property:
     isLink: bool = False
     nullable: bool = False
     sortAscending: bool = True
+    separator: Optional[str] = None
     # Links
     topic: Optional[str] = None
     topicLink: Optional["TopicLink"] = None
