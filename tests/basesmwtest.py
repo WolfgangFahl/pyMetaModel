@@ -58,13 +58,29 @@ class BaseSemanticMediawikiTest(BaseMediawikiTest):
                 raise ex
         return smwAccess, mw_contexts
 
-    def getContextContext(self, wikiId: str = "wiki", context_name: str = "MetaModel"):
+    def getContextContext(
+        self,
+        wikiId: str = "wiki",
+        context_name: str = "MetaModel",
+        lenient: bool = False,
+    ):
         """
         get the default meta model context
+
+        Args:
+            wikiId(str): the id of the wiki to read the context from
+            context_name(str): the name of the context to read
+            lenient(bool): if True only print out a warning when the context
+                cannot be read - otherwise assert that there is no error.
+                A wiki may legitimately hold Context pages without a sidif
+                section so a sweep over many wikis must tolerate these.
         """
         smwAccess, mw_contexts = self.check_contexts(wikiId)
         mw_context = mw_contexts[context_name]
-        context, error, _errMsg = Context.fromWikiContext(mw_context, debug=self.debug)
-        self.assertIsNone(error)
+        context, error, errMsg = Context.fromWikiContext(mw_context, debug=self.debug)
+        if error and lenient:
+            print(f"warning {errMsg}", file=sys.stderr)
+        else:
+            self.assertIsNone(error)
         cc = ContextContext(smwAccess, context)
         return cc

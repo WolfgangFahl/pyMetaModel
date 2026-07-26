@@ -148,7 +148,9 @@ class TestMediawiki(BaseSemanticMediawikiTest):
                 context_info=f"{context_name}@{wikiId}"
                 if debug:
                     print(f"reading context {context_info}")
-                cc = self.getContextContext(wikiId=wikiId, context_name=context_name)
+                cc = self.getContextContext(
+                    wikiId=wikiId, context_name=context_name, lenient=lenient
+                )
                 context = cc.context
                 if not lenient:
                     self.assertIsNotNone(context)
