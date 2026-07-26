@@ -16,7 +16,7 @@ class Version(object):
     description = "pyMetaModel: MetaModel for Knowledge Graphs"
     version = meta.__version__
     date = "2022-11-30"
-    updated = "2026-07-13"
+    updated = "2026-07-26"
     authors = "Wolfgang Fahl"
     doc_url = "https://wiki.bitplan.com/index.php/pyMetaModel"
     chat_url = "https://github.com/WolfgangFahl/pyMetaModel/discussions"

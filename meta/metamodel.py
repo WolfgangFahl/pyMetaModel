@@ -485,11 +485,17 @@ class Topic:
         """
         get the plural name for this topic
 
+        falls back to name+s when no pluralName has been set so that the
+        invariant holds even for topics that did not go through sanitize()
+
         Returns:
             str: the pluralname e.g. "Topics" for "Topic" or "Status" for "Status" or
             "Entities" for "Entity"
         """
-        return self.pluralName
+        pluralName = self.pluralName
+        if not pluralName:
+            pluralName = f"{self.name}s"
+        return pluralName
 
     def getListLimit(self) -> int:
         """

@@ -79,3 +79,15 @@ class TestTopic(Basetest):
         topic.sanitize()
         pluralName = topic.getPluralName()
         self.assertEqual(pluralName, "Topics")
+
+    def test_pluralName_fallback_without_sanitize(self):
+        """test that getPluralName falls back to name+s even when sanitize()
+        has not been called - the accessor must hold its documented invariant
+        on its own and not depend on the caller remembering sanitize()
+        """
+        for pluralName_value in (None, ""):
+            topic = Topic()
+            topic.name = "Query"
+            topic.pluralName = pluralName_value
+            pluralName = topic.getPluralName()
+            self.assertEqual(pluralName, "Querys")
