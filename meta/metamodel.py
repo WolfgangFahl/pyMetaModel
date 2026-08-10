@@ -223,7 +223,7 @@ class Context:
                     tl = TopicLink.from_dict2(record)
                     context.addLink(tl)
                 elif isA == "Property":
-                    prop = Property.from_dict2(record)
+                    prop = Property.from_dict2(Property.aliased(record))
                     prop.sanitize()
                     context.addProperty(prop)
                 elif isA == "SMW_Type":
@@ -696,6 +696,30 @@ class Property:
             },
         ]
         return samples
+
+    # names the MetaModel declares for attributes whose field is named
+    # differently see https://github.com/WolfgangFahl/pyMetaModel/issues/39
+    aliases = {"externalFormatterURI": "formatterURI"}
+
+    @classmethod
+    def aliased(cls, record: dict) -> dict:
+        """
+        get a copy of the given record with the declared attribute names
+        mapped onto my field names
+
+        Args:
+            record (dict): the record to map
+
+        Returns:
+            dict: the record with my field names
+        """
+        aliased_record = dict(record)
+        for alias, field_name in cls.aliases.items():
+            if alias in aliased_record:
+                value = aliased_record.pop(alias)
+                if aliased_record.get(field_name) is None:
+                    aliased_record[field_name] = value
+        return aliased_record
 
     def sanitize(self):
         """

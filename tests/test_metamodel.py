@@ -6,7 +6,7 @@ Created on 2023-02-25
 
 from meta.smw_type import SMW_Type
 from tests.basemwtest import BaseMediawikiTest
-from meta.metamodel import Property, Topic
+from meta.metamodel import Context, Property, Topic
 from tests.basetest import Basetest
 
 
@@ -91,3 +91,30 @@ class TestTopic(Basetest):
             topic.pluralName = pluralName_value
             pluralName = topic.getPluralName()
             self.assertEqual(pluralName, "Querys")
+
+
+class TestProperty(Basetest):
+    """
+    test Property methods
+    """
+
+    def test_Issue39_external_formatter_uri_alias(self):
+        """test that the name the MetaModel declares for the formatter uri
+        reaches the field
+        see https://github.com/WolfgangFahl/pyMetaModel/issues/39
+        """
+        sidif = """Meeting isA Context
+"Meeting" is name of it
+HopContent isA Topic
+"HopContent" is name of it
+"Meeting" is context of it
+Screenshot isA Property
+"screenshot" is name of it
+"External identifier" is type of it
+"https://rdd.bitplan.com/$1" is externalFormatterURI of it
+"HopContent" is topic of it
+"""
+        context, error, errMsg = Context.fromSiDIF(sidif, title="issue39")
+        self.assertFalse(error, errMsg)
+        prop = context.topics["HopContent"].properties["screenshot"]
+        self.assertEqual(prop.formatterURI, "https://rdd.bitplan.com/$1")
